@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eliminación de datos | Digiagro</title>
+  <meta name="description" content="Instrucciones para solicitar la eliminación de datos de usuario de las aplicaciones de Digiagro.">
+
+  <style>
+    :root {
+      --bg: #0b1520;
+      --card-bg: #111827;
+      --primary: #22c55e;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .page {
+      max-width: 720px;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 32px 24px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin: 0 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h1 span.logo-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--primary);
+      box-shadow: 0 0 14px rgba(34, 197, 94, 0.85);
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin: 8px 0;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    ul {
+      margin: 8px 0 8px 20px;
+      padding: 0;
+      color: var(--muted);
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .highlight {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .email {
+      font-family: monospace;
+      font-size: 0.95rem;
+      background: rgba(15, 23, 42, 0.8);
+      padding: 6px 10px;
+      border-radius: 8px;
+      display: inline-block;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      margin: 4px 0;
+    }
+
+    .note {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .page {
+        padding: 36px 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>
+      <span class="logo-dot"></span>
+      Eliminación de datos de usuario
+    </h1>
+    <p>
+      Esta página describe cómo los usuarios pueden solicitar la eliminación de los datos
+      tratados por las aplicaciones y servicios de <span class="highlight">Digiagro</span>,
+      incluidos los datos recibidos desde las plataformas de Meta (Facebook e Instagram).
+    </p>
+
+    <h2>¿Qué datos se pueden eliminar?</h2>
+    <p>
+      A pedido del usuario, podemos eliminar la información asociada a su uso de nuestras
+      aplicaciones, entre ella:
+    </p>
+    <ul>
+      <li>Identificadores de usuario provenientes de Meta (por ejemplo, ID de cuenta).</li>
+      <li>Mensajes procesados por nuestros bots o integraciones.</li>
+      <li>Tokens de acceso y datos técnicos necesarios para la autenticación.</li>
+      <li>Cualquier otro dato personal recopilado a través de nuestras integraciones.</li>
+    </ul>
+
+    <h2>Cómo solicitar la eliminación de tus datos</h2>
+    <p>
+      Si deseas que eliminemos tus datos, envíanos un correo electrónico a:
+    </p>
+    <p class="email">info@digiagro.com.ar</p>
+    <p>
+      En el mensaje, por favor indícanos:
+    </p>
+    <ul>
+      <li>Tu nombre completo.</li>
+      <li>La cuenta de Instagram o Facebook conectada (usuario o enlace al perfil).</li>
+      <li>Que querés solicitar la <strong>eliminación de tus datos</strong> relacionados con Digiagro.</li>
+    </ul>
+
+    <h2>Plazo de eliminación</h2>
+    <p>
+      Procesaremos tu solicitud dentro de un plazo máximo de
+      <strong>30 días hábiles</strong> desde la recepción del pedido. Una vez completada,
+      los datos serán eliminados de nuestros sistemas y de la infraestructura de nuestros
+      proveedores de servicios, salvo aquellos que debamos conservar por obligaciones
+      legales o regulatorias.
+    </p>
+
+    <p class="note">
+      Si tenés dudas adicionales sobre el tratamiento o la eliminación de tus datos,
+      podés escribirnos al mismo correo indicando en el asunto “Consulta de datos personales”.
+    </p>
+  </main>
+</body>
+</html>
