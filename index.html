@@ -2,11 +2,987 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UmanoAi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Umanoai | Bots, Desarrollo Web y BI</title>
+  <meta name="description" content="Umanoai crea bots inteligentes, sitios web a medida, automatiza procesos y diseña tableros de Business Intelligence para tu negocio." />
+  <meta name="color-scheme" content="light" />
+
+  <!-- ====================== GOOGLE TAG MANAGER (HEAD) ====================== -->
+  <!-- Reemplaza TODO este comentario por el script de GTM que te da Google -->
+  <!-- Ejemplo:
+  <script>(function(w,d,s,l,i){...})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  -->
+  <!-- ====================================================================== -->
+
+  <style>
+    :root {
+      --primary: #008cff;           /* azul logo */
+      --primary-dark: #006ad1;
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --card: #f5f7fb;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.13);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ======== LAYOUT GENERAL ======== */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      gap: 16px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .nav-logo span {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      color: var(--primary-dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-dark);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      gap: 8px;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 25px rgba(0, 140, 255, 0.35);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 16px 35px rgba(0, 106, 209, 0.45);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: #fff;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* ======== HERO ======== */
+
+    .hero {
+      padding: 40px 0 32px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--muted);
+      margin-bottom: 14px;
+      background: rgba(248, 250, 252, 0.9);
+    }
+
+    .hero-kicker span.tag {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(0, 140, 255, 0.08);
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 2.9rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span.highlight {
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 22px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #e0f2ff 0, #f9fafb 38%, #ffffff 100%);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 20px 18px;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .status-pill {
+      font-size: 0.75rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.1);
+      color: #166534;
+      font-weight: 600;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .metric {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      padding: 8px 10px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .metric-value {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .hero-card-footer {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ======== SECCIONES GENERALES ======== */
+
+    section {
+      padding: 32px 0;
+    }
+
+    .section-head {
+      margin-bottom: 22px;
+      text-align: left;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 540px;
+    }
+
+    /* ======== SERVICIOS ======== */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 16px 14px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.9rem;
+      min-height: 170px;
+    }
+
+    .service-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: #fff;
+      color: var(--primary-dark);
+      font-weight: 600;
+      border: 1px solid rgba(129, 140, 248, 0.3);
+      width: fit-content;
+    }
+
+    .service-title {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .service-desc {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .service-list {
+      margin-top: 4px;
+      padding-left: 1.1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* ======== PROCESO ======== */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(0, 140, 255, 0.08);
+      color: var(--primary-dark);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .step-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .process-box {
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      padding: 16px 14px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      background: #f9fafb;
+    }
+
+    /* ======== CASOS / RESULTADOS ======== */
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .case-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 14px 14px 16px;
+      font-size: 0.85rem;
+      background: #ffffff;
+    }
+
+    .case-tag {
+      display: inline-flex;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(0, 140, 255, 0.07);
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .case-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 0.93rem;
+    }
+
+    .case-metric {
+      font-size: 0.8rem;
+      color: #16a34a;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .case-text {
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    /* ======== CONTACTO ======== */
+
+    .contact-section {
+      padding: 38px 0 48px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 18px 16px;
+      background: #f8fafc;
+    }
+
+    .contact-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.85rem;
+    }
+
+    .field label {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      padding: 8px 10px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--primary-dark);
+      box-shadow: 0 0 0 1px rgba(0, 140, 255, 0.35);
+    }
+
+    .field textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .contact-side {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-side strong {
+      color: var(--text);
+    }
+
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      width: fit-content;
+      background: #fff;
+    }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding: 14px 0 18px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ======== RESPONSIVE ======== */
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .process-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cases-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid {
+        gap: 24px;
+      }
+
+      .services-grid,
+      .cases-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      header {
+        padding: 0 0 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Bienvenido a UmanoAi</h1>
-  <p>Acercamos la IA a tu negocio de forma fácil.</p>
+  <!-- ====================== GOOGLE TAG MANAGER (BODY) ====================== -->
+  <!-- Aquí va el <noscript> del GTM, que Google indica pegar justo después de <body> -->
+  <!-- ====================================================================== -->
+
+  <div class="page">
+    <header>
+      <div class="container">
+        <nav class="nav">
+          <div class="nav-logo">
+            <!-- Cambia src="umanoai.png" por la ruta real de tu logo -->
+            <img src="umanoai.png" alt="Logo Umanoai">
+            <span>Umanoai</span>
+          </div>
+          <div class="nav-links">
+            <a href="#servicios">Servicios</a>
+            <a href="#proceso">Cómo trabajamos</a>
+            <a href="#casos">Resultados</a>
+            <a href="#contacto">Contacto</a>
+          </div>
+          <a class="btn-outline" href="#contacto">Agenda una demo</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ====================== HERO ====================== -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div>
+              <div class="hero-kicker">
+                <span class="tag">IA aplicada al negocio</span>
+                <span>Bots + Web + Procesos + BI</span>
+              </div>
+              <h1 class="hero-title">
+                Hacemos que tu negocio
+                <span class="highlight">trabaje en automático</span>.
+              </h1>
+              <p class="hero-subtitle">
+                Umanoai diseña bots inteligentes, sitios web rápidos,
+                flujos automatizados y tableros de Business Intelligence para que
+                puedas enfocarte en vender mientras la tecnología hace el resto.
+              </p>
+              <div class="hero-actions">
+                <!-- Reemplaza el número por tu WhatsApp oficial -->
+                <a class="btn-primary" href="https://wa.me/5491160000000?text=Hola%20quiero%20saber%20m%C3%A1s%20sobre%20Umanoai" target="_blank" rel="noopener">
+                  Hablar por WhatsApp
+                </a>
+                <a class="btn-outline" href="#servicios">
+                  Ver servicios
+                </a>
+              </div>
+              <div class="hero-meta">
+                <span>⚡ Respuestas 24/7 en WhatsApp</span>
+                <span>📊 Datos claros para decidir mejor</span>
+              </div>
+            </div>
+
+            <aside class="hero-card" aria-label="Resumen de automatización Umanoai">
+              <div class="hero-card-header">
+                <div class="hero-card-title">Panel Umanoai</div>
+                <div class="status-pill">Bots activos</div>
+              </div>
+              <div class="metrics-grid">
+                <div class="metric">
+                  <div class="metric-label">Conversaciones automatizadas / mes</div>
+                  <div class="metric-value">+1.200</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Tiempo de respuesta promedio</div>
+                  <div class="metric-value">&lt; 10 seg</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Procesos digitalizados</div>
+                  <div class="metric-value">+30</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Tableros BI activos</div>
+                  <div class="metric-value">24/7 online</div>
+                </div>
+              </div>
+              <div class="hero-card-footer">
+                <span>Todo conectado a WhatsApp, tu web y tu base de datos.</span>
+                <span>🔁 Sin tareas manuales repetitivas.</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================== SERVICIOS ====================== -->
+      <section id="servicios">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">Servicios</div>
+            <h2 class="section-title">Cuatro pilares para digitalizar tu negocio</h2>
+            <p class="section-subtitle">
+              Todo lo que hacemos está pensado para integrarse: bots, sitio web,
+              automatización de procesos y análisis de datos en un mismo ecosistema.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <span class="service-pill">Bots & IA</span>
+              <h3 class="service-title">Bots de WhatsApp y Web</h3>
+              <p class="service-desc">
+                Diseñamos asistentes que responden consultas frecuentes,
+                capturan leads y agendan reuniones, siempre con foco en el negocio.
+              </p>
+              <ul class="service-list">
+                <li>Flujos conversacionales a medida</li>
+                <li>Integración con CRMs y calendarios</li>
+                <li>Plantillas para campañas y seguimiento</li>
+              </ul>
+            </article>
+
+            <article class="service-card">
+              <span class="service-pill">Desarrollo</span>
+              <h3 class="service-title">Sitios web rápidos y claros</h3>
+              <p class="service-desc">
+                Páginas pensadas para convertir: velocidad, claridad
+                de mensaje y llamados a la acción conectados a tus bots.
+              </p>
+              <ul class="service-list">
+                <li>Landing pages y sitios corporativos</li>
+                <li>Optimización para SEO y mobile</li>
+                <li>Integración con Google Analytics y Ads</li>
+              </ul>
+            </article>
+
+            <article class="service-card">
+              <span class="service-pill">Procesos</span>
+              <h3 class="service-title">Digitalización y automatización</h3>
+              <p class="service-desc">
+                Llevamos tus procesos manuales a flujos digitales:
+                formularios, aprobaciones, notificaciones y documentos.
+              </p>
+              <ul class="service-list">
+                <li>Workflows multi-equipo</li>
+                <li>Conexión con ERPs y planillas</li>
+                <li>Alertas y recordatorios automáticos</li>
+              </ul>
+            </article>
+
+            <article class="service-card">
+              <span class="service-pill">Business Intelligence</span>
+              <h3 class="service-title">Tableros de BI accionables</h3>
+              <p class="service-desc">
+                Transformamos tus datos en decisiones: dashboards
+                simples, métricas clave y reportes automáticos.
+              </p>
+              <ul class="service-list">
+                <li>Power BI, Data Studio u otras herramientas</li>
+                <li>KPIs comerciales y operativos</li>
+                <li>Actualización de datos en tiempo real</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================== PROCESO ====================== -->
+      <section id="proceso">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">Cómo trabajamos</div>
+            <h2 class="section-title">De la idea al bot en producción, paso a paso</h2>
+            <p class="section-subtitle">
+              Nos enfocamos en entender tu operación, no solo en “instalar un bot”.
+              Construimos soluciones que realmente se usan.
+            </p>
+          </div>
+
+          <div class="process-grid">
+            <div>
+              <ol class="steps">
+                <li class="step">
+                  <div class="step-number">1</div>
+                  <div>
+                    <div class="step-title">Entendemos tu negocio</div>
+                    <div class="step-text">
+                      Relevamos tus procesos comerciales y canales de contacto:
+                      qué preguntas se repiten, qué métricas importan y dónde se pierden oportunidades.
+                    </div>
+                  </div>
+                </li>
+                <li class="step">
+                  <div class="step-number">2</div>
+                  <div>
+                    <div class="step-title">Diseñamos la experiencia</div>
+                    <div class="step-text">
+                      Definimos flujos de conversación, estructura de la web y
+                      automatizaciones clave. Priorizamos las “victorias rápidas”.
+                    </div>
+                  </div>
+                </li>
+                <li class="step">
+                  <div class="step-number">3</div>
+                  <div>
+                    <div class="step-title">Implementamos y medimos</div>
+                    <div class="step-text">
+                      Conectamos todo: bots, sitio, procesos y BI. Dejamos métricas
+                      configuradas desde el día uno para saber qué funciona.
+                    </div>
+                  </div>
+                </li>
+                <li class="step">
+                  <div class="step-number">4</div>
+                  <div>
+                    <div class="step-title">Ajustes y evolución</div>
+                    <div class="step-text">
+                      Revisamos periódicamente resultados, ajustamos mensajes,
+                      flujos y tableros para acompañar el crecimiento del negocio.
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            <aside class="process-box">
+              <strong>Integramos tus herramientas actuales.</strong><br /><br />
+              Podemos conectarnos con:
+              CRM, ERPs, planillas de cálculo, formularios, herramientas de email marketing
+              y plataformas de pago. Si tus datos ya existen en algún lado, buscamos usarlos,
+              no duplicarlos. <br /><br />
+              <em>
+                Objetivo: menos tareas manuales, más foco en clientes y decisiones.
+              </em>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================== CASOS / RESULTADOS ====================== -->
+      <section id="casos">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">Resultados</div>
+            <h2 class="section-title">Ejemplos de lo que podemos lograr</h2>
+            <p class="section-subtitle">
+              Cada negocio es distinto, pero los objetivos se repiten:
+              responder más rápido, vender mejor y tener datos claros.
+            </p>
+          </div>
+
+          <div class="cases-grid">
+            <article class="case-card">
+              <div class="case-tag">WhatsApp Bot</div>
+              <h3 class="case-title">Distribuidora que atendía solo en horario de oficina</h3>
+              <div class="case-metric">+60% más consultas respondidas en el mes</div>
+              <p class="case-text">
+                Implementamos un bot que responde precios, stock y tiempos de entrega.
+                El equipo comercial ahora se enfoca en cerrar las oportunidades calificadas.
+              </p>
+            </article>
+
+            <article class="case-card">
+              <div class="case-tag">Web + Procesos</div>
+              <h3 class="case-title">Empresa de servicios con agenda saturada</h3>
+              <div class="case-metric">-40% de tiempo administrativo</div>
+              <p class="case-text">
+                Rediseñamos la web con formularios claros y automatizamos la gestión
+                de turnos y recordatorios. Menos WhatsApps perdidos, más organización.
+              </p>
+            </article>
+
+            <article class="case-card">
+              <div class="case-tag">BI</div>
+              <h3 class="case-title">Directores sin visibilidad en tiempo real</h3>
+              <div class="case-metric">Reporte comercial diario automático</div>
+              <p class="case-text">
+                Creamos tableros de BI que se actualizan solos con ventas,
+                cobranzas y proyección de objetivos. Decisiones con datos, no intuición.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================== CONTACTO ====================== -->
+      <section id="contacto" class="contact-section">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">Contacto</div>
+            <h2 class="section-title">¿Hablamos de tu próximo bot o tablero?</h2>
+            <p class="section-subtitle">
+              Contanos brevemente tu situación actual y te proponemos un
+              roadmap simple para empezar a automatizar en pocas semanas.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-card">
+              <p>
+                Completa este formulario o escribinos directo por WhatsApp.
+                Respondemos siempre dentro del mismo día hábil.
+              </p>
+              <form class="contact-form">
+                <div class="field">
+                  <label for="nombre">Nombre y empresa</label>
+                  <input id="nombre" name="nombre" type="text" placeholder="Ej: Ana, Grupo Norte" />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="tu@empresa.com" />
+                </div>
+                <div class="field">
+                  <label for="whatsapp">WhatsApp</label>
+                  <input id="whatsapp" name="whatsapp" type="tel" placeholder="+54 9 ..." />
+                </div>
+                <div class="field">
+                  <label for="detalle">¿Qué te gustaría mejorar?</label>
+                  <textarea id="detalle" name="detalle" placeholder="Ej: automatizar respuestas en WhatsApp, tableros de ventas, digitalizar formularios..."></textarea>
+                </div>
+                <!-- Aquí conectarías el formulario a tu backend / servicio de formularios -->
+                <button type="submit" class="btn-primary">Enviar consulta</button>
+              </form>
+            </div>
+
+            <aside class="contact-side">
+              <div>
+                <strong>Contacto directo</strong><br />
+                WhatsApp: <a href="https://wa.me/5491160000000" target="_blank" rel="noopener">+54 9 11 6000-0000</a><br />
+                Email: <a href="mailto:hola@umanoai.com.ar">hola@umanoai.com.ar</a>
+              </div>
+              <div>
+                <strong>¿Qué podés esperar de la primera reunión?</strong>
+                <ul>
+                  <li>Relevamos tu situación actual (sin costo).</li>
+                  <li>Definimos 2–3 objetivos claros.</li>
+                  <li>Te enviamos una propuesta simple, sin letra chica.</li>
+                </ul>
+              </div>
+              <div class="contact-chip">
+                <span>✅ Sin compromiso ·</span>
+                <span>Primera conversación 30 minutos</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <span>© <span id="year"></span> Umanoai. Todos los derechos reservados.</span>
+          <span>Hecho con IA + humanos.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ====================== GOOGLE ANALYTICS / GA4 ====================== -->
+  <!-- Aquí puedes pegar el script de GA4 o usar Google Tag Manager para cargarlo -->
+  <!-- ==================================================================== -->
+
+  <script>
+    // Año dinámico en el footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
