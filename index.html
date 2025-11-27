@@ -317,6 +317,24 @@
       font-weight:700;
     }
 
+    /* ===== VIDEOS MAPA SOLUCIONES ===== */
+    .video-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;
+    }
+    .video-card{
+      background:rgba(15,23,42,0.95);
+      border-radius:14px;
+      border:1px solid rgba(148,163,184,0.4);
+      padding:10px;
+      box-shadow:0 16px 40px rgba(0,0,0,0.55);
+    }
+    .video-card iframe{
+      border-radius:10px;
+      display:block;
+    }
+
     /* ===== WHATSAPP FLOAT ===== */
     .whatsapp-float{
       position:fixed;
@@ -657,40 +675,8 @@
         </a>
       </div>
 
-      <!-- === CASOS REALES EN VIDEO === -->
-      <div id="casos-video" style="margin-top:28px;">
-        <h4 style="font-size:1rem;color:#00F6A4;margin-bottom:10px;">
-          🎥 Casos reales: apps desarrolladas con UmanoAI
-        </h4>
-
-        <div style="display:flex;flex-wrap:wrap;gap:16px;">
-          <!-- Video 1: Trazabilidad Agro -->
-          <div style="flex:1 1 320px;">
-            <iframe width="100%" height="200"
-              src="https://www.youtube.com/embed/2U_MAXnkoYo"
-              title="Trazabilidad Agro · UmanoAI"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-            <p style="font-size:0.85rem;margin-top:6px;color:#8ea4bf;">
-              🌱 Trazabilidad Agro + SENASA (automatización completa)
-            </p>
-          </div>
-
-          <!-- Video 2: Viáticos -->
-          <div style="flex:1 1 320px;">
-            <iframe width="100%" height="200"
-              src="https://www.youtube.com/embed/a14vI059ydA"
-              title="App de Viáticos · UmanoAI"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-            <p style="font-size:0.85rem;margin-top:6px;color:#8ea4bf;">
-              💼 App de Viáticos: control, auditoría y reportes simples
-            </p>
-          </div>
-        </div>
-      </div>
+      <!-- Contenedor dinámico de videos -->
+      <div id="detalle-videos" style="margin-top:28px;"></div>
     </article>
   </div>
 </section>
@@ -713,7 +699,19 @@
         ideal:
           "Ideal si tenés muchos procesos en Excel, mail o WhatsApp y querés ordenarlos en un solo lugar.",
         cta:
-          "https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio"
+          "https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio",
+        videos: [
+          {
+            titulo: "Trazabilidad Agro · UmanoAI",
+            url: "https://www.youtube.com/embed/2U_MAXnkoYo",
+            descripcion: "🌱 Trazabilidad Agro + SENASA (automatización completa)"
+          },
+          {
+            titulo: "App de Viáticos · UmanoAI",
+            url: "https://www.youtube.com/embed/a14vI059ydA",
+            descripcion: "💼 App de Viáticos: control, auditoría y reportes simples"
+          }
+        ]
       },
       bots: {
         titulo: "Bots",
@@ -743,7 +741,7 @@
         ideal:
           "Ideal si todos los días alguien del equipo está 'haciendo de puente' entre sistemas que no se hablan.",
         cta:
-          "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+ los+procesos+de+mi+negocio"
+          "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+los+procesos+de+mi+negocio"
       },
       crm: {
         titulo: "CRM a medida",
@@ -798,6 +796,7 @@
     const lista = document.getElementById("detalle-lista");
     const ideal = document.getElementById("detalle-ideal");
     const cta = document.getElementById("detalle-cta");
+    const videosContainer = document.getElementById("detalle-videos");
 
     function activarCard(card) {
       cards.forEach(c => {
@@ -829,6 +828,50 @@
 
       ideal.textContent = data.ideal;
       cta.href = data.cta;
+
+      // --- Videos dinámicos ---
+      videosContainer.innerHTML = "";
+      if (data.videos && data.videos.length > 0) {
+        const wrapper = document.createElement("div");
+
+        const title = document.createElement("h4");
+        title.textContent = "🎥 Casos reales: apps desarrolladas con UmanoAI";
+        title.style.fontSize = "1rem";
+        title.style.color = "#00F6A4";
+        title.style.margin = "22px 0 12px";
+        wrapper.appendChild(title);
+
+        const grid = document.createElement("div");
+        grid.className = "video-grid";
+
+        data.videos.forEach(v => {
+          const card = document.createElement("div");
+          card.className = "video-card";
+
+          const iframe = document.createElement("iframe");
+          iframe.width = "100%";
+          iframe.height = "200";
+          iframe.src = v.url;
+          iframe.title = v.titulo;
+          iframe.frameBorder = "0";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.referrerPolicy = "strict-origin-when-cross-origin";
+          iframe.allowFullscreen = true;
+          card.appendChild(iframe);
+
+          const caption = document.createElement("p");
+          caption.textContent = v.descripcion;
+          caption.style.fontSize = "0.82rem";
+          caption.style.marginTop = "6px";
+          caption.style.color = "#8ea4bf";
+          card.appendChild(caption);
+
+          grid.appendChild(card);
+        });
+
+        wrapper.appendChild(grid);
+        videosContainer.appendChild(wrapper);
+      }
     }
 
     cards.forEach(card => {
@@ -876,4 +919,3 @@
   </script>
 </body>
 </html>
-
