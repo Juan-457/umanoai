@@ -77,6 +77,8 @@
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;}
+    /* Evita que las imágenes aparezcan gigantes antes del CSS */
+    img{max-width:100%;height:auto;}
 
     .um{
       margin:0;
@@ -650,7 +652,7 @@
   </div>
 
   <a class="whatsapp-float" href="https://wa.me/5491125926977?text=Hola%20vengo%20desde%20la%20web%20de%20Umanoai" target="_blank" rel="noopener">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" loading="lazy">
   </a>
 
   <script>
@@ -1069,8 +1071,7 @@
           rotadorInterval = setInterval(() => {
             index = (index + 1) % data.rotador.length;
             textSpan.classList.remove("auto-rotator-text");
-            // forzar reflow para reiniciar animación
-            void textSpan.offsetWidth;
+            void textSpan.offsetWidth; // reflow para reiniciar animación
             textSpan.textContent = data.rotador[index];
             textSpan.classList.add("auto-rotator-text");
           }, 2600);
@@ -1144,6 +1145,7 @@
           const mainImg = document.createElement("img");
           mainImg.src = data.imagenes[0].src;
           mainImg.alt = data.imagenes[0].alt || data.imagenes[0].titulo || "";
+          mainImg.loading = "lazy";
           main.appendChild(mainImg);
 
           const caption = document.createElement("div");
@@ -1157,6 +1159,7 @@
             const tImg = document.createElement("img");
             tImg.src = imgData.src;
             tImg.alt = imgData.alt || imgData.titulo || "";
+            tImg.loading = "lazy";
             if (index === 0) tImg.classList.add("active");
 
             tImg.addEventListener("click", () => {
@@ -1200,7 +1203,7 @@
     margin-top:40px;
     border-top:2px solid #1e293b;">
 
-    <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;">
+    <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;" loading="lazy">
 
     <p style="margin:6px 0;">
       © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
