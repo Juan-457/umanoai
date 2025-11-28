@@ -156,7 +156,7 @@
       position:fixed;
       bottom:24px;
       left:18px;
-      height:68px;           /* +20% aprox */
+      height:67px; /* 20% más grande que 56px */
       opacity:.55;
       z-index:900;
       transition:transform .2s ease, opacity .2s ease;
@@ -370,19 +370,23 @@
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
       gap:16px;
     }
-    .video-card{
+
+    /* Marco reutilizable para videos e imágenes */
+    .video-card,
+    .media-frame{
       background:rgba(15,23,42,0.95);
       border-radius:14px;
       border:1px solid rgba(148,163,184,0.4);
       padding:10px;
       box-shadow:0 16px 40px rgba(0,0,0,0.55);
     }
+
     .video-card iframe{
       border-radius:10px;
       display:block;
     }
 
-    /* ===== CARROUSEL (BI y Web) ===== */
+    /* ===== CARROUSEL BI / SITIOS ===== */
     .bi-carousel{
       margin-top:26px;
       display:flex;
@@ -395,12 +399,12 @@
       max-width:520px;
       border-radius:14px;
       overflow:hidden;
-      box-shadow:0 14px 36px rgba(0,0,0,0.55);
       background:#020617;
     }
     .bi-carousel-main img{
       width:100%;
       display:block;
+      border-radius:10px;
     }
     .bi-carousel-caption{
       margin-top:6px;
@@ -430,6 +434,8 @@
       border-color:#00F6A4;
       transform:translateY(-1px);
     }
+
+    /* Podemos reutilizar las mismas clases para Sitios */
 
     /* ===== WHATSAPP FLOAT ===== */
     .whatsapp-float{
@@ -842,7 +848,7 @@
           ideal:
             "Ideal si todos los días alguien del equipo está 'haciendo de puente' entre sistemas que no se hablan.",
           cta:
-            "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+los+procesos+de+mi+negocio"
+            "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+ los+procesos+de+mi+negocio"
         },
         crm: {
           titulo: "CRM a medida",
@@ -921,22 +927,23 @@
             "Ideal si querés que tu web sea parte de tu sistema comercial, no solo una tarjeta de presentación.",
           cta:
             "https://wa.me/5491125926977?text=Hola%2C+necesito+una+web+profesional+para+mi+negocio",
-          tituloImagenes: "🌐 Sitios y resultados creados por UmanoAI",
-          imagenes: [
+          /* Carrusel de sitios / resultados */
+          tituloSitios: "🌐 Sitios y resultados creados por UmanoAI",
+          sitios: [
             {
-              src: "digiagro.png",
-              alt: "Web DigiAgro",
+              src: "digiagro-home.png",
+              alt: "Sitio DigiAgro",
               titulo: "DigiAgro – Sitio principal del ecosistema agro digital"
             },
             {
-              src: "dsacine.png",
-              alt: "Web DSACINE",
-              titulo: "DSACINE – Escuela y productora artística digitalizada"
+              src: "dsacine-home.png",
+              alt: "Sitio DSACINE",
+              titulo: "DSACINE – Academia de artes audiovisuales"
             },
             {
-              src: "analytics.png",
-              alt: "Panel de Analytics",
-              titulo: "Panel de Analytics – Métricas reales de tráfico"
+              src: "analytics-digiagro.png",
+              alt: "Analytics DigiAgro",
+              titulo: "Resultados en Analytics para DigiAgro"
             }
           ]
         }
@@ -1013,8 +1020,7 @@
             iframe.src = v.url;
             iframe.title = v.titulo;
             iframe.frameBorder = "0";
-            iframe.allow =
-              "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
             iframe.referrerPolicy = "strict-origin-when-cross-origin";
             iframe.allowFullscreen = true;
             card.appendChild(iframe);
@@ -1033,7 +1039,7 @@
           videosContainer.appendChild(wrapper);
         }
 
-        // ----- Carrusel de imágenes (para Power BI y Web) -----
+        // ----- Carrusel de imágenes (Power BI u otros que lo usen) -----
         if (data.imagenes && data.imagenes.length > 0) {
           const cWrapper = document.createElement("div");
           cWrapper.className = "bi-carousel";
@@ -1042,12 +1048,12 @@
           titleImg.textContent = data.tituloImagenes || "📊 Ejemplos de reportes";
           titleImg.style.fontSize = "1rem";
           titleImg.style.color = "#00F6A4";
-          titleImg.style.margin = "22px 0 6px";
+          titleImg.style.margin = "18px 0 6px";
           titleImg.style.textAlign = "center";
           cWrapper.appendChild(titleImg);
 
           const main = document.createElement("div");
-          main.className = "bi-carousel-main";
+          main.className = "bi-carousel-main media-frame";
 
           const mainImg = document.createElement("img");
           mainImg.src = data.imagenes[0].src;
@@ -1083,6 +1089,57 @@
           cWrapper.appendChild(thumbs);
           videosContainer.appendChild(cWrapper);
         }
+
+        // ----- Carrusel de sitios / resultados (solo web) -----
+        if (data.sitios && data.sitios.length > 0) {
+          const sWrapper = document.createElement("div");
+          sWrapper.className = "bi-carousel"; // reutilizamos estilos
+
+          const titleSitios = document.createElement("h4");
+          titleSitios.textContent = data.tituloSitios || "🌐 Sitios y resultados creados por UmanoAI";
+          titleSitios.style.fontSize = "1rem";
+          titleSitios.style.color = "#00F6A4";
+          titleSitios.style.margin = "26px 0 10px";
+          titleSitios.style.textAlign = "center";
+          sWrapper.appendChild(titleSitios);
+
+          const mainSite = document.createElement("div");
+          mainSite.className = "bi-carousel-main media-frame";
+
+          const mainSiteImg = document.createElement("img");
+          mainSiteImg.src = data.sitios[0].src;
+          mainSiteImg.alt = data.sitios[0].alt || data.sitios[0].titulo || "";
+          mainSite.appendChild(mainSiteImg);
+
+          const captionSite = document.createElement("div");
+          captionSite.className = "bi-carousel-caption";
+          captionSite.textContent = data.sitios[0].titulo || "";
+
+          const thumbsSite = document.createElement("div");
+          thumbsSite.className = "bi-carousel-thumbs";
+
+          data.sitios.forEach((imgData, index) => {
+            const tImg = document.createElement("img");
+            tImg.src = imgData.src;
+            tImg.alt = imgData.alt || imgData.titulo || "";
+            if (index === 0) tImg.classList.add("active");
+
+            tImg.addEventListener("click", () => {
+              mainSiteImg.src = imgData.src;
+              mainSiteImg.alt = imgData.alt || imgData.titulo || "";
+              captionSite.textContent = imgData.titulo || "";
+              thumbsSite.querySelectorAll("img").forEach(im => im.classList.remove("active"));
+              tImg.classList.add("active");
+            });
+
+            thumbsSite.appendChild(tImg);
+          });
+
+          sWrapper.appendChild(mainSite);
+          sWrapper.appendChild(captionSite);
+          sWrapper.appendChild(thumbsSite);
+          videosContainer.appendChild(sWrapper);
+        }
       }
 
       cards.forEach(card => {
@@ -1101,14 +1158,15 @@
   <footer style="
     background:#0f172a;
     color:#e5e7eb;
-    padding:30px 16px;
+    padding:38px 16px; /* un poco más alto */
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    font-size:16px;              /* + tamaño footer */
+    font-size:15px;   /* 20% más grande aprox */
     text-align:center;
     margin-top:40px;
     border-top:2px solid #1e293b;">
 
-    <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:10px;"><!-- +20% aprox -->
+    <img src="umanoai.png" alt="Logo Umanoai"
+         style="height:50px; opacity:.85; margin-bottom:10px;">
 
     <p style="margin:6px 0;">
       © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
