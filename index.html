@@ -127,19 +127,18 @@
     }
 
     .um header::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,.65),
-    rgba(0,0,0,.45),
-    rgba(0,0,0,.25)
-  );
-  backdrop-filter: blur(4px);
-}
-
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-1;
+      background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.25)
+      );
+      backdrop-filter: blur(4px);
+    }
 
     .um header h1{
       color:#fff;
@@ -395,7 +394,7 @@
       display:block;
     }
 
-    /* ===== CARROUSEL BI ===== */
+    /* ===== CARROUSEL BI / PORTFOLIO ===== */
     .bi-carousel{
       margin-top:26px;
       display:flex;
@@ -787,6 +786,41 @@
     </div>
   </section>
 
+  <!-- ========= NUEVA SECCIÓN: CARRUSEL DE WEBS / ANALYTICS ========= -->
+  <section 
+    id="portfolio-webs"
+    style="
+      background: radial-gradient(circle at top, #111827 0%, #050813 70%);
+      color:#e5e7eb;
+      padding:60px 20px;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    "
+  >
+    <div style="max-width:1100px;margin:0 auto;text-align:center;">
+
+      <h2 style="font-size:2rem;margin-bottom:10px;">
+        🌐 Sitios y resultados creados por <span style='color:#00F6A4;'>UmanoAI</span>
+      </h2>
+      <p style="max-width:640px;margin:0 auto 35px;color:#c7cfdd;">
+        Algunos proyectos reales que usamos para digitalizar procesos, generar presencia
+        online y medir resultados con datos.
+      </p>
+
+      <div class="bi-carousel">
+        <div class="bi-carousel-main">
+          <img id="portfolio-main-img" src="digiagro.png" alt="DigiAgro Web">
+        </div>
+        <div class="bi-carousel-caption" id="portfolio-caption">
+          DigiAgro – Sitio principal del ecosistema agro digital
+        </div>
+
+        <div class="bi-carousel-thumbs" id="portfolio-thumbs"></div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ================================================================ -->
+
   <!-- ===================== LÓGICA JS PARA EL MAPA ===================== -->
   <script>
     (function () {
@@ -1089,6 +1123,53 @@
 
       // Set inicial
       actualizarDetalle("apps");
+    })();
+  </script>
+
+  <!-- ========= JS DEL CARRUSEL DE PORTFOLIO (DigiAgro / DSACINE / Analytics) ========= -->
+  <script>
+    (function () {
+      const portfolioItems = [
+        {
+          src: "digiagro.png",
+          titulo: "DigiAgro – Sitio principal del ecosistema agro digital",
+          alt: "DigiAgro Web"
+        },
+        {
+          src: "dsacine.png",
+          titulo: "DSACINE – Escuela y producción artística digitalizada",
+          alt: "DSACINE Web"
+        },
+        {
+          src: "analytics.png",
+          titulo: "Panel de Analytics – Métricas reales de tráfico",
+          alt: "Analytics Dashboard"
+        }
+      ];
+
+      const mainImg = document.getElementById("portfolio-main-img");
+      const caption = document.getElementById("portfolio-caption");
+      const thumbsContainer = document.getElementById("portfolio-thumbs");
+
+      if (!mainImg || !caption || !thumbsContainer) return;
+
+      portfolioItems.forEach((item, index) => {
+        const thumb = document.createElement("img");
+        thumb.src = item.src;
+        thumb.alt = item.alt;
+        if (index === 0) thumb.classList.add("active");
+
+        thumb.addEventListener("click", () => {
+          mainImg.src = item.src;
+          mainImg.alt = item.alt;
+          caption.textContent = item.titulo;
+
+          thumbsContainer.querySelectorAll("img").forEach(t => t.classList.remove("active"));
+          thumb.classList.add("active");
+        });
+
+        thumbsContainer.appendChild(thumb);
+      });
     })();
   </script>
 
