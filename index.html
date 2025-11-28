@@ -354,6 +354,12 @@
       width:100%;
       display:block;
     }
+    .bi-carousel-caption{
+      margin-top:6px;
+      font-size:0.85rem;
+      color:#cbd5f5;
+      text-align:center;
+    }
     .bi-carousel-thumbs{
       display:flex;
       flex-wrap:wrap;
@@ -981,6 +987,10 @@
           mainImg.alt = data.imagenes[0].alt || data.imagenes[0].titulo || "";
           main.appendChild(mainImg);
 
+          const caption = document.createElement("div");
+          caption.className = "bi-carousel-caption";
+          caption.textContent = data.imagenes[0].titulo || "";
+
           const thumbs = document.createElement("div");
           thumbs.className = "bi-carousel-thumbs";
 
@@ -993,6 +1003,7 @@
             tImg.addEventListener("click", () => {
               mainImg.src = imgData.src;
               mainImg.alt = imgData.alt || imgData.titulo || "";
+              caption.textContent = imgData.titulo || "";
               thumbs.querySelectorAll("img").forEach(im => im.classList.remove("active"));
               tImg.classList.add("active");
             });
@@ -1001,6 +1012,7 @@
           });
 
           cWrapper.appendChild(main);
+          cWrapper.appendChild(caption);
           cWrapper.appendChild(thumbs);
           videosContainer.appendChild(cWrapper);
         }
