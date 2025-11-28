@@ -67,7 +67,6 @@
       z-index:-2;
     }
 
-    /* 🔥 NUEVA CAPA OSCURA OPTIMIZADA */
     .um header::before{
       content:"";
       position:absolute;
@@ -406,7 +405,7 @@
       <video autoplay muted loop playsinline poster="umanoai.png">
         <source src="hero.mp4" type="video/mp4">
       </video>
-      
+
       <h1>Bots, sitios web y BI que trabajan para tu negocio</h1>
       <p class="hero-subtitle">
         En <strong>Umanoai</strong> combinamos IA, automatización y data
@@ -548,7 +547,7 @@
                 color:#f5f5f5;
                 padding:60px 20px;">
   <div style="max-width:1100px;margin:0 auto;">
-    
+
     <!-- TÍTULO PRINCIPAL -->
     <header style="text-align:center;margin-bottom:40px;">
       <h2 style="font-size:2.3rem;margin-bottom:10px;">
@@ -566,7 +565,7 @@
                 grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
                 gap:16px;
                 margin-bottom:30px;">
-      
+
       <!-- Cada card representa un vertical -->
       <button class="solucion-card is-active" data-solucion="apps"
               style="border:none;cursor:pointer;padding:16px 14px;
@@ -638,7 +637,7 @@
                     box-shadow:0 20px 60px rgba(0,0,0,0.65);
                     backdrop-filter:blur(16px);
                     min-height:210px;">
-      <!-- El contenido se llena por JS -->
+
       <h3 id="detalle-titulo" style="font-size:1.4rem;margin-bottom:8px;">
         Apps a medida
       </h3>
@@ -662,7 +661,6 @@
           Ideal si querés dejar de depender de Excel y WhatsApp para gestionar tu operación.
         </p>
 
-        <!-- CTA a WhatsApp: cambiá el número si hace falta -->
         <a id="detalle-cta"
            href="https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio"
            target="_blank" rel="noopener"
@@ -700,6 +698,7 @@
           "Ideal si tenés muchos procesos en Excel, mail o WhatsApp y querés ordenarlos en un solo lugar.",
         cta:
           "https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio",
+        tituloVideos: "🎥 Casos reales: apps desarrolladas con UmanoAI",
         videos: [
           {
             titulo: "Trazabilidad Agro · UmanoAI",
@@ -726,7 +725,15 @@
         ideal:
           "Ideal si recibís muchos mensajes repetidos o querés vender 24/7 sin sumar más personas al equipo.",
         cta:
-          "https://wa.me/5491125926977?text=Hola%2C+quiero+un+bot+para+mi+negocio"
+          "https://wa.me/5491125926977?text=Hola%2C+quiero+un+bot+para+mi+negocio",
+        tituloVideos: "🎥 Casos reales: bots de WhatsApp con UmanoAI",
+        videos: [
+          {
+            titulo: "Bots de WhatsApp · UmanoAI",
+            url: "https://www.youtube.com/embed/OIfVOwd2EiI",
+            descripcion: "🤖 Cómo funcionan los bots de WhatsApp conectados a tus sistemas"
+          }
+        ]
       },
       automatizaciones: {
         titulo: "Automatizaciones",
@@ -835,7 +842,7 @@
         const wrapper = document.createElement("div");
 
         const title = document.createElement("h4");
-        title.textContent = "🎥 Casos reales: apps desarrolladas con UmanoAI";
+        title.textContent = data.tituloVideos || "🎥 Casos reales de esta solución";
         title.style.fontSize = "1rem";
         title.style.color = "#00F6A4";
         title.style.margin = "22px 0 12px";
@@ -844,13 +851,19 @@
         const grid = document.createElement("div");
         grid.className = "video-grid";
 
+        // Si hay un solo video, lo centramos
+        if (data.videos.length === 1) {
+          grid.style.maxWidth = "520px";
+          grid.style.margin = "0 auto";
+        }
+
         data.videos.forEach(v => {
           const card = document.createElement("div");
           card.className = "video-card";
 
           const iframe = document.createElement("iframe");
           iframe.width = "100%";
-          iframe.height = "200";
+          iframe.height = "260";
           iframe.src = v.url;
           iframe.title = v.titulo;
           iframe.frameBorder = "0";
@@ -882,7 +895,7 @@
       });
     });
 
-    // Set inicial por si cambia el HTML
+    // Set inicial
     actualizarDetalle("apps");
   })();
 </script>
@@ -919,3 +932,4 @@
   </script>
 </body>
 </html>
+
