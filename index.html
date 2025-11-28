@@ -76,7 +76,11 @@
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;}
+    body{
+      margin:0;
+      background:#020617; /* fondo oscuro para evitar flash blanco */
+    }
+
     /* Evita que las imágenes aparezcan gigantes antes del CSS */
     img{max-width:100%;height:auto;}
 
@@ -84,11 +88,8 @@
       margin:0;
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
       line-height:1.45;
-      background-image:url('fondo.png');
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      background-attachment:fixed;
+      /* antes tenía fondo.png con la huella azul, lo quitamos para que no se vea antes del video */
+      background:#020617;
       padding-bottom:max(80px,var(--safe));
     }
 
@@ -105,6 +106,7 @@
       isolation:isolate;
       padding:0 16px;
       padding-top:80px;
+      background:#020617;
     }
     .um header video{
       position:absolute;
@@ -114,6 +116,7 @@
       object-fit:cover;
       object-position:center;
       z-index:-2;
+      background:#020617;
     }
 
     .um header::before{
@@ -534,7 +537,9 @@
     </nav>
 
     <header>
-      <video autoplay muted loop playsinline poster="umanoai.png">
+      <!-- Cambié el póster para que no use la huella azul -->
+      <!-- Guardá una imagen del video como hero-poster.png en el root -->
+      <video autoplay muted loop playsinline preload="auto" poster="hero-poster.png">
         <source src="hero.mp4" type="video/mp4">
       </video>
 
