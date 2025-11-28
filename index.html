@@ -47,24 +47,12 @@
   <!-- ====================================== -->
 
   <!-- ====================== FAVICONS ====================== -->
-
-  <!-- PNG básicos -->
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-
-  <!-- PNG alta resolución -->
   <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-
-  <!-- SVG (navegadores modernos) -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-
-  <!-- ICO (fallback universal) -->
   <link rel="shortcut icon" href="favicon.ico">
-
-  <!-- Apple Touch -->
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-
-  <!-- Android / PWA -->
   <link rel="manifest" href="site.webmanifest">
 
   <!-- ====================== GOOGLE TAG MANAGER ====================== -->
@@ -168,7 +156,7 @@
       position:fixed;
       bottom:24px;
       left:18px;
-      height:56px;
+      height:68px;           /* +20% aprox */
       opacity:.55;
       z-index:900;
       transition:transform .2s ease, opacity .2s ease;
@@ -394,7 +382,7 @@
       display:block;
     }
 
-    /* ===== CARROUSEL BI / PORTFOLIO ===== */
+    /* ===== CARROUSEL (BI y Web) ===== */
     .bi-carousel{
       margin-top:26px;
       display:flex;
@@ -786,41 +774,6 @@
     </div>
   </section>
 
-  <!-- ========= NUEVA SECCIÓN: CARRUSEL DE WEBS / ANALYTICS ========= -->
-  <section 
-    id="portfolio-webs"
-    style="
-      background: radial-gradient(circle at top, #111827 0%, #050813 70%);
-      color:#e5e7eb;
-      padding:60px 20px;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    "
-  >
-    <div style="max-width:1100px;margin:0 auto;text-align:center;">
-
-      <h2 style="font-size:2rem;margin-bottom:10px;">
-        🌐 Sitios y resultados creados por <span style='color:#00F6A4;'>UmanoAI</span>
-      </h2>
-      <p style="max-width:640px;margin:0 auto 35px;color:#c7cfdd;">
-        Algunos proyectos reales que usamos para digitalizar procesos, generar presencia
-        online y medir resultados con datos.
-      </p>
-
-      <div class="bi-carousel">
-        <div class="bi-carousel-main">
-          <img id="portfolio-main-img" src="digiagro.png" alt="DigiAgro Web">
-        </div>
-        <div class="bi-carousel-caption" id="portfolio-caption">
-          DigiAgro – Sitio principal del ecosistema agro digital
-        </div>
-
-        <div class="bi-carousel-thumbs" id="portfolio-thumbs"></div>
-      </div>
-
-    </div>
-  </section>
-  <!-- ================================================================ -->
-
   <!-- ===================== LÓGICA JS PARA EL MAPA ===================== -->
   <script>
     (function () {
@@ -967,7 +920,25 @@
           ideal:
             "Ideal si querés que tu web sea parte de tu sistema comercial, no solo una tarjeta de presentación.",
           cta:
-            "https://wa.me/5491125926977?text=Hola%2C+necesito+una+web+profesional+para+mi+negocio"
+            "https://wa.me/5491125926977?text=Hola%2C+necesito+una+web+profesional+para+mi+negocio",
+          tituloImagenes: "🌐 Sitios y resultados creados por UmanoAI",
+          imagenes: [
+            {
+              src: "digiagro.png",
+              alt: "Web DigiAgro",
+              titulo: "DigiAgro – Sitio principal del ecosistema agro digital"
+            },
+            {
+              src: "dsacine.png",
+              alt: "Web DSACINE",
+              titulo: "DSACINE – Escuela y productora artística digitalizada"
+            },
+            {
+              src: "analytics.png",
+              alt: "Panel de Analytics",
+              titulo: "Panel de Analytics – Métricas reales de tráfico"
+            }
+          ]
         }
       };
 
@@ -1042,7 +1013,8 @@
             iframe.src = v.url;
             iframe.title = v.titulo;
             iframe.frameBorder = "0";
-            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.allow =
+              "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
             iframe.referrerPolicy = "strict-origin-when-cross-origin";
             iframe.allowFullscreen = true;
             card.appendChild(iframe);
@@ -1061,7 +1033,7 @@
           videosContainer.appendChild(wrapper);
         }
 
-        // ----- Carrusel de imágenes (para Power BI u otros que lo usen) -----
+        // ----- Carrusel de imágenes (para Power BI y Web) -----
         if (data.imagenes && data.imagenes.length > 0) {
           const cWrapper = document.createElement("div");
           cWrapper.className = "bi-carousel";
@@ -1070,7 +1042,7 @@
           titleImg.textContent = data.tituloImagenes || "📊 Ejemplos de reportes";
           titleImg.style.fontSize = "1rem";
           titleImg.style.color = "#00F6A4";
-          titleImg.style.margin = "18px 0 6px";
+          titleImg.style.margin = "22px 0 6px";
           titleImg.style.textAlign = "center";
           cWrapper.appendChild(titleImg);
 
@@ -1126,64 +1098,17 @@
     })();
   </script>
 
-  <!-- ========= JS DEL CARRUSEL DE PORTFOLIO (DigiAgro / DSACINE / Analytics) ========= -->
-  <script>
-    (function () {
-      const portfolioItems = [
-        {
-          src: "digiagro.png",
-          titulo: "DigiAgro – Sitio principal del ecosistema agro digital",
-          alt: "DigiAgro Web"
-        },
-        {
-          src: "dsacine.png",
-          titulo: "DSACINE – Escuela y producción artística digitalizada",
-          alt: "DSACINE Web"
-        },
-        {
-          src: "analytics.png",
-          titulo: "Panel de Analytics – Métricas reales de tráfico",
-          alt: "Analytics Dashboard"
-        }
-      ];
-
-      const mainImg = document.getElementById("portfolio-main-img");
-      const caption = document.getElementById("portfolio-caption");
-      const thumbsContainer = document.getElementById("portfolio-thumbs");
-
-      if (!mainImg || !caption || !thumbsContainer) return;
-
-      portfolioItems.forEach((item, index) => {
-        const thumb = document.createElement("img");
-        thumb.src = item.src;
-        thumb.alt = item.alt;
-        if (index === 0) thumb.classList.add("active");
-
-        thumb.addEventListener("click", () => {
-          mainImg.src = item.src;
-          mainImg.alt = item.alt;
-          caption.textContent = item.titulo;
-
-          thumbsContainer.querySelectorAll("img").forEach(t => t.classList.remove("active"));
-          thumb.classList.add("active");
-        });
-
-        thumbsContainer.appendChild(thumb);
-      });
-    })();
-  </script>
-
   <footer style="
     background:#0f172a;
     color:#e5e7eb;
     padding:30px 16px;
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    font-size:14px;
+    font-size:16px;              /* + tamaño footer */
     text-align:center;
     margin-top:40px;
     border-top:2px solid #1e293b;">
 
-    <img src="umanoai.png" alt="Logo Umanoai" style="height:42px; opacity:.85; margin-bottom:10px;">
+    <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:10px;"><!-- +20% aprox -->
 
     <p style="margin:6px 0;">
       © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
@@ -1195,7 +1120,7 @@
       <a href="#contacto" style="color:#38bdf8; text-decoration:none;">Contacto</a>
     </p>
 
-    <p style="opacity:.8; font-size:12px; margin-top:8px;">
+    <p style="opacity:.8; font-size:13px; margin-top:8px;">
       Desarrollado con 💙 desde Argentina · Bots que venden mientras dormís.
     </p>
   </footer>
