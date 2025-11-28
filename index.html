@@ -67,6 +67,7 @@
       z-index:-2;
     }
 
+    /* 🔥 NUEVA CAPA OSCURA OPTIMIZADA */
     .um header::before{
       content:"";
       position:absolute;
@@ -405,6 +406,7 @@
       <video autoplay muted loop playsinline poster="umanoai.png">
         <source src="hero.mp4" type="video/mp4">
       </video>
+      
 
       <h1>Bots, sitios web y BI que trabajan para tu negocio</h1>
       <p class="hero-subtitle">
@@ -547,6 +549,7 @@
                 color:#f5f5f5;
                 padding:60px 20px;">
   <div style="max-width:1100px;margin:0 auto;">
+    
 
     <!-- TÍTULO PRINCIPAL -->
     <header style="text-align:center;margin-bottom:40px;">
@@ -565,6 +568,7 @@
                 grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
                 gap:16px;
                 margin-bottom:30px;">
+      
 
       <!-- Cada card representa un vertical -->
       <button class="solucion-card is-active" data-solucion="apps"
@@ -637,6 +641,7 @@
                     box-shadow:0 20px 60px rgba(0,0,0,0.65);
                     backdrop-filter:blur(16px);
                     min-height:210px;">
+      <!-- El contenido se llena por JS -->
 
       <h3 id="detalle-titulo" style="font-size:1.4rem;margin-bottom:8px;">
         Apps a medida
@@ -661,6 +666,7 @@
           Ideal si querés dejar de depender de Excel y WhatsApp para gestionar tu operación.
         </p>
 
+        <!-- CTA a WhatsApp: cambiá el número si hace falta -->
         <a id="detalle-cta"
            href="https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio"
            target="_blank" rel="noopener"
@@ -725,6 +731,7 @@
         ideal:
           "Ideal si recibís muchos mensajes repetidos o querés vender 24/7 sin sumar más personas al equipo.",
         cta:
+          "https://wa.me/5491125926977?text=Hola%2C+quiero+un+bot+para+mi+negocio"
           "https://wa.me/5491125926977?text=Hola%2C+quiero+un+bot+para+mi+negocio",
         tituloVideos: "🎥 Casos reales: bots de WhatsApp con UmanoAI",
         videos: [
@@ -750,12 +757,12 @@
         cta:
           "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+los+procesos+de+mi+negocio"
       },
-     crm: {
+      crm: {
         titulo: "CRM a medida",
         intro:
           "Creamos un CRM que refleja tu proceso real de ventas, postventa o servicio, sin obligarte a encajar en un sistema estándar.",
         bullets: [
-          "Un CRM a tu medida, que interactua con tu Whatsapp para que no se escape nada.",
+          "Pipelines adaptados a cómo vendés de verdad (no al modelo de otro software).",
           "Registro ordenado de clientes, oportunidades, actividades y tareas.",
           "Integración con bots para capturar leads automáticamente.",
           "Vinculado a Power BI y automatizaciones para ver el impacto real."
@@ -773,7 +780,6 @@
               "🧩 Seguimiento de clientes, oportunidades y tareas en un CRM simple y hecho a medida."
           }
         ]
-      },
       },
       powerbi: {
         titulo: "Power BI",
@@ -852,6 +858,7 @@
         const wrapper = document.createElement("div");
 
         const title = document.createElement("h4");
+        title.textContent = "🎥 Casos reales: apps desarrolladas con UmanoAI";
         title.textContent = data.tituloVideos || "🎥 Casos reales de esta solución";
         title.style.fontSize = "1rem";
         title.style.color = "#00F6A4";
@@ -873,6 +880,7 @@
 
           const iframe = document.createElement("iframe");
           iframe.width = "100%";
+          iframe.height = "200";
           iframe.height = "260";
           iframe.src = v.url;
           iframe.title = v.titulo;
@@ -905,6 +913,7 @@
       });
     });
 
+    // Set inicial por si cambia el HTML
     // Set inicial
     actualizarDetalle("apps");
   })();
@@ -942,4 +951,3 @@
   </script>
 </body>
 </html>
-
