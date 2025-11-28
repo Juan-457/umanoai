@@ -156,7 +156,7 @@
       position:fixed;
       bottom:24px;
       left:18px;
-      height:67px; /* 20% más grande que 56px */
+      height:67px; /* +20% aprox */
       opacity:.55;
       z-index:900;
       transition:transform .2s ease, opacity .2s ease;
@@ -370,17 +370,13 @@
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
       gap:16px;
     }
-
-    /* Marco reutilizable para videos e imágenes */
-    .video-card,
-    .media-frame{
+    .video-card{
       background:rgba(15,23,42,0.95);
       border-radius:14px;
       border:1px solid rgba(148,163,184,0.4);
       padding:10px;
       box-shadow:0 16px 40px rgba(0,0,0,0.55);
     }
-
     .video-card iframe{
       border-radius:10px;
       display:block;
@@ -399,12 +395,12 @@
       max-width:520px;
       border-radius:14px;
       overflow:hidden;
+      box-shadow:0 14px 36px rgba(0,0,0,0.55);
       background:#020617;
     }
     .bi-carousel-main img{
       width:100%;
       display:block;
-      border-radius:10px;
     }
     .bi-carousel-caption{
       margin-top:6px;
@@ -420,22 +416,53 @@
       margin-top:6px;
     }
     .bi-carousel-thumbs img{
-      width:70px;
-      height:40px;
+      width:82px;
+      height:46px;
       object-fit:cover;
       border-radius:6px;
       opacity:.45;
       cursor:pointer;
-      border:2px solid transparent;
-      transition:opacity .15s ease, border-color .15s ease, transform .1s ease;
+      border:1px solid rgba(148,163,184,0.5);
+      background:#020617;
+      transition:opacity .15s ease, border-color .15s ease, transform .1s ease, box-shadow .15s ease;
+      box-shadow:0 8px 22px rgba(0,0,0,0.45);
     }
     .bi-carousel-thumbs img.active{
       opacity:1;
       border-color:#00F6A4;
       transform:translateY(-1px);
+      box-shadow:0 12px 30px rgba(0,246,164,0.45);
     }
 
-    /* Podemos reutilizar las mismas clases para Sitios */
+    /* ===== ROTADOR AUTOMATIZACIONES ===== */
+    .auto-rotator{
+      margin-top:22px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.96);
+      border:1px solid rgba(96,165,250,0.7);
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:0.86rem;
+      color:#e5e7eb;
+      max-width:100%;
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,0.55);
+    }
+    .auto-rotator-label{
+      white-space:nowrap;
+      font-weight:600;
+      color:#bae6fd;
+    }
+    .auto-rotator-text{
+      white-space:nowrap;
+      animation:autoFade .35s ease;
+    }
+    @keyframes autoFade{
+      from{opacity:0; transform:translateY(4px);}
+      to{opacity:1; transform:translateY(0);}
+    }
 
     /* ===== WHATSAPP FLOAT ===== */
     .whatsapp-float{
@@ -774,7 +801,7 @@
           </a>
         </div>
 
-        <!-- Contenedor dinámico de videos / imágenes -->
+        <!-- Contenedor dinámico de videos / imágenes / rotador -->
         <div id="detalle-videos" style="margin-top:28px;"></div>
       </article>
     </div>
@@ -848,7 +875,23 @@
           ideal:
             "Ideal si todos los días alguien del equipo está 'haciendo de puente' entre sistemas que no se hablan.",
           cta:
-            "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+ los+procesos+de+mi+negocio"
+            "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+los+procesos+de+mi+negocio",
+          rotadorTitulo: "Ejemplos de automatizaciones reales",
+          rotador: [
+            "Generación automática de remitos",
+            "Cálculo de distancias y tiempos de transporte",
+            "Envío automático de documentación",
+            "Digitalización y archivo de documentos",
+            "Seguimientos automáticos de cuentas",
+            "Formularios automáticos conectados a tu ERP",
+            "Envío de correos con adjuntos desde flujos",
+            "Aprobaciones y circuitos de firma",
+            "RPA para tareas repetitivas",
+            "Generación automática de eventos y recordatorios",
+            "Obtención de cheques rechazados y estado crediticio",
+            "Obtención automática del tipo de cambio",
+            "Notificaciones desde Excel o BI hacia WhatsApp"
+          ]
         },
         crm: {
           titulo: "CRM a medida",
@@ -927,23 +970,22 @@
             "Ideal si querés que tu web sea parte de tu sistema comercial, no solo una tarjeta de presentación.",
           cta:
             "https://wa.me/5491125926977?text=Hola%2C+necesito+una+web+profesional+para+mi+negocio",
-          /* Carrusel de sitios / resultados */
-          tituloSitios: "🌐 Sitios y resultados creados por UmanoAI",
-          sitios: [
+          tituloImagenes: "🌐 Sitios y resultados creados por UmanoAI",
+          imagenes: [
             {
-              src: "digiagro-home.png",
+              src: "digiagro-site.png",
               alt: "Sitio DigiAgro",
               titulo: "DigiAgro – Sitio principal del ecosistema agro digital"
             },
             {
-              src: "dsacine-home.png",
+              src: "dsacine-site.png",
               alt: "Sitio DSACINE",
-              titulo: "DSACINE – Academia de artes audiovisuales"
+              titulo: "DSACINE – Escuela de cine y artes audiovisuales"
             },
             {
-              src: "analytics-digiagro.png",
-              alt: "Analytics DigiAgro",
-              titulo: "Resultados en Analytics para DigiAgro"
+              src: "analytics-umanoai.png",
+              alt: "Analytics de tráfico web",
+              titulo: "Google Analytics – Tráfico y eventos medidos"
             }
           ]
         }
@@ -956,6 +998,18 @@
       const ideal = document.getElementById("detalle-ideal");
       const cta = document.getElementById("detalle-cta");
       const videosContainer = document.getElementById("detalle-videos");
+      const detalleArticulo = document.getElementById("solucion-detalle");
+
+      let rotadorInterval = null;
+
+      function limpiarRotador() {
+        if (rotadorInterval) {
+          clearInterval(rotadorInterval);
+          rotadorInterval = null;
+        }
+        const existing = detalleArticulo.querySelector(".auto-rotator");
+        if (existing) existing.remove();
+      }
 
       function activarCard(card) {
         cards.forEach(c => {
@@ -987,8 +1041,40 @@
         ideal.textContent = data.ideal;
         cta.href = data.cta;
 
-        // Limpiamos contenedor dinámico
+        // Limpiamos contenedor dinámico y rotador
         videosContainer.innerHTML = "";
+        limpiarRotador();
+
+        // ----- Rotador de automatizaciones -----
+        if (data.rotador && data.rotador.length > 0) {
+          const rotWrapper = document.createElement("div");
+          rotWrapper.className = "auto-rotator";
+
+          const label = document.createElement("span");
+          label.className = "auto-rotator-label";
+          label.textContent = "🔁 " + (data.rotadorTitulo || "Ejemplos de automatización:");
+
+          const textSpan = document.createElement("span");
+          textSpan.className = "auto-rotator-text";
+
+          let index = 0;
+          textSpan.textContent = data.rotador[index];
+
+          rotWrapper.appendChild(label);
+          rotWrapper.appendChild(textSpan);
+
+          // Insertar antes del contenedor de videos/imagenes
+          detalleArticulo.insertBefore(rotWrapper, videosContainer);
+
+          rotadorInterval = setInterval(() => {
+            index = (index + 1) % data.rotador.length;
+            textSpan.classList.remove("auto-rotator-text");
+            // forzar reflow para reiniciar animación
+            void textSpan.offsetWidth;
+            textSpan.textContent = data.rotador[index];
+            textSpan.classList.add("auto-rotator-text");
+          }, 2600);
+        }
 
         // ----- Bloque de videos (si hay) -----
         if (data.videos && data.videos.length > 0) {
@@ -1039,7 +1125,7 @@
           videosContainer.appendChild(wrapper);
         }
 
-        // ----- Carrusel de imágenes (Power BI u otros que lo usen) -----
+        // ----- Carrusel de imágenes (Power BI + Web + otros que lo usen) -----
         if (data.imagenes && data.imagenes.length > 0) {
           const cWrapper = document.createElement("div");
           cWrapper.className = "bi-carousel";
@@ -1048,12 +1134,12 @@
           titleImg.textContent = data.tituloImagenes || "📊 Ejemplos de reportes";
           titleImg.style.fontSize = "1rem";
           titleImg.style.color = "#00F6A4";
-          titleImg.style.margin = "18px 0 6px";
+          titleImg.style.margin = "24px 0 8px";
           titleImg.style.textAlign = "center";
           cWrapper.appendChild(titleImg);
 
           const main = document.createElement("div");
-          main.className = "bi-carousel-main media-frame";
+          main.className = "bi-carousel-main";
 
           const mainImg = document.createElement("img");
           mainImg.src = data.imagenes[0].src;
@@ -1089,57 +1175,6 @@
           cWrapper.appendChild(thumbs);
           videosContainer.appendChild(cWrapper);
         }
-
-        // ----- Carrusel de sitios / resultados (solo web) -----
-        if (data.sitios && data.sitios.length > 0) {
-          const sWrapper = document.createElement("div");
-          sWrapper.className = "bi-carousel"; // reutilizamos estilos
-
-          const titleSitios = document.createElement("h4");
-          titleSitios.textContent = data.tituloSitios || "🌐 Sitios y resultados creados por UmanoAI";
-          titleSitios.style.fontSize = "1rem";
-          titleSitios.style.color = "#00F6A4";
-          titleSitios.style.margin = "26px 0 10px";
-          titleSitios.style.textAlign = "center";
-          sWrapper.appendChild(titleSitios);
-
-          const mainSite = document.createElement("div");
-          mainSite.className = "bi-carousel-main media-frame";
-
-          const mainSiteImg = document.createElement("img");
-          mainSiteImg.src = data.sitios[0].src;
-          mainSiteImg.alt = data.sitios[0].alt || data.sitios[0].titulo || "";
-          mainSite.appendChild(mainSiteImg);
-
-          const captionSite = document.createElement("div");
-          captionSite.className = "bi-carousel-caption";
-          captionSite.textContent = data.sitios[0].titulo || "";
-
-          const thumbsSite = document.createElement("div");
-          thumbsSite.className = "bi-carousel-thumbs";
-
-          data.sitios.forEach((imgData, index) => {
-            const tImg = document.createElement("img");
-            tImg.src = imgData.src;
-            tImg.alt = imgData.alt || imgData.titulo || "";
-            if (index === 0) tImg.classList.add("active");
-
-            tImg.addEventListener("click", () => {
-              mainSiteImg.src = imgData.src;
-              mainSiteImg.alt = imgData.alt || imgData.titulo || "";
-              captionSite.textContent = imgData.titulo || "";
-              thumbsSite.querySelectorAll("img").forEach(im => im.classList.remove("active"));
-              tImg.classList.add("active");
-            });
-
-            thumbsSite.appendChild(tImg);
-          });
-
-          sWrapper.appendChild(mainSite);
-          sWrapper.appendChild(captionSite);
-          sWrapper.appendChild(thumbsSite);
-          videosContainer.appendChild(sWrapper);
-        }
       }
 
       cards.forEach(card => {
@@ -1158,27 +1193,26 @@
   <footer style="
     background:#0f172a;
     color:#e5e7eb;
-    padding:38px 16px; /* un poco más alto */
+    padding:36px 16px; /* +20% aprox */
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    font-size:15px;   /* 20% más grande aprox */
+    font-size:15px;    /* +20% aprox */
     text-align:center;
     margin-top:40px;
     border-top:2px solid #1e293b;">
 
-    <img src="umanoai.png" alt="Logo Umanoai"
-         style="height:50px; opacity:.85; margin-bottom:10px;">
+    <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;">
 
     <p style="margin:6px 0;">
       © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
     </p>
 
-    <p style="margin:8px 0;">
+    <p style="margin:10px 0;">
       <a href="politica.html" style="color:#38bdf8; text-decoration:none;">Política de Privacidad</a> ·
       <a href="Eliminardatos.html" style="color:#38bdf8; text-decoration:none;">Eliminación de Datos</a> ·
       <a href="#contacto" style="color:#38bdf8; text-decoration:none;">Contacto</a>
     </p>
 
-    <p style="opacity:.8; font-size:13px; margin-top:8px;">
+    <p style="opacity:.8; font-size:13px; margin-top:10px;">
       Desarrollado con 💙 desde Argentina · Bots que venden mientras dormís.
     </p>
   </footer>
