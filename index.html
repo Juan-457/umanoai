@@ -316,7 +316,7 @@
       font-weight:700;
     }
 
-    /* ===== VIDEOS MAPA SOLUCIONES ===== */
+    /* ===== VIDEOS / CARDS ===== */
     .video-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -332,6 +332,49 @@
     .video-card iframe{
       border-radius:10px;
       display:block;
+    }
+
+    /* ===== CARROUSEL BI ===== */
+    .bi-carousel{
+      margin-top:26px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+    }
+    .bi-carousel-main{
+      width:100%;
+      max-width:520px;
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 14px 36px rgba(0,0,0,0.55);
+      background:#020617;
+    }
+    .bi-carousel-main img{
+      width:100%;
+      display:block;
+    }
+    .bi-carousel-thumbs{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:6px;
+      margin-top:6px;
+    }
+    .bi-carousel-thumbs img{
+      width:70px;
+      height:40px;
+      object-fit:cover;
+      border-radius:6px;
+      opacity:.45;
+      cursor:pointer;
+      border:2px solid transparent;
+      transition:opacity .15s ease, border-color .15s ease, transform .1s ease;
+    }
+    .bi-carousel-thumbs img.active{
+      opacity:1;
+      border-color:#00F6A4;
+      transform:translateY(-1px);
     }
 
     /* ===== WHATSAPP FLOAT ===== */
@@ -671,7 +714,7 @@
           </a>
         </div>
 
-        <!-- Contenedor dinámico de videos -->
+        <!-- Contenedor dinámico de videos / imágenes -->
         <div id="detalle-videos" style="margin-top:28px;"></div>
       </article>
     </div>
@@ -737,15 +780,15 @@
           intro:
             "Conectamos sistemas para que la información fluya sola: menos tareas manuales, menos errores.",
           bullets: [
-            "Automatización de procesos, envios automaticos y digitalizacion de documentos",
+            "Automatización de procesos con n8n, Power Automate u otras herramientas.",
             "Integraciones entre ERPs, CRMs, planillas, formularios y bots.",
             "Notificaciones, aprobaciones y recordatorios automáticos.",
-            "Generacion de ordenes con envios de correos, logística, seguimiento y reportes sin trabajo manual."
+            "Procesos de facturación, logística, seguimiento y reportes sin trabajo manual."
           ],
           ideal:
             "Ideal si todos los días alguien del equipo está 'haciendo de puente' entre sistemas que no se hablan.",
           cta:
-            "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+ los+procesos+de+mi+negocio"
+            "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+los+procesos+de+mi+negocio"
         },
         crm: {
           titulo: "CRM a medida",
@@ -785,7 +828,30 @@
           ideal:
             "Ideal si tenés datos por todos lados y querés ver todo en un solo tablero claro y accionable.",
           cta:
-            "https://wa.me/5491125926977?text=Hola%2C+quiero+un+dashboard+en+Power+BI"
+            "https://wa.me/5491125926977?text=Hola%2C+quiero+un+dashboard+en+Power+BI",
+          tituloImagenes: "📊 Ejemplos de tableros en Power BI",
+          imagenes: [
+            {
+              src: "Coberturas de Stocks.png",
+              alt: "Cobertura de stock",
+              titulo: "Stock Forward Coverage"
+            },
+            {
+              src: "Seguimiento de deuda por whatsapp.png",
+              alt: "Seguimiento de deuda por WhatsApp",
+              titulo: "Seguimiento de deuda"
+            },
+            {
+              src: "Ventas Geograficas.png",
+              alt: "Ventas por ubicación geográfica",
+              titulo: "Ventas Geográficas"
+            },
+            {
+              src: "Net Promoter Score.png",
+              alt: "NPS clientes",
+              titulo: "Net Promoter Score"
+            }
+          ]
         },
         web: {
           titulo: "Desarrollo web",
@@ -842,7 +908,10 @@
         ideal.textContent = data.ideal;
         cta.href = data.cta;
 
+        // Limpiamos contenedor dinámico
         videosContainer.innerHTML = "";
+
+        // ----- Bloque de videos (si hay) -----
         if (data.videos && data.videos.length > 0) {
           const wrapper = document.createElement("div");
 
@@ -890,6 +959,51 @@
           wrapper.appendChild(grid);
           videosContainer.appendChild(wrapper);
         }
+
+        // ----- Carrusel de imágenes (para Power BI u otros que lo usen) -----
+        if (data.imagenes && data.imagenes.length > 0) {
+          const cWrapper = document.createElement("div");
+          cWrapper.className = "bi-carousel";
+
+          const titleImg = document.createElement("h4");
+          titleImg.textContent = data.tituloImagenes || "📊 Ejemplos de reportes";
+          titleImg.style.fontSize = "1rem";
+          titleImg.style.color = "#00F6A4";
+          titleImg.style.margin = "18px 0 6px";
+          titleImg.style.textAlign = "center";
+          cWrapper.appendChild(titleImg);
+
+          const main = document.createElement("div");
+          main.className = "bi-carousel-main";
+
+          const mainImg = document.createElement("img");
+          mainImg.src = data.imagenes[0].src;
+          mainImg.alt = data.imagenes[0].alt || data.imagenes[0].titulo || "";
+          main.appendChild(mainImg);
+
+          const thumbs = document.createElement("div");
+          thumbs.className = "bi-carousel-thumbs";
+
+          data.imagenes.forEach((imgData, index) => {
+            const tImg = document.createElement("img");
+            tImg.src = imgData.src;
+            tImg.alt = imgData.alt || imgData.titulo || "";
+            if (index === 0) tImg.classList.add("active");
+
+            tImg.addEventListener("click", () => {
+              mainImg.src = imgData.src;
+              mainImg.alt = imgData.alt || imgData.titulo || "";
+              thumbs.querySelectorAll("img").forEach(im => im.classList.remove("active"));
+              tImg.classList.add("active");
+            });
+
+            thumbs.appendChild(tImg);
+          });
+
+          cWrapper.appendChild(main);
+          cWrapper.appendChild(thumbs);
+          videosContainer.appendChild(cWrapper);
+        }
       }
 
       cards.forEach(card => {
@@ -900,6 +1014,7 @@
         });
       });
 
+      // Set inicial
       actualizarDetalle("apps");
     })();
   </script>
@@ -936,4 +1051,3 @@
   </script>
 </body>
 </html>
-
