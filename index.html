@@ -85,11 +85,11 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
-     background: radial-gradient(
-    circle at top center,
-    rgba(0, 200, 120, 0.08) 0%,
-    rgba(0, 0, 0, 1) 70%
-    ); /* fondo oscuro para evitar flash blanco */
+      background: radial-gradient(
+        circle at top center,
+        rgba(0, 200, 120, 0.08) 0%,
+        rgba(0, 0, 0, 1) 70%
+      ); /* fondo oscuro para evitar flash blanco */
     }
 
     /* Evita que las imágenes aparezcan gigantes antes del CSS */
@@ -347,6 +347,12 @@
       align-items:center;
       flex-direction:column;
       padding:36px 16px;
+      /* 👇 MISMO EFECTO DE FONDO PARA TODAS LAS BANDAS */
+      background: radial-gradient(
+        circle at top,
+        #1b2538 0,
+        #050813 60%
+      );
     }
     .um .seccion{
       width:min(920px,92%);
@@ -532,25 +538,25 @@
     }
 
    /* Burbuja de apertura del chat (tipo WhatsApp) – versión UmanoAI */
-#umanoai-chat-toggle{
-  width:64px;
-  height:64px;
-  border-radius:50%;
-  border:2px solid #38bdf8;
-  background:linear-gradient(135deg,#3b82f6,#8b5cf6); /* azul → violeta */
-  color:#f9fafb;
-  font-size:26px;
-  cursor:pointer;
-  box-shadow:0 8px 22px rgba(15,23,42,.7);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:transform .15s ease, box-shadow .15s ease;
-}
-#umanoai-chat-toggle:hover{
-  transform:scale(1.06);
-  box-shadow:0 12px 30px rgba(15,23,42,.9);
-}
+    #umanoai-chat-toggle{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      border:2px solid #38bdf8;
+      background:linear-gradient(135deg,#3b82f6,#8b5cf6); /* azul → violeta */
+      color:#f9fafb;
+      font-size:26px;
+      cursor:pointer;
+      box-shadow:0 8px 22px rgba(15,23,42,.7);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    #umanoai-chat-toggle:hover{
+      transform:scale(1.06);
+      box-shadow:0 12px 30px rgba(15,23,42,.9);
+    }
 
     #umanoai-chat-toggle:hover{
       transform:scale(1.06);
@@ -559,37 +565,37 @@
 
     /* Ventana del chat (card) */
     #umanoai-chat-window{
-  width:320px;
-  max-height:410px;
-  background:#020617;
-  color:#e5e7eb;
-  border-radius:18px;
-  border:1px solid rgba(148,163,184,.6);          /* borde para separar del fondo */
-  box-shadow:0 20px 50px rgba(0,0,0,.85);        /* sombra más marcada */
-  display:none;
-  flex-direction:column;
-  overflow:hidden;
-  margin-bottom:10px;
-}
-#umanoai-chat-window.open{
-  display:flex;
-}
+      width:320px;
+      max-height:410px;
+      background:#020617;
+      color:#e5e7eb;
+      border-radius:18px;
+      border:1px solid rgba(148,163,184,.6);          /* borde para separar del fondo */
+      box-shadow:0 20px 50px rgba(0,0,0,.85);        /* sombra más marcada */
+      display:none;
+      flex-direction:column;
+      overflow:hidden;
+      margin-bottom:10px;
+    }
+    #umanoai-chat-window.open{
+      display:flex;
+    }
 
     /* Header dentro del chat (nombre bot + subtítulo) */
     .um-chat-header{
-  padding:10px 14px;
-  background:linear-gradient(135deg,#1d4ed8,#7c3aed); /* azul → violeta */
-  border-bottom:1px solid rgba(191,219,254,.5);
-}
-.um-chat-header strong{
-  display:block;
-  font-size:14px;
-}
-.um-chat-header span{
-  font-size:12px;
-  color:#e5e7eb;
-  opacity:.9;
-}
+      padding:10px 14px;
+      background:linear-gradient(135deg,#1d4ed8,#7c3aed); /* azul → violeta */
+      border-bottom:1px solid rgba(191,219,254,.5);
+    }
+    .um-chat-header strong{
+      display:block;
+      font-size:14px;
+    }
+    .um-chat-header span{
+      font-size:12px;
+      color:#e5e7eb;
+      opacity:.9;
+    }
 
     /* Contenedor scrollable de mensajes del chat */
     #um-chat-messages{
@@ -883,7 +889,6 @@
   <!-- ============================================================= -->
   <section id="soluciones-umanoai" 
            style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-                  background: radial-gradient(circle at top, #1b2538 0, #050813 60%);
                   color:#f5f5f5;
                   padding:60px 20px;">
     <div style="max-width:1100px;margin:0 auto;">
@@ -1099,7 +1104,7 @@
           ideal:
             "Ideal si todos los días alguien del equipo está 'haciendo de puente' entre sistemas que no se hablan.",
           cta:
-            "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+los+procesos+de+mi+negocio",
+            "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+ los+procesos+de+mi+negocio",
           rotadorTitulo: "Ejemplos de automatizaciones reales",
           rotador: [
             "Generación automática de remitos",
@@ -1575,5 +1580,3 @@
   </script>
 </body>
 </html>
-
-
