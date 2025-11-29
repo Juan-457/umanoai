@@ -524,43 +524,22 @@
     }
 
     /* ====================== BREAKPOINT MOBILE ====================== */
-   /* 🔹 Ajustes específicos para MOBILE del hero */
-@media (max-width: 700px) {
-  .um header {
-    padding-top: 96px;              /* deja un poco más de aire debajo del menú */
-    align-items: center;            /* centra verticalmente el contenido */
-  }
+    @media (max-width:700px){
+      .um nav .hamburger{display:block}
+      .um nav .links:not(.mobile){display:none}
+      .um .seccion{background:#ffffff;}
+      .pricing-table{font-size:13px;}
 
-  .um .hero-content {
-    max-width: 360px;               /* ancho fijo, bien “derecho” */
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;            /* centra horizontalmente todo */
-    text-align: center;
-  }
-
-  .um header h1,
-  .um header .hero-subtitle,
-  .um header .hero-cta {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* ya lo tenías, lo dejo acá junto para que quede todo el hero ordenado */
-  .um header .hero-cta {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-  }
-  .um header .hero-cta a {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
+      /* NUEVO: en mobile los dos botones del hero van uno debajo del otro y a ancho completo */
+      .um header .hero-cta{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .um header .hero-cta a{
+        width:100%;
+        justify-content:center;
+      }
+    }
 
     /* ============================================================= */
     /* =============== CHAT FLOTANTE UMANOAI – ESTILOS ============ */
@@ -758,6 +737,20 @@
         <source src="hero.mp4" type="video/mp4">
       </video>
 
+      <h1>Bots, sitios web y BI que trabajan para tu negocio</h1>
+      <p class="hero-subtitle">
+        En <strong>Umanoai</strong> combinamos IA, automatización y data
+        para crear <strong>bots de WhatsApp, desarrollo web, digitalización de procesos
+        y tableros de Business Intelligence</strong> que mantienen tu negocio en marcha 24/7.
+      </p>
+
+      <div class="hero-cta">
+        <!-- CTA directo a WhatsApp -->
+        <a href="https://wa.me/5491125926977?text=Hola%20quiero%20saber%20m%C3%A1s%20sobre%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
+          📲 Hablar por WhatsApp
+        </a>
+        <!-- CTA de scroll a sección planes -->
+        <a href="#planes" class="btn-secundaria">Ver planes de bots</a>
       <!-- NUEVO WRAPPER PARA CENTRAR TEXTO + BOTONES -->
       <div class="hero-content">
         <h1>Bots, sitios web y BI que trabajan para tu negocio</h1>
