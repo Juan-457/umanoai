@@ -93,13 +93,16 @@
 
     /* ====================== CONTENEDOR PRINCIPAL .um ====================== */
     .um{
-      margin:0;
-      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-      line-height:1.45;
-      /* antes tenía fondo.png con la huella azul, lo quitamos para que no se vea antes del video */
-      background:#020617;
-      padding-bottom:max(80px,var(--safe));
-    }
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.45;
+  /* Fondo general con la imagen fondo.png del repo */
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.85)),
+    url("fondo.png") center top / cover no-repeat fixed;
+  padding-bottom:max(80px,var(--safe));
+}
+
 
     /* ====================== HEADER / HERO ====================== */
     .um header{
