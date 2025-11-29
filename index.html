@@ -510,17 +510,26 @@
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
     }
 
+    /* 👇 CAMBIO: burbuja más grande, estilo similar a WhatsApp */
     #umanoai-chat-toggle{
-      width:52px;
-      height:52px;
-      border-radius:999px;
+      width:64px;                 /* antes 52px */
+      height:64px;                /* antes 52px */
+      border-radius:50%;
       border:none;
-      background:#0ea5e9;
+      background:#25D366;         /* mismo verde que WhatsApp */
       color:#f9fafb;
-      font-size:24px;
+      font-size:26px;
       cursor:pointer;
       box-shadow:0 6px 16px rgba(0,0,0,.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:transform .15s ease;
     }
+    #umanoai-chat-toggle:hover{
+      transform:scale(1.06);
+    }
+    /* 👆 FIN CAMBIO BURBUJA */
 
     #umanoai-chat-window{
       width:320px;
@@ -565,6 +574,7 @@
       margin-bottom:6px;
       max-width:80%;
       line-height:1.4;
+      white-space:pre-wrap; /* 👈 mantiene saltos de línea del texto plano */
     }
     .um-chat-user{
       background:#22c55e;
@@ -654,8 +664,6 @@
     </nav>
 
     <header>
-      <!-- Cambié el póster para que no use la huella azul -->
-      <!-- Guardá una imagen del video como hero-poster.png en el root -->
       <video autoplay muted loop playsinline preload="auto" poster="hero-poster.png">
         <source src="hero.mp4" type="video/mp4">
       </video>
@@ -1364,6 +1372,7 @@
         messages.scrollTop = messages.scrollHeight;
       }
 
+      /* 👇 CAMBIO: aceptar respuestas de texto plano o JSON */
       async function sendMessage(msg) {
         addMessage(msg, "user");
         input.value = "";
@@ -1386,14 +1395,26 @@
             })
           });
 
-          const data = await res.json();
+          const raw = await res.text();    // leemos SIEMPRE como texto plano
           loadingMsg.remove();
 
-          let replyText = "";
-          if (typeof data === "string") replyText = data;
-          else if (data.reply) replyText = data.reply;
-          else if (data.message) replyText = data.message;
-          else replyText = JSON.stringify(data);
+          let replyText = raw || "";
+
+          // Si el flujo devuelve JSON, lo intentamos parsear
+          try {
+            const data = JSON.parse(raw);
+            if (typeof data === "string") {
+              replyText = data;
+            } else if (data.reply) {
+              replyText = data.reply;
+            } else if (data.message) {
+              replyText = data.message;
+            } else {
+              replyText = JSON.stringify(data);
+            }
+          } catch (e) {
+            // No es JSON, usamos el texto tal cual (texto plano)
+          }
 
           addMessage(replyText, "bot");
         } catch (err) {
@@ -1402,6 +1423,7 @@
           console.error(err);
         }
       }
+      /* 👆 FIN CAMBIO TEXTO PLANO */
 
       toggle.addEventListener("click", () => {
         win.classList.toggle("open");
@@ -1421,9 +1443,9 @@
   <footer style="
     background:#0f172a;
     color:#e5e7eb;
-    padding:36px 16px; /* +20% aprox */
+    padding:36px 16px;
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    font-size:15px;    /* +20% aprox */
+    font-size:15px;
     text-align:center;
     margin-top:40px;
     border-top:2px solid #1e293b;">
@@ -1450,3 +1472,4 @@
   </script>
 </body>
 </html>
+
