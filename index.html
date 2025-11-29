@@ -85,11 +85,7 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      background: radial-gradient(
-        circle at top center,
-        rgba(0, 200, 120, 0.08) 0%,
-        rgba(0, 0, 0, 1) 70%
-      ); /* fondo oscuro para evitar flash blanco */
+      background:#020617; /* fondo oscuro para evitar flash blanco */
     }
 
     /* Evita que las imágenes aparezcan gigantes antes del CSS */
@@ -129,13 +125,6 @@
       object-position:center;
       z-index:-2;
       background:#020617;
-    }
-
-    /* NUEVO: contenedor para centrar todo el bloque de texto/botones del hero */
-    .um .hero-content{
-      width:100%;
-      max-width:480px;       /* ancho fijo en mobile para que todo quede “derecho” */
-      margin:0 auto;
     }
 
     /* Overlay oscuro sobre el video para que el texto se lea mejor */
@@ -354,12 +343,6 @@
       align-items:center;
       flex-direction:column;
       padding:36px 16px;
-      /* 👇 MISMO EFECTO DE FONDO PARA TODAS LAS BANDAS */
-      background: radial-gradient(
-        circle at top,
-        #1b2538 0,
-        #050813 60%
-      );
     }
     .um .seccion{
       width:min(920px,92%);
@@ -529,16 +512,6 @@
       .um nav .links:not(.mobile){display:none}
       .um .seccion{background:#ffffff;}
       .pricing-table{font-size:13px;}
-
-      /* NUEVO: en mobile los dos botones del hero van uno debajo del otro y a ancho completo */
-      .um header .hero-cta{
-        flex-direction:column;
-        align-items:stretch;
-      }
-      .um header .hero-cta a{
-        width:100%;
-        justify-content:center;
-      }
     }
 
     /* ============================================================= */
@@ -554,26 +527,43 @@
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
     }
 
-   /* Burbuja de apertura del chat (tipo WhatsApp) – versión UmanoAI */
+    /* Burbuja de apertura del chat (tipo WhatsApp) */
+    /* 👇 CAMBIO: burbuja más grande, estilo similar a WhatsApp */
     #umanoai-chat-toggle{
-      width:64px;
-      height:64px;
+      width:64px;                 /* antes 52px */
+      height:64px;                /* antes 52px */
       border-radius:50%;
-      border:2px solid #38bdf8;
-      background:linear-gradient(135deg,#3b82f6,#8b5cf6); /* azul → violeta */
+      border:none;
+      background:#25D366;         /* mismo verde que WhatsApp */
       color:#f9fafb;
       font-size:26px;
       cursor:pointer;
-      box-shadow:0 8px 22px rgba(15,23,42,.7);
+      box-shadow:0 6px 16px rgba(0,0,0,.35);
       display:flex;
       align-items:center;
       justify-content:center;
-      transition:transform .15s ease, box-shadow .15s ease;
+      transition:transform .15s ease;
     }
-    #umanoai-chat-toggle:hover{
-      transform:scale(1.06);
-      box-shadow:0 12px 30px rgba(15,23,42,.9);
-    }
+   /* Burbuja de apertura del chat (tipo WhatsApp) – versión UmanoAI */
+#umanoai-chat-toggle{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  border:2px solid #38bdf8;
+  background:linear-gradient(135deg,#3b82f6,#8b5cf6); /* azul → violeta */
+  color:#f9fafb;
+  font-size:26px;
+  cursor:pointer;
+  box-shadow:0 8px 22px rgba(15,23,42,.7);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+#umanoai-chat-toggle:hover{
+  transform:scale(1.06);
+  box-shadow:0 12px 30px rgba(15,23,42,.9);
+}
 
     #umanoai-chat-toggle:hover{
       transform:scale(1.06);
@@ -586,9 +576,8 @@
       max-height:410px;
       background:#020617;
       color:#e5e7eb;
-      border-radius:18px;
-      border:1px solid rgba(148,163,184,.6);          /* borde para separar del fondo */
-      box-shadow:0 20px 50px rgba(0,0,0,.85);        /* sombra más marcada */
+      border-radius:16px;
+      box-shadow:0 16px 40px rgba(0,0,0,.6);
       display:none;
       flex-direction:column;
       overflow:hidden;
@@ -597,12 +586,27 @@
     #umanoai-chat-window.open{
       display:flex;
     }
+  width:320px;
+  max-height:410px;
+  background:#020617;
+  color:#e5e7eb;
+  border-radius:18px;
+  border:1px solid rgba(148,163,184,.6);          /* borde para separar del fondo */
+  box-shadow:0 20px 50px rgba(0,0,0,.85);        /* sombra más marcada */
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  margin-bottom:10px;
+}
+#umanoai-chat-window.open{
+  display:flex;
+}
 
     /* Header dentro del chat (nombre bot + subtítulo) */
     .um-chat-header{
       padding:10px 14px;
-      background:linear-gradient(135deg,#1d4ed8,#7c3aed); /* azul → violeta */
-      border-bottom:1px solid rgba(191,219,254,.5);
+      background:linear-gradient(135deg,#0f172a,#1e293b);
+      border-bottom:1px solid #1f2937;
     }
     .um-chat-header strong{
       display:block;
@@ -610,9 +614,21 @@
     }
     .um-chat-header span{
       font-size:12px;
-      color:#e5e7eb;
-      opacity:.9;
+      color:#9ca3af;
     }
+  padding:10px 14px;
+  background:linear-gradient(135deg,#1d4ed8,#7c3aed); /* azul → violeta */
+  border-bottom:1px solid rgba(191,219,254,.5);
+}
+.um-chat-header strong{
+  display:block;
+  font-size:14px;
+}
+.um-chat-header span{
+  font-size:12px;
+  color:#e5e7eb;
+  opacity:.9;
+}
 
     /* Contenedor scrollable de mensajes del chat */
     #um-chat-messages{
@@ -751,23 +767,6 @@
         </a>
         <!-- CTA de scroll a sección planes -->
         <a href="#planes" class="btn-secundaria">Ver planes de bots</a>
-      <!-- NUEVO WRAPPER PARA CENTRAR TEXTO + BOTONES -->
-      <div class="hero-content">
-        <h1>Bots, sitios web y BI que trabajan para tu negocio</h1>
-        <p class="hero-subtitle">
-          En <strong>Umanoai</strong> combinamos IA, automatización y data
-          para crear <strong>bots de WhatsApp, desarrollo web, digitalización de procesos
-          y tableros de Business Intelligence</strong> que mantienen tu negocio en marcha 24/7.
-        </p>
-
-        <div class="hero-cta">
-          <!-- CTA directo a WhatsApp -->
-          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20saber%20m%C3%A1s%20sobre%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
-            📲 Hablar por WhatsApp
-          </a>
-          <!-- CTA de scroll a sección planes -->
-          <a href="#planes" class="btn-secundaria">Ver planes de bots</a>
-        </div>
       </div>
 
       <div class="marquesina">
@@ -923,6 +922,7 @@
   <!-- ============================================================= -->
   <section id="soluciones-umanoai" 
            style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                  background: radial-gradient(circle at top, #1b2538 0, #050813 60%);
                   color:#f5f5f5;
                   padding:60px 20px;">
     <div style="max-width:1100px;margin:0 auto;">
@@ -1138,7 +1138,7 @@
           ideal:
             "Ideal si todos los días alguien del equipo está 'haciendo de puente' entre sistemas que no se hablan.",
           cta:
-            "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+ los+procesos+de+mi+negocio",
+            "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+los+procesos+de+mi+negocio",
           rotadorTitulo: "Ejemplos de automatizaciones reales",
           rotador: [
             "Generación automática de remitos",
