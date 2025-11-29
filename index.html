@@ -524,22 +524,43 @@
     }
 
     /* ====================== BREAKPOINT MOBILE ====================== */
-    @media (max-width:700px){
-      .um nav .hamburger{display:block}
-      .um nav .links:not(.mobile){display:none}
-      .um .seccion{background:#ffffff;}
-      .pricing-table{font-size:13px;}
+   /* 🔹 Ajustes específicos para MOBILE del hero */
+@media (max-width: 700px) {
+  .um header {
+    padding-top: 96px;              /* deja un poco más de aire debajo del menú */
+    align-items: center;            /* centra verticalmente el contenido */
+  }
 
-      /* NUEVO: en mobile los dos botones del hero van uno debajo del otro y a ancho completo */
-      .um header .hero-cta{
-        flex-direction:column;
-        align-items:stretch;
-      }
-      .um header .hero-cta a{
-        width:100%;
-        justify-content:center;
-      }
-    }
+  .um .hero-content {
+    max-width: 360px;               /* ancho fijo, bien “derecho” */
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;            /* centra horizontalmente todo */
+    text-align: center;
+  }
+
+  .um header h1,
+  .um header .hero-subtitle,
+  .um header .hero-cta {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ya lo tenías, lo dejo acá junto para que quede todo el hero ordenado */
+  .um header .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .um header .hero-cta a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 
     /* ============================================================= */
     /* =============== CHAT FLOTANTE UMANOAI – ESTILOS ============ */
