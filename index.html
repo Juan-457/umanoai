@@ -819,14 +819,24 @@
   z-index:-1;
   background:#020617; /* color de respaldo mientras carga */
 }
+    /* Capa oscura encima del video de fondo */
+.bg-video-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.20); /* <-- Ajusta opacidad (0.10 a 0.35) */
+  pointer-events: none;
+  z-index: -1; /* queda detrás del contenido */
+}
   </style>
 </head>
 
 <body>
   <!-- Video de fondo global -->
   <video class="bg-video" autoplay muted loop playsinline preload="auto">
-    <source src="hero2.mp4" type="video/mp4">
-  </video>
+  <source src="hero2.mp4" type="video/mp4">
+</video>
+
+<div class="bg-video-overlay"></div>
   <!-- Fallback para cuando el usuario tiene JS desactivado: GTM en iframe -->
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRW2TPQR"
