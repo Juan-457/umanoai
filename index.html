@@ -3,7 +3,8 @@
 <head>
   <!-- ✅ Configuración básica de la página -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- viewport ajustado para iOS / notch -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Umanoai</title>
   <meta name="color-scheme" content="light dark" />
   <meta name="description" content="Umanoai diseña bots de WhatsApp, sitios web, automatización de procesos y tableros de BI para que tu negocio trabaje en automático.">
@@ -103,7 +104,11 @@
     /* ====================== HEADER / HERO ====================== */
     .um header{
       position:relative;
+      /* fallback general */
       min-height:100vh;
+      /* alto visible real en navegadores modernos */
+      min-height:100svh;
+
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -112,7 +117,11 @@
       overflow:hidden;
       isolation:isolate;
       padding:0 16px;
-      padding-top:80px;
+
+      /* espacio para nav + notch si lo hay */
+      padding-top:calc(80px + env(safe-area-inset-top, 0px));
+      padding-bottom:calc(24px + env(safe-area-inset-bottom, 0px));
+
       background:#020617;
     }
     .um header video{
@@ -144,7 +153,8 @@
     .um header h1{
       color:#fff;
       margin:24px 12px 8px;
-      font-size:clamp(30px,5.2vw,56px);
+      /* un poco más chico el máximo para que no se rompa en móviles con texto grande */
+      font-size:clamp(28px,5vw,46px);
       font-weight:800;
       text-shadow:0 2px 14px rgba(0,0,0,.5);
     }
@@ -297,16 +307,18 @@
     .um nav .hamburger{
       display:none;
       cursor:pointer;
-      border:0;
-      background:rgba(15,23,42,.4);
+      border:2px solid rgba(255,255,255,.7); /* más visible */
+      background:rgba(15,23,42,.85);
       color:#fff;
       padding:8px;
       border-radius:999px;
       margin-left:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,.4);
     }
     .um nav .hamburger svg{
-      width:24px;
-      height:24px;
+      width:26px;
+      height:26px;
+      display:block;
     }
 
     /* ====================== MENÚ MOBILE DESPLEGABLE ====================== */
@@ -1633,5 +1645,3 @@
   </script>
 </body>
 </html>
-
-
