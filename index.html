@@ -530,45 +530,33 @@
 
     /* Burbuja de apertura del chat (tipo WhatsApp) */
     /* 👇 CAMBIO: burbuja más grande, estilo similar a WhatsApp */
-    #umanoai-chat-toggle{
-      width:64px;                 /* antes 52px */
-      height:64px;                /* antes 52px */
-      border-radius:50%;
-      border:none;
-      background:#25D366;         /* mismo verde que WhatsApp */
-      color:#f9fafb;
-      font-size:26px;
-      cursor:pointer;
-      box-shadow:0 6px 16px rgba(0,0,0,.35);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      transition:transform .15s ease;
-    }
-   /* Burbuja de apertura del chat (tipo WhatsApp) – versión UmanoAI */
+ /* Burbuja de apertura del chat con logo UmanoAI */
 #umanoai-chat-toggle{
   width:64px;
   height:64px;
   border-radius:50%;
   border:2px solid #38bdf8;
-  background:linear-gradient(135deg,#3b82f6,#8b5cf6); /* azul → violeta */
-  color:#f9fafb;
-  font-size:26px;
+  background:#020617;                 /* fondo oscuro, no verde WhatsApp */
   cursor:pointer;
   box-shadow:0 8px 22px rgba(15,23,42,.7);
   display:flex;
   align-items:center;
   justify-content:center;
+  padding:0;
   transition:transform .15s ease, box-shadow .15s ease;
 }
+
+#umanoai-chat-toggle img{
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  display:block;
+}
+
 #umanoai-chat-toggle:hover{
   transform:scale(1.06);
   box-shadow:0 12px 30px rgba(15,23,42,.9);
 }
-
-    #umanoai-chat-toggle:hover{
-      transform:scale(1.06);
-    }
     /* 👆 FIN CAMBIO BURBUJA */
 
     /* Ventana del chat (card) */
@@ -882,7 +870,9 @@
   <!-- ============================================================= -->
   <div id="umanoai-chat-root">
     <!-- Botón que abre/cierra la ventana del chat -->
-    <button id="umanoai-chat-toggle" aria-label="Abrir chat con Tito">💬</button>
+    <button id="umanoai-chat-toggle" aria-label="Abrir chat con Tito">
+  <img src="umanoai.png" alt="Chat UmanoAI">
+</button>
 
     <!-- Ventana del chat (se muestra/oculta con la clase .open) -->
     <div id="umanoai-chat-window" aria-live="polite">
