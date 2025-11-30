@@ -459,7 +459,7 @@
       display:flex;
       align-items:center;
       gap:10px;
-      font-size:1.36rem;  // tamño letras del carrousel automatizacion
+      font-size:1.36rem;  /* tamaño letras del carrusel automatización */
       color:#e5e7eb;
       max-width:100%;
       overflow:hidden;
@@ -471,10 +471,10 @@
       color:#bae6fd;
     }
     .auto-rotator-text{
-  white-space: nowrap;
-  animation: autoFade .35s ease;
-  font-weight: 700;   /* negrita */
-}
+      white-space: nowrap;
+      animation: autoFade .35s ease;
+      font-weight: 700;   /* negrita */
+    }
     @keyframes autoFade{
       from{opacity:0; transform:translateY(4px);}
       to{opacity:1; transform:translateY(0);}
@@ -712,6 +712,24 @@
       #umanoai-chat-toggle{
         width:60px;
         height:60px;
+      }
+    }
+
+    /* ===== FIX ESPECÍFICO DEL ROTADOR EN MOBILE ===== */
+    @media (max-width:700px){
+      .auto-rotator{
+        flex-direction:column;
+        align-items:flex-start;
+        font-size:1rem;
+        padding:10px 12px;
+        overflow:visible;      /* que no corte el texto */
+        gap:6px;
+      }
+      .auto-rotator-label{
+        white-space:normal;    /* permite salto de línea */
+      }
+      .auto-rotator-text{
+        white-space:normal;    /* el texto del carrusel también puede cortar línea */
       }
     }
 
@@ -1615,4 +1633,5 @@
   </script>
 </body>
 </html>
+
 
