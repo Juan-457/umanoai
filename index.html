@@ -697,6 +697,29 @@
         max-width:360px;
       }
     }
+    /* ================== FIX MOBILE PARA BUBUJAS ================== */
+@media (max-width:700px){
+
+  /* Burbuja del chat: subirla y centrarla respecto a la de WhatsApp */
+  #umanoai-chat-root{
+    right:18px;           /* alineación más limpia */
+    bottom:120px;         /* antes 90px—más separación */
+  }
+
+  /* Ajuste fino del botón WhatsApp flotante si lo necesitás */
+  .whatsapp-button, 
+  #whatsappBtn {
+    right:18px !important;
+    bottom:20px !important;
+  }
+
+  /* Burbuja del chat más compacta para mobile */
+  #umanoai-chat-toggle{
+    width:60px;
+    height:60px;
+  }
+}
+
   </style>
 </head>
 
