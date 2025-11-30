@@ -535,8 +535,8 @@
   width:64px;
   height:64px;
   border-radius:50%;
-  border:2px solid #38bdf8;
-  background:#020617;                 /* fondo oscuro, no verde WhatsApp */
+  border:2px solid #22D3EE;        /* << antes #38bdf8 */
+  background:#020617;
   cursor:pointer;
   box-shadow:0 8px 22px rgba(15,23,42,.7);
   display:flex;
@@ -560,21 +560,25 @@
     /* 👆 FIN CAMBIO BURBUJA */
 
     /* Ventana del chat (card) */
-    #umanoai-chat-window{
-      width:320px;
-      max-height:410px;
-      background:#020617;
-      color:#e5e7eb;
-      border-radius:16px;
-      box-shadow:0 16px 40px rgba(0,0,0,.6);
-      display:none;
-      flex-direction:column;
-      overflow:hidden;
-      margin-bottom:10px;
-    }
-    #umanoai-chat-window.open{
-      display:flex;
-    }
+   #umanoai-chat-window{
+  width:320px;
+  max-height:410px;
+  background:#020617;
+  color:#e5e7eb;
+  border-radius:18px;
+  border:2px solid rgba(34,211,238,.95);  /* borde cian más fuerte */
+  box-shadow:
+    0 0 0 1px rgba(15,23,42,.7),
+    0 22px 60px rgba(0,0,0,.95);          /* sombra más marcada */
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  margin-bottom:10px;
+}
+#umanoai-chat-window.open{
+  display:flex;
+}
+
   width:320px;
   max-height:410px;
   background:#020617;
