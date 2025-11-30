@@ -744,6 +744,70 @@
         white-space:normal;    /* el texto del carrusel también puede cortar línea */
       }
     }
+    .pack-web {
+  margin: 40px auto;
+  max-width: 650px;
+  background: rgba(255,255,255,0.96);
+  padding: 32px 26px;
+  border-radius: 18px;
+  text-align: center;
+
+  /* ⭐ Contorno sutil */
+  border: 1.5px solid rgba(0,0,0,0.12); 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.pack-web h3 {
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+}
+
+.pack-desc {
+  color: #4b5563;
+  max-width: 520px;
+  margin: 0 auto 18px;
+  line-height: 1.55;
+}
+
+.pack-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 22px;
+  text-align: left;
+  max-width: 360px;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.pack-price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.pack-price span {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.pack-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #1976ff, #004bff);
+  color: #fff;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: 0.2s ease-in-out;
+}
+
+.pack-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+}
+
 
   </style>
 </head>
@@ -881,35 +945,31 @@
           </tbody>
         </table>
 
-       <!-- ====================== PACK WEB + ANALÍTICA ====================== -->
-<div class="seccion" style="margin-top:25px; text-align:center; padding:28px 20px;">
-  
-  <h3 style="font-size:1.5rem; margin-bottom:6px;">🌐 Pack Web + Analítica</h3>
-  
-  <p style="color:#4b5563; margin:0 auto 16px; max-width:600px;">
+    <!-- ====================== PACK WEB + ANALÍTICA ====================== -->
+<div class="pack-web">
+  <h3>🌐 Pack Web + Analítica</h3>
+
+  <p class="pack-desc">
     Sitio de una página + configuración de Google Analytics 4 y Tag Manager +
     botón de clic a WhatsApp + logo simple. Ideal como punto de partida digital.
   </p>
 
-  <ul style="text-align:left; max-width:420px; margin:0 auto 22px; line-height:1.6; color:#374151;">
+  <ul class="pack-list">
     <li>✔️ Landing page profesional</li>
     <li>✔️ GA4 y Google Tag Manager configurado</li>
     <li>✔️ Evento de clic a WhatsApp</li>
     <li>✔️ Logo simple incluido</li>
   </ul>
 
-  <p style="font-size:1.4rem; font-weight:700; margin-bottom:16px;">
-    USD 400 <span style="font-size:0.9rem; font-weight:500;">(pago único)</span>
-  </p>
+  <p class="pack-price">USD 400 <span>(pago único)</span></p>
 
-  <a href="https://wa.me/5491125926977?text=Hola%20me%20interesa%20el%20pack%20web%20%2B%20anal%C3%ADtica%20de%20USD%20400"
-     class="btn-secundaria"
-     target="_blank" rel="noopener"
-     style="padding:12px 22px; font-size:16px;">
+  <a href="https://wa.me/5491125926977?text=Hola%20me%20interesa%20el%20pack%20web%20%2B%20anal%C3%ADtica"
+     class="pack-btn"
+     target="_blank">
      🌐 Quiero el pack Web + Analítica
   </a>
-
 </div>
+
 
     </section>
 
