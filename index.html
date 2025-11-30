@@ -459,7 +459,7 @@
       display:flex;
       align-items:center;
       gap:10px;
-      font-size:1.06rem;  // tamño letras del carrousel automatizacion
+      font-size:1.36rem;  // tamño letras del carrousel automatizacion
       color:#e5e7eb;
       max-width:100%;
       overflow:hidden;
@@ -471,9 +471,10 @@
       color:#bae6fd;
     }
     .auto-rotator-text{
-      white-space:nowrap;
-      animation:autoFade .35s ease;
-    }
+  white-space: nowrap;
+  animation: autoFade .35s ease;
+  font-weight: 700;   /* negrita */
+}
     @keyframes autoFade{
       from{opacity:0; transform:translateY(4px);}
       to{opacity:1; transform:translateY(0);}
