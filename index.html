@@ -1,27 +1,53 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-ar">
 <head>
   <!-- ✅ Configuración básica de la página -->
   <meta charset="UTF-8" />
   <!-- viewport ajustado para iOS / notch -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Umanoai</title>
+
+  <!-- 🔹 TITLE orientado a búsqueda -->
+  <title>Bots de WhatsApp, sitios web y BI para pymes | UmanoAI Argentina</title>
+
+  <!-- 🔹 Meta description enfocada en intención de búsqueda -->
+  <meta name="description"
+        content="UmanoAI diseña bots de WhatsApp, sitios web y tableros de BI para pymes y negocios de servicios en Argentina. Automatizá ventas, atención al cliente y reportes con IA.">
+
   <meta name="color-scheme" content="light dark" />
-  <meta name="description" content="Umanoai diseña bots de WhatsApp, sitios web, automatización de procesos y tableros de BI para que tu negocio trabaje en automático.">
 
   <!-- ========= META PARA LLM / IA ========= -->
-  <!-- Metadatos pensados para que modelos de IA entiendan mejor el sitio -->
   <meta name="robots" content="index,follow">
   <meta name="llm-friendly" content="true">
   <meta name="ai-content" content="allow">
-  <meta name="ai-description" content="UmanoAI desarrolla bots de WhatsApp, automatización de procesos, sitios web y tableros de BI para negocios de servicios, comercios y pymes.">
+  <meta name="ai-description"
+        content="UmanoAI desarrolla bots de WhatsApp, automatización de procesos, sitios web y tableros de BI para negocios de servicios, comercios y pymes en Argentina.">
+
+  <!-- 🔹 Canonical para evitar contenido duplicado -->
+  <link rel="canonical" href="https://umanoai.com.ar/" />
+
+  <!-- ========= OPEN GRAPH / REDES SOCIALES ========= -->
+  <meta property="og:title" content="Bots de WhatsApp, sitios web y BI para pymes | UmanoAI Argentina">
+  <meta property="og:description"
+        content="Bots de WhatsApp, automatización de procesos, desarrollo web y tableros de BI para que tu negocio trabaje en automático.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umanoai.com.ar/">
+  <!-- 👉 creá una imagen 1200x630 y súbela con ese nombre -->
+  <meta property="og:image" content="https://umanoai.com.ar/og-umanoai.jpg">
+  <meta property="og:site_name" content="UmanoAI">
+
+  <!-- ========= Twitter Cards ========= -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bots de WhatsApp, sitios web y BI para pymes | UmanoAI Argentina">
+  <meta name="twitter:description"
+        content="Automatizá ventas, atención al cliente y reportes con bots de WhatsApp, sitios web y BI diseñados por UmanoAI.">
+  <meta name="twitter:image" content="https://umanoai.com.ar/og-umanoai.jpg">
 
   <!-- ========= SCHEMA.ORG PARA ORGANIZATION / SERVICIOS ========= -->
-  <!-- Marcado estructurado para SEO, no agregar comentarios dentro del JSON -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://umanoai.com.ar/#organization",
     "name": "UmanoAI",
     "url": "https://umanoai.com.ar",
     "logo": "https://umanoai.com.ar/umanoai.png",
@@ -48,10 +74,8 @@
     ]
   }
   </script>
-  <!-- ====================================== -->
 
   <!-- ====================== FAVICONS ====================== -->
-  <!-- Íconos para distintos dispositivos y navegadores -->
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
@@ -61,7 +85,6 @@
   <link rel="manifest" href="site.webmanifest">
 
   <!-- ====================== GOOGLE TAG MANAGER ====================== -->
-  <!-- Contenedor de GTM para analítica y tags de marketing -->
   <script>
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
