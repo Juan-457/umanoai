@@ -175,14 +175,14 @@
     img{max-width:100%;height:auto;}
 
     /* ====================== CONTENEDOR PRINCIPAL .um ====================== */ 
-.um{
-  margin:0;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-  line-height:1.45;
-  /* El fondo ahora lo pone el video global */
-  background:transparent;
-  padding-bottom:max(80px,var(--safe));
-}
+    .um{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      line-height:1.45;
+      /* El fondo ahora lo pone el video global */
+      background:transparent;
+      padding-bottom:max(80px,var(--safe));
+    }
 
     /* ====================== HEADER / HERO ====================== */
     .um header{
@@ -827,151 +827,241 @@
         white-space:normal;    /* el texto del carrusel también puede cortar línea */
       }
     }
+
     .pack-web {
-  margin: 40px auto;
-  max-width: 650px;
-  background: rgba(255,255,255,0.96);
-  padding: 32px 26px;
-  border-radius: 18px;
-  text-align: center;
+      margin: 40px auto;
+      max-width: 650px;
+      background: rgba(255,255,255,0.96);
+      padding: 32px 26px;
+      border-radius: 18px;
+      text-align: center;
 
-  /* ⭐ Contorno sutil */
-  border: 1.5px solid rgba(0,0,0,0.12); 
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
+      /* ⭐ Contorno sutil */
+      border: 1.5px solid rgba(0,0,0,0.12); 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
 
-.pack-web h3 {
-  font-size: 1.7rem;
-  margin-bottom: 10px;
-}
+    .pack-web h3 {
+      font-size: 1.7rem;
+      margin-bottom: 10px;
+    }
 
-.pack-desc {
-  color: #4b5563;
-  max-width: 520px;
-  margin: 0 auto 18px;
-  line-height: 1.55;
-}
+    .pack-desc {
+      color: #4b5563;
+      max-width: 520px;
+      margin: 0 auto 18px;
+      line-height: 1.55;
+    }
 
-.pack-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto 22px;
-  text-align: left;
-  max-width: 360px;
-  color: #374151;
-  line-height: 1.6;
-}
+    .pack-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto 22px;
+      text-align: left;
+      max-width: 360px;
+      color: #374151;
+      line-height: 1.6;
+    }
 
-.pack-price {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 18px;
-}
+    .pack-price {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
 
-.pack-price span {
-  font-size: 0.9rem;
-  font-weight: 500;
-}
+    .pack-price span {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
 
-.pack-btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #1976ff, #004bff);
-  color: #fff;
-  border-radius: 12px;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  transition: 0.2s ease-in-out;
-}
+    .pack-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #1976ff, #004bff);
+      color: #fff;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: 0.2s ease-in-out;
+    }
 
-.pack-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.18);
-}
+    .pack-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+    }
+
     /* ==== Video de fondo global de la página ==== */
-.bg-video{
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  z-index:-1;
-  background:#020617; /* color de respaldo mientras carga */
-}
+    .bg-video{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      z-index:-1;
+      background:#020617; /* color de respaldo mientras carga */
+    }
+
     /* Capa oscura encima del video de fondo */
-.bg-video-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.20); /* <-- Ajusta opacidad (0.10 a 0.35) */
-  pointer-events: none;
-  z-index: -1; /* queda detrás del contenido */
-}
+    .bg-video-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.20); /* <-- Ajusta opacidad (0.10 a 0.35) */
+      pointer-events: none;
+      z-index: -1; /* queda detrás del contenido */
+    }
+
     /* ---------- Bordes finos para todas las tarjetas ---------- */
-.um-box, 
-.um-card, 
-.card-box, 
-.contenedor, 
-.seccion-blanca {
-  border: 1px solid #d7e0eb;   /* borde moderno azul grisáceo */
-  border-radius: 14px;         /* mantiene tu diseño */
-}
+    .um-box, 
+    .um-card, 
+    .card-box, 
+    .contenedor, 
+    .seccion-blanca {
+      border: 1px solid #d7e0eb;   /* borde moderno azul grisáceo */
+      border-radius: 14px;         /* mantiene tu diseño */
+    }
 
-/* ================= LOGOS “CONFÍAN EN NOSOTROS” ================= */
-.logos-slider{
-  width:100%;
-  overflow:hidden;
-  position:relative;
-  padding:10px 0;
-}
+    /* ================= LOGOS “CONFÍAN EN NOSOTROS” ================= */
+    .logos-slider{
+      width:100%;
+      overflow:hidden;
+      position:relative;
+      padding:10px 0;
+    }
 
-.logos-track{
-  display:flex;
-  gap:40px;
-  align-items:center;
-  animation:scrollLogos 20s linear infinite;
-}
+    .logos-track{
+      display:flex;
+      gap:40px;
+      align-items:center;
+      animation:scrollLogos 20s linear infinite;
+    }
 
-.logos-track img{
-  height:70px; /* tamaño logos */
-  width:auto;
-  object-fit:contain;
-  opacity:0.85;
-  filter:grayscale(100%);
-  transition:opacity .2s ease, filter .2s ease, transform .2s ease;
-}
+    .logos-track img{
+      height:70px; /* tamaño logos */
+      width:auto;
+      object-fit:contain;
+      opacity:0.85;
+      filter:grayscale(100%);
+      transition:opacity .2s ease, filter .2s ease, transform .2s ease;
+    }
 
-.logos-track img:hover{
-  filter:grayscale(0%);
-  opacity:1;
-  transform:scale(1.06);
-}
+    .logos-track img:hover{
+      filter:grayscale(0%);
+      opacity:1;
+      transform:scale(1.06);
+    }
 
-@keyframes scrollLogos {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+    @keyframes scrollLogos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
-@media(max-width:700px){
-  .logos-track{
-    gap:26px;
-  }
-  .logos-track img{
-    height:38px;
-  }
-}
+    @media(max-width:700px){
+      .logos-track{
+        gap:26px;
+      }
+      .logos-track img{
+        height:38px;
+      }
+    }
+
+    /* ====================== SECCIÓN FAQ ====================== */
+    .faq-section{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      padding:36px 16px;
+    }
+
+    .faq-inner{
+      width:min(920px,92%);
+      background:var(--bgCard);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:clamp(16px,3.6vw,24px);
+      color:#132135;
+    }
+
+    .faq-inner h2{
+      text-align:center;
+      margin-top:0;
+      margin-bottom:10px;
+    }
+
+    .faq-intro{
+      text-align:center;
+      color:#4b5563;
+      margin-bottom:20px;
+      font-size:0.96rem;
+    }
+
+    /* Lista de preguntas */
+    .faq-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    /* Cada pregunta/respuesta con <details> */
+    .faq-item{
+      border-bottom:1px solid #e5e7eb;
+      padding:10px 0;
+    }
+
+    .faq-item:last-child{
+      border-bottom:none;
+    }
+
+    .faq-item summary{
+      cursor:pointer;
+      font-weight:600;
+      font-size:0.98rem;
+      color:#111827;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .faq-item summary::-webkit-details-marker{
+      display:none;
+    }
+
+    /* Iconito + / - simple */
+    .faq-toggle-icon{
+      margin-left:12px;
+      font-size:0.9rem;
+      color:#6b7280;
+    }
+
+    .faq-item p{
+      margin:8px 0 4px;
+      font-size:0.95rem;
+      color:#374151;
+      line-height:1.6;
+    }
+
+    /* Texto final de llamada a la acción */
+    .faq-cta{
+      margin-top:18px;
+      text-align:center;
+      font-size:0.95rem;
+      color:#4b5563;
+    }
+
   </style>
 </head>
 
 <body>
   <!-- Video de fondo global -->
   <video class="bg-video" autoplay muted loop playsinline preload="auto">
-  <source src="hero2.mp4" type="video/mp4">
-</video>
+    <source src="hero2.mp4" type="video/mp4">
+  </video>
 
-<div class="bg-video-overlay"></div>
+  <div class="bg-video-overlay"></div>
+
   <!-- Fallback para cuando el usuario tiene JS desactivado: GTM en iframe -->
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRW2TPQR"
@@ -992,6 +1082,7 @@
           <li><a href="#soluciones-umanoai">Soluciones</a></li>
           <li><a href="#confian">Clientes</a></li>
           <li><a href="#planes">Planes</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
 
@@ -1008,6 +1099,7 @@
         <a href="#soluciones-umanoai">Soluciones</a>
         <a href="#confian">Clientes</a>
         <a href="#planes">Planes</a>
+        <a href="#faq">FAQ</a>
         <a href="#contacto">Contacto</a>
       </div>
     </nav>
@@ -1119,32 +1211,167 @@
           </tbody>
         </table>
 
-    <!-- ====================== PACK WEB + ANALÍTICA ====================== -->
-<div class="pack-web">
-  <h3>🌐 Pack Web + Analítica</h3>
+        <!-- ====================== PACK WEB + ANALÍTICA ====================== -->
+        <div class="pack-web">
+          <h3>🌐 Pack Web + Analítica</h3>
 
-  <p class="pack-desc">
-    Sitio de una página + configuración de Google Analytics 4 y Tag Manager +
-    botón de clic a WhatsApp + logo simple. Ideal como punto de partida digital.
-  </p>
+          <p class="pack-desc">
+            Sitio de una página + configuración de Google Analytics 4 y Tag Manager +
+            botón de clic a WhatsApp + logo simple. Ideal como punto de partida digital.
+          </p>
 
-  <ul class="pack-list">
-    <li>✔️ Landing page profesional</li>
-    <li>✔️ GA4 y Google Tag Manager configurado</li>
-    <li>✔️ Evento de clic a WhatsApp</li>
-    <li>✔️ Logo simple incluido</li>
-  </ul>
+          <ul class="pack-list">
+            <li>✔️ Landing page profesional</li>
+            <li>✔️ GA4 y Google Tag Manager configurado</li>
+            <li>✔️ Evento de clic a WhatsApp</li>
+            <li>✔️ Logo simple incluido</li>
+          </ul>
 
-  <p class="pack-price">USD 400 <span>(pago único)</span></p>
+          <p class="pack-price">USD 400 <span>(pago único)</span></p>
 
-  <a href="https://wa.me/5491125926977?text=Hola%20me%20interesa%20el%20pack%20web%20%2B%20anal%C3%ADtica"
-     class="pack-btn"
-     target="_blank">
-     🌐 Quiero el pack Web + Analítica
-  </a>
-</div>
+          <a href="https://wa.me/5491125926977?text=Hola%20me%20interesa%20el%20pack%20web%20%2B%20anal%C3%ADtica"
+            class="pack-btn"
+            target="_blank">
+            🌐 Quiero el pack Web + Analítica
+          </a>
+        </div>
+      </div>
+    </section>
 
+    <!-- ====================== SECCIÓN: PREGUNTAS FRECUENTES (FAQ) ====================== -->
+    <section id="faq" class="faq-section">
+      <div class="faq-inner">
+        <h2>❓ Preguntas frecuentes</h2>
+        <p class="faq-intro">
+          Algunas de las dudas más comunes sobre bots de WhatsApp, automatización y BI con UmanoAI.
+        </p>
 
+        <ul class="faq-list">
+          <!-- 1) Precio del bot -->
+          <li class="faq-item">
+            <details>
+              <summary>
+                ¿Cuánto cuesta un bot de WhatsApp con UmanoAI?
+                <span class="faq-toggle-icon">+</span>
+              </summary>
+              <p>
+                Tenemos planes desde <strong>USD 35 al mes</strong> hasta opciones
+                Corporate, según el volumen de respuestas, la complejidad del flujo
+                y el nivel de integración con tus sistemas.
+              </p>
+              <p>
+                En una breve llamada relevamos tu caso y te sugerimos el plan correcto
+                para no pagar de más, pero tampoco quedarte corto.
+              </p>
+            </details>
+          </li>
+
+          <!-- 2) Qué incluye -->
+          <li class="faq-item">
+            <details>
+              <summary>
+                ¿Qué incluye la implementación de un bot de WhatsApp?
+                <span class="faq-toggle-icon">+</span>
+              </summary>
+              <p>
+                Incluye el <strong>relevamiento de tu flujo de atención</strong>,
+                el diseño de la conversación, armado del bot, configuración inicial
+                de integraciones (por ejemplo con planillas, CRM o formularios) y
+                un periodo de ajustes para afinar respuestas.
+              </p>
+              <p>
+                Según el plan, también podemos sumar automatizaciones y reportes para
+                ver el impacto del bot en tus conversaciones.
+              </p>
+            </details>
+          </li>
+
+          <!-- 3) Necesito tener WhatsApp Business API -->
+          <li class="faq-item">
+            <details>
+              <summary>
+                ¿Necesito tener WhatsApp Business API antes de trabajar con UmanoAI?
+                <span class="faq-toggle-icon">+</span>
+              </summary>
+              <p>
+                <strong>No es obligatorio.</strong> Si todavía no usás WhatsApp Business API,
+                te ayudamos a elegir el proveedor adecuado, crear o migrar tu número y dejar
+                todo listo para que el bot funcione de forma estable.
+              </p>
+              <p>
+                Si ya tenés proveedor, podemos integrarnos sobre esa misma infraestructura.
+              </p>
+            </details>
+          </li>
+
+          <!-- 4) Tiempo de implementación -->
+          <li class="faq-item">
+            <details>
+              <summary>
+                ¿En cuánto tiempo puede estar funcionando mi bot de WhatsApp?
+                <span class="faq-toggle-icon">+</span>
+              </summary>
+              <p>
+                Para un bot estándar, solemos estar <strong>en línea entre 1 y 3 semanas</strong>
+                desde que definimos el alcance y aprobamos el flujo.
+              </p>
+              <p>
+                Proyectos con muchas integraciones o lógica más compleja pueden requerir un poco
+                más de tiempo, pero siempre trabajamos con un plan claro de hitos.
+              </p>
+            </details>
+          </li>
+
+          <!-- 5) Tipo de clientes -->
+          <li class="faq-item">
+            <details>
+              <summary>
+                ¿Trabajan solo con empresas grandes o también con pymes y profesionales?
+                <span class="faq-toggle-icon">+</span>
+              </summary>
+              <p>
+                UmanoAI está pensado sobre todo para <strong>pymes, negocios de servicios y
+                profesionales</strong> que quieren escalar sin sumar más tareas manuales.
+              </p>
+              <p>
+                También atendemos proyectos corporativos cuando necesitan soluciones rápidas,
+                integradas con sus sistemas actuales.
+              </p>
+            </details>
+          </li>
+
+          <!-- 6) Integraciones -->
+          <li class="faq-item">
+            <details>
+              <summary>
+                ¿Pueden integrar el bot con mi sistema, CRM o planillas de Excel?
+                <span class="faq-toggle-icon">+</span>
+              </summary>
+              <p>
+                Sí. Integramos bots con <strong>CRMs, ERPs, Power BI, Google Sheets,
+                bases de datos y otros sistemas</strong> mediante APIs, n8n o Power Automate.
+              </p>
+              <p>
+                La idea es que los datos no queden ‘encerrados’ en el chat, sino que
+                alimenten tus procesos y reportes automáticamente.
+              </p>
+            </details>
+          </li>
+        </ul>
+
+        <div class="faq-cta">
+          ¿Tenés alguna otra duda?  
+          <br>
+          Escribinos directo por WhatsApp y lo vemos en detalle:
+          <br>
+          <a href="https://wa.me/5491125926977?text=Hola%2C+tengo+algunas+preguntas+sobre+los+bots+de+UmanoAI"
+            class="btn-primaria"
+            target="_blank"
+            rel="noopener">
+            💬 Quiero hacer una consulta
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- ====================== SECCIÓN: CONTACTO ====================== -->
@@ -1170,16 +1397,16 @@
     </section>
   </div>
 
- <!-- ====================== BOTÓN FLOTANTE DE WHATSAPP ====================== -->
-<a class="whatsapp-float"
-   href="https://wa.me/5491125926977?text=Hola%20vengo%20desde%20la%20web%20de%20Umanoai"
-   target="_blank"
-   rel="noopener"
-   onclick="dataLayer.push({event: 'click_whatsapp', origen: 'burbuja'})">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-       alt="WhatsApp"
-       loading="lazy">
-</a>
+  <!-- ====================== BOTÓN FLOTANTE DE WHATSAPP ====================== -->
+  <a class="whatsapp-float"
+    href="https://wa.me/5491125926977?text=Hola%20vengo%20desde%20la%20web%20de%20Umanoai"
+    target="_blank"
+    rel="noopener"
+    onclick="dataLayer.push({event: 'click_whatsapp', origen: 'burbuja'})">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+      alt="WhatsApp"
+      loading="lazy">
+  </a>
 
   <!-- ============================================================= -->
   <!-- ============= CHAT UMANOAI – MARCUP DEL WIDGET ============ -->
@@ -1262,9 +1489,9 @@
   <!-- ============= MAPA DE SOLUCIONES UMANOAI (HTML) ============ -->
   <!-- ============================================================= -->
   <section id="soluciones-umanoai" 
-           style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-                  color:#f5f5f5;
-                  padding:60px 20px;">
+    style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color:#f5f5f5;
+            padding:60px 20px;">
     <div style="max-width:1100px;margin:0 auto;">
 
       <!-- TÍTULO PRINCIPAL DEL MAPA -->
@@ -1280,7 +1507,7 @@
 
       <!-- GRID DE CARDS / BOTONES DE CATEGORÍAS -->
       <div id="soluciones-grid"
-           style="display:grid;
+          style="display:grid;
                   grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
                   gap:16px;
                   margin-bottom:30px;">
@@ -1288,10 +1515,10 @@
         <!-- Card: Apps a medida (por defecto activa) -->
         <button class="solucion-card is-active" data-solucion="apps"
                 style="border:none;cursor:pointer;padding:16px 14px;
-                       border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
-                       color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
-                       box-shadow:0 12px 30px rgba(0,0,0,0.55);
-                       outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
+                        border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
+                        color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
+                        box-shadow:0 12px 30px rgba(0,0,0,0.55);
+                        outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
           <div style="font-size:1.1rem;margin-bottom:4px;">📱 Apps a medida</div>
           <div style="font-size:0.85rem;color:#b6c2d6;">Apps internas, formularios y portales hechos a tu medida.</div>
         </button>
@@ -1299,10 +1526,10 @@
         <!-- Card: Bots -->
         <button class="solucion-card" data-solucion="bots"
                 style="border:none;cursor:pointer;padding:16px 14px;
-                       border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
-                       color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
-                       box-shadow:0 12px 30px rgba(0,0,0,0.45);
-                       outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
+                        border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
+                        color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
+                        box-shadow:0 12px 30px rgba(0,0,0,0.45);
+                        outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
           <div style="font-size:1.1rem;margin-bottom:4px;">🤖 Bots</div>
           <div style="font-size:0.85rem;color:#b6c2d6;">WhatsApp, webchat e Instagram con IA para vender y responder 24/7.</div>
         </button>
@@ -1310,10 +1537,10 @@
         <!-- Card: Automatizaciones -->
         <button class="solucion-card" data-solucion="automatizaciones"
                 style="border:none;cursor:pointer;padding:16px 14px;
-                       border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
-                       color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
-                       box-shadow:0 12px 30px rgba(0,0,0,0.45);
-                       outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
+                        border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
+                        color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
+                        box-shadow:0 12px 30px rgba(0,0,0,0.45);
+                        outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
           <div style="font-size:1.1rem;margin-bottom:4px;">⚙️ Automatizaciones</div>
           <div style="font-size:0.85rem;color:#b6c2d6;">Conectamos sistemas para que los procesos corran solos.</div>
         </button>
@@ -1321,10 +1548,10 @@
         <!-- Card: CRM a medida -->
         <button class="solucion-card" data-solucion="crm"
                 style="border:none;cursor:pointer;padding:16px 14px;
-                       border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
-                       color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
-                       box-shadow:0 12px 30px rgba(0,0,0,0.45);
-                       outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
+                        border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
+                        color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
+                        box-shadow:0 12px 30px rgba(0,0,0,0.45);
+                        outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
           <div style="font-size:1.1rem;margin-bottom:4px;">🧩 CRM a medida</div>
           <div style="font-size:0.85rem;color:#b6c2d6;">Un CRM que se adapta a tu negocio, no al revés.</div>
         </button>
@@ -1332,10 +1559,10 @@
         <!-- Card: Power BI -->
         <button class="solucion-card" data-solucion="powerbi"
                 style="border:none;cursor:pointer;padding:16px 14px;
-                       border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
-                       color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
-                       box-shadow:0 12px 30px rgba(0,0,0,0.45);
-                       outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
+                        border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
+                        color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
+                        box-shadow:0 12px 30px rgba(0,0,0,0.45);
+                        outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
           <div style="font-size:1.1rem;margin-bottom:4px;">📊 Power BI</div>
           <div style="font-size:0.85rem;color:#b6c2d6;">Dashboards y reportes en tiempo real para decidir con datos.</div>
         </button>
@@ -1343,10 +1570,10 @@
         <!-- Card: Desarrollo web -->
         <button class="solucion-card" data-solucion="web"
                 style="border:none;cursor:pointer;padding:16px 14px;
-                       border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
-                       color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
-                       box-shadow:0 12px 30px rgba(0,0,0,0.45);
-                       outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
+                        border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
+                        color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
+                        box-shadow:0 12px 30px rgba(0,0,0,0.45);
+                        outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
           <div style="font-size:1.1rem;margin-bottom:4px;">🌐 Desarrollo web</div>
           <div style="font-size:0.85rem;color:#b6c2d6;">Sitios y landings pensadas para convertir y automatizar.</div>
         </button>
@@ -1354,7 +1581,7 @@
 
       <!-- PANEL DE DETALLE DINÁMICO (se actualiza según la card seleccionada) -->
       <article id="solucion-detalle"
-         style="background:rgba(15,23,42,0.86);
+        style="background:rgba(15,23,42,0.86);
                 border-radius:18px;
                 border:1px solid rgba(148,163,184,0.55);
                 padding:22px 20px;
@@ -1367,8 +1594,7 @@
         </h3>
         <!-- Intro dinámica -->
         <p id="detalle-intro"
-           style="font-size:0.95rem;line-height:1.6;color:#
-d4dde9;margin-bottom:12px;">
+          style="font-size:0.95rem;line-height:1.6;color:#d4dde9;margin-bottom:12px;">
           Diseñamos aplicaciones que siguen exactamente cómo funciona tu negocio:
           nada de plantillas genéricas. Apps internas, formularios inteligentes
           y portales con login para tus equipos, clientes o proveedores.
@@ -1376,7 +1602,7 @@ d4dde9;margin-bottom:12px;">
 
         <!-- Bullets dinámicos -->
         <ul id="detalle-lista"
-            style="margin:0 0 14px 18px;font-size:0.92rem;color:#c0cce0;line-height:1.6;">
+          style="margin:0 0 14px 18px;font-size:0.92rem;color:#c0cce0;line-height:1.6;">
           <li>Apps internas para equipos de ventas, logística, operaciones o servicio.</li>
           <li>Formularios inteligentes que reemplazan planillas y WhatsApps sueltos.</li>
           <li>Todo construido con tecnologías como Power Apps, web o Flutter según el caso.</li>
@@ -1385,14 +1611,14 @@ d4dde9;margin-bottom:12px;">
         <!-- CTA + texto “ideal para” -->
         <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;">
           <p id="detalle-ideal"
-             style="margin:0;font-size:0.9rem;color:#9ca7c4;">
+            style="margin:0;font-size:0.9rem;color:#9ca7c4;">
             Ideal si querés dejar de depender de Excel y WhatsApp para gestionar tu operación.
           </p>
 
           <a id="detalle-cta"
-             href="https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio"
-             target="_blank" rel="noopener"
-             style="display:inline-flex;align-items:center;gap:6px;
+            href="https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio"
+            target="_blank" rel="noopener"
+            style="display:inline-flex;align-items:center;gap:6px;
                     padding:9px 16px;border-radius:999px;
                     background:linear-gradient(135deg,#00F6A4,#0CC5A7);
                     color:#041316;text-decoration:none;font-size:0.9rem;font-weight:600;
@@ -1413,7 +1639,7 @@ d4dde9;margin-bottom:12px;">
   <script>
     (function () {
       /* Objeto central con la información de cada solución.
-         Si querés editar textos/links de una solución, lo hacés acá. */
+        Si querés editar textos/links de una solución, lo hacés acá. */
       const soluciones = {
         apps: {
           titulo: "Apps a medida",
@@ -1561,7 +1787,7 @@ d4dde9;margin-bottom:12px;">
             }
           ]
         },
-                web: {
+        web: {
           titulo: "Desarrollo web",
           intro:
             "Diseñamos sitios y landings pensados para generar confianza, explicar bien tu propuesta y convertir visitas en contactos.",
@@ -1605,6 +1831,7 @@ d4dde9;margin-bottom:12px;">
           ]
         }
       }; // 👈 cerramos el objeto 'soluciones'
+
       // Referencias a elementos del DOM usados para actualizar el detalle
       const cards = document.querySelectorAll("#soluciones-grid .solucion-card");
       const titulo = document.getElementById("detalle-titulo");
@@ -1809,112 +2036,111 @@ d4dde9;margin-bottom:12px;">
   <!-- ============================================================= -->
   <!-- ============= CHAT UMANOAI – LÓGICA DEL WIDGET ============ -->
   <!-- ============================================================= -->
- <script>
-  (function () {
-    // URL del flujo de Power Automate que procesa los mensajes del chat
-    const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
-    const TOKEN = "umanoai-secure";
-    const SESSION_KEY = "umanoai-chat-session-id";
+  <script>
+    (function () {
+      // URL del flujo de Power Automate que procesa los mensajes del chat
+      const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
+      const TOKEN = "umanoai-secure";
+      const SESSION_KEY = "umanoai-chat-session-id";
 
-    let sessionId = localStorage.getItem(SESSION_KEY);
-    if (!sessionId) {
-      sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
-      localStorage.setItem(SESSION_KEY, sessionId);
-    }
+      let sessionId = localStorage.getItem(SESSION_KEY);
+      if (!sessionId) {
+        sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
+        localStorage.setItem(SESSION_KEY, sessionId);
+      }
 
-    const root = document.getElementById("umanoai-chat-root");
-    const toggle = document.getElementById("umanoai-chat-toggle");
-    const win = document.getElementById("umanoai-chat-window");
-    const messages = document.getElementById("um-chat-messages");
-    const form = document.getElementById("um-chat-form");
-    const input = document.getElementById("um-chat-input");
+      const root = document.getElementById("umanoai-chat-root");
+      const toggle = document.getElementById("umanoai-chat-toggle");
+      const win = document.getElementById("umanoai-chat-window");
+      const messages = document.getElementById("um-chat-messages");
+      const form = document.getElementById("um-chat-form");
+      const input = document.getElementById("um-chat-input");
 
-    function addMessage(text, from) {
-      const div = document.createElement("div");
-      div.classList.add("um-chat-msg");
-      if (from === "user") div.classList.add("um-chat-user");
-      else if (from === "bot") div.classList.add("um-chat-bot");
-      else if (from === "loading") div.classList.add("um-chat-loading");
-      div.textContent = text;
-      messages.appendChild(div);
-      messages.scrollTop = messages.scrollHeight;
-    }
+      function addMessage(text, from) {
+        const div = document.createElement("div");
+        div.classList.add("um-chat-msg");
+        if (from === "user") div.classList.add("um-chat-user");
+        else if (from === "bot") div.classList.add("um-chat-bot");
+        else if (from === "loading") div.classList.add("um-chat-loading");
+        div.textContent = text;
+        messages.appendChild(div);
+        messages.scrollTop = messages.scrollHeight;
+      }
 
-    // ⬇⬇⬇ AQUÍ VA EL PUSH AL DATALAYER ⬇⬇⬇
-    async function sendMessage(msg) {
-      // --- Disparo evento para GA4 vía GTM ---
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'tito_chat_message'
-        // si después querés más info, acá podés sumar parámetros
-        // ej: message_length: msg.length, session_id: sessionId
-      });
-
-      // Muestra el mensaje del usuario
-      addMessage(msg, "user");
-      input.value = "";
-      input.focus();
-
-      // Muestra burbuja de "cargando"
-      const loadingMsg = document.createElement("div");
-      loadingMsg.classList.add("um-chat-msg","um-chat-loading");
-      loadingMsg.textContent = "…";
-      messages.appendChild(loadingMsg);
-      messages.scrollTop = messages.scrollHeight;
-
-      try {
-        const res = await fetch(FLOW_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            message: msg,
-            sessionId: sessionId,
-            token: TOKEN
-          })
+      // ⬇⬇⬇ AQUÍ VA EL PUSH AL DATALAYER ⬇⬇⬇
+      async function sendMessage(msg) {
+        // --- Disparo evento para GA4 vía GTM ---
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'tito_chat_message'
+          // si después querés más info, acá podés sumar parámetros
+          // ej: message_length: msg.length, session_id: sessionId
         });
 
-        const raw = await res.text();
-        loadingMsg.remove();
+        // Muestra el mensaje del usuario
+        addMessage(msg, "user");
+        input.value = "";
+        input.focus();
 
-        let replyText = raw || "";
+        // Muestra burbuja de "cargando"
+        const loadingMsg = document.createElement("div");
+        loadingMsg.classList.add("um-chat-msg","um-chat-loading");
+        loadingMsg.textContent = "…";
+        messages.appendChild(loadingMsg);
+        messages.scrollTop = messages.scrollHeight;
+
         try {
-          const data = JSON.parse(raw);
-          if (typeof data === "string") {
-            replyText = data;
-          } else if (data.reply) {
-            replyText = data.reply;
-          } else if (data.message) {
-            replyText = data.message;
-          } else {
-            replyText = JSON.stringify(data);
+          const res = await fetch(FLOW_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              message: msg,
+              sessionId: sessionId,
+              token: TOKEN
+            })
+          });
+
+          const raw = await res.text();
+          loadingMsg.remove();
+
+          let replyText = raw || "";
+          try {
+            const data = JSON.parse(raw);
+            if (typeof data === "string") {
+              replyText = data;
+            } else if (data.reply) {
+              replyText = data.reply;
+            } else if (data.message) {
+              replyText = data.message;
+            } else {
+              replyText = JSON.stringify(data);
+            }
+          } catch(e) {
+            // no era JSON, uso texto plano
           }
-        } catch(e) {
-          // no era JSON, uso texto plano
+
+          addMessage(replyText, "bot");
+        } catch (err) {
+          loadingMsg.remove();
+          addMessage("Ups, tuve un problema técnico. Probá de nuevo en un momento 🙏", "bot");
+          console.error(err);
         }
-
-        addMessage(replyText, "bot");
-      } catch (err) {
-        loadingMsg.remove();
-        addMessage("Ups, tuve un problema técnico. Probá de nuevo en un momento 🙏", "bot");
-        console.error(err);
       }
-    }
 
-    toggle.addEventListener("click", () => {
-      win.classList.toggle("open");
-    });
+      toggle.addEventListener("click", () => {
+        win.classList.toggle("open");
+      });
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const msg = input.value.trim();
-      if (!msg) return;
-      sendMessage(msg);
-    });
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const msg = input.value.trim();
+        if (!msg) return;
+        sendMessage(msg);
+      });
 
-    addMessage("👋 ¡Hola! Soy Tito, el asistente virtual de UmanoAI. ¿En qué te ayudo hoy?", "bot");
-  })();
-</script>
-
+      addMessage("👋 ¡Hola! Soy Tito, el asistente virtual de UmanoAI. ¿En qué te ayudo hoy?", "bot");
+    })();
+  </script>
 
   <!-- ============================================================= -->
   <!-- ========================= FOOTER ============================ -->
