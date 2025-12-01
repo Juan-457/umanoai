@@ -29,7 +29,6 @@
       flex-direction:column;
     }
 
-    /* ====== HEADER ====== */
     header{
       max-width:1200px;
       width:100%;
@@ -96,15 +95,9 @@
       box-shadow:0 6px 16px rgba(30,64,175,0.7);
     }
 
-    .back-btn span.icon{
-      font-size:15px;
-    }
+    .back-btn span.icon{ font-size:15px; }
 
-    /* ====== MAIN WRAPPER ====== */
-    main{
-      flex:1;
-      width:100%;
-    }
+    main{ flex:1; width:100%; }
 
     .container{
       width:100%;
@@ -116,7 +109,6 @@
     h1{
       font-size:28px;
       margin-bottom:6px;
-      text-align:left;
       font-weight:700;
     }
 
@@ -127,47 +119,29 @@
       max-width:560px;
     }
 
-    /* ====== DASHBOARD GRID ====== */
     .ga-dashboard{
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap:20px;
-      width:100%;
-      margin:0 auto 30px;
+      margin-bottom:30px;
       animation:fadeInUp .6s ease-out;
     }
 
-    /* ====== CARDS ====== */
     .ga-card{
       background:var(--card-bg);
       border:1px solid var(--card-border);
       border-radius:var(--radius);
-      padding:18px 18px 18px;
+      padding:18px;
       box-shadow:0 10px 25px rgba(15,23,42,0.75);
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
       position:relative;
       overflow:hidden;
-      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
-    }
-
-    .ga-card::before{
-      content:"";
-      position:absolute;
-      inset:-40%;
-      background:radial-gradient(circle at top left, var(--accent-soft) 0, transparent 55%);
-      opacity:0;
-      transition:opacity .18s ease;
-      pointer-events:none;
     }
 
     .ga-card:hover{
       transform:translateY(-4px);
       box-shadow:0 18px 40px rgba(15,23,42,0.95);
       border-color:rgba(248,250,252,0.55);
-      background:radial-gradient(circle at top, rgba(15,23,42,0.95) 0, rgba(15,23,42,0.98) 40%, #020617 100%);
-    }
-
-    .ga-card:hover::before{
-      opacity:1;
     }
 
     .ga-card-header{
@@ -175,26 +149,20 @@
       align-items:center;
       justify-content:space-between;
       margin-bottom:8px;
-      gap:8px;
     }
 
     .ga-icon{
       width:30px;
       height:30px;
       border-radius:999px;
-      display:inline-flex;
+      display:flex;
       align-items:center;
       justify-content:center;
       background:rgba(15,118,110,0.2);
       border:1px solid rgba(45,212,191,0.6);
-      font-size:16px;
     }
 
-    .ga-label{
-      font-size:15px;
-      font-weight:600;
-      opacity:.9;
-    }
+    .ga-label{ font-size:15px; font-weight:600; opacity:.9; }
 
     .ga-value{
       font-size:30px;
@@ -202,12 +170,8 @@
       margin:4px 0 2px;
     }
 
-    .ga-sub{
-      font-size:13px;
-      color:var(--muted);
-    }
+    .ga-sub{ font-size:13px; color:var(--muted); }
 
-    /* ====== LEGEND / EXPLANACIÓN ====== */
     .legend{
       margin-top:10px;
       border-radius:16px;
@@ -228,11 +192,8 @@
       padding-left:18px;
     }
 
-    .legend li{
-      margin-bottom:4px;
-    }
+    .legend li{ margin-bottom:4px; }
 
-    /* ====== FOOTER ====== */
     footer{
       border-top:1px solid rgba(30,64,175,0.6);
       background:rgba(15,23,42,0.98);
@@ -257,32 +218,18 @@
       gap:6px;
     }
 
-    .footer-brand span{
-      font-size:12px;
-    }
-
     .footer-link{
       color:var(--accent);
       text-decoration:none;
     }
 
-    .footer-link:hover{
-      text-decoration:underline;
-    }
+    .footer-link:hover{ text-decoration:underline; }
 
-    /* ====== ANIMATIONS ====== */
     @keyframes fadeInUp{
-      from{
-        opacity:0;
-        transform:translateY(10px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
+      from{ opacity:0; transform:translateY(10px); }
+      to{ opacity:1; transform:translateY(0); }
     }
 
-    /* ====== RESPONSIVE ====== */
     @media (max-width:600px){
       header{
         flex-direction:column;
@@ -292,9 +239,7 @@
         align-self:stretch;
         justify-content:center;
       }
-      h1{
-        font-size:24px;
-      }
+      h1{ font-size:24px; }
     }
   </style>
 </head>
@@ -434,26 +379,49 @@
     // Año dinámico
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
   <script>
   async function cargarDatosGA() {
     try {
-      const res = await fetch("./data/analytics.json");
+      // Como analytics.json está en el root del repo:
+      const res = await fetch("./analytics.json?cachebust=" + Date.now());
       const d = await res.json();
 
-      document.querySelector('.ga-card:nth-child(1) .ga-value').textContent = d.usuarios ?? '–';
-      document.querySelector('.ga-card:nth-child(2) .ga-value').textContent = d.sesiones ?? '–';
-      document.querySelector('.ga-card:nth-child(3) .ga-value').textContent = d.paginasVistas ?? '–';
-      document.querySelector('.ga-card:nth-child(4) .ga-value').textContent = d.duracionMedia ?? '–';
-      document.querySelector('.ga-card:nth-child(5) .ga-value').textContent = d.tasaRebote ? d.tasaRebote + '%' : '–';
-      document.querySelector('.ga-card:nth-child(6) .ga-value').textContent = d.conversiones ?? '–';
-      document.querySelector('.ga-card:nth-child(7) .ga-value').textContent = d.tasaConversion ? d.tasaConversion + '%' : '–';
+      // helpers simples
+      const fmtInt = (v) => (v ?? '–').toLocaleString
+        ? Number(v).toLocaleString('es-AR')
+        : v ?? '–';
+
+      document.querySelector('.ga-card:nth-child(1) .ga-value').textContent =
+        d.usuarios != null ? fmtInt(d.usuarios) : '–';
+
+      document.querySelector('.ga-card:nth-child(2) .ga-value').textContent =
+        d.sesiones != null ? fmtInt(d.sesiones) : '–';
+
+      document.querySelector('.ga-card:nth-child(3) .ga-value').textContent =
+        d.paginasVistas != null ? fmtInt(d.paginasVistas) : '–';
+
+      document.querySelector('.ga-card:nth-child(4) .ga-value').textContent =
+        d.duracionMedia ?? '–';
+
+      document.querySelector('.ga-card:nth-child(5) .ga-value').textContent =
+        d.tasaRebote != null ? d.tasaRebote + '%' : '–';
+
+      document.querySelector('.ga-card:nth-child(6) .ga-value').textContent =
+        d.conversiones != null ? fmtInt(d.conversiones) : '–';
+
+      document.querySelector('.ga-card:nth-child(7) .ga-value').textContent =
+        d.tasaConversion != null ? d.tasaConversion + '%' : '–';
+
+      // La 8ª tarjeta (tráfico orgánico) por ahora queda manual o fija
     } catch (e) {
       console.error("Error cargando datos del JSON:", e);
     }
   }
 
   cargarDatosGA();
-</script>
+  </script>
 
 </body>
 </html>
+
