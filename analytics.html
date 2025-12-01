@@ -434,6 +434,26 @@
     // Año dinámico
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script>
+  async function cargarDatosGA() {
+    try {
+      const res = await fetch("./data/analytics.json");
+      const d = await res.json();
+
+      document.querySelector('.ga-card:nth-child(1) .ga-value').textContent = d.usuarios ?? '–';
+      document.querySelector('.ga-card:nth-child(2) .ga-value').textContent = d.sesiones ?? '–';
+      document.querySelector('.ga-card:nth-child(3) .ga-value').textContent = d.paginasVistas ?? '–';
+      document.querySelector('.ga-card:nth-child(4) .ga-value').textContent = d.duracionMedia ?? '–';
+      document.querySelector('.ga-card:nth-child(5) .ga-value').textContent = d.tasaRebote ? d.tasaRebote + '%' : '–';
+      document.querySelector('.ga-card:nth-child(6) .ga-value').textContent = d.conversiones ?? '–';
+      document.querySelector('.ga-card:nth-child(7) .ga-value').textContent = d.tasaConversion ? d.tasaConversion + '%' : '–';
+    } catch (e) {
+      console.error("Error cargando datos del JSON:", e);
+    }
+  }
+
+  cargarDatosGA();
+</script>
 
 </body>
 </html>
