@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Dashboard de Analytics | UmanoAI</title>
+
+  <style>
+    body{
+      margin:0;
+      background:#020617;
+      color:white;
+      font-family:system-ui, sans-serif;
+      padding:40px 20px;
+    }
+
+    h1{
+      font-size:34px;
+      margin-bottom:20px;
+      text-align:center;
+      font-weight:700;
+    }
+
+    p.desc{
+      text-align:center;
+      opacity:.7;
+      margin-bottom:40px;
+      font-size:15px;
+    }
+
+    /* === DASHBOARD GRID === */
+    .ga-dashboard{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap:22px;
+      width:100%;
+      max-width:1200px;
+      margin:0 auto;
+    }
+
+    /* === TARJETAS === */
+    .ga-card{
+      background:rgba(255,255,255,0.06);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:18px;
+      padding:22px 24px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.25);
+      transition:transform .15s ease, border-color .15s ease;
+    }
+
+    .ga-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(255,255,255,0.25);
+    }
+
+    .ga-card h3{
+      margin:0;
+      font-size:17px;
+      opacity:.85;
+      font-weight:600;
+    }
+
+    .ga-value{
+      font-size:36px;
+      font-weight:700;
+      margin:10px 0 4px;
+    }
+
+    .ga-sub{
+      font-size:14px;
+      opacity:.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Dashboard de Google Analytics</h1>
+  <p class="desc">Indicadores principales para comprender el rendimiento de tu sitio web</p>
+
+  <!-- === DASHBOARD === -->
+  <div class="ga-dashboard">
+
+    <div class="ga-card">
+      <h3>Usuarios</h3>
+      <div class="ga-value">–</div>
+      <div class="ga-sub">Visitantes únicos</div>
+    </div>
+
+    <div class="ga-card">
+      <h3>Sesiones</h3>
+      <div class="ga-value">–</div>
+      <div class="ga-sub">Visitas totales</div>
+    </div>
+
+    <div class="ga-card">
+      <h3>Páginas vistas</h3>
+      <div class="ga-value">–</div>
+      <div class="ga-sub">Interacción total</div>
+    </div>
+
+    <div class="ga-card">
+      <h3>Duración media</h3>
+      <div class="ga-value">–</div>
+      <div class="ga-sub">Tiempo promedio</div>
+    </div>
+
+    <div class="ga-card">
+      <h3>Tasa de rebote</h3>
+      <div class="ga-value">–</div>
+      <div class="ga-sub">Interés del contenido</div>
+    </div>
+
+    <div class="ga-card">
+      <h3>Conversiones</h3>
+      <div class="ga-value">–</div>
+      <div class="ga-sub">Objetivos cumplidos</div>
+    </div>
+
+    <div class="ga-card">
+      <h3>Tasa de conversión</h3>
+      <div class="ga-value">–</div>
+      <div class="ga-sub">Eficiencia del sitio</div>
+    </div>
+
+    <div class="ga-card">
+      <h3>Tráfico orgánico</h3>
+      <div class="ga-value">–</div>
+      <div class="ga-sub">Desde Google Search</div>
+    </div>
+
+  </div>
+
+</body>
+</html>
