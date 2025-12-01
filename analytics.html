@@ -55,15 +55,13 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
     }
 
-    .brand-badge {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #e0f2fe 0, #38bdf8 40%, #0ea5e9 70%, #0369a1 100%);
-      box-shadow: 0 0 0 2px rgba(15, 23, 42, .9), 0 0 40px rgba(56, 189, 248, .35);
+    .brand img {
+      height: 42px;
+      width: auto;
+      filter: drop-shadow(0 0 8px rgba(56, 189, 248, .35));
     }
 
     .brand-text {
@@ -73,7 +71,7 @@
     }
 
     .brand-title {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       letter-spacing: .03em;
     }
@@ -215,16 +213,6 @@
       color: #e5e7eb;
     }
 
-    .help-list {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .help-list li::before {
-      content: "• ";
-      color: var(--accent);
-    }
-
     footer {
       margin-top: 26px;
       font-size: 10px;
@@ -233,138 +221,86 @@
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <header>
       <div class="brand">
-        <div class="brand-badge"></div>
+        <img src="umanoai.png" alt="UmanoAI logo" />
         <div class="brand-text">
           <span class="brand-title">UmanoAI</span>
           <span class="brand-sub">Bots · Web · Datos</span>
         </div>
       </div>
-      <a href="/" class="back-btn">
-        ← Volver a la página principal
-      </a>
+
+      <a href="/" class="back-btn">← Volver a la página principal</a>
     </header>
 
     <main>
       <h1>Dashboard de Google Analytics</h1>
       <p class="subtitle">
-        Vista rápida de los principales indicadores para entender el rendimiento de tu sitio web
-        (últimos 28 días).
+        Vista rápida de los indicadores clave del rendimiento de tu sitio web (últimos 7 días).
       </p>
 
       <section class="grid">
-        <!-- 1) Usuarios -->
+
+        <!-- 1 Usuarios -->
         <article class="ga-card highlight">
-          <div class="ga-label">
-            <span class="ga-icon">👤</span>
-            <span>Usuarios</span>
-          </div>
-          <div class="ga-main">
-            <span class="ga-value">–</span>
-          </div>
+          <div class="ga-label"><span class="ga-icon">👤</span>Usuarios</div>
+          <div class="ga-main"><span class="ga-value">–</span></div>
           <p class="ga-desc">Visitantes activos únicos.</p>
         </article>
 
-        <!-- 2) Sesiones -->
+        <!-- 2 Sesiones -->
         <article class="ga-card">
-          <div class="ga-label">
-            <span class="ga-icon">📈</span>
-            <span>Sesiones</span>
-          </div>
-          <div class="ga-main">
-            <span class="ga-value">–</span>
-          </div>
+          <div class="ga-label"><span class="ga-icon">📈</span>Sesiones</div>
+          <div class="ga-main"><span class="ga-value">–</span></div>
           <p class="ga-desc">Total de visitas.</p>
         </article>
 
-        <!-- 3) Páginas vistas -->
+        <!-- 3 Páginas vistas -->
         <article class="ga-card">
-          <div class="ga-label">
-            <span class="ga-icon">📄</span>
-            <span>Páginas vistas</span>
-          </div>
-          <div class="ga-main">
-            <span class="ga-value">–</span>
-          </div>
+          <div class="ga-label"><span class="ga-icon">📄</span>Páginas vistas</div>
+          <div class="ga-main"><span class="ga-value">–</span></div>
           <p class="ga-desc">Volumen total de páginas vistas.</p>
         </article>
 
-        <!-- 4) Duración media -->
+        <!-- 4 Tiempo de interacción medio -->
         <article class="ga-card">
-          <div class="ga-label">
-            <span class="ga-icon">⏱</span>
-            <span>Duración media</span>
-          </div>
-          <div class="ga-main">
-            <span class="ga-value">–</span>
-          </div>
-          <p class="ga-desc">Tiempo promedio por usuario.</p>
+          <div class="ga-label"><span class="ga-icon">⏱</span>Tiempo de interacción</div>
+          <div class="ga-main"><span class="ga-value">–</span></div>
+          <p class="ga-desc">Tiempo medio por usuario activo.</p>
         </article>
 
-        <!-- 5) Tasa de rebote -->
+        <!-- 5 Tasa de rebote -->
         <article class="ga-card danger">
-          <div class="ga-label">
-            <span class="ga-icon">🏃</span>
-            <span>Tasa de rebote</span>
-          </div>
-          <div class="ga-main">
-            <span class="ga-value">–</span>
-            <span class="ga-unit"></span>
-          </div>
-          <p class="ga-desc">Porcentaje de sesiones sin interacción.</p>
+          <div class="ga-label"><span class="ga-icon">🏃</span>Tasa de rebote</div>
+          <div class="ga-main"><span class="ga-value">–</span><span class="ga-unit"></span></div>
+          <p class="ga-desc">Sesiones sin interacción.</p>
         </article>
 
-        <!-- 6) Conversiones -->
+        <!-- 6 Conversiones -->
         <article class="ga-card success">
-          <div class="ga-label">
-            <span class="ga-icon">🎯</span>
-            <span>Conversiones</span>
-          </div>
-          <div class="ga-main">
-            <span class="ga-value">–</span>
-          </div>
+          <div class="ga-label"><span class="ga-icon">🎯</span>Conversiones</div>
+          <div class="ga-main"><span class="ga-value">–</span></div>
           <p class="ga-desc">Objetivos cumplidos.</p>
         </article>
 
-        <!-- 7) Tasa de conversión -->
+        <!-- 7 Tasa de conversión -->
         <article class="ga-card success">
-          <div class="ga-label">
-            <span class="ga-icon">✅</span>
-            <span>Tasa de conversión</span>
-          </div>
-          <div class="ga-main">
-            <span class="ga-value">–</span>
-            <span class="ga-unit"></span>
-          </div>
+          <div class="ga-label"><span class="ga-icon">✅</span>Tasa de conversión</div>
+          <div class="ga-main"><span class="ga-value">–</span><span class="ga-unit"></span></div>
           <p class="ga-desc">Porcentaje de sesiones convertidas.</p>
         </article>
 
-        <!-- 8) Tráfico orgánico -->
+        <!-- 8 Tráfico orgánico -->
         <article class="ga-card">
-          <div class="ga-label">
-            <span class="ga-icon">🔍</span>
-            <span>Tráfico orgánico</span>
-          </div>
-          <div class="ga-main">
-            <span class="ga-value">–</span>
-          </div>
-          <p class="ga-desc">Llegadas desde Google (búsqueda orgánica).</p>
+          <div class="ga-label"><span class="ga-icon">🔍</span>Tráfico orgánico</div>
+          <div class="ga-main"><span class="ga-value">–</span></div>
+          <p class="ga-desc">Llegadas desde Google.</p>
         </article>
-      </section>
 
-      <aside class="help-box">
-        <div class="help-title">Cómo leer este dashboard</div>
-        <ul class="help-list">
-          <li><strong>Usuarios</strong>: cuánta gente distinta visita tu web.</li>
-          <li><strong>Sesiones</strong>: cuántas visitas totales.</li>
-          <li><strong>Rebote</strong>: si es alto, tu landing no engancha.</li>
-          <li><strong>Conversiones</strong>: resultados reales (mensajes, clics, ventas).</li>
-          <li><strong>Tráfico orgánico</strong>: impacto del SEO.</li>
-        </ul>
-      </aside>
+      </section>
 
       <footer>
         2025 · UmanoAI · Bots, web y automatización.
@@ -376,73 +312,45 @@
     async function cargarDatosGA() {
       try {
         const res = await fetch("https://umanoai.com.ar/analytics.json?_=" + Date.now());
-        if (!res.ok) {
-          console.error("Error HTTP al cargar analytics.json:", res.status, res.statusText);
-          return;
-        }
+        if (!res.ok) return;
 
         const d = await res.json();
-        console.log("Datos GA cargados:", d);
-
         const cards = document.querySelectorAll(".ga-card");
 
         const fmtInt = (v) =>
-          v != null && !Number.isNaN(Number(v))
-            ? Number(v).toLocaleString("es-AR")
-            : "–";
+          v != null ? Number(v).toLocaleString("es-AR") : "–";
 
-        const fmtPct = (v, decimals = 1) =>
-          v != null && !Number.isNaN(Number(v))
-            ? Number(v).toFixed(decimals) + " %"
-            : "–";
+        const fmtPct = (v, dec = 1) =>
+          v != null ? Number(v).toFixed(dec) + " %" : "–";
 
         const fmtDur = (seg) => {
-          if (seg == null || Number.isNaN(Number(seg))) return "–";
-          const total = Number(seg);
-          const mins = Math.floor(total / 60);
-          const secs = Math.round(total % 60);
-          const secsStr = secs.toString().padStart(2, "0");
-          return `${mins}m ${secsStr}s`;
+          if (!seg && seg !== 0) return "–";
+          const m = Math.floor(seg / 60);
+          const s = Math.round(seg % 60).toString().padStart(2, "0");
+          return `${m}m ${s}s`;
         };
 
-        // 1) Usuarios (activeUsers)
-        cards[0].querySelector(".ga-value").textContent =
-          d.usuarios != null ? fmtInt(d.usuarios) : "–";
+        cards[0].querySelector(".ga-value").textContent = fmtInt(d.usuarios);
+        cards[1].querySelector(".ga-value").textContent = fmtInt(d.sesiones);
+        cards[2].querySelector(".ga-value").textContent = fmtInt(d.paginas_vistas);
 
-        // 2) Sesiones
-        cards[1].querySelector(".ga-value").textContent =
-          d.sesiones != null ? fmtInt(d.sesiones) : "–";
+        // 🔥 Nueva métrica: Tiempo de interacción medio
+        cards[3].querySelector(".ga-value").textContent = fmtDur(d.interaccion_media_seg);
 
-        // 3) Páginas vistas
-        cards[2].querySelector(".ga-value").textContent =
-          d.paginas_vistas != null ? fmtInt(d.paginas_vistas) : "–";
+        cards[4].querySelector(".ga-value").textContent = fmtPct(d.rebote, 1);
+        cards[5].querySelector(".ga-value").textContent = fmtInt(d.conversiones);
+        cards[6].querySelector(".ga-value").textContent = fmtPct(d.tasa_conversion, 2);
 
-        // 4) Duración media (en segundos → Xm YYs)
-        cards[3].querySelector(".ga-value").textContent =
-          d.duracion_media_seg != null ? fmtDur(d.duracion_media_seg) : "–";
-
-        // 5) Tasa de rebote (bounceRate ya viene 0–100)
-        cards[4].querySelector(".ga-value").textContent =
-          d.rebote != null ? fmtPct(d.rebote, 1) : "–";
-
-        // 6) Conversiones
-        cards[5].querySelector(".ga-value").textContent =
-          d.conversiones != null ? fmtInt(d.conversiones) : "–";
-
-        // 7) Tasa de conversión (sessionConversionRate 0–100)
-        cards[6].querySelector(".ga-value").textContent =
-          d.tasa_conversion != null ? fmtPct(d.tasa_conversion, 2) : "–";
-
-        // 8) Tráfico orgánico (si lo calculás en el JSON)
         cards[7].querySelector(".ga-value").textContent =
           d.trafico_organico != null ? fmtInt(d.trafico_organico) : "–";
 
-      } catch (err) {
-        console.error("Error al cargar/parsing analytics.json:", err);
+      } catch (e) {
+        console.error("Error cargando datos:", e);
       }
     }
 
     cargarDatosGA();
   </script>
+
 </body>
 </html>
