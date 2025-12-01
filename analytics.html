@@ -6,131 +6,434 @@
   <title>Dashboard de Analytics | UmanoAI</title>
 
   <style>
+    :root{
+      --bg:#020617;
+      --card-bg:rgba(15,23,42,0.9);
+      --card-border:rgba(148,163,184,0.4);
+      --accent:#38bdf8;
+      --accent-soft:rgba(56,189,248,0.14);
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+
     body{
       margin:0;
-      background:#020617;
-      color:white;
-      font-family:system-ui, sans-serif;
-      padding:40px 20px;
+      background:radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+      color:var(--text);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
     }
 
-    h1{
-      font-size:34px;
-      margin-bottom:20px;
-      text-align:center;
-      font-weight:700;
+    /* ====== HEADER ====== */
+    header{
+      max-width:1200px;
+      width:100%;
+      margin:0 auto;
+      padding:18px 20px 10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
     }
 
-    p.desc{
-      text-align:center;
-      opacity:.7;
-      margin-bottom:40px;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .logo-dot{
+      width:26px;
+      height:26px;
+      border-radius:999px;
+      background:radial-gradient(circle at 30% 20%, #e0f2fe 0, #38bdf8 25%, #0369a1 70%);
+      box-shadow:0 0 18px rgba(56,189,248,0.7);
+    }
+
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+
+    .brand-text span:first-child{
+      font-weight:650;
+      letter-spacing:.03em;
       font-size:15px;
     }
 
-    /* === DASHBOARD GRID === */
-    .ga-dashboard{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap:22px;
+    .brand-text span:last-child{
+      font-size:11px;
+      color:var(--muted);
+    }
+
+    .back-btn{
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.5);
+      background:rgba(15,23,42,0.8);
+      color:var(--text);
+      font-size:13px;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      cursor:pointer;
+      transition:background .15s ease, transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      box-shadow:0 2px 6px rgba(0,0,0,0.35);
+      white-space:nowrap;
+    }
+
+    .back-btn:hover{
+      background:rgba(30,64,175,0.8);
+      border-color:rgba(191,219,254,0.6);
+      transform:translateY(-1px);
+      box-shadow:0 6px 16px rgba(30,64,175,0.7);
+    }
+
+    .back-btn span.icon{
+      font-size:15px;
+    }
+
+    /* ====== MAIN WRAPPER ====== */
+    main{
+      flex:1;
+      width:100%;
+    }
+
+    .container{
       width:100%;
       max-width:1200px;
       margin:0 auto;
+      padding:10px 20px 40px;
     }
 
-    /* === TARJETAS === */
+    h1{
+      font-size:28px;
+      margin-bottom:6px;
+      text-align:left;
+      font-weight:700;
+    }
+
+    .subtitle{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:28px;
+      max-width:560px;
+    }
+
+    /* ====== DASHBOARD GRID ====== */
+    .ga-dashboard{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap:20px;
+      width:100%;
+      margin:0 auto 30px;
+      animation:fadeInUp .6s ease-out;
+    }
+
+    /* ====== CARDS ====== */
     .ga-card{
-      background:rgba(255,255,255,0.06);
-      backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,0.12);
-      border-radius:18px;
-      padding:22px 24px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.25);
-      transition:transform .15s ease, border-color .15s ease;
+      background:var(--card-bg);
+      border:1px solid var(--card-border);
+      border-radius:var(--radius);
+      padding:18px 18px 18px;
+      box-shadow:0 10px 25px rgba(15,23,42,0.75);
+      position:relative;
+      overflow:hidden;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .ga-card::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:radial-gradient(circle at top left, var(--accent-soft) 0, transparent 55%);
+      opacity:0;
+      transition:opacity .18s ease;
+      pointer-events:none;
     }
 
     .ga-card:hover{
       transform:translateY(-4px);
-      border-color:rgba(255,255,255,0.25);
+      box-shadow:0 18px 40px rgba(15,23,42,0.95);
+      border-color:rgba(248,250,252,0.55);
+      background:radial-gradient(circle at top, rgba(15,23,42,0.95) 0, rgba(15,23,42,0.98) 40%, #020617 100%);
     }
 
-    .ga-card h3{
-      margin:0;
-      font-size:17px;
-      opacity:.85;
+    .ga-card:hover::before{
+      opacity:1;
+    }
+
+    .ga-card-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:8px;
+      gap:8px;
+    }
+
+    .ga-icon{
+      width:30px;
+      height:30px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(15,118,110,0.2);
+      border:1px solid rgba(45,212,191,0.6);
+      font-size:16px;
+    }
+
+    .ga-label{
+      font-size:15px;
       font-weight:600;
+      opacity:.9;
     }
 
     .ga-value{
-      font-size:36px;
+      font-size:30px;
       font-weight:700;
-      margin:10px 0 4px;
+      margin:4px 0 2px;
     }
 
     .ga-sub{
-      font-size:14px;
-      opacity:.6;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* ====== LEGEND / EXPLANACIÓN ====== */
+    .legend{
+      margin-top:10px;
+      border-radius:16px;
+      padding:16px 18px;
+      border:1px dashed rgba(148,163,184,0.6);
+      background:linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.95));
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .legend strong{
+      color:var(--text);
+      font-weight:600;
+    }
+
+    .legend ul{
+      margin:8px 0 0;
+      padding-left:18px;
+    }
+
+    .legend li{
+      margin-bottom:4px;
+    }
+
+    /* ====== FOOTER ====== */
+    footer{
+      border-top:1px solid rgba(30,64,175,0.6);
+      background:rgba(15,23,42,0.98);
+      padding:14px 20px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .footer-inner{
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .footer-brand span{
+      font-size:12px;
+    }
+
+    .footer-link{
+      color:var(--accent);
+      text-decoration:none;
+    }
+
+    .footer-link:hover{
+      text-decoration:underline;
+    }
+
+    /* ====== ANIMATIONS ====== */
+    @keyframes fadeInUp{
+      from{
+        opacity:0;
+        transform:translateY(10px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width:600px){
+      header{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .back-btn{
+        align-self:stretch;
+        justify-content:center;
+      }
+      h1{
+        font-size:24px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <h1>Dashboard de Google Analytics</h1>
-  <p class="desc">Indicadores principales para comprender el rendimiento de tu sitio web</p>
-
-  <!-- === DASHBOARD === -->
-  <div class="ga-dashboard">
-
-    <div class="ga-card">
-      <h3>Usuarios</h3>
-      <div class="ga-value">–</div>
-      <div class="ga-sub">Visitantes únicos</div>
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <div class="logo-dot"></div>
+      <div class="brand-text">
+        <span>UmanoAI</span>
+        <span>Bots · Web · Datos</span>
+      </div>
     </div>
 
-    <div class="ga-card">
-      <h3>Sesiones</h3>
-      <div class="ga-value">–</div>
-      <div class="ga-sub">Visitas totales</div>
-    </div>
+    <a href="/" class="back-btn">
+      <span class="icon">←</span>
+      <span>Volver a la página principal</span>
+    </a>
+  </header>
 
-    <div class="ga-card">
-      <h3>Páginas vistas</h3>
-      <div class="ga-value">–</div>
-      <div class="ga-sub">Interacción total</div>
-    </div>
+  <!-- MAIN -->
+  <main>
+    <div class="container">
+      <h1>Dashboard de Google Analytics</h1>
+      <p class="subtitle">
+        Vista rápida de los principales indicadores para entender el rendimiento de tu sitio web.
+        Podés usar este tablero en tus informes mensuales para clientes.
+      </p>
 
-    <div class="ga-card">
-      <h3>Duración media</h3>
-      <div class="ga-value">–</div>
-      <div class="ga-sub">Tiempo promedio</div>
-    </div>
+      <!-- DASHBOARD -->
+      <div class="ga-dashboard">
 
-    <div class="ga-card">
-      <h3>Tasa de rebote</h3>
-      <div class="ga-value">–</div>
-      <div class="ga-sub">Interés del contenido</div>
-    </div>
+        <div class="ga-card">
+          <div class="ga-card-header">
+            <span class="ga-label">Usuarios</span>
+            <span class="ga-icon">👤</span>
+          </div>
+          <div class="ga-value">–</div>
+          <div class="ga-sub">Visitantes únicos en el período analizado.</div>
+        </div>
 
-    <div class="ga-card">
-      <h3>Conversiones</h3>
-      <div class="ga-value">–</div>
-      <div class="ga-sub">Objetivos cumplidos</div>
-    </div>
+        <div class="ga-card">
+          <div class="ga-card-header">
+            <span class="ga-label">Sesiones</span>
+            <span class="ga-icon">📈</span>
+          </div>
+          <div class="ga-value">–</div>
+          <div class="ga-sub">Cantidad total de visitas al sitio.</div>
+        </div>
 
-    <div class="ga-card">
-      <h3>Tasa de conversión</h3>
-      <div class="ga-value">–</div>
-      <div class="ga-sub">Eficiencia del sitio</div>
-    </div>
+        <div class="ga-card">
+          <div class="ga-card-header">
+            <span class="ga-label">Páginas vistas</span>
+            <span class="ga-icon">📄</span>
+          </div>
+          <div class="ga-value">–</div>
+          <div class="ga-sub">Volumen total de páginas vistas.</div>
+        </div>
 
-    <div class="ga-card">
-      <h3>Tráfico orgánico</h3>
-      <div class="ga-value">–</div>
-      <div class="ga-sub">Desde Google Search</div>
-    </div>
+        <div class="ga-card">
+          <div class="ga-card-header">
+            <span class="ga-label">Duración media</span>
+            <span class="ga-icon">⏱️</span>
+          </div>
+          <div class="ga-value">–</div>
+          <div class="ga-sub">Tiempo promedio que cada usuario pasa en el sitio.</div>
+        </div>
 
-  </div>
+        <div class="ga-card">
+          <div class="ga-card-header">
+            <span class="ga-label">Tasa de rebote</span>
+            <span class="ga-icon">🏃‍♂️</span>
+          </div>
+          <div class="ga-value">–</div>
+          <div class="ga-sub">Porcentaje de usuarios que entran y se van sin interactuar.</div>
+        </div>
+
+        <div class="ga-card">
+          <div class="ga-card-header">
+            <span class="ga-label">Conversiones</span>
+            <span class="ga-icon">🎯</span>
+          </div>
+          <div class="ga-value">–</div>
+          <div class="ga-sub">Objetivos cumplidos (formularios, WhatsApp, etc.).</div>
+        </div>
+
+        <div class="ga-card">
+          <div class="ga-card-header">
+            <span class="ga-label">Tasa de conversión</span>
+            <span class="ga-icon">✅</span>
+          </div>
+          <div class="ga-value">–</div>
+          <div class="ga-sub">Porcentaje de sesiones que terminan en conversión.</div>
+        </div>
+
+        <div class="ga-card">
+          <div class="ga-card-header">
+            <span class="ga-label">Tráfico orgánico</span>
+            <span class="ga-icon">🔍</span>
+          </div>
+          <div class="ga-value">–</div>
+          <div class="ga-sub">Porcentaje de visitas que llegan desde Google (búsqueda orgánica).</div>
+        </div>
+
+      </div>
+
+      <!-- LEYENDA -->
+      <div class="legend">
+        <strong>Cómo leer este dashboard</strong>
+        <ul>
+          <li><strong>Usuarios</strong>: cuánta gente distinta entra a tu web.</li>
+          <li><strong>Sesiones</strong>: cuántas visitas totales (un usuario puede tener varias).</li>
+          <li><strong>Tasa de rebote</strong>: si es muy alta, la página inicial no engancha.</li>
+          <li><strong>Conversiones y tasa de conversión</strong>: muestran si tu web genera resultados reales.</li>
+          <li><strong>Tráfico orgánico</strong>: ideal para medir el impacto del SEO y contenido.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> UmanoAI · Automatización, bots y datos para pymes.
+      </div>
+      <div class="footer-brand">
+        <span>Desarrollado en</span>
+        <a class="footer-link" href="https://umanoai.com.ar" target="_blank" rel="noreferrer">umanoai.com.ar</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
