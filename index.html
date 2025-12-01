@@ -836,6 +836,50 @@
   border: 1px solid #d7e0eb;   /* borde moderno azul grisáceo */
   border-radius: 14px;         /* mantiene tu diseño */
 }
+
+/* ================= LOGOS “CONFÍAN EN NOSOTROS” ================= */
+.logos-slider{
+  width:100%;
+  overflow:hidden;
+  position:relative;
+  padding:10px 0;
+}
+
+.logos-track{
+  display:flex;
+  gap:40px;
+  align-items:center;
+  animation:scrollLogos 20s linear infinite;
+}
+
+.logos-track img{
+  height:48px;
+  width:auto;
+  object-fit:contain;
+  opacity:0.85;
+  filter:grayscale(100%);
+  transition:opacity .2s ease, filter .2s ease, transform .2s ease;
+}
+
+.logos-track img:hover{
+  filter:grayscale(0%);
+  opacity:1;
+  transform:scale(1.06);
+}
+
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media(max-width:700px){
+  .logos-track{
+    gap:26px;
+  }
+  .logos-track img{
+    height:38px;
+  }
+}
   </style>
 </head>
 
@@ -864,6 +908,7 @@
 
         <ul class="links" id="desktopLinks">
           <li><a href="#soluciones-umanoai">Soluciones</a></li>
+          <li><a href="#confian">Clientes</a></li>
           <li><a href="#planes">Planes</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
@@ -879,6 +924,7 @@
       <!-- Menú mobile colapsable -->
       <div class="links mobile" id="mobileMenu" hidden>
         <a href="#soluciones-umanoai">Soluciones</a>
+        <a href="#confian">Clientes</a>
         <a href="#planes">Planes</a>
         <a href="#contacto">Contacto</a>
       </div>
@@ -934,6 +980,19 @@
             🚀 Quiero ver un demo
           </a>
         </p>
+      </div>
+    </section>
+
+    <!-- ====================== SECCIÓN: CONFÍAN EN NOSOTROS ====================== -->
+    <section id="confian">
+      <div class="seccion">
+        <h2>🤝 Confían en nosotros</h2>
+        <p style="text-align:center; margin-bottom:16px; color:#4b5563;">
+          Algunos de los negocios y marcas que ya están digitalizando sus procesos con UmanoAI.
+        </p>
+        <div class="logos-slider">
+          <div class="logos-track" id="logos-track"></div>
+        </div>
       </div>
     </section>
 
@@ -1075,6 +1134,40 @@
         }
       });
     })();
+  </script>
+
+  <!-- ====================== JS: LOGOS CONFÍAN EN NOSOTROS ====================== -->
+  <script>
+    // Array de logos de clientes
+    const logosConfian = [
+      { src: "logo-cabana-alpina.png",    alt: "Cabaña Alpina Don Elisario" },
+      { src: "logo-la-angelica.png",      alt: "La Angélica Casa de Campo" },
+      { src: "logo-suarez-pastas.png",    alt: "Suarez Pastas" },
+      { src: "logo-mauregui.png",         alt: "Mauregui Automotores" },
+      { src: "logo-dsacine.png",          alt: "DSA CINE" },
+      { src: "logo-patricia-sebelli.png", alt: "Dra. Patricia Sebelli" },
+      { src: "logo-digiagro.png",         alt: "DigiAgro" }
+    ];
+
+    // Cuando el DOM está listo, pintamos el carrusel de logos
+    document.addEventListener("DOMContentLoaded", () => {
+      const track = document.getElementById("logos-track");
+      if (!track) return;
+
+      function agregarLogos() {
+        logosConfian.forEach(logo => {
+          const img = document.createElement("img");
+          img.src = logo.src;
+          img.alt = logo.alt;
+          img.loading = "lazy";
+          track.appendChild(img);
+        });
+      }
+
+      // Insertamos dos tandas para generar efecto infinito
+      agregarLogos();
+      agregarLogos();
+    });
   </script>
 
   <!-- ============================================================= -->
