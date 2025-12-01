@@ -380,47 +380,65 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
-  <script>
-  async function cargarDatosGA() {
-    try {
-      // Como analytics.json está en el root del repo:
-      const res = await fetch("./analytics.json?cachebust=" + Date.now());
-      const d = await res.json();
+<script>
+async function cargarDatosGA() {
+  try {
+    // 🔧 URL ABSOLUTA AL JSON EN GITHUB PAGES
+    const res = await fetch("https://umanoai.com.ar/analytics.json?_=" + Date.now());
 
-      // helpers simples
-      const fmtInt = (v) => (v ?? '–').toLocaleString
-        ? Number(v).toLocaleString('es-AR')
-        : v ?? '–';
-
-      document.querySelector('.ga-card:nth-child(1) .ga-value').textContent =
-        d.usuarios != null ? fmtInt(d.usuarios) : '–';
-
-      document.querySelector('.ga-card:nth-child(2) .ga-value').textContent =
-        d.sesiones != null ? fmtInt(d.sesiones) : '–';
-
-      document.querySelector('.ga-card:nth-child(3) .ga-value').textContent =
-        d.paginasVistas != null ? fmtInt(d.paginasVistas) : '–';
-
-      document.querySelector('.ga-card:nth-child(4) .ga-value').textContent =
-        d.duracionMedia ?? '–';
-
-      document.querySelector('.ga-card:nth-child(5) .ga-value').textContent =
-        d.tasaRebote != null ? d.tasaRebote + '%' : '–';
-
-      document.querySelector('.ga-card:nth-child(6) .ga-value').textContent =
-        d.conversiones != null ? fmtInt(d.conversiones) : '–';
-
-      document.querySelector('.ga-card:nth-child(7) .ga-value').textContent =
-        d.tasaConversion != null ? d.tasaConversion + '%' : '–';
-
-      // La 8ª tarjeta (tráfico orgánico) por ahora queda manual o fija
-    } catch (e) {
-      console.error("Error cargando datos del JSON:", e);
+    if (!res.ok) {
+      console.error("Error HTTP al cargar analytics.json:", res.status, res.statusText);
+      return;
     }
-  }
 
-  cargarDatosGA();
-  </script>
+    const d = await res.json();
+    console.log("Datos GA cargados:", d); // 👀 para verlo en la consola
+
+    const fmtInt = (v) =>
+      v != null && !Number.isNaN(Number(v))
+        ? Number(v).toLocaleString("es-AR")
+        : "–";
+
+    // 1) Usuarios
+    document.querySelector(".ga-card:nth-child(1) .ga-value").textContent =
+      d.usuarios != null ? fmtInt(d.usuarios) : "–";
+
+    // 2) Sesiones
+    document.querySelector(".ga-card:nth-child(2) .ga-value").textContent =
+      d.sesiones != null ? fmtInt(d.sesiones) : "–";
+
+    // 3) Páginas vistas
+    document.querySelector(".ga-card:nth-child(3) .ga-value").textContent =
+      d.paginasVistas != null ? fmtInt(d.paginasVistas) : "–";
+
+    // 4) Duración media
+    document.querySelector(".ga-card:nth-child(4) .ga-value").textContent =
+      d.duracionMedia ?? "–";
+
+    // 5) Tasa de rebote
+    document.querySelector(".ga-card:nth-child(5) .ga-value").textContent =
+      d.tasaRebote != null ? d.tasaRebote + "%" : "–";
+
+    // 6) Conversiones
+    document.querySelector(".ga-card:nth-child(6) .ga-value").textContent =
+      d.conversiones != null ? fmtInt(d.conversiones) : "–";
+
+    // 7) Tasa de conversión
+    document.querySelector(".ga-card:nth-child(7) .ga-value").textContent =
+      d.tasaConversion != null ? d.tasaConversion + "%" : "–";
+
+    // 8) Tráfico orgánico (cuando lo tengas en el JSON)
+    if (d.traficoOrganico != null) {
+      document.querySelector(".ga-card:nth-child(8) .ga-value").textContent =
+        d.traficoOrganico + "%";
+    }
+  } catch (e) {
+    console.error("Error cargando datos del JSON:", e);
+  }
+}
+
+cargarDatosGA();
+</script>
 
 </body>
 </html>
