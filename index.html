@@ -853,7 +853,7 @@
 }
 
 .logos-track img{
-  height:70px; // tamaño logos 
+  height:70px; /* tamaño logos */
   width:auto;
   object-fit:contain;
   opacity:0.85;
@@ -1279,7 +1279,8 @@
         </h3>
         <!-- Intro dinámica -->
         <p id="detalle-intro"
-           style="font-size:0.95rem;line-height:1.6;color:#d4dde9;margin-bottom:12px;">
+           style="font-size:0.95rem;line-height:1.6;color:#
+d4dde9;margin-bottom:12px;">
           Diseñamos aplicaciones que siguen exactamente cómo funciona tu negocio:
           nada de plantillas genéricas. Apps internas, formularios inteligentes
           y portales con login para tus equipos, clientes o proveedores.
@@ -1727,6 +1728,9 @@
       const TOKEN = "umanoai-secure";              // token simple para validar desde el flujo
       const SESSION_KEY = "umanoai-chat-session-id"; // clave en localStorage para mantener la sesión
 
+      // 🔹 Garantizamos que dataLayer exista para enviar eventos a GTM
+      window.dataLayer = window.dataLayer || [];
+
       // ====================== GESTIÓN DE SESSION ID ====================== //
       let sessionId = localStorage.getItem(SESSION_KEY);
       if (!sessionId) {
@@ -1756,6 +1760,14 @@
 
       /* Aceptar respuestas de texto plano o JSON */
       async function sendMessage(msg) {
+        // 🔹 Enviamos evento a Google Tag Manager (sin el texto del mensaje)
+        window.dataLayer.push({
+          event: "tito_chat_message",
+          chat_source: "tito_widget",
+          session_id: sessionId,
+          message_length: msg.length
+        });
+
         // Muestra el mensaje del usuario
         addMessage(msg, "user");
         input.value = "";
@@ -1864,4 +1876,3 @@
   </script>
 </body>
 </html>
-
