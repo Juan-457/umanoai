@@ -2,9 +2,9 @@
   "usuarios": 122,
   "sesiones": 194,
   "paginas_vistas": 444,
-  "duracion_media_seg": 492.5943543762887,
-  "rebote": 0.5876288659793815,
+  "interaccion_media_seg": 9886,
+  "rebote": 58.76288659793815,
   "conversiones": 21,
-  "tasa_conversion": 0.07216494845360824,
+  "tasa_conversion": 7.216494845360824,
   "trafico_organico": null
 }
