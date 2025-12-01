@@ -3,347 +3,446 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Dashboard de Analytics | UmanoAI</title>
+  <title>Dashboard de Google Analytics | UmanoAI</title>
+
+  <meta name="description"
+        content="Vista rápida de las principales métricas de Google Analytics de tu sitio web.">
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#020617">
 
   <style>
-    :root{
-      --bg:#020617;
-      --card-bg:rgba(15,23,42,0.9);
-      --card-border:rgba(148,163,184,0.4);
-      --accent:#38bdf8;
-      --accent-soft:rgba(56,189,248,0.14);
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --radius:18px;
+    :root {
+      --bg: #020617;
+      --bg-card: #050c1a;
+      --bg-card-soft: #020617;
+      --border-card: rgba(148, 163, 184, 0.35);
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, .12);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --danger: #fb7185;
+      --success: #4ade80;
+      --warning: #facc15;
+      --radius: 18px;
+      --shadow: 0 18px 60px rgba(15, 23, 42, .9);
+      --safe: env(safe-area-inset-bottom);
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
+    * {box-sizing: border-box; margin: 0; padding: 0;}
 
-    body{
-      margin:0;
-      background:radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
-      color:var(--text);
-      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+      "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 0 0, #0f172a 0, #020617 55%, #000 100%);
+      min-height: 100vh;
+      color: var(--text-main);
+      padding: 24px clamp(16px, 4vw, 36px) calc(24px + var(--safe));
     }
 
-    header{
-      max-width:1200px;
-      width:100%;
-      margin:0 auto;
-      padding:18px 20px 10px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
     }
 
-    .logo-dot{
-      width:26px;
-      height:26px;
-      border-radius:999px;
-      background:radial-gradient(circle at 30% 20%, #e0f2fe 0, #38bdf8 25%, #0369a1 70%);
-      box-shadow:0 0 18px rgba(56,189,248,0.7);
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .brand-text{
-      display:flex;
-      flex-direction:column;
-      line-height:1.1;
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #e0f2fe 0, #38bdf8 40%, #0ea5e9 70%, #0369a1 100%);
+      box-shadow: 0 0 0 2px rgba(15, 23, 42, .9), 0 0 40px rgba(56, 189, 248, .35);
     }
 
-    .brand-text span:first-child{
-      font-weight:650;
-      letter-spacing:.03em;
-      font-size:15px;
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
     }
 
-    .brand-text span:last-child{
-      font-size:11px;
-      color:var(--muted);
+    .brand-title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .03em;
     }
 
-    .back-btn{
-      padding:8px 14px;
-      border-radius:999px;
-      border:1px solid rgba(148,163,184,0.5);
-      background:rgba(15,23,42,0.8);
-      color:var(--text);
-      font-size:13px;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      cursor:pointer;
-      transition:background .15s ease, transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-      box-shadow:0 2px 6px rgba(0,0,0,0.35);
-      white-space:nowrap;
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
     }
 
-    .back-btn:hover{
-      background:rgba(30,64,175,0.8);
-      border-color:rgba(191,219,254,0.6);
-      transform:translateY(-1px);
-      box-shadow:0 6px 16px rgba(30,64,175,0.7);
+    .back-btn {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, .4);
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, .2) 0, transparent 55%);
+      color: var(--text-main);
+      font-size: 11px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all .18s ease-out;
     }
 
-    .back-btn span.icon{
-      font-size:15px;
+    .back-btn:hover {
+      border-color: var(--accent);
+      color: #f9fafb;
+      box-shadow: 0 0 30px rgba(56, 189, 248, .25);
+      transform: translateY(-1px);
     }
 
-    main{
-      flex:1;
-      width:100%;
+    main h1 {
+      font-size: clamp(24px, 3vw, 30px);
+      letter-spacing: .02em;
+      margin-bottom: 4px;
     }
 
-    .container{
-      width:100%;
-      max-width:1200px;
-      margin:0 auto;
-      padding:10px 20px 40px;
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
     }
 
-    h1{
-      font-size:28px;
-      margin-bottom:6px;
-      text-align:left;
-      font-weight:700;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
     }
 
-    .subtitle{
-      font-size:14px;
-      color:var(--muted);
-      margin-bottom:28px;
-      max-width:560px;
+    @media (max-width: 960px) {
+      .grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
     }
 
-    .ga-dashboard{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap:20px;
-      width:100%;
-      margin:0 auto 30px;
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+      .grid {grid-template-columns: 1fr;}
     }
 
-    .ga-card{
-      background:var(--card-bg);
-      border:1px solid var(--card-border);
-      border-radius:var(--radius);
-      padding:18px;
-      box-shadow:0 10px 25px rgba(15,23,42,0.75);
-      transition:transform .18s ease, box-shadow .18s ease;
+    .ga-card {
+      position: relative;
+      padding: 16px 14px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-card);
+      background:
+        radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.16) 0, transparent 45%),
+        linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+      box-shadow: 0 10px 40px rgba(15, 23, 42, .9);
+      overflow: hidden;
     }
 
-    .ga-card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 18px 40px rgba(15,23,42,0.95);
+    .ga-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
     }
 
-    .ga-card-header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:8px;
+    .ga-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      background: rgba(148, 163, 184, .12);
     }
 
-    .ga-label{
-      font-size:15px;
-      font-weight:600;
+    .ga-main {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 4px;
     }
 
-    .ga-value{
-      font-size:30px;
-      font-weight:700;
-      margin:4px 0 2px;
+    .ga-value {
+      font-size: 22px;
+      font-weight: 600;
     }
 
-    .ga-sub{
-      font-size:13px;
-      color:var(--muted);
+    .ga-unit {
+      font-size: 11px;
+      color: var(--text-muted);
     }
 
-    .legend{
-      margin-top:10px;
-      border-radius:16px;
-      padding:16px 18px;
-      border:1px dashed rgba(148,163,184,0.6);
-      background:rgba(15,23,42,0.9);
-      font-size:13px;
-      color:var(--muted);
+    .ga-desc {
+      font-size: 11px;
+      color: var(--text-muted);
     }
 
-    footer{
-      border-top:1px solid rgba(30,64,175,0.6);
-      background:rgba(15,23,42,0.98);
-      padding:14px 20px;
-      font-size:12px;
-      color:var(--muted);
+    .ga-card.highlight {
+      border-color: rgba(56, 189, 248, .7);
+      box-shadow: 0 0 35px rgba(56, 189, 248, .35);
     }
 
-    .footer-inner{
-      max-width:1200px;
-      margin:0 auto;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
+    .ga-card.success {border-color: rgba(74, 222, 128, .7);}
+    .ga-card.danger {border-color: rgba(248, 113, 113, .7);}
+
+    .help-box {
+      margin-top: 22px;
+      padding: 16px 16px 14px;
+      border-radius: var(--radius);
+      border: 1px dashed rgba(148, 163, 184, .5);
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, .15) 0, transparent 55%);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .help-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #e5e7eb;
+    }
+
+    .help-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .help-list li::before {
+      content: "• ";
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 26px;
+      font-size: 10px;
+      color: #6b7280;
+      text-align: right;
     }
   </style>
 </head>
-
 <body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-badge"></div>
+        <div class="brand-text">
+          <span class="brand-title">UmanoAI</span>
+          <span class="brand-sub">Bots · Web · Datos</span>
+        </div>
+      </div>
+      <a href="/" class="back-btn">
+        ← Volver a la página principal
+      </a>
+    </header>
 
-<header>
-  <div class="brand">
-    <div class="logo-dot"></div>
-    <div class="brand-text">
-      <span>UmanoAI</span>
-      <span>Bots · Web · Datos</span>
-    </div>
+    <main>
+      <h1>Dashboard de Google Analytics</h1>
+      <p class="subtitle">
+        Vista rápida de los principales indicadores para entender el rendimiento de tu sitio web
+        (últimos 28 días).
+      </p>
+
+      <section class="grid">
+        <!-- 1) Usuarios -->
+        <article class="ga-card highlight">
+          <div class="ga-label">
+            <span class="ga-icon">👤</span>
+            <span>Usuarios</span>
+          </div>
+          <div class="ga-main">
+            <span class="ga-value">–</span>
+          </div>
+          <p class="ga-desc">Visitantes activos únicos.</p>
+        </article>
+
+        <!-- 2) Sesiones -->
+        <article class="ga-card">
+          <div class="ga-label">
+            <span class="ga-icon">📈</span>
+            <span>Sesiones</span>
+          </div>
+          <div class="ga-main">
+            <span class="ga-value">–</span>
+          </div>
+          <p class="ga-desc">Total de visitas.</p>
+        </article>
+
+        <!-- 3) Páginas vistas -->
+        <article class="ga-card">
+          <div class="ga-label">
+            <span class="ga-icon">📄</span>
+            <span>Páginas vistas</span>
+          </div>
+          <div class="ga-main">
+            <span class="ga-value">–</span>
+          </div>
+          <p class="ga-desc">Volumen total de páginas vistas.</p>
+        </article>
+
+        <!-- 4) Duración media -->
+        <article class="ga-card">
+          <div class="ga-label">
+            <span class="ga-icon">⏱</span>
+            <span>Duración media</span>
+          </div>
+          <div class="ga-main">
+            <span class="ga-value">–</span>
+          </div>
+          <p class="ga-desc">Tiempo promedio por usuario.</p>
+        </article>
+
+        <!-- 5) Tasa de rebote -->
+        <article class="ga-card danger">
+          <div class="ga-label">
+            <span class="ga-icon">🏃</span>
+            <span>Tasa de rebote</span>
+          </div>
+          <div class="ga-main">
+            <span class="ga-value">–</span>
+            <span class="ga-unit"></span>
+          </div>
+          <p class="ga-desc">Porcentaje de sesiones sin interacción.</p>
+        </article>
+
+        <!-- 6) Conversiones -->
+        <article class="ga-card success">
+          <div class="ga-label">
+            <span class="ga-icon">🎯</span>
+            <span>Conversiones</span>
+          </div>
+          <div class="ga-main">
+            <span class="ga-value">–</span>
+          </div>
+          <p class="ga-desc">Objetivos cumplidos.</p>
+        </article>
+
+        <!-- 7) Tasa de conversión -->
+        <article class="ga-card success">
+          <div class="ga-label">
+            <span class="ga-icon">✅</span>
+            <span>Tasa de conversión</span>
+          </div>
+          <div class="ga-main">
+            <span class="ga-value">–</span>
+            <span class="ga-unit"></span>
+          </div>
+          <p class="ga-desc">Porcentaje de sesiones convertidas.</p>
+        </article>
+
+        <!-- 8) Tráfico orgánico -->
+        <article class="ga-card">
+          <div class="ga-label">
+            <span class="ga-icon">🔍</span>
+            <span>Tráfico orgánico</span>
+          </div>
+          <div class="ga-main">
+            <span class="ga-value">–</span>
+          </div>
+          <p class="ga-desc">Llegadas desde Google (búsqueda orgánica).</p>
+        </article>
+      </section>
+
+      <aside class="help-box">
+        <div class="help-title">Cómo leer este dashboard</div>
+        <ul class="help-list">
+          <li><strong>Usuarios</strong>: cuánta gente distinta visita tu web.</li>
+          <li><strong>Sesiones</strong>: cuántas visitas totales.</li>
+          <li><strong>Rebote</strong>: si es alto, tu landing no engancha.</li>
+          <li><strong>Conversiones</strong>: resultados reales (mensajes, clics, ventas).</li>
+          <li><strong>Tráfico orgánico</strong>: impacto del SEO.</li>
+        </ul>
+      </aside>
+
+      <footer>
+        2025 · UmanoAI · Bots, web y automatización.
+      </footer>
+    </main>
   </div>
 
-  <a href="/" class="back-btn">
-    <span class="icon">←</span>
-    <span>Volver a la página principal</span>
-  </a>
-</header>
+  <script>
+    async function cargarDatosGA() {
+      try {
+        const res = await fetch("https://umanoai.com.ar/analytics.json?_=" + Date.now());
+        if (!res.ok) {
+          console.error("Error HTTP al cargar analytics.json:", res.status, res.statusText);
+          return;
+        }
 
-<main>
-  <div class="container">
-    <h1>Dashboard de Google Analytics</h1>
-    <p class="subtitle">
-      Vista rápida de los principales indicadores para entender el rendimiento de tu sitio web.
-    </p>
+        const d = await res.json();
+        console.log("Datos GA cargados:", d);
 
-    <div class="ga-dashboard">
+        const cards = document.querySelectorAll(".ga-card");
 
-      <div class="ga-card">
-        <div class="ga-card-header"><span class="ga-label">Usuarios</span><span>👤</span></div>
-        <div class="ga-value">–</div>
-        <div class="ga-sub">Visitantes únicos.</div>
-      </div>
+        const fmtInt = (v) =>
+          v != null && !Number.isNaN(Number(v))
+            ? Number(v).toLocaleString("es-AR")
+            : "–";
 
-      <div class="ga-card">
-        <div class="ga-card-header"><span class="ga-label">Sesiones</span><span>📈</span></div>
-        <div class="ga-value">–</div>
-        <div class="ga-sub">Total de visitas.</div>
-      </div>
+        const fmtPct = (v, decimals = 1) =>
+          v != null && !Number.isNaN(Number(v))
+            ? Number(v).toFixed(decimals) + " %"
+            : "–";
 
-      <div class="ga-card">
-        <div class="ga-card-header"><span class="ga-label">Páginas vistas</span><span>📄</span></div>
-        <div class="ga-value">–</div>
-        <div class="ga-sub">Volumen total.</div>
-      </div>
+        const fmtDur = (seg) => {
+          if (seg == null || Number.isNaN(Number(seg))) return "–";
+          const total = Number(seg);
+          const mins = Math.floor(total / 60);
+          const secs = Math.round(total % 60);
+          const secsStr = secs.toString().padStart(2, "0");
+          return `${mins}m ${secsStr}s`;
+        };
 
-      <div class="ga-card">
-        <div class="ga-card-header"><span class="ga-label">Duración media</span><span>⏱️</span></div>
-        <div class="ga-value">–</div>
-        <div class="ga-sub">Tiempo promedio por usuario.</div>
-      </div>
+        // 1) Usuarios (activeUsers)
+        cards[0].querySelector(".ga-value").textContent =
+          d.usuarios != null ? fmtInt(d.usuarios) : "–";
 
-      <div class="ga-card">
-        <div class="ga-card-header"><span class="ga-label">Tasa de rebote</span><span>🏃‍♂️</span></div>
-        <div class="ga-value">–</div>
-        <div class="ga-sub">Porcentaje de salidas sin interacción.</div>
-      </div>
+        // 2) Sesiones
+        cards[1].querySelector(".ga-value").textContent =
+          d.sesiones != null ? fmtInt(d.sesiones) : "–";
 
-      <div class="ga-card">
-        <div class="ga-card-header"><span class="ga-label">Conversiones</span><span>🎯</span></div>
-        <div class="ga-value">–</div>
-        <div class="ga-sub">Objetivos cumplidos.</div>
-      </div>
+        // 3) Páginas vistas
+        cards[2].querySelector(".ga-value").textContent =
+          d.paginas_vistas != null ? fmtInt(d.paginas_vistas) : "–";
 
-      <div class="ga-card">
-        <div class="ga-card-header"><span class="ga-label">Tasa de conversión</span><span>✅</span></div>
-        <div class="ga-value">–</div>
-        <div class="ga-sub">Porcentaje de sesiones convertidas.</div>
-      </div>
+        // 4) Duración media (en segundos → Xm YYs)
+        cards[3].querySelector(".ga-value").textContent =
+          d.duracion_media_seg != null ? fmtDur(d.duracion_media_seg) : "–";
 
-      <div class="ga-card">
-        <div class="ga-card-header"><span class="ga-label">Tráfico orgánico</span><span>🔍</span></div>
-        <div class="ga-value">–</div>
-        <div class="ga-sub">Llegadas desde Google.</div>
-      </div>
+        // 5) Tasa de rebote (bounceRate ya viene 0–100)
+        cards[4].querySelector(".ga-value").textContent =
+          d.rebote != null ? fmtPct(d.rebote, 1) : "–";
 
-    </div>
+        // 6) Conversiones
+        cards[5].querySelector(".ga-value").textContent =
+          d.conversiones != null ? fmtInt(d.conversiones) : "–";
 
-    <div class="legend">
-      <strong>Cómo leer este dashboard</strong>
-      <ul>
-        <li><strong>Usuarios</strong>: cuánta gente distinta visita tu web.</li>
-        <li><strong>Sesiones</strong>: cuántas visitas totales.</li>
-        <li><strong>Rebote</strong>: si es alto, tu landing no engancha.</li>
-        <li><strong>Conversiones</strong>: resultados reales.</li>
-        <li><strong>Tráfico orgánico</strong>: impacto del SEO.</li>
-      </ul>
-    </div>
+        // 7) Tasa de conversión (sessionConversionRate 0–100)
+        cards[6].querySelector(".ga-value").textContent =
+          d.tasa_conversion != null ? fmtPct(d.tasa_conversion, 2) : "–";
 
-  </div>
-</main>
+        // 8) Tráfico orgánico (si lo calculás en el JSON)
+        cards[7].querySelector(".ga-value").textContent =
+          d.trafico_organico != null ? fmtInt(d.trafico_organico) : "–";
 
-<footer>
-  <div class="footer-inner">
-    © <span id="year"></span> UmanoAI · Bots y automatización.
-  </div>
-</footer>
+      } catch (err) {
+        console.error("Error al cargar/parsing analytics.json:", err);
+      }
+    }
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
-<script>
-async function cargarDatosGA() {
-  try {
-    const res = await fetch("https://umanoai.com.ar/analytics.json?_=" + Date.now());
-    if (!res.ok) return console.error("HTTP error:", res.status);
-
-    const d = await res.json();
-    console.log("Datos cargados:", d);
-
-    const fmt = v =>
-      v != null && !Number.isNaN(Number(v))
-        ? Number(v).toLocaleString("es-AR")
-        : "–";
-
-    document.querySelector(".ga-card:nth-child(1) .ga-value").textContent =
-      d.usuarios != null ? fmt(d.usuarios) : "–";
-
-    document.querySelector(".ga-card:nth-child(2) .ga-value").textContent =
-      d.sesiones != null ? fmt(d.sesiones) : "–";
-
-    document.querySelector(".ga-card:nth-child(3) .ga-value").textContent =
-      d.paginasVistas != null ? fmt(d.paginasVistas) : "–";
-
-    document.querySelector(".ga-card:nth-child(4) .ga-value").textContent =
-      d.duracionMedia ?? "–";
-
-    document.querySelector(".ga-card:nth-child(5) .ga-value").textContent =
-      d.tasaRebote != null ? d.tasaRebote + "%" : "–";
-
-    document.querySelector(".ga-card:nth-child(6) .ga-value").textContent =
-      d.conversiones != null ? fmt(d.conversiones) : "–";
-
-    document.querySelector(".ga-card:nth-child(7) .ga-value").textContent =
-      d.tasaConversion != null ? d.tasaConversion + "%" : "–";
-
-    if (d.traficoOrganico != null)
-      document.querySelector(".ga-card:nth-child(8) .ga-value").textContent =
-        d.traficoOrganico + "%";
-
-  } catch (err) {
-    console.error("Error cargando JSON:", err);
-  }
-}
-
-cargarDatosGA();
-</script>
-
+    cargarDatosGA();
+  </script>
 </body>
 </html>
