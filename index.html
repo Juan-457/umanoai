@@ -1049,6 +1049,93 @@
       font-size:0.95rem;
       color:#4b5563;
     }
+    /* =============== RESEÑAS DE GOOGLE =============== */
+.reviews-block{
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid #e5e7eb;
+}
+
+.reviews-block h3{
+  text-align:center;
+  margin:0 0 8px;
+  font-size:1.1rem;
+}
+
+.reviews-block p.reviews-intro{
+  text-align:center;
+  margin:0 0 18px;
+  font-size:0.94rem;
+  color:#4b5563;
+}
+
+.reviews-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  justify-content:center;
+}
+
+.review-card{
+  background:#f9fafb;
+  border-radius:14px;
+  border:1px solid #d1d5db;
+  padding:14px 16px;
+  max-width:280px;
+  box-shadow:0 4px 10px rgba(15,23,42,0.06);
+  text-align:left;
+}
+
+.review-stars{
+  color:#f59e0b; /* dorado */
+  font-size:0.9rem;
+  margin-bottom:4px;
+}
+
+.review-text{
+  font-size:0.9rem;
+  color:#374151;
+  margin:0 0 8px;
+}
+
+.review-author{
+  font-weight:600;
+  font-size:0.9rem;
+  color:#111827;
+}
+
+.review-meta{
+  font-size:0.8rem;
+  color:#6b7280;
+}
+
+/* Botón para ir a Google */
+.btn-google-reviews{
+  display:inline-block;
+  margin-top:12px;
+  padding:9px 18px;
+  border-radius:999px;
+  border:1px solid #2563eb;
+  background:#ffffff;
+  color:#1d4ed8;
+  font-size:0.9rem;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 3px 8px rgba(15,23,42,0.12);
+  transition:background .15s ease, color .15s ease, transform .1s ease, box-shadow .15s ease;
+}
+.btn-google-reviews:hover{
+  background:#1d4ed8;
+  color:#ffffff;
+  transform:translateY(-1px);
+  box-shadow:0 6px 14px rgba(37,99,235,0.35);
+}
+
+@media(max-width:700px){
+  .review-card{
+    max-width:100%;
+  }
+}
 
   </style>
 </head>
@@ -1169,6 +1256,60 @@
         </div>
       </div>
     </section>
+    <section id="confian">
+  <div class="seccion">
+    <h2>🤝 Confían en nosotros</h2>
+    <p style="text-align:center; margin-bottom:16px; color:#4b5563;">
+      Algunos de los negocios y marcas que ya están usando <strong>bots de WhatsApp, automatización y BI con UmanoAI</strong>.
+    </p>
+    <div class="logos-slider">
+      <div class="logos-track" id="logos-track"></div>
+    </div>
+
+    <!-- 🔽🔽🔽 AGREGAR ESTO DEBAJO 🔽🔽🔽 -->
+    <div class="reviews-block">
+      <h3>⭐ Reseñas en Google</h3>
+      <p class="reviews-intro">
+        Lo que dicen algunos clientes sobre trabajar con UmanoAI.
+      </p>
+
+      <div class="reviews-grid">
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "Atención de 10! Superó todas mis expectativas! Me asesoró a crear mi espacio, con total sencillez, amabilidad y total eficacia. No me tuve que preocupar por ningún detalle. Lo recomiendo 100%."
+          </p>
+          <div class="review-author">Patricia</div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "Excelente trabajo y atención!!"
+          </p>
+          <div class="review-author">Agencia de automores</div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "La verdad que muy contento con el Bot, todo lo que le pedí y más"
+          </p>
+          <div class="review-author">Juan</div>
+          
+        </article>
+      </div>
+
+      <p style="text-align:center; margin-top:16px;">
+        <a href="https://maps.app.goo.gl/qQtdzfbLSByEscd99"
+           class="btn-google-reviews"
+           target="_blank"
+           rel="noopener">
+          Ver más reseñas en Google
+        </a>
+      </p>
+    </div>
+    <!-- 🔼🔼🔼 HASTA ACÁ 🔼🔼🔼 -->
 
     <!-- ====================== SECCIÓN: PLANES ====================== -->
     <section id="planes">
