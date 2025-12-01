@@ -1721,124 +1721,112 @@ d4dde9;margin-bottom:12px;">
   <!-- ============================================================= -->
   <!-- ============= CHAT UMANOAI – LÓGICA DEL WIDGET ============ -->
   <!-- ============================================================= -->
-  <script>
-    (function () {
-      // URL del flujo de Power Automate que procesa los mensajes del chat
-      const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
-      const TOKEN = "umanoai-secure";              // token simple para validar desde el flujo
-      const SESSION_KEY = "umanoai-chat-session-id"; // clave en localStorage para mantener la sesión
+ <script>
+  (function () {
+    // URL del flujo de Power Automate que procesa los mensajes del chat
+    const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
+    const TOKEN = "umanoai-secure";
+    const SESSION_KEY = "umanoai-chat-session-id";
 
-      // 🔹 Garantizamos que dataLayer exista para enviar eventos a GTM
+    let sessionId = localStorage.getItem(SESSION_KEY);
+    if (!sessionId) {
+      sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
+      localStorage.setItem(SESSION_KEY, sessionId);
+    }
+
+    const root = document.getElementById("umanoai-chat-root");
+    const toggle = document.getElementById("umanoai-chat-toggle");
+    const win = document.getElementById("umanoai-chat-window");
+    const messages = document.getElementById("um-chat-messages");
+    const form = document.getElementById("um-chat-form");
+    const input = document.getElementById("um-chat-input");
+
+    function addMessage(text, from) {
+      const div = document.createElement("div");
+      div.classList.add("um-chat-msg");
+      if (from === "user") div.classList.add("um-chat-user");
+      else if (from === "bot") div.classList.add("um-chat-bot");
+      else if (from === "loading") div.classList.add("um-chat-loading");
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    // ⬇⬇⬇ AQUÍ VA EL PUSH AL DATALAYER ⬇⬇⬇
+    async function sendMessage(msg) {
+      // --- Disparo evento para GA4 vía GTM ---
       window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'tito_chat_message'
+        // si después querés más info, acá podés sumar parámetros
+        // ej: message_length: msg.length, session_id: sessionId
+      });
 
-      // ====================== GESTIÓN DE SESSION ID ====================== //
-      let sessionId = localStorage.getItem(SESSION_KEY);
-      if (!sessionId) {
-        sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
-        localStorage.setItem(SESSION_KEY, sessionId);
-      }
+      // Muestra el mensaje del usuario
+      addMessage(msg, "user");
+      input.value = "";
+      input.focus();
 
-      // Referencias a elementos del DOM relacionados al chat
-      const root = document.getElementById("umanoai-chat-root");
-      const toggle = document.getElementById("umanoai-chat-toggle");
-      const win = document.getElementById("umanoai-chat-window");
-      const messages = document.getElementById("um-chat-messages");
-      const form = document.getElementById("um-chat-form");
-      const input = document.getElementById("um-chat-input");
+      // Muestra burbuja de "cargando"
+      const loadingMsg = document.createElement("div");
+      loadingMsg.classList.add("um-chat-msg","um-chat-loading");
+      loadingMsg.textContent = "…";
+      messages.appendChild(loadingMsg);
+      messages.scrollTop = messages.scrollHeight;
 
-      // Agrega un mensaje al chat (user, bot o loading)
-      function addMessage(text, from) {
-        const div = document.createElement("div");
-        div.classList.add("um-chat-msg");
-        if (from === "user") div.classList.add("um-chat-user");
-        else if (from === "bot") div.classList.add("um-chat-bot");
-        else if (from === "loading") div.classList.add("um-chat-loading");
-        div.textContent = text;
-        messages.appendChild(div);
-        messages.scrollTop = messages.scrollHeight;
-      }
-
-      /* Aceptar respuestas de texto plano o JSON */
-      async function sendMessage(msg) {
-        // 🔹 Enviamos evento a Google Tag Manager (sin el texto del mensaje)
-        window.dataLayer.push({
-          event: "tito_chat_message",
-          chat_source: "tito_widget",
-          session_id: sessionId,
-          message_length: msg.length
+      try {
+        const res = await fetch(FLOW_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: msg,
+            sessionId: sessionId,
+            token: TOKEN
+          })
         });
 
-        // Muestra el mensaje del usuario
-        addMessage(msg, "user");
-        input.value = "";
-        input.focus();
+        const raw = await res.text();
+        loadingMsg.remove();
 
-        // Muestra burbuja de "cargando"
-        const loadingMsg = document.createElement("div");
-        loadingMsg.classList.add("um-chat-msg","um-chat-loading");
-        loadingMsg.textContent = "…";
-        messages.appendChild(loadingMsg);
-        messages.scrollTop = messages.scrollHeight;
-
+        let replyText = raw || "";
         try {
-          const res = await fetch(FLOW_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              message: msg,
-              sessionId: sessionId,
-              token: TOKEN
-            })
-          });
-
-          // Leemos SIEMPRE como texto plano
-          const raw = await res.text();
-          loadingMsg.remove();
-
-          let replyText = raw || "";
-
-          // Intentamos parsear JSON si la respuesta tiene forma de JSON
-          try {
-            const data = JSON.parse(raw);
-            if (typeof data === "string") {
-              replyText = data;
-            } else if (data.reply) {
-              replyText = data.reply;
-            } else if (data.message) {
-              replyText = data.message;
-            } else {
-              replyText = JSON.stringify(data);
-            }
-          } catch (e) {
-            // No es JSON, usamos el texto tal cual (texto plano)
+          const data = JSON.parse(raw);
+          if (typeof data === "string") {
+            replyText = data;
+          } else if (data.reply) {
+            replyText = data.reply;
+          } else if (data.message) {
+            replyText = data.message;
+          } else {
+            replyText = JSON.stringify(data);
           }
-
-          // Mostramos la respuesta del bot
-          addMessage(replyText, "bot");
-        } catch (err) {
-          loadingMsg.remove();
-          addMessage("Ups, tuve un problema técnico. Probá de nuevo en un momento 🙏", "bot");
-          console.error(err);
+        } catch(e) {
+          // no era JSON, uso texto plano
         }
+
+        addMessage(replyText, "bot");
+      } catch (err) {
+        loadingMsg.remove();
+        addMessage("Ups, tuve un problema técnico. Probá de nuevo en un momento 🙏", "bot");
+        console.error(err);
       }
+    }
 
-      // Toggle abre/cierra la ventana del chat
-      toggle.addEventListener("click", () => {
-        win.classList.toggle("open");
-      });
+    toggle.addEventListener("click", () => {
+      win.classList.toggle("open");
+    });
 
-      // Manejo del submit del formulario de chat
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const msg = input.value.trim();
-        if (!msg) return;
-        sendMessage(msg);
-      });
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const msg = input.value.trim();
+      if (!msg) return;
+      sendMessage(msg);
+    });
 
-      // Mensaje inicial del bot al abrir la página
-      addMessage("👋 ¡Hola! Soy Tito, el asistente virtual de UmanoAI. ¿En qué te ayudo hoy?", "bot");
-    })();
-  </script>
+    addMessage("👋 ¡Hola! Soy Tito, el asistente virtual de UmanoAI. ¿En qué te ayudo hoy?", "bot");
+  })();
+</script>
+
 
   <!-- ============================================================= -->
   <!-- ========================= FOOTER ============================ -->
