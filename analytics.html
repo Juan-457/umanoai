@@ -277,7 +277,7 @@
           <p class="ga-desc">Llegadas desde Google.</p>
         </article>
 
-        <!-- 8 NUEVA — Tiempo total de interacción -->
+        <!-- 8 Tiempo total de interacción -->
         <article class="ga-card">
           <div class="ga-label"><span class="ga-icon">🔥</span>Tiempo total de interacción</div>
           <div class="ga-main">
@@ -321,70 +321,77 @@
           return `${m}m ${s}s`;
         };
 
+        // ---- Normalizamos datos que vienen del JSON ----
+        const usuarios =
+          d.usuarios != null ? Number(d.usuarios) :
+          d.activeUsers != null ? Number(d.activeUsers) :
+          null;
+
+        const sesiones =
+          d.sesiones != null ? Number(d.sesiones) :
+          d.sessions != null ? Number(d.sessions) :
+          null;
+
+        const paginas =
+          d.paginas_vistas != null ? Number(d.paginas_vistas) :
+          d.screenPageViews != null ? Number(d.screenPageViews) :
+          null;
+
+        // GA4: userEngagementDuration = tiempo total (segundos)
+        const tiempoTotalSeg =
+          d.tiempo_interaccion_total_seg != null ? Number(d.tiempo_interaccion_total_seg) :
+          d.userEngagementDuration != null ? Number(d.userEngagementDuration) :
+          null;
+
+        const rebote =
+          d.rebote != null ? Number(d.rebote) :
+          d.bounceRate != null ? Number(d.bounceRate) :
+          null;
+
+        const conversiones =
+          d.conversiones != null ? Number(d.conversiones) :
+          d.conversions != null ? Number(d.conversions) :
+          null;
+
+        const tasaConv =
+          d.tasa_conversion != null ? Number(d.tasa_conversion) :
+          d.sessionConversionRate != null ? Number(d.sessionConversionRate) * 100 :
+          null;
+
+        const traficoOrganico =
+          d.trafico_organico != null ? Number(d.trafico_organico) : null;
+
         // 0 Usuarios
-        cards[0].querySelector(".ga-value").textContent = fmtInt(d.usuarios);
+        cards[0].querySelector(".ga-value").textContent = fmtInt(usuarios);
 
         // 1 Sesiones
-        cards[1].querySelector(".ga-value").textContent = fmtInt(d.sesiones);
+        cards[1].querySelector(".ga-value").textContent = fmtInt(sesiones);
 
         // 2 Páginas vistas
-        cards[2].querySelector(".ga-value").textContent = fmtInt(d.paginas_vistas);
+        cards[2].querySelector(".ga-value").textContent = fmtInt(paginas);
 
-        // 3 Tiempo de interacción medio por usuario
+        // 3 Tiempo de interacción medio por usuario (calculado SIEMPRE aquí)
         let avgSeg = null;
-
-        if (d.interaccion_media_seg != null) {
-          avgSeg = Number(d.interaccion_media_seg);
-        } else {
-          const totalInteraccion =
-            d.tiempo_interaccion_total_seg != null
-              ? Number(d.tiempo_interaccion_total_seg)
-              : d.userEngagementDuration != null
-              ? Number(d.userEngagementDuration)
-              : null;
-
-          const usuarios =
-            d.usuarios != null
-              ? Number(d.usuarios)
-              : d.activeUsers != null
-              ? Number(d.activeUsers)
-              : null;
-
-          if (
-            totalInteraccion != null &&
-            usuarios != null &&
-            usuarios > 0
-          ) {
-            avgSeg = totalInteraccion / usuarios;
-          }
+        if (tiempoTotalSeg != null && usuarios != null && usuarios > 0) {
+          avgSeg = tiempoTotalSeg / usuarios;
         }
-
-        cards[3].querySelector(".ga-value").textContent =
-          avgSeg != null ? fmtDur(avgSeg) : "–";
+        cards[3].querySelector(".ga-value").textContent = fmtDur(avgSeg);
 
         // 4 Tasa de rebote
-        cards[4].querySelector(".ga-value").textContent = fmtPct(d.rebote, 1);
+        cards[4].querySelector(".ga-value").textContent = fmtPct(rebote, 1);
 
         // 5 Conversiones
-        cards[5].querySelector(".ga-value").textContent = fmtInt(d.conversiones);
+        cards[5].querySelector(".ga-value").textContent = fmtInt(conversiones);
 
         // 6 Tasa de conversión
-        cards[6].querySelector(".ga-value").textContent = fmtPct(d.tasa_conversion, 2);
+        cards[6].querySelector(".ga-value").textContent = fmtPct(tasaConv, 2);
 
         // 7 Tráfico orgánico
         cards[7].querySelector(".ga-value").textContent =
-          d.trafico_organico != null ? fmtInt(d.trafico_organico) : "–";
+          traficoOrganico != null ? fmtInt(traficoOrganico) : "–";
 
         // 8 Tiempo total de interacción
-        let totalSeg =
-          d.tiempo_interaccion_total_seg != null
-            ? Number(d.tiempo_interaccion_total_seg)
-            : d.userEngagementDuration != null
-            ? Number(d.userEngagementDuration)
-            : null;
-
-        cards[8].querySelector(".ga-value").textContent =
-          totalSeg != null ? fmtDur(totalSeg) : "–";
+        cards[8].querySelector(".ga-value").textContent = fmtDur(tiempoTotalSeg);
 
       } catch (e) {
         console.error("Error cargando datos:", e);
