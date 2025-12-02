@@ -267,7 +267,7 @@
 
         <!-- 4 Tiempo de interacción medio por usuario -->
         <article class="ga-card">
-          <div class="ga-label"><span class="ga-icon">⏱</span>Tiempo de interacción</div>
+          <div class="ga-label"><span class="ga-icon">⏱</span>Tiempo de interacción (usuario)</div>
           <div class="ga-main"><span class="ga-value">–</span></div>
           <p class="ga-desc">Tiempo medio por usuario activo.</p>
         </article>
@@ -304,7 +304,49 @@
         <article class="ga-card">
           <div class="ga-label"><span class="ga-icon">⏳</span>Tiempo total de interacción</div>
           <div class="ga-main"><span class="ga-value">–</span></div>
-          <p class="ga-desc">Suma total del tiempo de participación de los usuarios.</p>
+          <p class="ga-desc">Suma del tiempo de participación de los usuarios.</p>
+        </article>
+
+        <!-- 10 Páginas por sesión -->
+        <article class="ga-card">
+          <div class="ga-label"><span class="ga-icon">📚</span>Páginas por sesión</div>
+          <div class="ga-main"><span class="ga-value">–</span></div>
+          <p class="ga-desc">Promedio de páginas vistas por cada sesión.</p>
+        </article>
+
+        <!-- 11 Sesiones por usuario -->
+        <article class="ga-card">
+          <div class="ga-label"><span class="ga-icon">🔁</span>Sesiones por usuario</div>
+          <div class="ga-main"><span class="ga-value">–</span></div>
+          <p class="ga-desc">Frecuencia de visita de tus usuarios.</p>
+        </article>
+
+        <!-- 12 Tiempo medio por sesión -->
+        <article class="ga-card">
+          <div class="ga-label"><span class="ga-icon">⏲</span>Tiempo medio por sesión</div>
+          <div class="ga-main"><span class="ga-value">–</span></div>
+          <p class="ga-desc">Tiempo promedio de interacción por sesión.</p>
+        </article>
+
+        <!-- 13 Sesiones con interacción (estimadas) -->
+        <article class="ga-card">
+          <div class="ga-label"><span class="ga-icon">🤝</span>Sesiones con interacción</div>
+          <div class="ga-main"><span class="ga-value">–</span></div>
+          <p class="ga-desc">Sesiones que tuvieron alguna participación.</p>
+        </article>
+
+        <!-- 14 Eficiencia de leads -->
+        <article class="ga-card success">
+          <div class="ga-label"><span class="ga-icon">📌</span>Eficiencia de leads</div>
+          <div class="ga-main"><span class="ga-value">–</span><span class="ga-unit"></span></div>
+          <p class="ga-desc">% de usuarios que terminaron convirtiendo.</p>
+        </article>
+
+        <!-- 15 Quality Score del sitio -->
+        <article class="ga-card">
+          <div class="ga-label"><span class="ga-icon">⭐</span>Quality Score del sitio</div>
+          <div class="ga-main"><span class="ga-value">–</span><span class="ga-unit"></span></div>
+          <p class="ga-desc">Índice 0–100 basado en rebote, tiempo y páginas.</p>
         </article>
 
       </section>
@@ -334,7 +376,6 @@
             ? Number(v).toFixed(dec) + " %"
             : "–";
 
-        // formatea segundos -> Xm Ys
         const fmtDur = (seg) => {
           if (seg == null || Number.isNaN(Number(seg))) return "–";
           const total = Number(seg);
@@ -343,39 +384,98 @@
           return `${m}m ${s}s`;
         };
 
+        const safeDiv = (num, den) => {
+          if (!den || Number.isNaN(Number(num)) || Number.isNaN(Number(den))) return null;
+          return Number(num) / Number(den);
+        };
+
+        const usuarios = Number(d.usuarios ?? 0);
+        const sesiones = Number(d.sesiones ?? 0);
+        const paginas = Number(d.paginas_vistas ?? 0);
+        const totalInteraccionSeg = Number(d.interaccion_media_seg ?? 0);
+        const rebotePct = d.rebote != null ? Number(d.rebote) : null;
+        const reboteRatio = rebotePct != null ? rebotePct / 100 : null;
+        const conversiones = Number(d.conversiones ?? 0);
+        const tasaConvPct = d.tasa_conversion != null ? Number(d.tasa_conversion) : null;
+
+        const interaccionMediaPorUsuario = safeDiv(totalInteraccionSeg, usuarios);
+        const paginasPorSesion = safeDiv(paginas, sesiones);
+        const sesionesPorUsuario = safeDiv(sesiones, usuarios);
+        const tiempoMedioSesion = safeDiv(totalInteraccionSeg, sesiones);
+        const sesionesConInteraccion =
+          reboteRatio != null && sesiones
+            ? sesiones * (1 - reboteRatio)
+            : null;
+        const leadEfficiency = safeDiv(conversiones, usuarios); // fracción
+        const realConvRate = safeDiv(conversiones, sesiones);   // fracción
+
+        let qualityScore = null;
+        if (reboteRatio != null && tiempoMedioSesion != null && paginasPorSesion != null) {
+          const raw = (1 - reboteRatio) * (tiempoMedioSesion / 60) * (paginasPorSesion / 2);
+          qualityScore = Math.max(0, Math.min(100, Math.round(raw * 100)));
+        }
+
         // 1 Usuarios
-        cards[0].querySelector(".ga-value").textContent = fmtInt(d.usuarios);
+        cards[0].querySelector(".ga-value").textContent = fmtInt(usuarios);
 
         // 2 Sesiones
-        cards[1].querySelector(".ga-value").textContent = fmtInt(d.sesiones);
+        cards[1].querySelector(".ga-value").textContent = fmtInt(sesiones);
 
         // 3 Páginas vistas
-        cards[2].querySelector(".ga-value").textContent = fmtInt(d.paginas_vistas);
+        cards[2].querySelector(".ga-value").textContent = fmtInt(paginas);
 
-        // 4 Tiempo de interacción medio por usuario activo
-        const totalInteraccionSeg = d.interaccion_media_seg;          // TOTAL segundos (userEngagementDuration)
-        const interaccionMediaPorUsuario =
-          d.usuarios ? totalInteraccionSeg / d.usuarios : null;      // promedio
-
+        // 4 Tiempo de interacción medio por usuario
         cards[3].querySelector(".ga-value").textContent =
           fmtDur(interaccionMediaPorUsuario);
 
         // 5 Tasa de rebote
-        cards[4].querySelector(".ga-value").textContent = fmtPct(d.rebote, 1);
+        cards[4].querySelector(".ga-value").textContent = fmtPct(rebotePct, 1);
 
         // 6 Conversiones
-        cards[5].querySelector(".ga-value").textContent = fmtInt(d.conversiones);
+        cards[5].querySelector(".ga-value").textContent = fmtInt(conversiones);
 
         // 7 Tasa de conversión
-        cards[6].querySelector(".ga-value").textContent = fmtPct(d.tasa_conversion, 2);
+        if (tasaConvPct != null) {
+          cards[6].querySelector(".ga-value").textContent = fmtPct(tasaConvPct, 2);
+        } else if (realConvRate != null) {
+          cards[6].querySelector(".ga-value").textContent = fmtPct(realConvRate * 100, 2);
+        } else {
+          cards[6].querySelector(".ga-value").textContent = "–";
+        }
 
         // 8 Tráfico orgánico
         cards[7].querySelector(".ga-value").textContent =
           d.trafico_organico != null ? fmtInt(d.trafico_organico) : "–";
 
-        // 9 Tiempo total de interacción (totalInteraccionSeg directamente)
+        // 9 Tiempo total de interacción
         cards[8].querySelector(".ga-value").textContent =
           fmtDur(totalInteraccionSeg);
+
+        // 10 Páginas por sesión
+        cards[9].querySelector(".ga-value").textContent =
+          paginasPorSesion != null ? paginasPorSesion.toFixed(2) : "–";
+
+        // 11 Sesiones por usuario
+        cards[10].querySelector(".ga-value").textContent =
+          sesionesPorUsuario != null ? sesionesPorUsuario.toFixed(2) : "–";
+
+        // 12 Tiempo medio por sesión
+        cards[11].querySelector(".ga-value").textContent =
+          fmtDur(tiempoMedioSesion);
+
+        // 13 Sesiones con interacción
+        cards[12].querySelector(".ga-value").textContent =
+          sesionesConInteraccion != null ? fmtInt(sesionesConInteraccion) : "–";
+
+        // 14 Eficiencia de leads (% de usuarios que convierten)
+        cards[13].querySelector(".ga-value").textContent =
+          leadEfficiency != null ? fmtPct(leadEfficiency * 100, 1) : "–";
+
+        // 15 Quality Score del sitio (0–100)
+        cards[14].querySelector(".ga-value").textContent =
+          qualityScore != null ? qualityScore.toString() : "–";
+        const qsUnit = cards[14].querySelector(".ga-unit");
+        if (qsUnit) qsUnit.textContent = qualityScore != null ? "/100" : "";
 
       } catch (e) {
         console.error("Error cargando datos:", e);
