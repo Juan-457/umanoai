@@ -197,20 +197,36 @@
     .ga-card.success {border-color: rgba(74, 222, 128, .7);}
     .ga-card.danger {border-color: rgba(248, 113, 113, .7);}
 
-    .help-box {
-      margin-top: 22px;
-      padding: 16px 16px 14px;
+    .ia-summary {
+      margin-top: 28px;
+      padding: 18px 18px 16px;
       border-radius: var(--radius);
-      border: 1px dashed rgba(148, 163, 184, .5);
-      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, .15) 0, transparent 55%);
-      font-size: 11px;
-      color: var(--text-muted);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background:
+        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.12) 0, transparent 55%),
+        linear-gradient(135deg, rgba(15,23,42,0.96), rgba(15,23,42,0.99));
+      box-shadow: 0 14px 45px rgba(15, 23, 42, 0.9);
+      font-size: 12px;
+      color: var(--text-main);
     }
 
-    .help-title {
+    .ia-title {
+      font-size: 14px;
       font-weight: 600;
       margin-bottom: 6px;
-      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ia-title span {
+      font-size: 16px;
+    }
+
+    .ia-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
     footer {
@@ -351,6 +367,13 @@
 
       </section>
 
+      <section class="ia-summary">
+        <h2 class="ia-title"><span>🧠</span>Resumen con IA</h2>
+        <p id="ia-text" class="ia-text">
+          Analizando tus métricas para generar un resumen personalizado…
+        </p>
+      </section>
+
       <footer>
         2025 · UmanoAI · Bots, web y automatización.
       </footer>
@@ -358,6 +381,82 @@
   </div>
 
   <script>
+    function resumenIA(m) {
+      if (!m || !m.usuarios || !m.sesiones) {
+        return "Todavía no hay suficientes datos en los últimos 7 días para generar un resumen. Volvé a revisar este panel cuando el sitio tenga más visitas.";
+      }
+
+      const partes = [];
+
+      const fmtNum = (v) =>
+        v != null && !Number.isNaN(Number(v))
+          ? Number(v).toLocaleString("es-AR")
+          : "–";
+
+      const usuariosTxt = fmtNum(m.usuarios);
+      const sesionesTxt = fmtNum(m.sesiones);
+      const paginasTxt = fmtNum(m.paginas);
+
+      let intro = `En los últimos 7 días tu sitio recibió ${usuariosTxt} usuarios, ${sesionesTxt} sesiones y ${paginasTxt} páginas vistas.`;
+      partes.push(intro);
+
+      if (m.usuarios < 50) {
+        partes.push("El nivel de tráfico aún es bajo pero estable; es un buen momento para seguir construyendo presencia y contenidos.");
+      } else if (m.usuarios < 150) {
+        partes.push("El tráfico es moderado y muestra un buen potencial de crecimiento si se acompaña con campañas y contenido constante.");
+      } else {
+        partes.push("El tráfico es alto, con buena llegada al sitio. Conviene enfocarse en mejorar la calidad de las visitas y la conversión.");
+      }
+
+      if (m.rebotePct != null) {
+        if (m.rebotePct > 70) {
+          partes.push("La tasa de rebote es elevada; vale la pena revisar la primera impresión del sitio (tiempo de carga, mensaje inicial y diseño del hero).");
+        } else if (m.rebotePct > 55) {
+          partes.push("La tasa de rebote es algo alta; hay margen para mejorar la claridad del contenido inicial y la velocidad.");
+        } else {
+          partes.push("La tasa de rebote es saludable y sugiere que el tráfico es de buena calidad.");
+        }
+      }
+
+      if (m.realConvRatePct != null) {
+        if (m.realConvRatePct >= 7) {
+          partes.push("La tasa de conversión es muy buena para un sitio de servicios; el funnel actual está funcionando bien.");
+        } else if (m.realConvRatePct >= 3) {
+          partes.push("La tasa de conversión es correcta, aunque se podrían probar mejoras en el llamado a la acción para subir un poco ese porcentaje.");
+        } else {
+          partes.push("La tasa de conversión es baja; puede ser un buen momento para revisar formularios, botones de contacto y ofrecer incentivos claros.");
+        }
+      }
+
+      if (m.avgSessionSec != null) {
+        if (m.avgSessionSec >= 90) {
+          partes.push("El engagement es fuerte: los usuarios pasan más de minuto y medio por sesión, lo que indica que el contenido los retiene bien.");
+        } else if (m.avgSessionSec >= 45) {
+          partes.push("El engagement es bueno: los usuarios se quedan cerca de un minuto por sesión, un valor sano para la mayoría de sitios.");
+        } else if (m.avgSessionSec >= 20) {
+          partes.push("El engagement es aceptable, aunque se podría trabajar mejor la estructura de contenidos para que las personas naveguen y permanezcan más tiempo.");
+        } else {
+          partes.push("El engagement es bajo; conviene revisar el contenido del primer scroll, la velocidad del sitio y la claridad de la propuesta de valor.");
+        }
+      }
+
+      if (m.conversiones != null && m.conversiones > 0) {
+        partes.push(`En el período se registraron ${fmtNum(m.conversiones)} conversiones (contactos o acciones clave), lo que demuestra que el sitio ya está generando oportunidades reales de negocio.`);
+      }
+
+      if (m.qualityScore != null) {
+        if (m.qualityScore >= 70) {
+          partes.push("El Quality Score global del sitio es alto; a partir de acá las mejoras serán más finas y estratégicas.");
+        } else if (m.qualityScore >= 40) {
+          partes.push("El Quality Score es intermedio; hay una buena base, pero todavía hay espacio para optimizar mensajes, estructura y tiempos de carga.");
+        } else {
+          partes.push("El Quality Score es bajo; priorizar mejoras de experiencia de usuario y claridad del mensaje puede tener un impacto importante en los resultados.");
+        }
+      }
+
+      return partes.join(" ");
+    }
+
     async function cargarDatosGA() {
       try {
         const res = await fetch("https://umanoai.com.ar/analytics.json?_=" + Date.now());
@@ -408,6 +507,7 @@
             : null;
         const leadEfficiency = safeDiv(conversiones, usuarios); // fracción
         const realConvRate = safeDiv(conversiones, sesiones);   // fracción
+        const realConvRatePct = realConvRate != null ? realConvRate * 100 : null;
 
         let qualityScore = null;
         if (reboteRatio != null && tiempoMedioSesion != null && paginasPorSesion != null) {
@@ -477,8 +577,28 @@
         const qsUnit = cards[14].querySelector(".ga-unit");
         if (qsUnit) qsUnit.textContent = qualityScore != null ? "/100" : "";
 
+        // IA: resumen textual
+        const iaMetrics = {
+          usuarios,
+          sesiones,
+          paginas,
+          avgSessionSec: tiempoMedioSesion,
+          rebotePct,
+          conversiones,
+          realConvRatePct,
+          qualityScore
+        };
+        const iaTextEl = document.getElementById("ia-text");
+        if (iaTextEl) {
+          iaTextEl.textContent = resumenIA(iaMetrics);
+        }
+
       } catch (e) {
         console.error("Error cargando datos:", e);
+        const iaTextEl = document.getElementById("ia-text");
+        if (iaTextEl) {
+          iaTextEl.textContent = "No se pudieron cargar los datos de Analytics en este momento.";
+        }
       }
     }
 
@@ -487,3 +607,4 @@
 
 </body>
 </html>
+
