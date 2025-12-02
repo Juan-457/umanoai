@@ -318,29 +318,80 @@
         const cards = document.querySelectorAll(".ga-card");
 
         const fmtInt = (v) =>
-          v != null ? Number(v).toLocaleString("es-AR") : "–";
+          v != null && !Number.isNaN(Number(v))
+            ? Number(v).toLocaleString("es-AR")
+            : "–";
 
         const fmtPct = (v, dec = 1) =>
-          v != null ? Number(v).toFixed(dec) + " %" : "–";
+          v != null && !Number.isNaN(Number(v))
+            ? Number(v).toFixed(dec) + " %"
+            : "–";
 
         const fmtDur = (seg) => {
-          if (!seg && seg !== 0) return "–";
-          const m = Math.floor(seg / 60);
-          const s = Math.round(seg % 60).toString().padStart(2, "0");
+          if (seg == null || Number.isNaN(Number(seg))) return "–";
+          const total = Number(seg);
+          const m = Math.floor(total / 60);
+          const s = Math.round(total % 60).toString().padStart(2, "0");
           return `${m}m ${s}s`;
         };
 
+        // 1) Usuarios
         cards[0].querySelector(".ga-value").textContent = fmtInt(d.usuarios);
+
+        // 2) Sesiones
         cards[1].querySelector(".ga-value").textContent = fmtInt(d.sesiones);
+
+        // 3) Páginas vistas
         cards[2].querySelector(".ga-value").textContent = fmtInt(d.paginas_vistas);
 
-        // 🔥 Nueva métrica: Tiempo de interacción medio
-        cards[3].querySelector(".ga-value").textContent = fmtDur(d.interaccion_media_seg);
+        // 4) Tiempo de interacción medio por usuario
+        let avgSeg = null;
 
+        if (d.interaccion_media_seg != null) {
+          // Si ya viene calculado desde el JSON
+          avgSeg = Number(d.interaccion_media_seg);
+        } else {
+          // Lo calculamos en el front:
+          // total tiempo de interacción (segundos)
+          const totalInteraccion =
+            d.tiempo_interaccion_total_seg != null
+              ? Number(d.tiempo_interaccion_total_seg)
+              : d.userEngagementDuration != null
+              ? Number(d.userEngagementDuration)
+              : null;
+
+          // usuarios activos
+          const usuarios =
+            d.usuarios != null
+              ? Number(d.usuarios)
+              : d.activeUsers != null
+              ? Number(d.activeUsers)
+              : null;
+
+          if (
+            totalInteraccion != null &&
+            !Number.isNaN(totalInteraccion) &&
+            usuarios != null &&
+            !Number.isNaN(usuarios) &&
+            usuarios > 0
+          ) {
+            avgSeg = totalInteraccion / usuarios;
+          }
+        }
+
+        cards[3].querySelector(".ga-value").textContent =
+          avgSeg != null ? fmtDur(avgSeg) : "–";
+
+        // 5) Tasa de rebote
         cards[4].querySelector(".ga-value").textContent = fmtPct(d.rebote, 1);
+
+        // 6) Conversiones
         cards[5].querySelector(".ga-value").textContent = fmtInt(d.conversiones);
+
+        // 7) Tasa de conversión
         cards[6].querySelector(".ga-value").textContent = fmtPct(d.tasa_conversion, 2);
 
+        // 8) Tráfico orgánico
         cards[7].querySelector(".ga-value").textContent =
           d.trafico_organico != null ? fmtInt(d.trafico_organico) : "–";
 
@@ -354,3 +405,4 @@
 
 </body>
 </html>
+
