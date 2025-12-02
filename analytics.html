@@ -196,6 +196,29 @@
 
     .ga-card.success {border-color: rgba(74, 222, 128, .7);}
     .ga-card.danger {border-color: rgba(248, 113, 113, .7);}
+
+    .help-box {
+      margin-top: 22px;
+      padding: 16px 16px 14px;
+      border-radius: var(--radius);
+      border: 1px dashed rgba(148, 163, 184, .5);
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, .15) 0, transparent 55%);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .help-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #e5e7eb;
+    }
+
+    footer {
+      margin-top: 26px;
+      font-size: 10px;
+      color: #6b7280;
+      text-align: right;
+    }
   </style>
 </head>
 
@@ -221,68 +244,66 @@
 
       <section class="grid">
 
-        <!-- 0 Usuarios -->
+        <!-- 1 Usuarios -->
         <article class="ga-card highlight">
           <div class="ga-label"><span class="ga-icon">👤</span>Usuarios</div>
           <div class="ga-main"><span class="ga-value">–</span></div>
           <p class="ga-desc">Visitantes activos únicos.</p>
         </article>
 
-        <!-- 1 Sesiones -->
+        <!-- 2 Sesiones -->
         <article class="ga-card">
           <div class="ga-label"><span class="ga-icon">📈</span>Sesiones</div>
           <div class="ga-main"><span class="ga-value">–</span></div>
           <p class="ga-desc">Total de visitas.</p>
         </article>
 
-        <!-- 2 Páginas vistas -->
+        <!-- 3 Páginas vistas -->
         <article class="ga-card">
           <div class="ga-label"><span class="ga-icon">📄</span>Páginas vistas</div>
           <div class="ga-main"><span class="ga-value">–</span></div>
           <p class="ga-desc">Volumen total de páginas vistas.</p>
         </article>
 
-        <!-- 3 Tiempo de interacción medio -->
+        <!-- 4 Tiempo de interacción medio por usuario -->
         <article class="ga-card">
           <div class="ga-label"><span class="ga-icon">⏱</span>Tiempo de interacción</div>
           <div class="ga-main"><span class="ga-value">–</span></div>
           <p class="ga-desc">Tiempo medio por usuario activo.</p>
         </article>
 
-        <!-- 4 Tasa de rebote -->
+        <!-- 5 Tasa de rebote -->
         <article class="ga-card danger">
           <div class="ga-label"><span class="ga-icon">🏃</span>Tasa de rebote</div>
           <div class="ga-main"><span class="ga-value">–</span><span class="ga-unit"></span></div>
           <p class="ga-desc">Sesiones sin interacción.</p>
         </article>
 
-        <!-- 5 Conversiones -->
+        <!-- 6 Conversiones -->
         <article class="ga-card success">
           <div class="ga-label"><span class="ga-icon">🎯</span>Conversiones</div>
           <div class="ga-main"><span class="ga-value">–</span></div>
           <p class="ga-desc">Objetivos cumplidos.</p>
         </article>
 
-        <!-- 6 Tasa de conversión -->
+        <!-- 7 Tasa de conversión -->
         <article class="ga-card success">
           <div class="ga-label"><span class="ga-icon">✅</span>Tasa de conversión</div>
           <div class="ga-main"><span class="ga-value">–</span><span class="ga-unit"></span></div>
           <p class="ga-desc">Porcentaje de sesiones convertidas.</p>
         </article>
 
-        <!-- 7 Tráfico orgánico -->
+        <!-- 8 Tráfico orgánico -->
         <article class="ga-card">
           <div class="ga-label"><span class="ga-icon">🔍</span>Tráfico orgánico</div>
           <div class="ga-main"><span class="ga-value">–</span></div>
           <p class="ga-desc">Llegadas desde Google.</p>
         </article>
 
-        <!-- 8 Tiempo total de interacción -->
+        <!-- 9 Tiempo total de interacción -->
         <article class="ga-card">
-          <div class="ga-label"><span class="ga-icon">🔥</span>Tiempo total de interacción</div>
-          <div class="ga-main">
-            <span class="ga-value">–</span>
-          </div>
+          <div class="ga-label"><span class="ga-icon">⏳</span>Tiempo total de interacción</div>
+          <div class="ga-main"><span class="ga-value">–</span></div>
           <p class="ga-desc">Suma total del tiempo de participación de los usuarios.</p>
         </article>
 
@@ -313,6 +334,7 @@
             ? Number(v).toFixed(dec) + " %"
             : "–";
 
+        // formatea segundos -> Xm Ys
         const fmtDur = (seg) => {
           if (seg == null || Number.isNaN(Number(seg))) return "–";
           const total = Number(seg);
@@ -321,49 +343,39 @@
           return `${m}m ${s}s`;
         };
 
-        // === Normalizamos entradas ===
-        const usuarios = d.usuarios != null ? Number(d.usuarios) : null;
-        const sesiones = d.sesiones != null ? Number(d.sesiones) : null;
-        const paginas = d.paginas_vistas != null ? Number(d.paginas_vistas) : null;
-        const rebote = d.rebote != null ? Number(d.rebote) : null;
-        const conversiones = d.conversiones != null ? Number(d.conversiones) : null;
-        const tasaConv = d.tasa_conversion != null ? Number(d.tasa_conversion) : null;
-        const traficoOrganico = d.trafico_organico != null ? Number(d.trafico_organico) : null;
+        // 1 Usuarios
+        cards[0].querySelector(".ga-value").textContent = fmtInt(d.usuarios);
 
-        // 🚀 TIEMPO: usamos interaccion_media_seg
-        const interaccionMedia =
-          d.interaccion_media_seg != null ? Number(d.interaccion_media_seg) : null;
+        // 2 Sesiones
+        cards[1].querySelector(".ga-value").textContent = fmtInt(d.sesiones);
 
-        // tiempo total = media × usuarios
-        let tiempoTotalSeg = null;
-        if (interaccionMedia != null && usuarios != null) {
-          tiempoTotalSeg = interaccionMedia * usuarios;
-        }
+        // 3 Páginas vistas
+        cards[2].querySelector(".ga-value").textContent = fmtInt(d.paginas_vistas);
 
-        // === Pintamos datos ===
+        // 4 Tiempo de interacción medio por usuario activo
+        const totalInteraccionSeg = d.interaccion_media_seg;          // TOTAL segundos (userEngagementDuration)
+        const interaccionMediaPorUsuario =
+          d.usuarios ? totalInteraccionSeg / d.usuarios : null;      // promedio
 
-        cards[0].querySelector(".ga-value").textContent = fmtInt(usuarios);
-        cards[1].querySelector(".ga-value").textContent = fmtInt(sesiones);
-        cards[2].querySelector(".ga-value").textContent = fmtInt(paginas);
+        cards[3].querySelector(".ga-value").textContent =
+          fmtDur(interaccionMediaPorUsuario);
 
-        // Tiempo promedio por usuario
-        cards[3].querySelector(".ga-value").textContent = fmtDur(interaccionMedia);
+        // 5 Tasa de rebote
+        cards[4].querySelector(".ga-value").textContent = fmtPct(d.rebote, 1);
 
-        // Tasa de rebote
-        cards[4].querySelector(".ga-value").textContent = fmtPct(rebote, 1);
+        // 6 Conversiones
+        cards[5].querySelector(".ga-value").textContent = fmtInt(d.conversiones);
 
-        // Conversiones
-        cards[5].querySelector(".ga-value").textContent = fmtInt(conversiones);
+        // 7 Tasa de conversión
+        cards[6].querySelector(".ga-value").textContent = fmtPct(d.tasa_conversion, 2);
 
-        // Tasa de conversión
-        cards[6].querySelector(".ga-value").textContent = fmtPct(tasaConv, 2);
-
-        // Tráfico orgánico
+        // 8 Tráfico orgánico
         cards[7].querySelector(".ga-value").textContent =
-          traficoOrganico != null ? fmtInt(traficoOrganico) : "–";
+          d.trafico_organico != null ? fmtInt(d.trafico_organico) : "–";
 
-        // Tiempo total
-        cards[8].querySelector(".ga-value").textContent = fmtDur(tiempoTotalSeg);
+        // 9 Tiempo total de interacción (totalInteraccionSeg directamente)
+        cards[8].querySelector(".ga-value").textContent =
+          fmtDur(totalInteraccionSeg);
 
       } catch (e) {
         console.error("Error cargando datos:", e);
