@@ -121,8 +121,15 @@
       gap: 16px;
     }
 
+    /* Grid especial para eventos destacados */
+    .grid-events {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-bottom: 24px;
+    }
+
     @media (max-width: 960px) {
       .grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
+      .grid-events {grid-template-columns: 1fr;}
     }
 
     @media (max-width: 640px) {
@@ -143,6 +150,19 @@
         linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
       box-shadow: 0 10px 40px rgba(15, 23, 42, .9);
       overflow: hidden;
+    }
+
+    /* Tarjetas mega para WhatsApp y Tito */
+    .ga-card.mega {
+      padding: 22px 18px;
+      border-width: 2px;
+      border-color: rgba(56, 189, 248, .9);
+      box-shadow: 0 0 45px rgba(56,189,248,.25);
+    }
+
+    .ga-card.mega .ga-value {
+      font-size: 32px;
+      font-weight: 700;
     }
 
     .ga-label {
@@ -258,6 +278,26 @@
         Vista rápida de los indicadores clave del rendimiento de tu sitio web (últimos 7 días).
       </p>
 
+      <!-- Tarjetas mega: eventos clave -->
+      <section class="grid grid-events">
+        <article class="ga-card mega highlight" id="evt-whatsapp">
+          <div class="ga-label"><span class="ga-icon">💬</span>Clicks a WhatsApp</div>
+          <div class="ga-main">
+            <span class="ga-value">–</span>
+          </div>
+          <p class="ga-desc">Veces que los usuarios hicieron clic para escribirte.</p>
+        </article>
+
+        <article class="ga-card mega highlight" id="evt-tito">
+          <div class="ga-label"><span class="ga-icon">🤖</span>Mensajes en Tito</div>
+          <div class="ga-main">
+            <span class="ga-value">–</span>
+          </div>
+          <p class="ga-desc">Interacciones enviadas al chatbot Tito.</p>
+        </article>
+      </section>
+
+      <!-- Grid de métricas GA -->
       <section class="grid">
 
         <!-- 1 Usuarios -->
@@ -529,6 +569,21 @@
         const d = await res.json();
         const eventos = d.eventos || [];
 
+        // Actualizar tarjetas mega
+        const sumBy = (filtro) =>
+          eventos
+            .filter(filtro)
+            .reduce((acc, e) => acc + (Number(e.cantidad) || 0), 0);
+
+        const totalClicks = sumBy(e => e.evento === "click_whatsapp");
+        const totalTito   = sumBy(e => e.evento === "tito_chat_message");
+
+        const wEl = document.querySelector("#evt-whatsapp .ga-value");
+        const tEl = document.querySelector("#evt-tito .ga-value");
+        if (wEl) wEl.textContent = totalClicks || 0;
+        if (tEl) tEl.textContent = totalTito || 0;
+
+        // Texto IA extendido
         const textoEventos = resumenEventosIA(eventos, conversiones);
         const iaTextEl = document.getElementById("ia-text");
         if (iaTextEl) {
@@ -598,65 +653,65 @@
         }
 
         // 1 Usuarios
-        cards[0].querySelector(".ga-value").textContent = fmtInt(usuarios);
+        cards[2].querySelector(".ga-value").textContent = fmtInt(usuarios);
 
         // 2 Sesiones
-        cards[1].querySelector(".ga-value").textContent = fmtInt(sesiones);
+        cards[3].querySelector(".ga-value").textContent = fmtInt(sesiones);
 
         // 3 Páginas vistas
-        cards[2].querySelector(".ga-value").textContent = fmtInt(paginas);
+        cards[4].querySelector(".ga-value").textContent = fmtInt(paginas);
 
         // 4 Tiempo de interacción medio por usuario
-        cards[3].querySelector(".ga-value").textContent =
+        cards[5].querySelector(".ga-value").textContent =
           fmtDur(interaccionMediaPorUsuario);
 
         // 5 Tasa de rebote
-        cards[4].querySelector(".ga-value").textContent = fmtPct(rebotePct, 1);
+        cards[6].querySelector(".ga-value").textContent = fmtPct(rebotePct, 1);
 
         // 6 Conversiones
-        cards[5].querySelector(".ga-value").textContent = fmtInt(conversiones);
+        cards[7].querySelector(".ga-value").textContent = fmtInt(conversiones);
 
         // 7 Tasa de conversión
         if (tasaConvPct != null) {
-          cards[6].querySelector(".ga-value").textContent = fmtPct(tasaConvPct, 2);
+          cards[8].querySelector(".ga-value").textContent = fmtPct(tasaConvPct, 2);
         } else if (realConvRate != null) {
-          cards[6].querySelector(".ga-value").textContent = fmtPct(realConvRate * 100, 2);
+          cards[8].querySelector(".ga-value").textContent = fmtPct(realConvRate * 100, 2);
         } else {
-          cards[6].querySelector(".ga-value").textContent = "–";
+          cards[8].querySelector(".ga-value").textContent = "–";
         }
 
         // 8 Tráfico orgánico
-        cards[7].querySelector(".ga-value").textContent =
+        cards[9].querySelector(".ga-value").textContent =
           d.trafico_organico != null ? fmtInt(d.trafico_organico) : "–";
 
         // 9 Tiempo total de interacción
-        cards[8].querySelector(".ga-value").textContent =
+        cards[10].querySelector(".ga-value").textContent =
           fmtDur(totalInteraccionSeg);
 
         // 10 Páginas por sesión
-        cards[9].querySelector(".ga-value").textContent =
+        cards[11].querySelector(".ga-value").textContent =
           paginasPorSesion != null ? paginasPorSesion.toFixed(2) : "–";
 
         // 11 Sesiones por usuario
-        cards[10].querySelector(".ga-value").textContent =
+        cards[12].querySelector(".ga-value").textContent =
           sesionesPorUsuario != null ? sesionesPorUsuario.toFixed(2) : "–";
 
         // 12 Tiempo medio por sesión
-        cards[11].querySelector(".ga-value").textContent =
+        cards[13].querySelector(".ga-value").textContent =
           fmtDur(tiempoMedioSesion);
 
         // 13 Sesiones con interacción
-        cards[12].querySelector(".ga-value").textContent =
+        cards[14].querySelector(".ga-value").textContent =
           sesionesConInteraccion != null ? fmtInt(sesionesConInteraccion) : "–";
 
         // 14 Eficiencia de leads (% de usuarios que convierten)
-        cards[13].querySelector(".ga-value").textContent =
+        cards[15].querySelector(".ga-value").textContent =
           leadEfficiency != null ? fmtPct(leadEfficiency * 100, 1) : "–";
 
         // 15 Quality Score del sitio (0–100)
-        cards[14].querySelector(".ga-value").textContent =
+        cards[16].querySelector(".ga-value").textContent =
           qualityScore != null ? qualityScore.toString() : "–";
-        const qsUnit = cards[14].querySelector(".ga-unit");
+        const qsUnit = cards[16].querySelector(".ga-unit");
         if (qsUnit) qsUnit.textContent = qualityScore != null ? "/100" : "";
 
         // IA: resumen textual base
@@ -693,3 +748,4 @@
 
 </body>
 </html>
+
