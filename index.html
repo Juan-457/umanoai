@@ -981,146 +981,157 @@
       border-color:rgba(56,189,248,0.75) !important;
       transform:translateY(-2px);
     }
-      /* ====================== CHAT TITO – WIDGET WEB ====================== */
-  #umanoai-chat-root{
-    position:fixed;
-    bottom:96px;          /* queda arriba de la burbuja de WhatsApp */
-    right:20px;
-    z-index:1250;
-    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-  }
+    /* ============================================================= */
+    /* =============== CHAT FLOTANTE UMANOAI – ESTILOS ============ */
+    /* ============================================================= */
 
-  #umanoai-chat-toggle{
-    width:54px;
-    height:54px;
-    border-radius:999px;
-    border:1px solid rgba(148,163,184,0.7);
-    background:radial-gradient(circle at 30% 0,#38bdf8,#0f172a);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    box-shadow:0 10px 26px rgba(15,23,42,0.8);
-    padding:0;
-  }
-  #umanoai-chat-toggle img{
-    width:30px;
-    height:30px;
-    object-fit:contain;
-  }
-
-  #umanoai-chat-window{
-    position:absolute;
-    bottom:70px;
-    right:0;
-    width:320px;
-    max-height:430px;
-    background:#020617;
-    border-radius:18px;
-    border:1px solid rgba(148,163,184,0.75);
-    box-shadow:0 22px 55px rgba(15,23,42,0.95);
-    display:none;
-    flex-direction:column;
-    overflow:hidden;
-  }
-  #umanoai-chat-window.open{
-    display:flex;
-  }
-
-  .um-chat-header{
-    padding:10px 14px 8px;
-    background:linear-gradient(135deg,#0f172a,#1e293b);
-    border-bottom:1px solid rgba(148,163,184,0.6);
-    color:#e5e7eb;
-    font-size:13px;
-  }
-  .um-chat-header strong{
-    display:block;
-    font-size:14px;
-  }
-  .um-chat-header span{
-    font-size:12px;
-    opacity:.85;
-  }
-
-  #um-chat-messages{
-    padding:10px 10px 12px;
-    flex:1;
-    overflow-y:auto;
-    background:radial-gradient(circle at top,#020617,#020617 55%,#020617);
-  }
-
-  .um-chat-msg{
-    max-width:82%;
-    padding:7px 10px;
-    border-radius:12px;
-    margin-bottom:6px;
-    font-size:13px;
-    line-height:1.4;
-    color:#e5e7eb;
-    background:#1f2937;
-  }
-  .um-chat-user{
-    margin-left:auto;
-    background:#22c55e;
-    color:#022c22;
-  }
-  .um-chat-bot{
-    margin-right:auto;
-  }
-  .um-chat-loading{
-    margin-right:auto;
-    background:transparent;
-    color:#9ca3af;
-    font-style:italic;
-  }
-
-  #um-chat-form{
-    display:flex;
-    border-top:1px solid rgba(31,41,55,0.9);
-    background:#020617;
-    padding:6px;
-    gap:6px;
-  }
-  #um-chat-input{
-    flex:1;
-    border-radius:999px;
-    border:1px solid rgba(75,85,99,0.9);
-    padding:6px 10px;
-    font-size:13px;
-    background:#020617;
-    color:#e5e7eb;
-    outline:none;
-  }
-  #um-chat-input::placeholder{
-    color:#6b7280;
-  }
-  #um-chat-form button[type="submit"]{
-    border-radius:999px;
-    border:none;
-    background:#38bdf8;
-    color:#0b1120;
-    padding:0 14px;
-    font-size:13px;
-    font-weight:600;
-    cursor:pointer;
-  }
-  #um-chat-form button[type="submit"]:hover{
-    background:#0ea5e9;
-  }
-
-  @media(max-width:700px){
+    /* Contenedor raíz del widget de chat (posición flotante) */
     #umanoai-chat-root{
-      bottom:90px;
-      right:16px;
+      position:fixed;
+      right:20px;
+      bottom:96px; /* queda arriba del botón de WhatsApp */
+      z-index:1500;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
     }
-    #umanoai-chat-window{
-      width:100vw;
-      max-width:360px;
-      right:-4px;
-    }
-  }
 
+    /* Burbuja de apertura del chat con logo UmanoAI */
+    #umanoai-chat-toggle{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      border:2px solid #22D3EE;
+      background:rgba(0,35,65,0.88);   /* Azul oscuro translúcido */
+      cursor:pointer;
+      box-shadow:0 8px 22px rgba(15,23,42,.7);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+
+    #umanoai-chat-toggle img{
+      width:40px;
+      height:40px;
+      border-radius:999px;
+      display:block;
+    }
+
+    #umanoai-chat-toggle:hover{
+      transform:scale(1.06);
+      box-shadow:0 12px 30px rgba(15,23,42,.9);
+    }
+
+    /* Ventana del chat (card) */
+    #umanoai-chat-window{
+      width:320px;
+      max-height:410px;
+      background:#020617;
+      color:#e5e7eb;
+      border-radius:18px;
+      border:2px solid rgba(34,211,238,.95);  /* borde cian más fuerte */
+      box-shadow:
+        0 0 0 1px rgba(15,23,42,.7),
+        0 22px 60px rgba(0,0,0,.95);          /* sombra más marcada */
+      display:none;
+      flex-direction:column;
+      overflow:hidden;
+      margin-bottom:10px;
+    }
+    #umanoai-chat-window.open{
+      display:flex;
+    }
+
+    /* Header dentro del chat (nombre bot + subtítulo) */
+    .um-chat-header{
+      padding:10px 14px;
+      background:linear-gradient(135deg,#1d4ed8,#7c3aed); /* azul → violeta */
+      border-bottom:1px solid rgba(191,219,254,.5);
+    }
+    .um-chat-header strong{
+      display:block;
+      font-size:14px;
+    }
+    .um-chat-header span{
+      font-size:12px;
+      color:#e5e7eb;
+      opacity:.9;
+    }
+
+    /* Contenedor scrollable de mensajes del chat */
+    #um-chat-messages{
+      flex:1;
+      padding:10px;
+      overflow-y:auto;
+      font-size:14px;
+    }
+
+    /* Mensaje individual del chat */
+    .um-chat-msg{
+      padding:6px 10px;
+      border-radius:10px;
+      margin-bottom:6px;
+      max-width:80%;
+      line-height:1.4;
+      white-space:pre-wrap; /* mantiene saltos de línea del texto plano */
+    }
+
+    /* Burbujas del usuario (alineadas a la derecha, color verde) */
+    .um-chat-user{
+      background:#22c55e;
+      color:#022c22;
+      margin-left:auto;
+    }
+
+    /* Burbujas del bot y estado "cargando" (alineadas a la izquierda) */
+    .um-chat-bot,
+    .um-chat-loading{
+      background:#111827;
+      color:#e5e7eb;
+      margin-right:auto;
+    }
+
+    /* Formulario de entrada del chat (input + botón) */
+    #um-chat-form{
+      display:flex;
+      gap:6px;
+      padding:8px;
+      border-top:1px solid #1f2937;
+      background:#020617;
+    }
+    #um-chat-input{
+      flex:1;
+      padding:6px 8px;
+      border-radius:999px;
+      border:1px solid #4b5563;
+      background:#020617;
+      color:#e5e7eb;
+    }
+    #um-chat-input:focus{
+      outline:none;
+      border-color:#22c55e;
+    }
+    #um-chat-form button[type="submit"]{
+      padding:6px 12px;
+      border-radius:999px;
+      border:none;
+      background:#22c55e;
+      color:#022c22;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    /* Ajustes del chat en pantallas chicas */
+    @media (max-width:700px){
+      #umanoai-chat-root{
+        right:14px;
+        bottom:90px;
+      }
+      #umanoai-chat-window{
+        width:calc(100vw - 28px);
+        max-width:360px;
+      }
+    }
 
   </style>
 </head>
