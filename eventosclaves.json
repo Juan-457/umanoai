@@ -23,16 +23,16 @@
     },
     {
       "fecha": "2025-12-03",
+      "evento": "click_whatsapp",
+      "cantidad": 3
+    },
+    {
+      "fecha": "2025-12-03",
       "evento": "tito_chat_message",
       "cantidad": 3
     },
     {
       "fecha": "2025-11-28",
-      "evento": "click_whatsapp",
-      "cantidad": 2
-    },
-    {
-      "fecha": "2025-12-03",
       "evento": "click_whatsapp",
       "cantidad": 2
     },
