@@ -1,0 +1,40 @@
+{
+  "rango": "ultimos_7_dias",
+  "eventos": [
+    {
+      "fecha": "2025-12-02",
+      "evento": "click_whatsapp",
+      "cantidad": 20
+    },
+    {
+      "fecha": "2025-12-01",
+      "evento": "click_whatsapp",
+      "cantidad": 9
+    },
+    {
+      "fecha": "2025-11-30",
+      "evento": "click_whatsapp",
+      "cantidad": 8
+    },
+    {
+      "fecha": "2025-11-30",
+      "evento": "tito_chat_message",
+      "cantidad": 6
+    },
+    {
+      "fecha": "2025-11-28",
+      "evento": "click_whatsapp",
+      "cantidad": 2
+    },
+    {
+      "fecha": "2025-11-26",
+      "evento": "click_whatsapp",
+      "cantidad": 1
+    },
+    {
+      "fecha": "2025-12-01",
+      "evento": "tito_chat_message",
+      "cantidad": 1
+    }
+  ]
+}
