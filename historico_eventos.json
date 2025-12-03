@@ -1,0 +1,24 @@
+{
+  "rango": "ultimos_30_dias",
+  "dias": [
+    {
+      "fecha": "2025-11-26",
+      "usuarios": 12,
+      "click_whatsapp": 1,
+      "tito_chat_message": 0
+    },
+    {
+      "fecha": "2025-11-28",
+      "usuarios": 30,
+      "click_whatsapp": 2,
+      "tito_chat_message": 0
+    },
+    {
+      "fecha": "2025-11-30",
+      "usuarios": 40,
+      "click_whatsapp": 8,
+      "tito_chat_message": 6
+    }
+    // ...
+  ]
+}
