@@ -457,6 +457,88 @@
       return partes.join(" ");
     }
 
+    // ➜ Análisis “IA” de los eventos clave (WhatsApp + Tito)
+    function resumenEventosIA(eventos, conversiones) {
+      if (!Array.isArray(eventos) || eventos.length === 0) {
+        return " Todavía no se registran eventos clave (clics en WhatsApp o mensajes en Tito) en los últimos días.";
+      }
+
+      const sumBy = (filtro) =>
+        eventos
+          .filter(filtro)
+          .reduce((acc, e) => acc + (Number(e.cantidad) || 0), 0);
+
+      const totalClicks = sumBy(e => e.evento === "click_whatsapp");
+      const totalTito   = sumBy(e => e.evento === "tito_chat_message");
+
+      const diasUnicos = [...new Set(eventos.map(e => e.fecha))].length;
+
+      const partes = [];
+      partes.push(` En los últimos ${diasUnicos} días analizados se registraron ${totalClicks} clics en WhatsApp y ${totalTito} eventos de chat con Tito.`);
+
+      const parseDateNum = (f) => Number((f || "").replace(/-/g, ""));
+      const clicksOrdenados = eventos
+        .filter(e => e.evento === "click_whatsapp")
+        .slice()
+        .sort((a, b) => parseDateNum(a.fecha) - parseDateNum(b.fecha));
+
+      if (clicksOrdenados.length >= 2) {
+        const ultimo = clicksOrdenados[clicksOrdenados.length - 1];
+        const anterior = clicksOrdenados[clicksOrdenados.length - 2];
+
+        if (ultimo.cantidad > anterior.cantidad) {
+          partes.push(" Los clics hacia WhatsApp vienen creciendo en los últimos días, lo que indica que el llamado a la acción está funcionando bien.");
+        } else if (ultimo.cantidad < anterior.cantidad) {
+          partes.push(" Los clics hacia WhatsApp bajaron en el último día respecto al anterior; puede ser útil revisar qué cambió en el tráfico o en los anuncios.");
+        }
+      }
+
+      const ratioTito = totalClicks > 0 ? (totalTito / totalClicks) * 100 : null;
+      if (ratioTito != null) {
+        if (ratioTito >= 50) {
+          partes.push(" Una gran proporción de personas que hacen clic en WhatsApp interactúan también con Tito, lo que muestra un embudo conversacional muy activo.");
+        } else if (ratioTito >= 20) {
+          partes.push(" Una parte razonable de los clics en WhatsApp termina interactuando con Tito; podrías probar mensajes más claros para incentivar aún más el uso del chat.");
+        } else {
+          partes.push(" Hoy hay muchos clics en WhatsApp pero pocas conversaciones con Tito; revisar el mensaje inicial del chat y la rapidez de respuesta puede ayudar a mejorar este punto.");
+        }
+      }
+
+      if (conversiones != null && conversiones > 0 && totalClicks > 0) {
+        const convRateVsClicks = (conversiones / totalClicks) * 100;
+        if (convRateVsClicks >= 40) {
+          partes.push(" La relación entre clics en WhatsApp y conversiones es muy buena: una parte importante de las conversaciones termina en una acción valiosa.");
+        } else if (convRateVsClicks >= 15) {
+          partes.push(" Una fracción razonable de las conversaciones termina en conversión; optimizar mensajes dentro de WhatsApp puede seguir empujando este indicador.");
+        } else {
+          partes.push(" Hay muchas conversaciones pero pocas terminan en conversión; conviene revisar el guion comercial en WhatsApp y los pasos siguientes (presupuesto, seguimiento, etc.).");
+        }
+      }
+
+      return partes.join(" ");
+    }
+
+    async function cargarEventosYActualizarIA(baseText, conversiones) {
+      try {
+        const res = await fetch("https://umanoai.com.ar/eventosclaves.json?_=" + Date.now());
+        if (!res.ok) {
+          console.warn("No se pudieron cargar eventosclaves.json");
+          return;
+        }
+
+        const d = await res.json();
+        const eventos = d.eventos || [];
+
+        const textoEventos = resumenEventosIA(eventos, conversiones);
+        const iaTextEl = document.getElementById("ia-text");
+        if (iaTextEl) {
+          iaTextEl.textContent = baseText + " " + textoEventos;
+        }
+      } catch (e) {
+        console.error("Error cargando eventos clave:", e);
+      }
+    }
+
     async function cargarDatosGA() {
       try {
         const res = await fetch("https://umanoai.com.ar/analytics.json?_=" + Date.now());
@@ -577,7 +659,7 @@
         const qsUnit = cards[14].querySelector(".ga-unit");
         if (qsUnit) qsUnit.textContent = qualityScore != null ? "/100" : "";
 
-        // IA: resumen textual
+        // IA: resumen textual base
         const iaMetrics = {
           usuarios,
           sesiones,
@@ -588,10 +670,14 @@
           realConvRatePct,
           qualityScore
         };
+        const baseText = resumenIA(iaMetrics);
         const iaTextEl = document.getElementById("ia-text");
         if (iaTextEl) {
-          iaTextEl.textContent = resumenIA(iaMetrics);
+          iaTextEl.textContent = baseText;
         }
+
+        // ➜ Cargar eventos clave y complementar el resumen con IA
+        cargarEventosYActualizarIA(baseText, conversiones);
 
       } catch (e) {
         console.error("Error cargando datos:", e);
@@ -607,4 +693,3 @@
 
 </body>
 </html>
-
