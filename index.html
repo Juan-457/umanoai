@@ -220,13 +220,55 @@
       border:1px solid rgba(148,163,184,0.55);
     }
 
-    .um header h1{
-      color:#fff;
-      margin:10px 12px 8px;
-      font-size:clamp(28px,5vw,46px);
-      font-weight:800;
-      text-shadow:0 2px 14px rgba(0,0,0,.5);
+    /* h1 sólo para SEO / accesibilidad, no visible */
+    .hero-title-visually-hidden{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
     }
+
+    /* Burbujas del título */
+    .hero-bubbles{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:16px;
+    }
+    .hero-pill{
+      padding:10px 18px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.96);
+      border:1px solid rgba(148,163,184,0.7);
+      color:#e5e7eb;
+      font-weight:700;
+      font-size:clamp(14px,2.4vw,18px);
+      box-shadow:0 10px 26px rgba(15,23,42,0.85);
+      backdrop-filter:blur(16px);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      white-space:nowrap;
+    }
+    .hero-pill:nth-child(1){
+      background:linear-gradient(135deg,rgba(56,189,248,0.18),rgba(15,23,42,0.96));
+    }
+    .hero-pill:nth-child(2){
+      background:linear-gradient(135deg,rgba(52,211,153,0.16),rgba(15,23,42,0.96));
+    }
+    .hero-pill:nth-child(3){
+      background:linear-gradient(135deg,rgba(244,114,182,0.16),rgba(15,23,42,0.96));
+    }
+    .hero-pill:nth-child(4){
+      background:linear-gradient(135deg,rgba(250,204,21,0.14),rgba(15,23,42,0.96));
+    }
+
     .um header .hero-subtitle{
       color:#f5f5f5;
       max-width:640px;
@@ -248,6 +290,10 @@
       .hero-bubble{
         padding:18px 16px 20px;
         border-radius:20px;
+      }
+      .hero-pill{
+        white-space:normal;
+        text-align:center;
       }
     }
 
@@ -1190,7 +1236,18 @@
       </video>
 
       <div class="hero-bubble">
-        <h1>Bots de WhatsApp, automatización y BI para que tu pyme venda 24/7</h1>
+        <!-- h1 solo SEO, el contenido visible va en las burbujas -->
+        <h1 class="hero-title-visually-hidden">
+          Bots de WhatsApp, automatización y BI para que tu pyme venda 24/7
+        </h1>
+
+        <div class="hero-bubbles">
+          <div class="hero-pill">Bots de WhatsApp</div>
+          <div class="hero-pill">Automatización de procesos</div>
+          <div class="hero-pill">Business Intelligence (BI)</div>
+          <div class="hero-pill">Para que tu pyme venda 24/7</div>
+        </div>
+
         <p class="hero-subtitle">
           En <strong>UmanoAI</strong> combinamos <strong>bots de WhatsApp para pymes, automatización de procesos y tableros de Power BI</strong>
           con sitios web diseñados para convertir, para que tu negocio de servicios o comercio en Argentina
@@ -2247,4 +2304,3 @@
   </script>
 </body>
 </html>
-
