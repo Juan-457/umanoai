@@ -169,6 +169,7 @@
       background:#020617; /* fondo oscuro para evitar flash blanco */
     }
 
+    /* Evita que las imágenes aparezcan gigantes antes del CSS */
     img{max-width:100%;height:auto;}
 
     /* ====================== CONTENEDOR PRINCIPAL .um ====================== */
@@ -176,6 +177,7 @@
       margin:0;
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
       line-height:1.45;
+      /* El fondo ahora lo pone el video global */
       background:transparent;
       padding-bottom:max(80px,var(--safe));
     }
@@ -183,8 +185,11 @@
     /* ====================== HEADER / HERO ====================== */
     .um header{
       position:relative;
+      /* fallback general */
       min-height:100vh;
+      /* alto visible real en navegadores modernos */
       min-height:100svh;
+
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -193,8 +198,11 @@
       overflow:hidden;
       isolation:isolate;
       padding:0 16px;
+
+      /* espacio para nav + notch si lo hay */
       padding-top:calc(80px + env(safe-area-inset-top, 0px));
       padding-bottom:calc(24px + env(safe-area-inset-bottom, 0px));
+
       background:#020617;
     }
     .um header video{
@@ -208,21 +216,25 @@
       background:#020617;
     }
 
-    .hero-bubble{
-      position:relative;
-      max-width:880px;
-      width:100%;
-      background:rgba(15,23,42,0.86);
-      border-radius:24px;
-      padding:24px 28px 26px;
-      box-shadow:0 18px 45px rgba(15,23,42,0.9);
-      backdrop-filter:blur(14px);
-      border:1px solid rgba(148,163,184,0.55);
+    /* Overlay oscuro sobre el video para que el texto se lea mejor */
+    .um header::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-1;
+      background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.25)
+      );
+      backdrop-filter: blur(4px);
     }
 
     .um header h1{
       color:#fff;
-      margin:10px 12px 8px;
+      margin:24px 12px 8px;
+      /* un poco más chico el máximo para que no se rompa en móviles con texto grande */
       font-size:clamp(28px,5vw,46px);
       font-weight:800;
       text-shadow:0 2px 14px rgba(0,0,0,.5);
@@ -240,15 +252,7 @@
       flex-wrap:wrap;
       gap:10px;
       justify-content:center;
-      margin-top:18px;
-      margin-bottom:4px;
-    }
-
-    @media (max-width:700px){
-      .hero-bubble{
-        padding:18px 16px 20px;
-        border-radius:20px;
-      }
+      margin-bottom:42px;
     }
 
     /* ====================== LOGO STICKY ABAJO IZQUIERDA ====================== */
@@ -256,7 +260,7 @@
       position:fixed;
       bottom:24px;
       left:18px;
-      height:67px;
+      height:67px; /* altura del logo flotante */
       opacity:.55;
       z-index:900;
       transition:transform .2s ease, opacity .2s ease;
@@ -308,7 +312,7 @@
       bottom:16px;
       left:50%;
       transform:translateX(-50%);
-      background:rgba(0,0,0,.55);
+      background:rgba(0,0,0,.5);
       color:#fff;
       padding:8px 14px;
       border-radius:999px;
@@ -316,7 +320,6 @@
       max-width:92%;
       font-weight:700;
       font-size:clamp(14px,3.2vw,20px);
-      box-shadow:0 10px 32px rgba(0,0,0,.65);
     }
 
     /* ====================== NAVBAR SUPERIOR ====================== */
@@ -326,10 +329,15 @@
       left:0;
       right:0;
       z-index:1200;
-      background:rgba(15,23,42,0.96);
-      box-shadow:0 10px 30px rgba(15,23,42,.9);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(15,23,42,0.9);
+      background:linear-gradient(90deg,#020617,#0f172a,#111827);
+      background-size:200% 100%;
+      box-shadow:0 2px 12px rgba(0,0,0,.35);
+      backdrop-filter:blur(10px);
+      animation:navGlow 18s ease-in-out infinite alternate;
+    }
+    @keyframes navGlow{
+      from{background-position:0% 0}
+      to{background-position:100% 0}
     }
 
     .um nav .nav-inner{
@@ -339,7 +347,7 @@
       align-items:center;
       justify-content:space-between;
       gap:22px;
-      padding:10px 16px;
+      padding:10px 12px 10px;
     }
 
     .um nav .brand{
@@ -349,85 +357,48 @@
       text-transform:uppercase;
       font-size:13px;
       opacity:.9;
-      margin-left:4px;
+      margin-left:12px;
     }
 
     .um nav .links{
       display:flex;
-      gap:18px;
+      gap:22px;
       list-style:none;
       margin:0;
       padding:0;
-      font-weight:600;
+      font-weight:700;
       letter-spacing:.04em;
       text-transform:uppercase;
-      font-size:11px;
+      font-size:12px;
     }
     .um nav .links a{
-      position:relative;
-      color:#e5e7eb;
-      padding:7px 12px;
+      color:#f9fafb;
+      padding:8px 6px;
       border-radius:999px;
-      opacity:.9;
-      text-decoration:none;
-      transition:
-        opacity .15s ease,
-        background .15s ease,
-        transform .1s ease,
-        box-shadow .15s ease;
-    }
-    .um nav .links a::after{
-      content:"";
-      position:absolute;
-      left:16px;
-      right:16px;
-      bottom:4px;
-      height:2px;
-      border-radius:999px;
-      background:linear-gradient(90deg,#22c55e,#38bdf8);
-      opacity:0;
-      transform:translateY(3px);
-      transition:opacity .15s ease, transform .15s ease;
+      opacity:.85;
+      transition:opacity .15s ease, background .15s ease, transform .1s ease;
     }
     .um nav .links a:hover{
       opacity:1;
-      background:rgba(15,23,42,0.9);
-      box-shadow:0 4px 14px rgba(15,23,42,0.7);
+      background:rgba(255,255,255,.08);
       transform:translateY(-1px);
-    }
-    .um nav .links a:hover::after{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    .um nav .links .nav-cta{
-      background:linear-gradient(135deg,#22c55e,#16a34a);
-      color:#022c22;
-      box-shadow:0 6px 18px rgba(21,128,61,0.7);
-    }
-    .um nav .links .nav-cta::after{
-      display:none;
-    }
-    .um nav .links .nav-cta:hover{
-      background:linear-gradient(135deg,#16a34a,#15803d);
-      transform:translateY(-1px) scale(1.02);
     }
 
     /* Botón hamburguesa solo visible en mobile */
     .um nav .hamburger{
       display:none;
       cursor:pointer;
-      border:1.5px solid rgba(148,163,184,.9);
-      background:rgba(15,23,42,.9);
+      border:2px solid rgba(255,255,255,.7); /* más visible */
+      background:rgba(15,23,42,.85);
       color:#fff;
-      padding:6px 8px;
+      padding:8px;
       border-radius:999px;
-      margin-left:4px;
-      box-shadow:0 4px 12px rgba(0,0,0,.7);
+      margin-left:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,.4);
     }
     .um nav .hamburger svg{
-      width:24px;
-      height:24px;
+      width:26px;
+      height:26px;
       display:block;
     }
 
@@ -440,30 +411,24 @@
       left:0;
       right:0;
       top:100%;
-      background:rgba(15,23,42,.98);
-      border-radius:0 0 18px 18px;
-      box-shadow:0 16px 30px rgba(0,0,0,.6);
-      padding:12px 16px 16px;
+      background:rgba(15,23,42,.96);
+      border-radius:0 0 16px 16px;
+      box-shadow:0 16px 30px rgba(0,0,0,.45);
+      padding:10px 16px 14px;
       z-index:1202;
     }
     .um .links.mobile[hidden]{display:none!important}
     .um .links.mobile a{
-      padding:9px 10px;
-      border-radius:12px;
+      padding:10px 0;
+      border-radius:10px;
       color:#f9fafb;
-      border:none;
-      background:transparent;
-      text-decoration:none;
-      font-size:13px;
-      display:block;
-      transition:background .15s ease, transform .1s ease;
+      border-bottom:1px solid rgba(148,163,184,.3);
     }
-    .um .links.mobile a:hover{
-      background:rgba(30,64,175,0.8);
-      transform:translateY(-1px);
+    .um .links.mobile a:last-child{
+      border-bottom:none;
     }
 
-    /* ====================== SECCIONES GENERALES ====================== */
+    /* ====================== SECCIONES GENERALES (soluciones, planes, contacto) ====================== */
     .um section{
       display:flex;
       justify-content:center;
@@ -507,7 +472,7 @@
       font-weight:700;
     }
 
-    /* ====================== GRID DE VIDEOS ====================== */
+    /* ====================== GRID DE VIDEOS (dentro del mapa de soluciones) ====================== */
     .video-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -525,7 +490,7 @@
       display:block;
     }
 
-    /* ====================== CARROUSEL DE IMÁGENES ====================== */
+    /* ====================== CARROUSEL DE IMÁGENES (BI / SITIOS) ====================== */
     .bi-carousel{
       margin-top:26px;
       display:flex;
@@ -577,7 +542,7 @@
       box-shadow:0 12px 30px rgba(0,246,164,0.45);
     }
 
-    /* ====================== ROTADOR DE TEXTO ====================== */
+    /* ====================== ROTADOR DE TEXTO AUTOMATIZACIONES ====================== */
     .auto-rotator{
       margin-top:22px;
       padding:10px 14px;
@@ -640,6 +605,189 @@
       .um nav .links:not(.mobile){display:none}
       .um .seccion{background:#ffffff;}
       .pricing-table{font-size:13px;}
+    }
+
+    /* ===== Estilos más claros para el mapa de soluciones ===== */
+    #soluciones-umanoai{
+      background: radial-gradient(circle at top, #111827 0, #020617 60%);
+    }
+
+    #soluciones-umanoai .solucion-card{
+      background: rgba(248,250,252,0.96) !important;
+      color:#0f172a !important;
+      box-shadow:0 10px 24px rgba(15,23,42,0.16) !important;
+      border:1px solid rgba(148,163,184,0.5) !important;
+    }
+
+    #soluciones-umanoai .solucion-card div:nth-child(2){
+      color:#4b5563 !important;
+    }
+
+    #soluciones-umanoai .solucion-card.is-active{
+      background:linear-gradient(145deg,#e0f2fe,#f9fafb) !important;
+      box-shadow:0 16px 32px rgba(56,189,248,0.35) !important;
+      border-color:rgba(56,189,248,0.75) !important;
+      transform:translateY(-2px);
+    }
+
+    /* ============================================================= */
+    /* =============== CHAT FLOTANTE UMANOAI – ESTILOS ============ */
+    /* ============================================================= */
+
+    #umanoai-chat-root{
+      position:fixed;
+      right:20px;
+      bottom:96px;
+      z-index:1500;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    }
+
+    #umanoai-chat-toggle{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      border:2px solid #22D3EE;
+      background:rgba(0,35,65,0.88);
+      cursor:pointer;
+      box-shadow:0 8px 22px rgba(15,23,42,.7);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+
+    #umanoai-chat-toggle img{
+      width:40px;
+      height:40px;
+      border-radius:999px;
+      display:block;
+    }
+
+    #umanoai-chat-toggle:hover{
+      transform:scale(1.06);
+      box-shadow:0 12px 30px rgba(15,23,42,.9);
+    }
+
+    #umanoai-chat-window{
+      width:320px;
+      max-height:410px;
+      background:#020617;
+      color:#e5e7eb;
+      border-radius:18px;
+      border:2px solid rgba(34,211,238,.95);
+      box-shadow:
+        0 0 0 1px rgba(15,23,42,.7),
+        0 22px 60px rgba(0,0,0,.95);
+      display:none;
+      flex-direction:column;
+      overflow:hidden;
+      margin-bottom:10px;
+    }
+    #umanoai-chat-window.open{
+      display:flex;
+    }
+
+    .um-chat-header{
+      padding:10px 14px;
+      background:linear-gradient(135deg,#1d4ed8,#7c3aed);
+      border-bottom:1px solid rgba(191,219,254,.5);
+    }
+    .um-chat-header strong{
+      display:block;
+      font-size:14px;
+    }
+    .um-chat-header span{
+      font-size:12px;
+      color:#e5e7eb;
+      opacity:.9;
+    }
+
+    #um-chat-messages{
+      flex:1;
+      padding:10px;
+      overflow-y:auto;
+      font-size:14px;
+    }
+
+    .um-chat-msg{
+      padding:6px 10px;
+      border-radius:10px;
+      margin-bottom:6px;
+      max-width:80%;
+      line-height:1.4;
+      white-space:pre-wrap;
+    }
+
+    .um-chat-user{
+      background:#22c55e;
+      color:#022c22;
+      margin-left:auto;
+    }
+
+    .um-chat-bot,
+    .um-chat-loading{
+      background:#111827;
+      color:#e5e7eb;
+      margin-right:auto;
+    }
+
+    #um-chat-form{
+      display:flex;
+      gap:6px;
+      padding:8px;
+      border-top:1px solid #1f2937;
+      background:#020617;
+    }
+    #um-chat-input{
+      flex:1;
+      padding:6px 8px;
+      border-radius:999px;
+      border:1px solid #4b5563;
+      background:#020617;
+      color:#e5e7eb;
+    }
+    #um-chat-input:focus{
+      outline:none;
+      border-color:#22c55e;
+    }
+    #um-chat-form button[type="submit"]{
+      padding:6px 12px;
+      border-radius:999px;
+      border:none;
+      background:#22c55e;
+      color:#022c22;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    @media (max-width:700px){
+      #umanoai-chat-root{
+        right:14px;
+        bottom:90px;
+      }
+      #umanoai-chat-window{
+        width:calc(100vw - 28px);
+        max-width:360px;
+      }
+    }
+
+    @media (max-width:700px){
+      #umanoai-chat-root{
+        right:18px;
+        bottom:110px;
+      }
+
+      .whatsapp-button,
+      #whatsappBtn {
+        right:18px !important;
+        bottom:20px !important;
+      }
+
+      #umanoai-chat-toggle{
+        width:60px;
+        height:60px;
+      }
     }
 
     @media (max-width:700px){
@@ -876,6 +1024,9 @@
 
     /* =============== RESEÑAS DE GOOGLE =============== */
     .reviews-block{
+      margin-top:24px;
+      padding-top:18px;
+      border-top:1px solid #e5e7eb;
       margin-top:8px;
     }
 
@@ -959,180 +1110,6 @@
       }
     }
 
-    /* ===== Estilos más claros para el mapa de soluciones ===== */
-    #soluciones-umanoai{
-      background: radial-gradient(circle at top, #111827 0, #020617 60%);
-    }
-
-    #soluciones-umanoai .solucion-card{
-      background: rgba(248,250,252,0.96) !important;
-      color:#0f172a !important;
-      box-shadow:0 10px 24px rgba(15,23,42,0.16) !important;
-      border:1px solid rgba(148,163,184,0.5) !important;
-    }
-
-    #soluciones-umanoai .solucion-card div:nth-child(2){
-      color:#4b5563 !important;
-    }
-
-    #soluciones-umanoai .solucion-card.is-active{
-      background:linear-gradient(145deg,#e0f2fe,#f9fafb) !important;
-      box-shadow:0 16px 32px rgba(56,189,248,0.35) !important;
-      border-color:rgba(56,189,248,0.75) !important;
-      transform:translateY(-2px);
-    }
-    /* ============================================================= */
-    /* =============== CHAT FLOTANTE UMANOAI – ESTILOS ============ */
-    /* ============================================================= */
-
-    /* Contenedor raíz del widget de chat (posición flotante) */
-    #umanoai-chat-root{
-      position:fixed;
-      right:20px;
-      bottom:96px; /* queda arriba del botón de WhatsApp */
-      z-index:1500;
-      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-    }
-
-    /* Burbuja de apertura del chat con logo UmanoAI */
-    #umanoai-chat-toggle{
-      width:64px;
-      height:64px;
-      border-radius:50%;
-      border:2px solid #22D3EE;
-      background:rgba(0,35,65,0.88);   /* Azul oscuro translúcido */
-      cursor:pointer;
-      box-shadow:0 8px 22px rgba(15,23,42,.7);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:0;
-      transition:transform .15s ease, box-shadow .15s ease;
-    }
-
-    #umanoai-chat-toggle img{
-      width:40px;
-      height:40px;
-      border-radius:999px;
-      display:block;
-    }
-
-    #umanoai-chat-toggle:hover{
-      transform:scale(1.06);
-      box-shadow:0 12px 30px rgba(15,23,42,.9);
-    }
-
-    /* Ventana del chat (card) */
-    #umanoai-chat-window{
-      width:320px;
-      max-height:410px;
-      background:#020617;
-      color:#e5e7eb;
-      border-radius:18px;
-      border:2px solid rgba(34,211,238,.95);  /* borde cian más fuerte */
-      box-shadow:
-        0 0 0 1px rgba(15,23,42,.7),
-        0 22px 60px rgba(0,0,0,.95);          /* sombra más marcada */
-      display:none;
-      flex-direction:column;
-      overflow:hidden;
-      margin-bottom:10px;
-    }
-    #umanoai-chat-window.open{
-      display:flex;
-    }
-
-    /* Header dentro del chat (nombre bot + subtítulo) */
-    .um-chat-header{
-      padding:10px 14px;
-      background:linear-gradient(135deg,#1d4ed8,#7c3aed); /* azul → violeta */
-      border-bottom:1px solid rgba(191,219,254,.5);
-    }
-    .um-chat-header strong{
-      display:block;
-      font-size:14px;
-    }
-    .um-chat-header span{
-      font-size:12px;
-      color:#e5e7eb;
-      opacity:.9;
-    }
-
-    /* Contenedor scrollable de mensajes del chat */
-    #um-chat-messages{
-      flex:1;
-      padding:10px;
-      overflow-y:auto;
-      font-size:14px;
-    }
-
-    /* Mensaje individual del chat */
-    .um-chat-msg{
-      padding:6px 10px;
-      border-radius:10px;
-      margin-bottom:6px;
-      max-width:80%;
-      line-height:1.4;
-      white-space:pre-wrap; /* mantiene saltos de línea del texto plano */
-    }
-
-    /* Burbujas del usuario (alineadas a la derecha, color verde) */
-    .um-chat-user{
-      background:#22c55e;
-      color:#022c22;
-      margin-left:auto;
-    }
-
-    /* Burbujas del bot y estado "cargando" (alineadas a la izquierda) */
-    .um-chat-bot,
-    .um-chat-loading{
-      background:#111827;
-      color:#e5e7eb;
-      margin-right:auto;
-    }
-
-    /* Formulario de entrada del chat (input + botón) */
-    #um-chat-form{
-      display:flex;
-      gap:6px;
-      padding:8px;
-      border-top:1px solid #1f2937;
-      background:#020617;
-    }
-    #um-chat-input{
-      flex:1;
-      padding:6px 8px;
-      border-radius:999px;
-      border:1px solid #4b5563;
-      background:#020617;
-      color:#e5e7eb;
-    }
-    #um-chat-input:focus{
-      outline:none;
-      border-color:#22c55e;
-    }
-    #um-chat-form button[type="submit"]{
-      padding:6px 12px;
-      border-radius:999px;
-      border:none;
-      background:#22c55e;
-      color:#022c22;
-      font-weight:600;
-      cursor:pointer;
-    }
-
-    /* Ajustes del chat en pantallas chicas */
-    @media (max-width:700px){
-      #umanoai-chat-root{
-        right:14px;
-        bottom:90px;
-      }
-      #umanoai-chat-window{
-        width:calc(100vw - 28px);
-        max-width:360px;
-      }
-    }
-
   </style>
 </head>
 
@@ -1155,7 +1132,7 @@
     <!-- ====================== NAVBAR ====================== -->
     <nav>
       <div class="nav-inner">
-        <div class="brand">UmanoAI</div>
+        <div class="brand">Umanoai</div>
 
         <ul class="links" id="desktopLinks">
           <li><a href="#soluciones-umanoai">Soluciones</a></li>
@@ -1163,7 +1140,7 @@
           <li><a href="#planes">Planes</a></li>
           <li><a href="#reseñas">Reseñas</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+          <li><a href="#contacto">Contacto</a></li>
         </ul>
 
         <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
@@ -1189,20 +1166,18 @@
         <source src="hero.mp4" type="video/mp4">
       </video>
 
-      <div class="hero-bubble">
-        <h1>Bots de WhatsApp, automatización y BI para que tu pyme venda 24/7</h1>
-        <p class="hero-subtitle">
-          En <strong>UmanoAI</strong> combinamos <strong>bots de WhatsApp para pymes, automatización de procesos y tableros de Power BI</strong>
-          con sitios web diseñados para convertir, para que tu negocio de servicios o comercio en Argentina
-          atienda y venda en automático todos los días.
-        </p>
+      <h1>Bots de WhatsApp, automatización y BI para que tu pyme venda 24/7</h1>
+      <p class="hero-subtitle">
+        En <strong>UmanoAI</strong> combinamos <strong>bots de WhatsApp para pymes, automatización de procesos y tableros de Power BI</strong>
+        con sitios web diseñados para convertir, para que tu negocio de servicios o comercio en Argentina
+        atienda y venda en automático todos los días.
+      </p>
 
-        <div class="hero-cta">
-          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20saber%20m%C3%A1s%20sobre%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
-            📲 Hablar por WhatsApp
-          </a>
-          <a href="#planes" class="btn-secundaria">Ver planes de bots</a>
-        </div>
+      <div class="hero-cta">
+        <a href="https://wa.me/5491125926977?text=Hola%20quiero%20saber%20m%C3%A1s%20sobre%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
+          📲 Hablar por WhatsApp
+        </a>
+        <a href="#planes" class="btn-secundaria">Ver planes de bots</a>
       </div>
 
       <div class="marquesina">
@@ -1314,9 +1289,12 @@
             🌐 Quiero el pack Web + Analítica
           </a>
         </div>
+         </section>
       </div>
     </section>
 
+        <!-- =============== RESEÑAS DE GOOGLE (AHORA CON LOS PLANES) =============== -->
+       <section id="reseñas">
     <!-- =============== RESEÑAS DE GOOGLE (CON TARJETA BLANCA) =============== -->
     <section id="reseñas">
       <div class="seccion">
@@ -1979,6 +1957,7 @@
           const label = document.createElement("span");
           label.className = "auto-rotator-label";
           label.textContent = "🔁 " + (data.rotadorTitulo || "Ejemplos de automatización:");
+
           const textSpan = document.createElement("span");
           textSpan.className = "auto-rotator-text";
 
