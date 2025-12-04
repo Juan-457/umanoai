@@ -181,177 +181,196 @@
     }
 
     /* ====================== HEADER / HERO ====================== */
-   /* =========================================
-   CONTENEDOR PRINCIPAL DEL HERO
-========================================= */
-header {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 20px;
-}
+    /* =========================================
+       CONTENEDOR PRINCIPAL DEL HERO
+    ========================================= */
+    header {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 20px;
+      z-index: 0;
+    }
 
-/* VIDEO DE FONDO */
-header video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* 👉 sacamos el z-index negativo */
-  /* z-index: -2; */
-  filter: brightness(0.45);
-}
+    /* VIDEO DE FONDO DEL HERO */
+    header video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.45);
+    }
 
+    /* =========================================
+       BURBUJA GENERAL QUE CONTIENE TODO
+    ========================================= */
+    .hero-bubble {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
 
-/* =========================================
-   BURBUJA GENERAL QUE CONTIENE TODO
-========================================= */
-.hero-bubble {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
+    /* =========================================
+       BURBUJA CON LAS PILLS
+    ========================================= */
+    .hero-main-bubble {
+      background: rgba(10, 15, 30, 0.82);
+      backdrop-filter: blur(16px);
+      padding: 18px 28px;
+      border-radius: 22px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+      margin-bottom: 16px;  /* separación con la burbuja del texto */
+    }
 
-/* =========================================
-   BURBUJA CON LAS PILLS
-========================================= */
-.hero-main-bubble {
-  background: rgba(10, 15, 30, 0.82);
-  backdrop-filter: blur(16px);
-  padding: 18px 28px;
-  border-radius: 22px;
-  box-shadow: 0 18px 50px rgba(0,0,0,0.45);
-  margin-bottom: 16px;  /* separación con la burbuja del texto */
-}
+    /* PILLS */
+    .hero-bubbles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
 
-/* PILLS */
-.hero-bubbles {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-}
+    .hero-pill {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 0.92rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(10px);
+      white-space: nowrap;
+    }
 
-.hero-pill {
-  padding: 8px 16px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-  font-size: 0.92rem;
-  border: 1px solid rgba(255,255,255,0.25);
-  backdrop-filter: blur(10px);
-  white-space: nowrap;
-}
+    /* =========================================
+       BURBUJA DEL TEXTO BLANCO GRANDE
+    ========================================= */
+    .hero-sub-bubble {
+      background: rgba(10, 15, 30, 0.9);
+      backdrop-filter: blur(20px);
+      padding: 26px 30px;
+      border-radius: 22px;
+      box-shadow: 0 18px 55px rgba(0,0,0,0.55);
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
 
-/* =========================================
-   BURBUJA DEL TEXTO BLANCO GRANDE
-========================================= */
-.hero-sub-bubble {
-  background: rgba(10, 15, 30, 0.9);
-  backdrop-filter: blur(20px);
-  padding: 26px 30px;
-  border-radius: 22px;
-  box-shadow: 0 18px 55px rgba(0,0,0,0.55);
-  max-width: 900px;
-  margin: 0 auto;
-}
+    .hero-subtitle {
+      color: #f8fafc;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
 
-.hero-subtitle {
-  color: #f8fafc;
-  font-size: 1rem;
-  line-height: 1.6;
-}
+    /* =========================================
+       BOTONES SUELTOS DEBAJO DEL HERO
+    ========================================= */
+    .hero-cta {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
 
-/* =========================================
-   BOTONES SUELTOS DEBAJO DEL HERO
-========================================= */
-.hero-cta {
-  margin-top: 24px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
+    .hero-title-visually-hidden{
+      position:absolute;
+      width:1px;
+      height:1px;
+      margin:-1px;
+      border:0;
+      padding:0;
+      white-space:nowrap;
+      clip-path:inset(50%);
+      clip:rect(0 0 0 0);
+      overflow:hidden;
+    }
 
-.btn-primaria {
-  background: linear-gradient(90deg, #10b981, #22c55e);
-  padding: 12px 26px;
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 999px;
-  box-shadow: 0 10px 25px rgba(34,197,94,0.35);
-}
+    .btn-primaria {
+      background: linear-gradient(90deg, #10b981, #22c55e);
+      padding: 12px 26px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 999px;
+      box-shadow: 0 10px 25px rgba(34,197,94,0.35);
+    }
 
-.btn-secundaria {
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.35);
-  padding: 12px 26px;
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 999px;
-  backdrop-filter: blur(12px);
-}
+    .btn-secundaria {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.35);
+      padding: 12px 26px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 999px;
+      backdrop-filter: blur(12px);
+    }
 
-/* =========================================
-   MARQUESINA
-========================================= */
-.marquesina {
-  margin-top: 28px;
-  padding: 8px 18px;
-  font-size: 0.95rem;
-  color: #fff;
-  background: rgba(15,23,42,0.85);
-  border-radius: 12px;
-  backdrop-filter: blur(12px);
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-}
+    /* =========================================
+       MARQUESINA (HERO)
+    ========================================= */
+    .marquesina {
+      margin-top: 28px;
+      padding: 8px 18px;
+      font-size: 0.95rem;
+      color: #fff;
+      background: rgba(15,23,42,0.85);
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+      display: inline-block;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 1;
+    }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
-@media(max-width: 768px){
+    /* =========================================
+       RESPONSIVE HERO
+    ========================================= */
+    @media(max-width: 768px){
 
-  .hero-main-bubble,
-  .hero-sub-bubble {
-    padding: 16px 20px;
-  }
+      .hero-main-bubble,
+      .hero-sub-bubble {
+        padding: 16px 20px;
+      }
 
-  .hero-pill {
-    font-size: 0.85rem;
-    padding: 6px 14px;
-  }
+      .hero-pill {
+        font-size: 0.85rem;
+        padding: 6px 14px;
+      }
 
-  .hero-subtitle {
-    font-size: 0.95rem;
-  }
+      .hero-subtitle {
+        font-size: 0.95rem;
+      }
 
-  .hero-cta {
-    flex-direction: column;
-    gap: 12px;
-  }
+      .hero-cta {
+        flex-direction: column;
+        gap: 12px;
+      }
 
-  .btn-primaria,
-  .btn-secundaria {
-    width: 100%;
-    text-align: center;
-  }
+      .btn-primaria,
+      .btn-secundaria {
+        width: 100%;
+        text-align: center;
+      }
 
-  header {
-    height: auto;
-    padding-top: 120px;
-    padding-bottom: 80px;
-  }
-}
-
+      header {
+        height: auto;
+        padding-top: 120px;
+        padding-bottom: 80px;
+      }
+    }
 
     /* ====================== LOGO STICKY ABAJO IZQUIERDA ====================== */
     .um .logo-sticky{
@@ -368,7 +387,7 @@ header video {
       transform:scale(1.03);
     }
 
-    /* ====================== BOTONES PRINCIPALES ====================== */
+    /* ====================== BOTONES PRINCIPALES (GENÉRICOS) ====================== */
     .um .btn-primaria,
     .um .btn-secundaria{
       display:inline-flex;
@@ -381,6 +400,7 @@ header video {
       cursor:pointer;
       border:2px solid transparent;
       transition:background .15s ease, color .15s ease, transform .1s ease, box-shadow .15s ease;
+      text-decoration:none;
     }
     .um .btn-primaria{
       background:#25D366;
@@ -404,22 +424,7 @@ header video {
       transform:translateY(-1px);
     }
 
-    /* ====================== MARQUESINA TEXTO HERO ====================== */
-    .um .marquesina{
-      position:absolute;
-      bottom:16px;
-      left:50%;
-      transform:translateX(-50%);
-      background:rgba(0,0,0,.55);
-      color:#fff;
-      padding:8px 14px;
-      border-radius:999px;
-      backdrop-filter:blur(4px);
-      max-width:92%;
-      font-weight:700;
-      font-size:clamp(14px,3.2vw,20px);
-      box-shadow:0 10px 32px rgba(0,0,0,.65);
-    }
+    /* (ELIMINAMOS LA VERSIÓN ABSOLUTE DE .um .marquesina QUE TAPABA BOTONES) */
 
     /* ====================== NAVBAR SUPERIOR ====================== */
     .um nav{
@@ -1083,6 +1088,7 @@ header video {
       border-color:rgba(56,189,248,0.75) !important;
       transform:translateY(-2px);
     }
+
     /* ============================================================= */
     /* =============== CHAT FLOTANTE UMANOAI – ESTILOS ============ */
     /* ============================================================= */
@@ -1286,36 +1292,36 @@ header video {
     </nav>
 
     <!-- ====================== HERO PRINCIPAL ====================== -->
-   <header>
-  <video autoplay muted loop playsinline preload="auto" poster="hero-poster.png">
-    <source src="hero.mp4" type="video/mp4">
-  </video>
+    <header>
+      <video autoplay muted loop playsinline preload="auto" poster="hero-poster.png">
+        <source src="hero.mp4" type="video/mp4">
+      </video>
 
-  <div class="hero-bubble">
-    <!-- h1 solo SEO, el contenido visible va en las burbujas -->
-    <h1 class="hero-title-visually-hidden">
-      Bots de WhatsApp, automatización y BI para que tu pyme venda 24/7
-    </h1>
+      <div class="hero-bubble">
+        <!-- h1 solo SEO, el contenido visible va en las burbujas -->
+        <h1 class="hero-title-visually-hidden">
+          Bots de WhatsApp, automatización y BI para que tu pyme venda 24/7
+        </h1>
 
-    <!-- Burbuja de las pills -->
-    <div class="hero-main-bubble">
-      <div class="hero-bubbles">
-        <div class="hero-pill">Bots de WhatsApp</div>
-        <div class="hero-pill">Automatización de procesos</div>
-        <div class="hero-pill">Business Intelligence (BI)</div>
-        <div class="hero-pill">Para que tu pyme venda 24/7</div>
+        <!-- Burbuja de las pills -->
+        <div class="hero-main-bubble">
+          <div class="hero-bubbles">
+            <div class="hero-pill">Bots de WhatsApp</div>
+            <div class="hero-pill">Automatización de procesos</div>
+            <div class="hero-pill">Business Intelligence (BI)</div>
+            <div class="hero-pill">Para que tu pyme venda 24/7</div>
+          </div>
+        </div>
+
+        <!-- Burbuja separada solo para el texto blanco -->
+        <div class="hero-sub-bubble">
+          <p class="hero-subtitle">
+            En <strong>UmanoAI</strong> combinamos <strong>bots de WhatsApp para pymes, automatización de procesos y tableros de Power BI</strong>
+            con sitios web diseñados para convertir, para que tu negocio de servicios o comercio en Argentina
+            atienda y venda en automático todos los días.
+          </p>
+        </div>
       </div>
-    </div>
-
-    <!-- Burbuja separada solo para el texto blanco -->
-    <div class="hero-sub-bubble">
-      <p class="hero-subtitle">
-        En <strong>UmanoAI</strong> combinamos <strong>bots de WhatsApp para pymes, automatización de procesos y tableros de Power BI</strong>
-        con sitios web diseñados para convertir, para que tu negocio de servicios o comercio en Argentina
-        atienda y venda en automático todos los días.
-      </p>
-    </div>
-  </div>
 
       <div class="hero-cta">
         <a href="https://wa.me/5491125926977?text=Hola%20quiero%20saber%20m%C3%A1s%20sobre%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
@@ -1427,7 +1433,7 @@ header video {
 
           <p class="pack-price">USD 400 <span>(pago único)</span></p>
 
-          <a href="https://wa.me/5491125926977?text=Hola%20me%20interesa%20el%20pack%20web%20%2B%20anal%C3%ADtica"
+          <a href="https://wa.me/5491125926977?text=Hola%20me%20interesa%20 el%20pack%20web%20%2B%20anal%C3%ADtica"
             class="pack-btn"
             target="_blank">
             🌐 Quiero el pack Web + Analítica
@@ -2366,3 +2372,4 @@ header video {
   </script>
 </body>
 </html>
+
