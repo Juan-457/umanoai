@@ -37,11 +37,6 @@
       "cantidad": 2
     },
     {
-      "fecha": "2025-11-26",
-      "evento": "click_whatsapp",
-      "cantidad": 1
-    },
-    {
       "fecha": "2025-12-01",
       "evento": "tito_chat_message",
       "cantidad": 1
