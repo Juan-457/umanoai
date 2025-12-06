@@ -624,35 +624,38 @@
     }
 
     /* ====================== BREAKPOINT MOBILE ====================== */
-    @media (max-width:700px){
-      .um nav .hamburger{display:block}
-      .um nav .links:not(.mobile){display:none}
-      .um .seccion{background:#ffffff;}
-      .pricing-table{font-size:13px;}
-    }
+    /* === Ajuste hero en mobile corregido === */
+@media (max-width: 700px){
 
-    /* ===== Estilos más claros para el mapa de soluciones ===== */
-    #soluciones-umanoai{
-      background: radial-gradient(circle at top, #111827 0, #020617 60%);
-    }
+  .hero-bubble,
+  .hero-bubble-subtitle,
+  .hero-bubble-small {
+    margin-bottom: 16px !important;
+  }
 
-    #soluciones-umanoai .solucion-card{
-      background: rgba(248,250,252,0.96) !important;
-      color:#0f172a !important;
-      box-shadow:0 10px 24px rgba(15,23,42,0.16) !important;
-      border:1px solid rgba(148,163,184,0.5) !important;
-    }
+  /* mayor contraste sobre fondo laptop */
+  .hero-bubble-subtitle {
+    background: rgba(0,0,0,0.55) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+  }
 
-    #soluciones-umanoai .solucion-card div:nth-child(2){
-      color:#4b5563 !important;
-    }
+  /* la burbuja de abajo más compacta */
+  .hero-bubble-small {
+    max-width: 88% !important;
+  }
 
-    #soluciones-umanoai .solucion-card.is-active{
-      background:linear-gradient(145deg,#e0f2fe,#f9fafb) !important;
-      box-shadow:0 16px 32px rgba(56,189,248,0.35) !important;
-      border-color:rgba(56,189,248,0.75) !important;
-      transform:translateY(-2px);
-    }
+  /* evitar superposición con scroll */
+  header {
+    padding-bottom: 34px !important;
+  }
+
+  /* márgenes laterales correctos */
+  .hero-content {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}
 
     /* ============================================================= */
     /* =============== CHAT FLOTANTE UMANOAI – ESTILOS ============ */
