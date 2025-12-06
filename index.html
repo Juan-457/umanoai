@@ -2041,106 +2041,110 @@
       actualizarDetalle("apps");
     })();
   </script>
+  <!-- ====================== WIDGET CHAT TITO ====================== -->
+
+<div id="umanoai-chat-root">
+  <button id="umanoai-chat-toggle">
+    <img src="umanoai.png" alt="Hablar con Tito">
+  </button>
+
+  <div id="umanoai-chat-window">
+    <div class="um-chat-header">
+      <strong>Tito — Asistente Virtual</strong>
+      <span>Respondemos en segundos</span>
+    </div>
+
+    <div id="um-chat-messages"></div>
+
+    <form id="um-chat-form">
+      <input id="um-chat-input" type="text" placeholder="Escribime..." autocomplete="off">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
 
   <!-- ============================================================= -->
   <!-- ============= CHAT UMANOAI – LÓGICA DEL WIDGET ============ -->
   <!-- ============================================================= -->
-  <script>
-    (function () {
-      const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
-      const TOKEN = "umanoai-secure";
-      const SESSION_KEY = "umanoai-chat-session-id";
+ <script>
+(function () {
+  const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
+  const TOKEN = "umanoai-secure";
+  const SESSION_KEY = "umanoai-chat-session-id";
 
-      let sessionId = localStorage.getItem(SESSION_KEY);
-      if (!sessionId) {
-        sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
-        localStorage.setItem(SESSION_KEY, sessionId);
-      }
+  let sessionId = localStorage.getItem(SESSION_KEY);
+  if (!sessionId) {
+    sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
+    localStorage.setItem(SESSION_KEY, sessionId);
+  }
 
-      const toggle = document.getElementById("umanoai-chat-toggle");
-      const win = document.getElementById("umanoai-chat-window");
-      const messages = document.getElementById("um-chat-messages");
-      const form = document.getElementById("um-chat-form");
-      const input = document.getElementById("um-chat-input");
+  const toggle = document.getElementById("umanoai-chat-toggle");
+  const win = document.getElementById("umanoai-chat-window");
+  const messages = document.getElementById("um-chat-messages");
+  const form = document.getElementById("um-chat-form");
+  const input = document.getElementById("um-chat-input");
 
-      function addMessage(text, from) {
-        const div = document.createElement("div");
-        div.classList.add("um-chat-msg");
-        if (from === "user") div.classList.add("um-chat-user");
-        else if (from === "bot") div.classList.add("um-chat-bot");
-        else if (from === "loading") div.classList.add("um-chat-loading");
-        div.textContent = text;
-        messages.appendChild(div);
-        messages.scrollTop = messages.scrollHeight;
-      }
+  function addMessage(text, from) {
+    const div = document.createElement("div");
+    div.classList.add("um-chat-msg");
+    if (from === "user") div.classList.add("um-chat-user");
+    else if (from === "bot") div.classList.add("um-chat-bot");
+    else if (from === "loading") div.classList.add("um-chat-loading");
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
 
-      async function sendMessage(msg) {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: 'tito_chat_message'
-        });
+  async function sendMessage(msg) {
+    addMessage(msg, "user");
+    input.value = "";
+    input.focus();
 
-        addMessage(msg, "user");
-        input.value = "";
-        input.focus();
+    const loadingMsg = document.createElement("div");
+    loadingMsg.classList.add("um-chat-msg","um-chat-loading");
+    loadingMsg.textContent = "…";
+    messages.appendChild(loadingMsg);
+    messages.scrollTop = messages.scrollHeight;
 
-        const loadingMsg = document.createElement("div");
-        loadingMsg.classList.add("um-chat-msg","um-chat-loading");
-        loadingMsg.textContent = "…";
-        messages.appendChild(loadingMsg);
-        messages.scrollTop = messages.scrollHeight;
-
-        try {
-          const res = await fetch(FLOW_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              message: msg,
-              sessionId: sessionId,
-              token: TOKEN
-            })
-          });
-
-          const raw = await res.text();
-          loadingMsg.remove();
-
-          let replyText = raw || "";
-          try {
-            const data = JSON.parse(raw);
-            if (typeof data === "string") {
-              replyText = data;
-            } else if (data.reply) {
-              replyText = data.reply;
-            } else if (data.message) {
-              replyText = data.message;
-            } else {
-              replyText = JSON.stringify(data);
-            }
-          } catch(e) {
-          }
-
-          addMessage(replyText, "bot");
-        } catch (err) {
-          loadingMsg.remove();
-          addMessage("Ups, tuve un problema técnico. Probá de nuevo en un momento 🙏", "bot");
-          console.error(err);
-        }
-      }
-
-      toggle.addEventListener("click", () => {
-        win.classList.toggle("open");
+    try {
+      const res = await fetch(FLOW_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg, sessionId, token: TOKEN })
       });
 
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const msg = input.value.trim();
-        if (!msg) return;
-        sendMessage(msg);
-      });
+      const raw = await res.text();
+      loadingMsg.remove();
 
-      addMessage("👋 ¡Hola! Soy Tito, el asistente virtual de UmanoAI. ¿En qué te ayudo hoy?", "bot");
-    })();
-  </script>
+      let reply = raw;
+      try {
+        const parsed = JSON.parse(raw);
+        reply = parsed.reply || parsed.message || raw;
+      } catch {}
+
+      addMessage(reply, "bot");
+    } catch {
+      loadingMsg.remove();
+      addMessage("Tuve un problema 😥 Probá de nuevo.", "bot");
+    }
+  }
+
+  toggle.addEventListener("click", () => {
+    win.classList.toggle("open");
+  });
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const msg = input.value.trim();
+    if (!msg) return;
+    sendMessage(msg);
+  });
+
+  // Mensaje inicial
+  addMessage("👋 Hola! Soy Tito. ¿En qué te ayudo hoy?", "bot");
+})();
+</script>
 
   <!-- ============================================================= -->
   <!-- ========================= FOOTER ============================ -->
