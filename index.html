@@ -957,14 +957,39 @@
       100% { transform: translateX(-50%); }
     }
 
-    @media(max-width:700px){
-      .logos-track{
-        gap:26px;
-      }
-      .logos-track img{
-        height:38px;
-      }
-    }
+    /* === Ajuste hero en mobile corregido === */
+@media (max-width: 700px){
+
+  .hero-bubble,
+  .hero-bubble-subtitle,
+  .hero-bubble-small {
+    margin-bottom: 16px !important;
+  }
+
+  /* mayor contraste sobre fondo laptop */
+  .hero-bubble-subtitle {
+    background: rgba(0,0,0,0.55) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+  }
+
+  /* la burbuja de abajo más compacta */
+  .hero-bubble-small {
+    max-width: 88% !important;
+  }
+
+  /* evitar superposición con scroll */
+  header {
+    padding-bottom: 34px !important;
+  }
+
+  /* márgenes laterales correctos */
+  .hero-content {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}
+
 
     /* ====================== SECCIÓN FAQ ====================== */
     .faq-section{
