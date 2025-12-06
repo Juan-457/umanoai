@@ -1132,6 +1132,39 @@
       .review-card{
         max-width:100%;
       }
+      /* Ajuste hero en mobile */
+@media (max-width: 600px) {
+
+  .hero-bubble,
+  .hero-bubble-subtitle,
+  .hero-bubble-small {
+    margin-bottom: 14px !important;
+  }
+
+  /* mayor separación del fondo */
+  .hero-bubble-subtitle {
+    background: rgba(0, 0, 0, 0.55) !important;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* burbuja pequeña mejor alineada */
+  .hero-bubble-small {
+    max-width: 88%;
+  }
+
+  /* centrado perfecto */
+  .hero-content {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  /* corrigimos stacking */
+  header {
+    padding-bottom: 30px;
+  }
+}
+
     }
 
   </style>
