@@ -9,17 +9,13 @@
     :root {
       --bg: #020617;
       --bg-soft: #020617;
-      --card: rgba(15, 23, 42, 0.96);
+      --card: rgba(15, 23, 42, 0.97);
       --border: rgba(148, 163, 184, 0.5);
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
       --accent: #0ea5e9;
       --accent-soft: rgba(56, 189, 248, 0.1);
       --danger: #f97373;
-    }
-
-    * {
-      box-sizing: border-box;
     }
 
     body {
@@ -31,14 +27,15 @@
       background:
         radial-gradient(circle at top, #0b1630 0, var(--bg-soft) 45%, var(--bg) 100%);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 60px;
     }
 
-    .wrapper {
+    main {
       width: 100%;
       max-width: 860px;
+      margin: 0 auto;
     }
 
     .card {
@@ -46,34 +43,13 @@
       border-radius: 22px;
       border: 1px solid var(--border);
       box-shadow: 0 22px 60px rgba(15, 23, 42, 0.8);
-      padding: 26px 24px 22px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: -80px;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.18) 0, transparent 55%),
-        radial-gradient(circle at 90% 0%, rgba(59, 130, 246, 0.23) 0, transparent 55%);
-      opacity: 0.9;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .card-header {
-      margin-bottom: 22px;
+      padding: 26px 24px;
+      margin-bottom: 40px;
     }
 
     .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      display: inline-block;
+      font-size: 0.75rem;
       padding: 4px 10px;
       border-radius: 999px;
       background: var(--accent-soft);
@@ -82,43 +58,23 @@
       margin-bottom: 8px;
     }
 
-    .badge span {
-      font-size: 0.9rem;
-    }
-
     h1 {
       font-size: 1.8rem;
-      margin: 0 0 4px;
+      margin-bottom: 10px;
     }
 
     .subtitle {
-      margin: 0;
-      font-size: 0.9rem;
       color: var(--text-muted);
-      max-width: 480px;
+      font-size: 0.95rem;
+      max-width: 520px;
+      line-height: 1.45;
     }
 
     form {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 16px 24px;
-      margin-top: 20px;
-    }
-
-    .form-left,
-    .form-right {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    label {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      display: block;
-      margin-bottom: 4px;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 30px;
     }
 
     .field {
@@ -126,253 +82,133 @@
       flex-direction: column;
     }
 
+    label {
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
     input[type="text"],
     textarea {
-      width: 100%;
       border-radius: 10px;
       border: 1px solid rgba(148, 163, 184, 0.55);
       padding: 9px 10px;
       background: rgba(15, 23, 42, 0.9);
       color: var(--text-main);
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.16s ease, box-shadow 0.16s ease,
-        background 0.16s ease;
-    }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: #6b7280;
-    }
-
-    input:focus,
-    textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.55);
-      background: rgba(15, 23, 42, 0.98);
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 112px;
-    }
-
-    .hint {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .error-hint {
-      color: var(--danger);
-    }
-
-    .actions {
-      grid-column: 1 / -1;
-      margin-top: 4px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-      justify-content: space-between;
     }
 
     button[type="submit"] {
       border: none;
       border-radius: 999px;
-      padding: 10px 22px;
-      font-weight: 600;
-      font-size: 0.95rem;
+      padding: 12px 26px;
+      font-size: 1rem;
       cursor: pointer;
       background: linear-gradient(135deg, #22c55e, #4ade80);
-      color: #022c22;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 14px 35px rgba(22, 163, 74, 0.35);
-      transition: transform 0.12s ease, box-shadow 0.12s ease,
-        filter 0.12s ease;
-    }
-
-    button[type="submit"]:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.02);
-      box-shadow: 0 18px 45px rgba(22, 163, 74, 0.45);
-    }
-
-    button[type="submit"]:active {
-      transform: translateY(0);
-      box-shadow: 0 10px 25px rgba(22, 163, 74, 0.3);
-    }
-
-    .small-note {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      max-width: 420px;
-    }
-
-    .preview-card {
-      border-radius: 18px;
-      border: 1px dashed rgba(148, 163, 184, 0.5);
-      padding: 12px 14px;
-      font-size: 0.8rem;
-      max-width: 320px;
-      background: rgba(15, 23, 42, 0.8);
-    }
-
-    .preview-title {
       font-weight: 600;
-      margin-bottom: 4px;
+      color: #051b06;
+      grid-column: 1 / -1;
+      margin-top: 10px;
     }
 
-    .preview-desc {
+    .hint {
+      font-size: 0.75rem;
       color: var(--text-muted);
-      line-height: 1.4;
-      margin-bottom: 4px;
+      margin-top: 3px;
     }
 
-    .preview-cta {
-      color: #bbf7d0;
-      font-size: 0.78rem;
-    }
-
-    @media (max-width: 768px) {
-      .card {
-        padding: 20px 16px 18px;
-      }
-
-      h1 {
-        font-size: 1.45rem;
-      }
-
+    @media(max-width: 780px) {
       form {
         grid-template-columns: 1fr;
-        gap: 14px 0;
       }
-
-      .actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      button[type="submit"] {
-        justify-content: center;
-        width: 100%;
-      }
-
-      .preview-card {
-        width: 100%;
+      main {
+        padding: 10px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
+
+  <main>
     <div class="card">
-      <div class="card-header">
-        <div class="badge">
-          <span>🧱 Generador interno</span>
-        </div>
-        <h1>Crear sitio estático en 1 minuto</h1>
-        <p class="subtitle">
-          Completá los datos del negocio y este formulario enviará todo a nuestro
-          flujo en n8n para crear el repositorio y el index automáticamente.
-        </p>
-      </div>
+      <div class="badge">Formulario interno</div>
+      <h1>Crear sitio en 1 minuto</h1>
+      <p class="subtitle">
+        Completá los datos y al enviar se disparará el flujo Power Automate que creará el HTML y el repositorio automáticamente.
+      </p>
 
-      <!-- ⚠️ Reemplazar TU_URL_DE_WEBHOOK_AQUI por la URL real del Webhook de n8n -->
-      <form method="POST" action="TU_URL_DE_WEBHOOK_AQUI">
-        <div class="form-left">
-          <div class="field">
-            <label for="nombre_negocio">Nombre del negocio</label>
-            <input
-              id="nombre_negocio"
-              type="text"
-              name="nombre_negocio"
-              placeholder="Servicios Locales Fumigaciones"
-              required
-            />
-          </div>
-
-          <div class="field">
-            <label for="repoSlug">Slug / nombre del repo</label>
-            <input
-              id="repoSlug"
-              type="text"
-              name="repoSlug"
-              placeholder="servicios-fumigacion-caba"
-              pattern="[a-z0-9-]+"
-              title="Solo minúsculas, números y guiones."
-              required
-            />
-            <div class="hint">
-              Sin espacios, solo minúsculas, números y guiones. Esto se usa como
-              nombre del repositorio.
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="whatsapp">WhatsApp (opcional)</label>
-            <input
-              id="whatsapp"
-              type="text"
-              name="whatsapp"
-              placeholder="5491133380000"
-            />
-            <div class="hint">
-              Sin <span class="error-hint">+</span> ni espacios. Se usará para generar
-              el botón de <strong>Escribinos por WhatsApp</strong>.
-            </div>
-          </div>
+      <form
+        method="POST"
+        action="https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/1cc018a6b0464d48839fb504e7c617d6/triggers/manual/paths/invoke?api-version=1&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=10WBmFdajHjttnaCOCHeJWcUECqHlMQlCCyle3_W8YQ"
+      >
+        <div class="field">
+          <label>Nombre del negocio</label>
+          <input type="text" name="nombre_negocio" placeholder="Ej: Servicios Fumigación CABA" required>
         </div>
 
-        <div class="form-right">
-          <div class="field">
-            <label for="titulo">Título de la página</label>
-            <input
-              id="titulo"
-              type="text"
-              name="titulo"
-              placeholder="Servicios Locales Fumigaciones"
-              required
-            />
-          </div>
-
-          <div class="field">
-            <label for="descripcion">Descripción</label>
-            <textarea
-              id="descripcion"
-              name="descripcion"
-              placeholder="Empresa de fumigación y control de plagas en CABA y GBA..."
-              required
-            ></textarea>
-            <div class="hint">
-              Se usará como texto principal del sitio y como meta description.
-            </div>
-          </div>
+        <div class="field">
+          <label>Slug del repo</label>
+          <input type="text" name="repoSlug" placeholder="ej: fumigacion-macro-centro" required>
+          <div class="hint">Sin espacios, solo guiones</div>
         </div>
 
-        <div class="actions">
-          <button type="submit">
-            🚀 Crear sitio
-          </button>
-
-          <div class="small-note">
-            Al enviar, se dispara el Webhook de n8n que arma el HTML, crea el
-            repo en GitHub y sube el <code>index.html</code>.
-          </div>
-
-          <div class="preview-card">
-            <div class="preview-title">${titulo}</div>
-            <div class="preview-desc">${descripcion}</div>
-            <div class="preview-cta">
-              ${ctaHtml}
-            </div>
-          </div>
+        <div class="field">
+          <label>Título del sitio</label>
+          <input type="text" name="titulo" placeholder="Empresa de Fumigación en CABA" required>
         </div>
+
+        <div class="field">
+          <label>WhatsApp</label>
+          <input type="text" name="whatsapp" placeholder="5491133380000">
+          <div class="hint">Sin + ni espacios</div>
+        </div>
+
+        <div class="field" style="grid-column: 1 / -1;">
+          <label>Descripción</label>
+          <textarea name="descripcion" rows="5" placeholder="Empresa de fumigación y control de plagas en..." required></textarea>
+        </div>
+
+        <button type="submit">🚀 Crear sitio ahora</button>
+
       </form>
     </div>
-  </div>
+  </main>
+
+
+  <!-- ============================================================= --> 
+  <!-- ========================= FOOTER ============================ -->
+  <!-- ============================================================= -->
+  <footer style="
+      background:#0f172a;
+      color:#e5e7eb;
+      padding:36px 16px;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-size:15px;
+      text-align:center;
+      margin-top:40px;
+      border-top:2px solid #1e293b;">
+  
+    <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;" loading="lazy">
+  
+    <p style="margin:6px 0;">
+      © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
+    </p>
+  
+    <p style="margin:10px 0;">
+      <a href="politica.html" style="color:#38bdf8; text-decoration:none;">Política de Privacidad</a> ·
+      <a href="Eliminardatos.html" style="color:#38bdf8; text-decoration:none;">Eliminación de Datos</a> ·
+      <a href="#contacto" style="color:#38bdf8; text-decoration:none;">Contacto</a>
+    </p>
+  
+    <p style="opacity:.8; font-size:13px; margin-top:10px;">
+      Desarrollado con 💙 desde Argentina.
+    </p>
+  
+    <script>
+      document.getElementById("year").innerText = new Date().getFullYear();
+    </script>
+  </footer>
+
 </body>
 </html>
-
