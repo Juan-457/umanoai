@@ -58,11 +58,23 @@
       margin-bottom: 8px;
     }
 
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 520px;
+      line-height: 1.45;
+    }
+
     form {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 18px;
-      margin-top: 30px;
+      margin-top: 26px;
     }
 
     .field { display: flex; flex-direction: column; }
@@ -118,6 +130,7 @@
       form { grid-template-columns: 1fr; }
     }
 
+    /* MODAL PREVIEW */
     #modal {
       position: fixed;
       top:0;left:0;right:0;bottom:0;
@@ -150,7 +163,6 @@
       font-size:14px;
       font-weight:600;
     }
-
   </style>
 </head>
 <body>
@@ -159,16 +171,19 @@
     <div class="card">
       <div class="badge">Formulario interno</div>
       <h1>Crear sitio en 1 minuto</h1>
+      <p class="subtitle">
+        Completá los datos y al enviar se dispara el flujo de Power Automate que genera la landing con IA.
+      </p>
 
       <form id="siteForm">
         <div class="field">
           <label>Nombre del negocio</label>
-          <input type="text" name="nombre_negocio" placeholder="Ej: Heladería Bella Vista" required>
+          <input type="text" name="nombre_negocio" placeholder="Ej: Servicios de Fumigación CABA" required>
         </div>
 
         <div class="field">
           <label>Título del sitio</label>
-          <input type="text" name="titulo" placeholder="La mejor heladería de tu barrio" required>
+          <input type="text" name="titulo" placeholder="Empresa líder en control de plagas" required>
         </div>
 
         <div class="field">
@@ -178,7 +193,7 @@
 
         <div class="field" style="grid-column: 1 / -1;">
           <label>Descripción</label>
-          <textarea name="descripcion" rows="4" placeholder="Descripción del negocio..." required></textarea>
+          <textarea name="descripcion" rows="4" placeholder="Contá qué hace el negocio, zona donde trabaja, tipo de clientes, servicios, etc." required></textarea>
         </div>
 
         <button type="button" class="main-btn" onclick="requestPreview()">👁 Previsualizar sitio</button>
@@ -187,13 +202,15 @@
     </div>
   </main>
 
+  <!-- MODAL PREVIEW -->
   <div id="modal">
     <button class="close-btn" onclick="closePreview()">Cerrar</button>
     <iframe id="previewFrame"></iframe>
   </div>
 
   <script>
-    const FLOW_URL = "TU_URL_DEL_FLOW";
+    // URL real del Flow de Power Automate
+    const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/1cc018a6b0464d48839fb504e7c617d6/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=10WBmFdajHjttnaCOCHeJWcUECqHlMQlCCyle3_W8YQ";
 
     function requestPreview() {
       const form = document.getElementById("siteForm");
@@ -221,21 +238,22 @@
       .then(html => {
         btn.disabled = false;
         btn.textContent = "👁 Previsualizar sitio";
-        statusEl.textContent = "Listo! Ya podés verlo 👇";
+        statusEl.textContent = "Listo, ya podés verlo 👇";
 
         showPreview(html);
       })
-      .catch(() => {
+      .catch(err => {
+        console.error(err);
         btn.disabled = false;
         btn.textContent = "👁 Previsualizar sitio";
-        statusEl.textContent = "Error generando el sitio 😓";
+        statusEl.textContent = "Error generando el sitio 😓 Probá de nuevo.";
       });
     }
 
     function showPreview(htmlGenerado) {
       const iframe = document.getElementById("previewFrame");
       const modal = document.getElementById("modal");
-      const iframeDoc = iframe.contentDocument;
+      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
       iframeDoc.open();
       iframeDoc.write(htmlGenerado);
@@ -249,7 +267,39 @@
     }
   </script>
 
+  <!-- ============================================================= --> 
+  <!-- ========================= FOOTER ============================ -->
+  <!-- ============================================================= -->
+  <footer style="
+      background:#0f172a;
+      color:#e5e7eb;
+      padding:36px 16px;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-size:15px;
+      text-align:center;
+      margin-top:40px;
+      border-top:2px solid #1e293b;">
+  
+    <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;" loading="lazy">
+  
+    <p style="margin:6px 0;">
+      © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
+    </p>
+  
+    <p style="margin:10px 0;">
+      <a href="politica.html" style="color:#38bdf8; text-decoration:none;">Política de Privacidad</a> ·
+      <a href="Eliminardatos.html" style="color:#38bdf8; text-decoration:none;">Eliminación de Datos</a> ·
+      <a href="#contacto" style="color:#38bdf8; text-decoration:none;">Contacto</a>
+    </p>
+  
+    <p style="opacity:.8; font-size:13px; margin-top:10px;">
+      Desarrollado con 💙 desde Argentina.
+    </p>
+  
+    <script>
+      document.getElementById("year").innerText = new Date().getFullYear();
+    </script>
+  </footer>
+
 </body>
 </html>
-
-
