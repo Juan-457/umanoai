@@ -21,8 +21,7 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      font-family: system-ui, -apple-system, sans-serif;
       color: var(--text-main);
       background:
         radial-gradient(circle at top, #0b1630 0, var(--bg-soft) 45%, var(--bg) 100%);
@@ -36,6 +35,7 @@
       width: 100%;
       max-width: 860px;
       margin: 0 auto;
+      padding: 0 12px;
     }
 
     .card {
@@ -58,18 +58,6 @@
       margin-bottom: 8px;
     }
 
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      max-width: 520px;
-      line-height: 1.45;
-    }
-
     form {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -77,10 +65,7 @@
       margin-top: 30px;
     }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-    }
+    .field { display: flex; flex-direction: column; }
 
     label {
       font-size: 0.8rem;
@@ -99,11 +84,7 @@
       color: var(--text-main);
     }
 
-    .hint {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 3px;
-    }
+    textarea { resize: vertical; }
 
     button.main-btn {
       border: none;
@@ -116,18 +97,27 @@
       color: #051b06;
       grid-column: 1 / -1;
       margin-top: 10px;
+      transition: opacity .15s ease, transform .15s ease;
     }
 
-    @media(max-width: 780px) {
-      form {
-        grid-template-columns: 1fr;
-      }
-      main {
-        padding: 10px;
-      }
+    button.main-btn:disabled {
+      opacity: .6;
+      transform: translateY(1px);
+      cursor: default;
     }
 
-    /* POPUP PREVIEW */
+    .status-text {
+      grid-column: 1 / -1;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      min-height: 1em;
+    }
+
+    @media(max-width: 760px) {
+      form { grid-template-columns: 1fr; }
+    }
+
     #modal {
       position: fixed;
       top:0;left:0;right:0;bottom:0;
@@ -160,6 +150,7 @@
       font-size:14px;
       font-weight:600;
     }
+
   </style>
 </head>
 <body>
@@ -168,92 +159,83 @@
     <div class="card">
       <div class="badge">Formulario interno</div>
       <h1>Crear sitio en 1 minuto</h1>
-      <p class="subtitle">
-        Completá los datos y al enviar se disparará el flujo Power Automate que creará el HTML y el repositorio automáticamente.
-      </p>
 
-      <!-- AHORA EL FORM NO TIENE ACTION NI METHOD -->
       <form id="siteForm">
         <div class="field">
           <label>Nombre del negocio</label>
-          <input type="text" name="nombre_negocio" placeholder="Ej: Servicios Fumigación CABA" required>
-        </div>
-
-        <div class="field">
-          <label>Slug del repo</label>
-          <input type="text" name="repoSlug" placeholder="ej: fumigacion-macro-centro" required>
-          <div class="hint">Sin espacios, solo guiones</div>
+          <input type="text" name="nombre_negocio" placeholder="Ej: Heladería Bella Vista" required>
         </div>
 
         <div class="field">
           <label>Título del sitio</label>
-          <input type="text" name="titulo" placeholder="Empresa de Fumigación en CABA" required>
+          <input type="text" name="titulo" placeholder="La mejor heladería de tu barrio" required>
         </div>
 
         <div class="field">
           <label>WhatsApp</label>
           <input type="text" name="whatsapp" placeholder="5491133380000">
-          <div class="hint">Sin + ni espacios</div>
         </div>
 
         <div class="field" style="grid-column: 1 / -1;">
           <label>Descripción</label>
-          <textarea name="descripcion" rows="5" placeholder="Empresa de fumigación y control de plagas en..." required></textarea>
+          <textarea name="descripcion" rows="4" placeholder="Descripción del negocio..." required></textarea>
         </div>
 
-        <!-- type="button" para que NO envíe el form -->
-        <button type="button" class="main-btn" onclick="requestPreview()">
-          👁 Previsualizar sitio
-        </button>
+        <button type="button" class="main-btn" onclick="requestPreview()">👁 Previsualizar sitio</button>
+        <div id="statusText" class="status-text"></div>
       </form>
     </div>
   </main>
 
-  <!-- MODAL PREVIEW -->
   <div id="modal">
     <button class="close-btn" onclick="closePreview()">Cerrar</button>
     <iframe id="previewFrame"></iframe>
   </div>
 
   <script>
-    // URL del Flow de Power Automate que devuelve SOLO el HTML
-    const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/1cc018a6b0464d48839fb504e7c617d6/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=10WBmFdajHjttnaCOCHeJWcUECqHlMQlCCyle3_W8YQ";
+    const FLOW_URL = "TU_URL_DEL_FLOW";
 
     function requestPreview() {
       const form = document.getElementById("siteForm");
-      const nombre = form.nombre_negocio.value;
-      const slug = form.repoSlug.value;
-      const titulo = form.titulo.value;
-      const descripcion = form.descripcion.value;
-      const whatsapp = form.whatsapp.value;
 
       const payload = {
-        nombre_negocio: nombre,
-        repoSlug: slug,
-        titulo: titulo,
-        descripcion: descripcion,
-        whatsapp: whatsapp
+        nombre_negocio: form.nombre_negocio.value,
+        titulo: form.titulo.value,
+        descripcion: form.descripcion.value,
+        whatsapp: form.whatsapp.value
       };
+
+      const btn = document.querySelector(".main-btn");
+      const statusEl = document.getElementById("statusText");
+
+      btn.disabled = true;
+      btn.textContent = "⏳ Generando tu próximo sitio…";
+      statusEl.textContent = "Estamos armando tu sitio en automático 🚀";
 
       fetch(FLOW_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       })
       .then(res => res.text())
-      .then(html => showPreview(html))
-      .catch(err => {
-        console.error(err);
-        alert("Error generando la previsualización.");
+      .then(html => {
+        btn.disabled = false;
+        btn.textContent = "👁 Previsualizar sitio";
+        statusEl.textContent = "Listo! Ya podés verlo 👇";
+
+        showPreview(html);
+      })
+      .catch(() => {
+        btn.disabled = false;
+        btn.textContent = "👁 Previsualizar sitio";
+        statusEl.textContent = "Error generando el sitio 😓";
       });
     }
 
     function showPreview(htmlGenerado) {
       const iframe = document.getElementById("previewFrame");
       const modal = document.getElementById("modal");
-      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+      const iframeDoc = iframe.contentDocument;
 
       iframeDoc.open();
       iframeDoc.write(htmlGenerado);
@@ -267,39 +249,7 @@
     }
   </script>
 
-  <!-- ============================================================= --> 
-  <!-- ========================= FOOTER ============================ -->
-  <!-- ============================================================= -->
-  <footer style="
-      background:#0f172a;
-      color:#e5e7eb;
-      padding:36px 16px;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      font-size:15px;
-      text-align:center;
-      margin-top:40px;
-      border-top:2px solid #1e293b;">
-  
-    <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;" loading="lazy">
-  
-    <p style="margin:6px 0;">
-      © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
-    </p>
-  
-    <p style="margin:10px 0;">
-      <a href="politica.html" style="color:#38bdf8; text-decoration:none;">Política de Privacidad</a> ·
-      <a href="Eliminardatos.html" style="color:#38bdf8; text-decoration:none;">Eliminación de Datos</a> ·
-      <a href="#contacto" style="color:#38bdf8; text-decoration:none;">Contacto</a>
-    </p>
-  
-    <p style="opacity:.8; font-size:13px; margin-top:10px;">
-      Desarrollado con 💙 desde Argentina.
-    </p>
-  
-    <script>
-      document.getElementById("year").innerText = new Date().getFullYear();
-    </script>
-  </footer>
-
 </body>
 </html>
+
+
