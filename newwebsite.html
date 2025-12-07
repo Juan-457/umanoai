@@ -126,6 +126,46 @@
         padding: 10px;
       }
     }
+
+    /* POPUP PREVIEW */
+    #modal {
+      position: fixed;
+      top:0;left:0;right:0;bottom:0;
+      background: rgba(0,0,0,.75);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      animation:fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0 }
+      to   { opacity:1 }
+    }
+
+    #previewFrame {
+      width:90%;
+      height:90%;
+      border-radius:10px;
+      background:white;
+      border:none;
+      box-shadow:0px 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .close-btn {
+      position:absolute;
+      top:25px;
+      right:25px;
+      background:#ef4444;
+      border:none;
+      padding:10px 15px;
+      border-radius:8px;
+      color:white;
+      cursor:pointer;
+      font-size:14px;
+      font-weight:600;
+    }
   </style>
 </head>
 <body>
@@ -138,10 +178,9 @@
         Completá los datos y al enviar se disparará el flujo Power Automate que creará el HTML y el repositorio automáticamente.
       </p>
 
-      <form
-        method="POST"
-        action="https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/1cc018a6b0464d48839fb504e7c617d6/triggers/manual/paths/invoke?api-version=1&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=10WBmFdajHjttnaCOCHeJWcUECqHlMQlCCyle3_W8YQ"
-      >
+      <!-- FORM -->
+      <form method="POST" action="https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/1cc018a6b0464d48839fb504e7c617d6/triggers/manual/paths/invoke?api-version=1&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=10WBmFdajHjttnaCOCHeJWcUECqHlMQlCCyle3_W8YQ" target="_blank">
+
         <div class="field">
           <label>Nombre del negocio</label>
           <input type="text" name="nombre_negocio" placeholder="Ej: Servicios Fumigación CABA" required>
@@ -169,16 +208,60 @@
           <textarea name="descripcion" rows="5" placeholder="Empresa de fumigación y control de plagas en..." required></textarea>
         </div>
 
-        <button type="submit">🚀 Crear sitio ahora</button>
+        <button onclick="event.preventDefault(); requestPreview();">👁 Previsualizar sitio</button>
 
       </form>
     </div>
   </main>
 
+  <!-- MODAL PREVIEW -->
+  <div id="modal">
+    <button class="close-btn" onclick="closePreview()">Cerrar</button>
+    <iframe id="previewFrame"></iframe>
+  </div>
 
-  <!-- ============================================================= --> 
-  <!-- ========================= FOOTER ============================ -->
-  <!-- ============================================================= -->
+  <script>
+    function requestPreview() {
+      const nombre = document.querySelector('[name=\"nombre_negocio\"]').value;
+      const slug = document.querySelector('[name=\"repoSlug\"]').value;
+      const titulo = document.querySelector('[name=\"titulo\"]').value;
+      const descripcion = document.querySelector('[name=\"descripcion\"]').value;
+      const whatsapp = document.querySelector('[name=\"whatsapp\"]').value;
+
+      const payload = {
+        nombre_negocio: nombre,
+        repoSlug: slug,
+        titulo: titulo,
+        descripcion: descripcion,
+        whatsapp: whatsapp
+      };
+
+      fetch("/previewEndpoint", { // acá ponés tu endpoint real!!!
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.text())
+      .then(html => showPreview(html))
+      .catch(err => alert("Error generando preview: " + err));
+    }
+
+    function showPreview(htmlGenerado) {
+      const iframe = document.getElementById("previewFrame");
+      const modal = document.getElementById("modal");
+      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+      iframeDoc.open();
+      iframeDoc.write(htmlGenerado);
+      iframeDoc.close();
+      modal.style.display = "flex";
+    }
+
+    function closePreview() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+
+  <!-- FOOTER -->
   <footer style="
       background:#0f172a;
       color:#e5e7eb;
