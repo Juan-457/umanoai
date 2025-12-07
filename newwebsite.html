@@ -99,7 +99,13 @@
       color: var(--text-main);
     }
 
-    button[type="submit"] {
+    .hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    button.main-btn {
       border: none;
       border-radius: 999px;
       padding: 12px 26px;
@@ -110,12 +116,6 @@
       color: #051b06;
       grid-column: 1 / -1;
       margin-top: 10px;
-    }
-
-    .hint {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 3px;
     }
 
     @media(max-width: 780px) {
@@ -136,12 +136,6 @@
       align-items:center;
       justify-content:center;
       z-index:9999;
-      animation:fadeIn 0.25s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity:0 }
-      to   { opacity:1 }
     }
 
     #previewFrame {
@@ -178,9 +172,8 @@
         Completá los datos y al enviar se disparará el flujo Power Automate que creará el HTML y el repositorio automáticamente.
       </p>
 
-      <!-- FORM -->
-      <form method="POST" action="https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/1cc018a6b0464d48839fb504e7c617d6/triggers/manual/paths/invoke?api-version=1&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=10WBmFdajHjttnaCOCHeJWcUECqHlMQlCCyle3_W8YQ" target="_blank">
-
+      <!-- AHORA EL FORM NO TIENE ACTION NI METHOD -->
+      <form id="siteForm">
         <div class="field">
           <label>Nombre del negocio</label>
           <input type="text" name="nombre_negocio" placeholder="Ej: Servicios Fumigación CABA" required>
@@ -208,8 +201,10 @@
           <textarea name="descripcion" rows="5" placeholder="Empresa de fumigación y control de plagas en..." required></textarea>
         </div>
 
-        <button onclick="event.preventDefault(); requestPreview();">👁 Previsualizar sitio</button>
-
+        <!-- type="button" para que NO envíe el form -->
+        <button type="button" class="main-btn" onclick="requestPreview()">
+          👁 Previsualizar sitio
+        </button>
       </form>
     </div>
   </main>
@@ -221,12 +216,16 @@
   </div>
 
   <script>
+    // URL del Flow de Power Automate que devuelve SOLO el HTML
+    const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/1cc018a6b0464d48839fb504e7c617d6/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=10WBmFdajHjttnaCOCHeJWcUECqHlMQlCCyle3_W8YQ";
+
     function requestPreview() {
-      const nombre = document.querySelector('[name=\"nombre_negocio\"]').value;
-      const slug = document.querySelector('[name=\"repoSlug\"]').value;
-      const titulo = document.querySelector('[name=\"titulo\"]').value;
-      const descripcion = document.querySelector('[name=\"descripcion\"]').value;
-      const whatsapp = document.querySelector('[name=\"whatsapp\"]').value;
+      const form = document.getElementById("siteForm");
+      const nombre = form.nombre_negocio.value;
+      const slug = form.repoSlug.value;
+      const titulo = form.titulo.value;
+      const descripcion = form.descripcion.value;
+      const whatsapp = form.whatsapp.value;
 
       const payload = {
         nombre_negocio: nombre,
@@ -236,23 +235,30 @@
         whatsapp: whatsapp
       };
 
-      fetch("/previewEndpoint", { // acá ponés tu endpoint real!!!
+      fetch(FLOW_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(payload)
       })
       .then(res => res.text())
       .then(html => showPreview(html))
-      .catch(err => alert("Error generando preview: " + err));
+      .catch(err => {
+        console.error(err);
+        alert("Error generando la previsualización.");
+      });
     }
 
     function showPreview(htmlGenerado) {
       const iframe = document.getElementById("previewFrame");
       const modal = document.getElementById("modal");
       const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
       iframeDoc.open();
       iframeDoc.write(htmlGenerado);
       iframeDoc.close();
+
       modal.style.display = "flex";
     }
 
@@ -261,7 +267,9 @@
     }
   </script>
 
-  <!-- FOOTER -->
+  <!-- ============================================================= --> 
+  <!-- ========================= FOOTER ============================ -->
+  <!-- ============================================================= -->
   <footer style="
       background:#0f172a;
       color:#e5e7eb;
