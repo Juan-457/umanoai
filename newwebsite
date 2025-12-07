@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Crear sitio</title>
+</head>
+<body>
+  <h1>Generador de sitio</h1>
+
+  <form method="POST" action="TU_URL_DE_WEBHOOK_AQUI">
+    <label>
+      Nombre del negocio:
+      <input type="text" name="nombre_negocio" required>
+    </label>
+    <br><br>
+
+    <label>
+      Slug / nombre del repo (sin espacios, ej: servicios-fumigacion-caba):
+      <input type="text" name="repoSlug" required>
+    </label>
+    <br><br>
+
+    <label>
+      Título de la página:
+      <input type="text" name="titulo" required>
+    </label>
+    <br><br>
+
+    <label>
+      Descripción:
+      <textarea name="descripcion" rows="4" cols="40" required></textarea>
+    </label>
+    <br><br>
+
+    <label>
+      WhatsApp (sin + ni espacios, ej: 5491133380000):
+      <input type="text" name="whatsapp">
+    </label>
+    <br><br>
+
+    <button type="submit">Crear sitio</button>
+  </form>
+</body>
+</html>
+👉 Reemplazá TU_URL_DE_WEBHOOK_AQUI por la URL que te da n8n en el nodo Webhook.
+
+Cuando envíes el form, n8n va a recibir algo así en el nodo Webhook:
+
+json
+Copy code
+{
+  "nombre_negocio": "Servicios Locales Fumigaciones",
+  "repoSlug": "servicios-fumigacion-caba",
+  "titulo": "Servicios Locales Fumigaciones",
+  "descripcion": "Empresa de fumigación y control de plagas...",
+  "whatsapp": "5491133380000"
+}
+Es decir, cada campo del form queda como propiedad json del item.
+
+3️⃣ Reemplazar el nodo “Set datos sitio” por este Webhook
+En lo que armamos antes, el primer nodo era un Set con los datos quemados.
+Ahora el flujo va a ser:
+
+Webhook → Function (Construir HTML) → HTTP (Crear repo) → HTTP (Subir index.html)
+
+El Function que construye el HTML lo adaptamos para leer directamente lo que llega del Webhook:
+
+js
+Copy code
+const data = items[0].json;
+
+const titulo = data.titulo;
+const descripcion = data.descripcion;
+const whatsapp = data.whatsapp;
+const repoSlug = data.repoSlug;
+
+let ctaHtml = "";
+if (whatsapp) {
+  ctaHtml = `<a class="cta" href="https://wa.me/${whatsapp}" target="_blank" rel="noopener">Escribinos por WhatsApp</a>`;
+}
+
+const html = `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>${titulo}</title>
+  <meta name="description" content="${descripcion}">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #0b1630 0, #020617 45%, #020617 100%);
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      max-width: 720px;
+      width: 100%;
+      background: rgba(15,23,42,0.92);
+      border-radius: 20px;
+      padding: 28px 24px;
+      border: 1px solid rgba(148,163,184,0.35);
+      box-shadow: 0 22px 60px rgba(15,23,42,0.78);
+    }
+    h1 {
+      font-size: 2.1rem;
+      margin-bottom: 8px;
+    }
+    p {
+      line-height: 1.7;
+      color: #cbd5f5;
+      margin-bottom: 16px;
+    }
+    a.cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: #22c55e;
+      color: #022c22;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>${titulo}</h1>
+    <p>${descripcion}</p>
+    ${ctaHtml}
+  </main>
+</body>
+</html>`;
+
+const contentBase64 = Buffer.from(html, 'utf8').toString('base64');
+
+return [
+  {
+    json: {
+      repoSlug,
+      html,
+      contentBase64
+    }
+  }
+];
