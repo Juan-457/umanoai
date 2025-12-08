@@ -1,53 +1,46 @@
 <!DOCTYPE html>
 <html lang="es-ar">
 <head>
-  <!-- 🔥 SEO para campaña Web -->
+  <!-- 🔥 SEO orientado a desarrollo web -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-  <title>Desarrollo Web para Pymes | Landing Pages y Sitios Profesionales | UmanoAI</title>
+  <title>Desarrollo web profesional | Páginas que convierten | UmanoAI</title>
 
   <meta name="description"
-        content="Diseñamos páginas web modernas y optimizadas para convertir: landing pages, sitios corporativos y páginas para campañas de Google Ads. Activación rápida y lista para captar clientes vía WhatsApp.">
+        content="Creamos páginas web profesionales, rápidas, con diseño moderno, integración a WhatsApp y analítica. Ideal para campañas y para captar clientes desde el día 1.">
 
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#020617">
 
-  <!-- CANONICAL PARA EVITAR DUPLICIDAD -->
   <link rel="canonical" href="https://umanoai.com.ar/desarrollo-web.html" />
 
-  <!-- OG -->
-  <meta property="og:title" content="Desarrollo Web profesional para negocios">
-  <meta property="og:description" content="Sitios web para convertir clientes. Integración con WhatsApp y medición real de resultados.">
-  <meta property="og:image" content="https://umanoai.com.ar/og-umanoai.jpg">
-  <meta name="twitter:title" content="Desarrollo Web profesional para negocios">
-
-  <!-- Google Tag Manager -->
-  <script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TRW2TPQR');
-  </script>
-
   <style>
-    body {
+    body{
       margin:0;
-      font-family: system-ui,-apple-system,sans-serif;
       background:#020617;
-      color:#fff;
+      font-family:system-ui,-apple-system,sans-serif;
       scroll-behavior:smooth;
+      color:white;
     }
 
-    header {
+    .logo-sticky{
+      position:fixed;
+      bottom:24px;
+      left:18px;
+      height:65px;
+      opacity:.5;
+      z-index:900;
+    }
+
+    header{
       min-height:100vh;
       display:flex;
       flex-direction:column;
-      align-items:center;
       justify-content:center;
+      align-items:center;
       text-align:center;
-      padding:80px 16px;
+      padding:40px 20px;
       position:relative;
     }
 
@@ -60,190 +53,260 @@
       z-index:-2;
     }
 
-    .blur-box{
-      background: rgba(0,0,0,0.48);
+    .hero-bubble{
+      background:rgba(0,0,0,0.45);
       backdrop-filter:blur(14px);
-      border-radius:20px;
-      padding:22px 30px;
-      max-width:780px;
+      padding:22px 32px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,0.35);
+      max-width:880px;
       margin:auto;
-      border:1px solid rgba(255,255,255,0.25);
-      box-shadow:0 6px 28px rgba(0,0,0,0.5);
+      box-shadow:0 8px 30px rgba(0,0,0,0.55);
     }
 
     h1{
-      font-size:clamp(32px,6vw,52px);
-      margin-bottom:12px;
-      line-height:1.15;
+      margin:0 0 10px;
+      font-size:clamp(32px,6vw,54px);
     }
-    h2{
-      text-align:center;
-      margin-bottom:6px;
-    }
+
     p{
       line-height:1.6;
     }
 
-    .btn-whatsapp{
+    .btn-wsp{
       display:inline-block;
-      margin-top:20px;
+      margin-top:16px;
+      padding:14px 28px;
       background:#25D366;
-      padding:14px 26px;
-      border-radius:30px;
+      color:white;
       font-weight:700;
-      color:#fff;
+      border-radius:30px;
       text-decoration:none;
-      box-shadow:0 6px 18px rgba(0,0,0,0.4);
+      box-shadow:0 6px 18px rgba(0,0,0,0.45);
     }
 
     section{
-      padding:60px 20px;
       display:flex;
       justify-content:center;
+      padding:60px 16px;
     }
 
     .card{
-      width:min(900px,95%);
-      background:#fff;
-      color:#0f172a;
+      width:min(900px,92%);
+      background:white;
+      color:#1a1a1a;
       border-radius:16px;
-      padding:32px;
-      box-shadow:0 10px 28px rgba(0,0,0,0.25);
+      padding:28px;
+      box-shadow:0 12px 32px rgba(0,0,0,0.35);
     }
 
-    ul {
-      margin:0;
-      padding-left:18px;
-    }
-
-    .precio {
-      font-size:2rem;
-      font-weight:800;
+    .card h2{
       text-align:center;
-      margin:24px 0;
-      color:#0ea5e9;
+      margin-top:0;
+    }
+
+    .carousel{
+      display:flex;
+      justify-content:center;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+      margin-top:20px;
+    }
+
+    .carousel img{
+      width:100%;
+      border-radius:12px;
+    }
+
+    .thumbnails{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .thumbnails img{
+      width:85px;
+      height:55px;
+      object-fit:cover;
+      border-radius:8px;
+      opacity:.55;
+      cursor:pointer;
+      border:2px solid transparent;
+      transition:.18s ease;
+    }
+
+    .thumbnails img.active{
+      opacity:1;
+      border-color:#2563eb;
+    }
+
+    .faq-item{
+      border-bottom:1px solid #ddd;
+      padding:10px 0;
+    }
+
+    .faq-item summary{
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    .faq-item p{
+      margin:6px 0;
+      line-height:1.55;
     }
 
     footer{
+      background:#0f172a;
+      padding:32px;
       text-align:center;
-      padding:26px;
-      background:#0b1220;
-      color:#ccc;
-      font-size:14px;
+      color:#d1d5db;
     }
-
   </style>
 </head>
 
 <body>
 
-<header>
-  <video autoplay muted loop playsinline preload="auto">
-    <source src="hero.mp4" type="video/mp4">
-  </video>
+  <!-- LOGO FIJO -->
+  <img class="logo-sticky" src="umanoai.png" alt="Logo UmanoAI">
 
-  <div class="blur-box">
-    <h1>Desarrollo Web Profesional para Pymes y Emprendedores</h1>
-    <p>
-      Diseñamos páginas web rápidas, modernas y optimizadas para convertir.
-      Conectadas a WhatsApp y preparadas para campañas de Google Ads desde el día 1.
-    </p>
+  <!-- HERO -->
+  <header>
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
 
-    <a href="https://wa.me/5491125926977?text=Hola,%20vengo%20de%20la%20landing%20de%20web"
-       class="btn-whatsapp">
-       👉 Cotizar mi página ahora
-    </a>
-  </div>
-</header>
+    <div class="hero-bubble">
+      <h1>Sitios web que convierten desde el día uno</h1>
+      <p>
+        Creamos páginas web rápidas, optimizadas para campañas y listas para captar clientes
+        mediante WhatsApp y formularios.
+      </p>
 
-
-<section>
-  <div class="card">
-    <h2>🌐 ¿Qué incluye tu sitio web?</h2>
-    <ul style="line-height:1.7;">
-      <li>Landing page de alta conversión (mobile first)</li>
-      <li>Dominio configurado (opcional)</li>
-      <li>Hosting incluido el primer año</li>
-      <li>Botón directo a WhatsApp con seguimiento</li>
-      <li>Formulario conectado a tu email / WhatsApp</li>
-      <li>Optimización SEO inicial</li>
-      <li>Certificado SSL incluido</li>
-      <li>Integración con Google Analytics 4</li>
-      <li>Tag Manager listo para campañas</li>
-    </ul>
-  </div>
-</section>
-
-
-<section>
-  <div class="card">
-    <h2>⚡ Ideal si querés...</h2>
-
-    <ul style="line-height:1.7;">
-      <li>Convertir en campañas de Google o Instagram</li>
-      <li>Empezar a captar clientes online ahora</li>
-      <li>Mostrar tu marca de forma profesional</li>
-      <li>Medir resultados reales</li>
-      <li>Automatizar el contacto inicial</li>
-    </ul>
-  </div>
-</section>
-
-
-<section>
-  <div class="card">
-    <h2>💸 Pack Web Profesional</h2>
-
-    <p class="precio">USD 500 <span style="font-size:1rem;">(único)</span></p>
-
-    <ul style="line-height:1.6;">
-      <li>Diseño web completo</li>
-      <li>Subida en tu dominio</li>
-      <li>Logo simple incluido</li>
-      <li>Medición del tráfico</li>
-      <li>SEO base</li>
-      <li>10 secciones</li>
-    </ul>
-
-    <p style="text-align:center; margin-top:22px;">
-      <a href="https://wa.me/5491125926977?text=Hola,%20quiero%20avanzar%20con%20la%20Web"
-         class="btn-whatsapp">
-         🚀 Quiero avanzar
+      <a href="https://wa.me/5491125926977?text=Hola,%20quiero%20cotizar%20una%20pagina%20web" class="btn-wsp">
+        🚀 Cotizar mi web ahora
       </a>
-    </p>
-  </div>
-</section>
+    </div>
+  </header>
 
+  <!-- QUE INCLUYE -->
+  <section>
+    <div class="card">
+      <h2>🌐 ¿Qué incluye tu web?</h2>
 
-<section>
-  <div class="card">
-    <h2>⭐ Lo que dicen algunos clientes</h2>
+      <ul>
+        <li>Diseño profesional orientado a conversión</li>
+        <li>Diseño responsive móvil – escritorio</li>
+        <li>Hosting incluido el primer año</li>
+        <li>Certificado SSL</li>
+        <li>Botón directo a WhatsApp con metricas</li>
+        <li>Formularios conectados a email/WhatsApp</li>
+        <li>SEO inicial</li>
+        <li>Google Analytics configurado</li>
+        <li>Google Tag Manager instalado</li>
+      </ul>
+    </div>
+  </section>
 
-    <p style="font-style:italic">
-      “El sitio quedó espectacular y en muy pocos días empezamos a recibir consultas”
-    </p>
-    <p style="font-style:italic">
-      “Fueron súper rápidos y entendieron exactamente lo que necesitábamos”
-    </p>
+  <!-- CAROUSEL -->
+  <section>
+    <div class="card">
+      <h2>✨ Algunos sitios desarrollados</h2>
 
-    <p style="text-align:center;margin-top:20px;">
-      <a class="btn-whatsapp"
-         href="https://walink.co/ujv9wz"
-         target="_blank">
-        👉 Quiero mi web
-      </a>
-    </p>
-  </div>
-</section>
+      <div class="carousel">
+        <img id="mainImg" src="site1.png" alt="Sitio web UmanoAI">
 
+        <div class="thumbnails">
+          <img src="site1.png" class="active" onclick="changeImg(this, 'site1.png')">
+          <img src="site2.png" onclick="changeImg(this, 'site2.png')">
+          <img src="site3.png" onclick="changeImg(this, 'site3.png')">
+          <img src="site4.png" onclick="changeImg(this, 'site4.png')">
+        </div>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  © <span id="year"></span> UmanoAI — Desarrollo Web & Automatización
-</footer>
+  <!-- RESEÑAS -->
+  <section>
+    <div class="card">
+      <h2>⭐ Lo que dicen nuestros clientes</h2>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+      <p>"Excelente experiencia, la web quedó profesional y empezamos a recibir consultas en menos de una semana."</p>
+      <p>"Súper rápidos y claros. Nos ayudaron a definir bien el mensaje de venta."</p>
+      <p>"Muy buena calidad estética y técnica. Totalmente recomendados."</p>
+
+      <p style="margin-top:20px; text-align:center;">
+        <a href="https://wa.me/5491125926977?text=Hola,%20quiero%20avanzar%20con%20una%20web"
+           class="btn-wsp">
+          💬 Empezar ahora
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="card">
+      <h2>❓ Preguntas frecuentes</h2>
+
+      <details class="faq-item">
+        <summary>¿En cuánto tiempo está mi web?</summary>
+        <p>Entre 5 y 10 días hábiles dependiendo de contenido y ajustes.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Qué necesito entregarte?</summary>
+        <p>
+          Texto de empresa/servicio, logo si tenés, fotos y datos de contacto.
+          Si no tenés todo, te ayudamos.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Puedo usar la web para campañas de Google Ads?</summary>
+        <p>Sí, queda lista para medir, con GA4 y eventos de conversión.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿La web incluye dominio?</summary>
+        <p>Podemos ayudarte a comprarlo o usar uno que ya tengas.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section>
+    <div class="card">
+      <h2>📞 Contacto</h2>
+
+      <p>WhatsApp directo: <strong>+54 9 11 2592-6977</strong></p>
+      <p>Email: <strong>info@umanoai.com.ar</strong></p>
+
+      <p style="margin-top:12px; text-align:center;">
+        <a href="https://wa.me/5491125926977?text=Hola,%20quiero%20una%20web"
+           class="btn-wsp">
+          📲 Escribir ahora
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © <span id="year"></span> UmanoAI — Desarrollo Web & Analítica
+  </footer>
+
+  <script>
+    function changeImg(el, img){
+      document.querySelectorAll('.thumbnails img').forEach(e => e.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('mainImg').src = img;
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
+
