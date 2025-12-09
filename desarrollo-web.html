@@ -1,213 +1,1894 @@
 <!DOCTYPE html>
 <html lang="es-ar">
 <head>
+  <!-- ✅ Configuración básica de la página -->
   <meta charset="UTF-8" />
+  <!-- viewport ajustado para iOS / notch -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-  <title>Páginas Web Profesionales | UmanoAI</title>
+  <!-- 🔹 TITLE orientado a búsqueda -->
+  <title>Bots de WhatsApp para pymes, automatización de procesos y Power BI | UmanoAI</title>
 
   <meta name="description"
-        content="Creamos páginas web profesionales, modernas y optimizadas para captar clientes desde el primer día. Integración con WhatsApp, dominio y medición real.">
+        content="UmanoAI diseña bots de WhatsApp para pymes, automatización de procesos, sitios web y tableros de Power BI. Ayudamos a negocios de servicios y comercios en Argentina a vender 24/7 y tomar decisiones con datos.">
 
-  <meta name="robots" content="index,follow">
+  <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#020617">
 
+  <!-- ========= META PARA LLM / IA ========= -->
+  <meta name="robots" content="index,follow">
+  <meta name="llm-friendly" content="true">
+  <meta name="ai-content" content="allow">
+  <meta name="ai-description"
+        content="UmanoAI desarrolla bots de WhatsApp, automatización de procesos, sitios web y tableros de BI para negocios de servicios, comercios y pymes en Argentina.">
+
+  <!-- 🔹 Canonical para evitar contenido duplicado -->
+  <link rel="canonical" href="https://umanoai.com.ar/" />
+
+  <!-- ========= OPEN GRAPH / REDES SOCIALES ========= -->
+  <meta property="og:title" content="Bots de WhatsApp para pymes, automatización de procesos y Power BI | UmanoAI">
+  <meta property="og:description"
+        content="Bots de WhatsApp con IA, automatización de procesos, desarrollo web y Power BI para que tu pyme venda 24/7 y reduzca tareas manuales.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umanoai.com.ar/">
+  <meta property="og:image" content="https://umanoai.com.ar/og-umanoai.jpg">
+  <meta property="og:site_name" content="UmanoAI">
+
+  <!-- ========= Twitter Cards ========= -->
+  <meta name="twitter:title" content="Bots de WhatsApp para pymes, automatización de procesos y Power BI | UmanoAI">
+  <meta name="twitter:description"
+        content="Automatizá ventas, atención al cliente y reportes con bots de WhatsApp, automatización y tableros de Power BI diseñados por UmanoAI para pymes.">
+  <meta name="twitter:image" content="https://umanoai.com.ar/og-umanoai.jpg">
+
+  <!-- ========= SCHEMA.ORG PARA ORGANIZATION / SERVICIOS ========= -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://umanoai.com.ar/#organization",
+    "name": "UmanoAI",
+    "url": "https://umanoai.com.ar",
+    "logo": "https://umanoai.com.ar/umanoai.png",
+    "description": "UmanoAI diseña bots de WhatsApp, automatización de procesos, sitios web y tableros de BI para que los negocios trabajen en automático.",
+    "sameAs": [
+      "https://www.instagram.com/umanoai",
+      "https://www.linkedin.com/company/umanoai"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "telephone": "+54-9-11-2592-6977",
+      "email": "info@umanoai.com.ar",
+      "areaServed": "AR",
+      "availableLanguage": ["es-AR","en"]
+    },
+    "knowsAbout": [
+      "Bots de WhatsApp",
+      "Automatización de procesos con n8n y Power Automate",
+      "Desarrollo de sitios web y landing pages",
+      "CRM a medida",
+      "Power BI y tableros de Business Intelligence",
+      "Integraciones entre APIs, ERPs y planillas"
+    ]
+  }
+  </script>
+
+  <!-- ========= SCHEMA.ORG FAQPAGE ========= -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta un bot de WhatsApp con UmanoAI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tenemos planes desde USD 35 al mes hasta opciones Corporate, según el volumen de respuestas y el nivel de personalización. Revisamos tu caso y te sugerimos el plan correcto."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué incluye la implementación de un bot de WhatsApp?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Incluye relevamiento de tu flujo de atención, diseño de conversación, armado del bot, conexión básica con tus sistemas o planillas y un período inicial de ajustes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Necesito tener WhatsApp Business API antes de trabajar con UmanoAI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No necesariamente. Te ayudamos a elegir el proveedor adecuado, configurar el número y dejar listo el entorno para que el bot pueda operar de forma estable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿En cuánto tiempo puede estar funcionando mi bot de WhatsApp?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para un bot estándar, solemos estar en línea entre 1 y 3 semanas desde la aprobación del alcance. Proyectos más complejos pueden requerir algo más de tiempo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Trabajan solo con empresas grandes o también con pymes y profesionales?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "UmanoAI está pensado sobre todo para pymes, negocios de servicios y profesionales que quieren escalar sin sumar más tareas manuales. También atendemos proyectos corporativos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Pueden integrar el bot con mi sistema, CRM o planillas de Excel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Integramos bots con CRMs, ERPs, Power BI, Google Sheets, bases de datos y otros sistemas mediante APIs, n8n o Power Automate para que la información fluya en automático."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ====================== FAVICONS ====================== -->
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- ====================== GOOGLE TAG MANAGER ====================== -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TRW2TPQR');
+  </script>
+  <!-- ================================================================= -->
+
+  <!-- ====================== ESTILOS GLOBALES ====================== -->
   <style>
-    body {
-      margin:0;
-      background:#020617;
-      color:#fff;
-      font-family: system-ui,-apple-system,sans-serif;
-      scroll-behavior:smooth;
+    :root{
+      --azul:#008cff;
+      --bgCard: rgba(255,255,255,.96);
+      --shadow:0 4px 10px rgba(0,0,0,.12);
+      --radius:14px;
+      --safe: env(safe-area-inset-bottom);
     }
 
-    header {
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:#020617;
+    }
+
+    img{max-width:100%;height:auto;}
+
+    .um{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      line-height:1.45;
+      background:transparent;
+      padding-bottom:max(80px,var(--safe));
+    }
+
+    /* ====================== HEADER / HERO ====================== */
+    .um header{
+      position:relative;
       min-height:100vh;
+      min-height:100svh;
       display:flex;
+      flex-direction:column;
       justify-content:center;
       align-items:center;
       text-align:center;
-      padding:20px;
-      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+      padding:0 16px;
+      padding-top:calc(80px + env(safe-area-inset-top, 0px));
+      /* 👇 más espacio abajo para que no se pisen burbuja y marquesina */
+      padding-bottom:calc(120px + env(safe-area-inset-bottom, 0px));
+      background:#020617;
     }
-
-    header video {
+    .um header video{
       position:absolute;
       inset:0;
       width:100%;
       height:100%;
       object-fit:cover;
+      object-position:center;
+      z-index:-2;
+      background:#020617;
+    }
+
+    .um header::before{
+      content:"";
+      position:absolute;
+      inset:0;
       z-index:-1;
+      background:transparent;
+      backdrop-filter:none;
     }
 
-    .hero-box {
-      max-width:780px;
-      background:rgba(0,0,0,0.45);
-      border-radius:22px;
-      padding:30px;
-      border:1px solid rgba(255,255,255,0.35);
-      backdrop-filter: blur(16px);
-      box-shadow:0 8px 28px rgba(0,0,0,0.45);
+    .um header h1{
+      color:#fff;
+      margin:0 0 4px;
+      font-size:clamp(28px,5vw,46px);
+      font-weight:800;
+      text-shadow:0 2px 14px rgba(0,0,0,.5);
     }
-
-    h1 {
-      margin-top:0;
-      margin-bottom:14px;
-      font-size:clamp(32px,6vw,52px);
+    .um header .hero-subtitle{
+      color:#f5f5f5;
+      max-width:100%;
+      margin:0;
+      font-size:clamp(15px,3.1vw,19px);
+      font-weight:500;
+      text-shadow:0 2px 10px rgba(0,0,0,.6);
     }
-
-    .btn-wsp {
-      display:inline-block;
-      background:#25D366;
-      padding:14px 26px;
-      border-radius:30px;
-      text-decoration:none;
-      margin-top:20px;
-      font-weight:700;
-      color:white;
-      box-shadow:0 6px 18px rgba(0,0,0,0.4);
-    }
-
-    section {
-      padding:60px 20px;
+    .um header .hero-cta{
       display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin:22px 0 42px;
+    }
+
+  /* 🔵 Burbuja hero (título y subtítulo) */
+.hero-bubble{
+  background: linear-gradient(
+    92deg,
+    rgba(0, 118, 255, 0.38),
+    rgba(92, 56, 255, 0.40)
+  );
+  border: 1.3px solid rgba(255,255,255,0.35);
+  box-shadow:
+    0 8px 28px rgba(0, 118, 255, 0.30),
+    0 2px 12px rgba(0, 0, 0, 0.20);
+  
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  
+  border-radius: 22px;
+  padding: 14px 24px; /* 🔥 más chico, más elegante */
+  margin: 12px auto;
+  max-width: 1000px; /* 🔥 evita que haga pancarta enorme */
+  color: #ffffff;
+  animation: fadeInUp .55s ease forwards;
+}
+    .um .logo-sticky{
+      position:fixed;
+      bottom:24px;
+      left:18px;
+      height:67px;
+      opacity:.55;
+      z-index:900;
+      transition:transform .2s ease, opacity .2s ease;
+    }
+    .um .logo-sticky:hover{
+      opacity:.95;
+      transform:scale(1.03);
+    }
+
+    .um .btn-primaria,
+    .um .btn-secundaria{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 20px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:15px;
+      cursor:pointer;
+      border:2px solid transparent;
+      transition:background .15s ease, color .15s ease, transform .1s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+
+    .um .btn-primaria{
+      background:#25D366;
+      color:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,.35);
+    }
+    .um .btn-primaria:hover{
+      transform:translateY(-1px);
+      box-shadow:0 9px 24px rgba(0,0,0,.4);
+    }
+
+    /* 🟠 BOTÓN SECUNDARIO EN NARANJA */
+    .um .btn-secundaria{
+      background:linear-gradient(135deg,#ff9b30,#ff7e00);
+      color:#fff;
+      border-color:rgba(251,146,60,0.9);
+      box-shadow:0 6px 18px rgba(251,146,60,0.55);
+    }
+    .um .btn-secundaria:hover{
+      background:linear-gradient(135deg,#ffb347,#ff8c1a);
+      box-shadow:0 9px 24px rgba(251,146,60,0.75);
+      transform:translateY(-1px);
+    }
+
+    .um .marquesina{
+      position:absolute;
+      bottom:16px;
+      left:50%;
+      transform:translateX(-50%);
+      background:rgba(0,0,0,.5);
+      color:#fff;
+      padding:8px 14px;
+      border-radius:999px;
+      backdrop-filter:blur(4px);
+      max-width:92%;
+      font-weight:700;
+      font-size:clamp(14px,3.2vw,20px);
+    }
+
+    /* NAVBAR */
+    .um nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:1200;
+      background:linear-gradient(90deg,#020617,#0f172a,#111827);
+      background-size:200% 100%;
+      box-shadow:0 2px 12px rgba(0,0,0,.35);
+      backdrop-filter:blur(10px);
+      animation:navGlow 18s ease-in-out infinite alternate;
+    }
+    @keyframes navGlow{
+      from{background-position:0% 0}
+      to{background-position:100% 0}
+    }
+
+    .um nav .nav-inner{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+      padding:10px 12px 10px;
+    }
+
+    .um nav .brand{
+      color:#f9fafb;
+      font-weight:600;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-size:13px;
+      opacity:.9;
+      margin-left:12px;
+    }
+
+    .um nav .links{
+      display:flex;
+      gap:22px;
+      list-style:none;
+      margin:0;
+      padding:0;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+    .um nav .links a{
+      color:#f9fafb;
+      padding:8px 6px;
+      border-radius:999px;
+      opacity:.85;
+      transition:opacity .15s ease, background .15s ease, transform .1s ease;
+    }
+    .um nav .links a:hover{
+      opacity:1;
+      background:rgba(255,255,255,.08);
+      transform:translateY(-1px);
+    }
+
+    .um nav .hamburger{
+      display:none;
+      cursor:pointer;
+      border:2px solid rgba(255,255,255,.7);
+      background:rgba(15,23,42,.85);
+      color:#fff;
+      padding:8px;
+      border-radius:999px;
+      margin-left:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,.4);
+    }
+    .um nav .hamburger svg{
+      width:26px;
+      height:26px;
+      display:block;
+    }
+
+    .um .links.mobile{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      position:absolute;
+      left:0;
+      right:0;
+      top:100%;
+      background:rgba(15,23,42,.96);
+      border-radius:0 0 16px 16px;
+      box-shadow:0 16px 30px rgba(0,0,0,.45);
+      padding:10px 16px 14px;
+      z-index:1202;
+    }
+    .um .links.mobile[hidden]{display:none!important}
+    .um .links.mobile a{
+      padding:10px 0;
+      border-radius:10px;
+      color:#f9fafb;
+      border-bottom:1px solid rgba(148,163,184,.3);
+    }
+    .um .links.mobile a:last-child{
+      border-bottom:none;
+    }
+
+    .um section{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      padding:36px 16px;
+    }
+    .um .seccion{
+      width:min(920px,92%);
+      background:var(--bgCard);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:clamp(16px,3.6vw,24px);
+      color:#132135;
+    }
+    .um .seccion h2{
+      text-align:center;
+      margin-top:0;
+    }
+
+    .pricing-table{
+      width:100%;
+      border-collapse:collapse;
+      margin:16px auto;
+      font-size:14px;
+    }
+    .pricing-table th,
+    .pricing-table td{
+      border:1px solid #d1d5db;
+      padding:8px 10px;
+      text-align:center;
+    }
+    .pricing-table th{
+      background:var(--azul);
+      color:#fff;
+      font-weight:700;
+    }
+    .pricing-table .highlight{
+      background:rgba(0,140,255,0.08);
+      font-weight:700;
+    }
+
+    .video-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;
+    }
+    .video-card{
+      background:rgba(15,23,42,0.95);
+      border-radius:14px;
+      border:1px solid rgba(148,163,184,0.4);
+      padding:10px;
+      box-shadow:0 16px 40px rgba(0,0,0,0.55);
+    }
+    .video-card iframe{
+      border-radius:10px;
+      display:block;
+    }
+
+    .bi-carousel{
+      margin-top:26px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+    }
+    .bi-carousel-main{
+      width:100%;
+      max-width:520px;
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 14px 36px rgba(0,0,0,0.55);
+      background:#020617;
+    }
+    .bi-carousel-main img{
+      width:100%;
+      display:block;
+    }
+    .bi-carousel-caption{
+      margin-top:6px;
+      font-size:0.85rem;
+      color:#cbd5f5;
+      text-align:center;
+    }
+    .bi-carousel-thumbs{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:6px;
+      margin-top:6px;
+    }
+    .bi-carousel-thumbs img{
+      width:82px;
+      height:46px;
+      object-fit:cover;
+      border-radius:6px;
+      opacity:.45;
+      cursor:pointer;
+      border:1px solid rgba(148,163,184,0.5);
+      background:#020617;
+      transition:opacity .15s ease, border-color .15s ease, transform .1s ease, box-shadow .15s ease;
+      box-shadow:0 8px 22px rgba(0,0,0,0.45);
+    }
+    .bi-carousel-thumbs img.active{
+      opacity:1;
+      border-color:#00F6A4;
+      transform:translateY(-1px);
+      box-shadow:0 12px 30px rgba(0,246,164,0.45);
+    }
+
+    .auto-rotator{
+      margin-top:22px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.96);
+      border:1px solid rgba(96,165,250,0.7);
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:1.36rem;
+      color:#e5e7eb;
+      max-width:100%;
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,0.55);
+    }
+    .auto-rotator-label{
+      white-space:nowrap;
+      font-weight:600;
+      color:#bae6fd;
+    }
+    .auto-rotator-text{
+      white-space: nowrap;
+      animation: autoFade .35s ease;
+      font-weight: 700;
+    }
+    @keyframes autoFade{
+      from{opacity:0; transform:translateY(4px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+
+    .whatsapp-float{
+      position:fixed;
+      right:20px;
+      bottom:24px;
+      z-index:1300;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:64px;
+      height:64px;
+      background:#25D366;
+      border-radius:50%;
+      box-shadow:0 6px 16px rgba(0,0,0,.25);
+      text-decoration:none;
+      transition:transform .15s ease;
+    }
+    .whatsapp-float img{width:34px;height:34px}
+    .whatsapp-float:hover{transform:scale(1.06)}
+
+    @media (min-width:900px){
+      .um nav .brand{display:none;}
+      .um nav .nav-inner{justify-content:center;}
+    }
+
+    /* MOBILE HERO – espaciado y contraste */
+    @media (max-width: 700px){
+      .hero-bubble-small {
+        max-width: 88% !important;
+      }
+      .um header {
+        padding-bottom: 120px !important;
+      }
+      .hero-content {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+      }
+    }
+
+    /* DESKTOP – burbuja pequeña más grande y separada */
+    @media (min-width: 701px){
+      .hero-bubble-small {
+        max-width: 650px !important;
+        margin: 32px auto !important;
+        padding: 18px 26px !important;
+      }
+    }
+
+    /* CHAT WIDGET, PACK WEB, LOGOS, FAQ, etc… */
+    #umanoai-chat-root{
+      position:fixed;
+      right:20px;
+      bottom:96px;
+      z-index:1500;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    }
+    #umanoai-chat-toggle{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      border:2px solid #22D3EE;
+      background:rgba(0,35,65,0.88);
+      cursor:pointer;
+      box-shadow:0 8px 22px rgba(15,23,42,.7);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    #umanoai-chat-toggle img{
+      width:40px;
+      height:40px;
+      border-radius:999px;
+      display:block;
+    }
+    #umanoai-chat-toggle:hover{
+      transform:scale(1.06);
+      box-shadow:0 12px 30px rgba(15,23,42,.9);
+    }
+    #umanoai-chat-window{
+      width:320px;
+      max-height:410px;
+      background:#020617;
+      color:#e5e7eb;
+      border-radius:18px;
+      border:2px solid rgba(34,211,238,.95);
+      box-shadow:
+        0 0 0 1px rgba(15,23,42,.7),
+        0 22px 60px rgba(0,0,0,.95);
+      display:none;
+      flex-direction:column;
+      overflow:hidden;
+      margin-bottom:10px;
+    }
+    #umanoai-chat-window.open{
+      display:flex;
+    }
+    .um-chat-header{
+      padding:10px 14px;
+      background:linear-gradient(135deg,#1d4ed8,#7c3aed);
+      border-bottom:1px solid rgba(191,219,254,.5);
+    }
+    .um-chat-header strong{
+      display:block;
+      font-size:14px;
+    }
+    .um-chat-header span{
+      font-size:12px;
+      color:#e5e7eb;
+      opacity:.9;
+    }
+    #um-chat-messages{
+      flex:1;
+      padding:10px;
+      overflow-y:auto;
+      font-size:14px;
+    }
+    .um-chat-msg{
+      padding:6px 10px;
+      border-radius:10px;
+      margin-bottom:6px;
+      max-width:80%;
+      line-height:1.4;
+      white-space:pre-wrap;
+    }
+    .um-chat-user{
+      background:#22c55e;
+      color:#022c22;
+      margin-left:auto;
+    }
+    .um-chat-bot,
+    .um-chat-loading{
+      background:#111827;
+      color:#e5e7eb;
+      margin-right:auto;
+    }
+    #um-chat-form{
+      display:flex;
+      gap:6px;
+      padding:8px;
+      border-top:1px solid #1f2937;
+      background:#020617;
+    }
+    #um-chat-input{
+      flex:1;
+      padding:6px 8px;
+      border-radius:999px;
+      border:1px solid #4b5563;
+      background:#020617;
+      color:#e5e7eb;
+    }
+    #um-chat-input:focus{
+      outline:none;
+      border-color:#22c55e;
+    }
+    #um-chat-form button[type="submit"]{
+      padding:6px 12px;
+      border-radius:999px;
+      border:none;
+      background:#22c55e;
+      color:#022c22;
+      font-weight:600;
+      cursor:pointer;
+    }
+    @media (max-width:700px){
+      #umanoai-chat-root{
+        right:18px;
+        bottom:110px;
+      }
+      #umanoai-chat-window{
+        width:calc(100vw - 28px);
+        max-width:360px;
+      }
+      .whatsapp-button,
+      #whatsappBtn {
+        right:18px !important;
+        bottom:20px !important;
+      }
+      #umanoai-chat-toggle{
+        width:60px;
+        height:60px;
+      }
+      .auto-rotator{
+        flex-direction:column;
+        align-items:flex-start;
+        font-size:1rem;
+        padding:10px 12px;
+        overflow:visible;
+        gap:6px;
+      }
+      .auto-rotator-label{
+        white-space:normal;
+      }
+      .auto-rotator-text{
+        white-space:normal;
+      }
+    }
+
+    .pack-web {
+      margin: 40px auto;
+      max-width: 650px;
+      background: rgba(255,255,255,0.96);
+      padding: 32px 26px;
+      border-radius: 18px;
+      text-align: center;
+      border: 1.5px solid rgba(0,0,0,0.12);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .pack-web h3 {
+      font-size: 1.7rem;
+      margin-bottom: 10px;
+    }
+
+    .pack-desc {
+      color: #4b5563;
+      max-width: 520px;
+      margin: 0 auto 18px;
+      line-height: 1.55;
+    }
+
+    .pack-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto 22px;
+      text-align: left;
+      max-width: 360px;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .pack-price {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .pack-price span {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .pack-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #1976ff, #004bff);
+      color: #fff;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: 0.2s ease-in-out;
+    }
+
+    .pack-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+    }
+
+    .bg-video{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      z-index:-1;
+      background:#020617;
+    }
+
+    .bg-video-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.20);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .um-box,
+    .um-card,
+    .card-box,
+    .contenedor,
+    .seccion-blanca {
+      border: 1px solid #d7e0eb;
+      border-radius: 14px;
+    }
+
+    .logos-slider{
+      width:100%;
+      overflow:hidden;
+      position:relative;
+      padding:10px 0;
+    }
+
+    .logos-track{
+      display:flex;
+      gap:40px;
+      align-items:center;
+      animation:scrollLogos 20s linear infinite;
+    }
+
+    .logos-track img{
+      height:70px;
+      width:auto;
+      object-fit:contain;
+      opacity:0.85;
+      filter:grayscale(100%);
+      transition:opacity .2s ease, filter .2s ease, transform .2s ease;
+    }
+
+    .logos-track img:hover{
+      filter:grayscale(0%);
+      opacity:1;
+      transform:scale(1.06);
+    }
+
+    @keyframes scrollLogos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .faq-section{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      padding:36px 16px;
+    }
+
+    .faq-inner{
+      width:min(920px,92%);
+      background:var(--bgCard);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:clamp(16px,3.6vw,24px);
+      color:#132135;
+    }
+
+    .faq-inner h2{
+      text-align:center;
+      margin-top:0;
+      margin-bottom:10px;
+    }
+
+    .faq-intro{
+      text-align:center;
+      color:#4b5563;
+      margin-bottom:20px;
+      font-size:0.96rem;
+    }
+
+    .faq-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .faq-item{
+      border-bottom:1px solid #e5e7eb;
+      padding:10px 0;
+    }
+
+    .faq-item:last-child{
+      border-bottom:none;
+    }
+
+    .faq-item summary{
+      cursor:pointer;
+      font-weight:600;
+      font-size:0.98rem;
+      color:#111827;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .faq-item summary::-webkit-details-marker{
+      display:none;
+    }
+
+    .faq-toggle-icon{
+      margin-left:12px;
+      font-size:0.9rem;
+      color:#6b7280;
+    }
+
+    .faq-item p{
+      margin:8px 0 4px;
+      font-size:0.95rem;
+      color:#374151;
+      line-height:1.6;
+    }
+
+    .faq-cta{
+      margin-top:18px;
+      text-align:center;
+      font-size:0.95rem;
+      color:#4b5563;
+    }
+
+    .reviews-block{
+      margin-top:24px;
+      padding-top:18px;
+      border-top:1px solid #e5e7eb;
+      margin-top:8px;
+    }
+
+    .reviews-block h3{
+      text-align:center;
+      margin:0 0 8px;
+      font-size:1.1rem;
+    }
+
+    .reviews-block p.reviews-intro{
+      text-align:center;
+      margin:0 0 18px;
+      font-size:0.94rem;
+      color:#4b5563;
+    }
+
+    .reviews-grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
       justify-content:center;
     }
 
-    .card {
-      width:min(1000px,92%);
-      background:white;
-      color:#222;
-      border-radius:16px;
-      padding:30px;
-      box-shadow:0 10px 28px rgba(0,0,0,0.4);
+    .review-card{
+      background:#f9fafb;
+      border-radius:14px;
+      border:1px solid #d1d5db;
+      padding:14px 16px;
+      max-width:280px;
+      box-shadow:0 4px 10px rgba(15,23,42,0.06);
+      text-align:left;
     }
 
-    .card h2 {
-      text-align:center;
-      margin-top:0;
+    .review-stars{
+      color:#f59e0b;
+      font-size:0.9rem;
+      margin-bottom:4px;
     }
 
-    footer {
-      padding:30px;
-      text-align:center;
-      color:#ccc;
-      background:#0f172a;
-      font-size:14px;
+    .review-text{
+      font-size:0.9rem;
+      color:#374151;
+      margin:0 0 8px;
     }
 
-    .logo-sticky{
-      position:fixed;
-      bottom:20px;
-      left:14px;
-      width:75px;
-      opacity:.75;
-      z-index:20;
+    .review-author{
+      font-weight:600;
+      font-size:0.9rem;
+      color:#111827;
     }
 
-    /* Tu botón flotante de WhatsApp */
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 22px;
-      right: 22px;
-      width: 70px;
-      z-index: 800;
+    .review-meta{
+      font-size:0.8rem;
+      color:#6b7280;
     }
 
-    .whatsapp-btn img {
-      width: 100%;
-      border-radius: 50%;
+    .btn-google-reviews{
+      display:inline-block;
+      margin-top:12px;
+      padding:9px 18px;
+      border-radius:999px;
+      border:1px solid #2563eb;
+      background:#ffffff;
+      color:#1d4ed8;
+      font-size:0.9rem;
+      font-weight:600;
+      text-decoration:none;
+      box-shadow:0 3px 8px rgba(15,23,42,0.12);
+      transition:background .15s ease, color .15s ease, transform .1s ease, box-shadow .15s ease;
     }
+    .btn-google-reviews:hover{
+      background:#1d4ed8;
+      color:#ffffff;
+      transform:translateY(-1px);
+      box-shadow:0 6px 14px rgba(37,99,235,0.35);
+    }
+
+    @media(max-width:700px){
+      .review-card{
+        max-width:100%;
+      }
+    }
+
+    /* 🫧 Burbuja título "Mapa de soluciones UmanoAI" */
+    .solution-title-bubble{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:10px 22px;
+      border-radius:999px;
+      margin:0 auto 16px;
+      background:rgba(15,23,42,0.92);
+      border:1px solid rgba(148,163,184,0.7);
+      box-shadow:0 16px 40px rgba(0,0,0,0.75);
+      font-size:1.45rem;
+      font-weight:800;
+      color:#f9fafb;
+    }
+    .solution-title-bubble .solution-title-brand{
+      color:#00F6A4;
+    }
+
+    .solution-intro-bubble {
+      max-width: 680px;
+      margin: 10px auto 25px;
+      padding: 14px 22px;
+      background: rgba(15, 23, 42, 0.68);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #f8fafc;
+      font-size: 1rem;
+      line-height: 1.55;
+      box-shadow: 0 12px 28px rgba(0,0,0,.45);
+    }
+    /* 👇 Ajustes de tamaño solo para DESKTOP */
+@media (min-width: 1024px) {
+
+  /* Texto base un poco más chico */
+  .um {
+    font-size: 0.9rem;
+  }
+
+  /* Título principal más contenido */
+  .um header h1{
+    font-size: 34px; /* antes max 46px */
+  }
+
+  /* Subtítulo más chico */
+  .um header .hero-subtitle{
+    font-size: 15px;
+  }
+
+  /* Burbuja principal más compacta */
+  .hero-bubble{
+    padding: 14px 24px;
+    max-width: 1180px;
+  }
+
+  /* Botones un poco más chicos */
+  .um .btn-primaria,
+  .um .btn-secundaria{
+    font-size: 14px;
+    padding: 8px 18px;
+  }
+
+  /* Marquesina de abajo más compacta */
+  .um .marquesina{
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  /* Secciones de contenido más "apretadas" */
+  .um .seccion{
+    padding: 18px 18px;
+  }
+}
 
   </style>
 </head>
+
 <body>
+  <!-- Video de fondo global -->
+  <video class="bg-video" autoplay muted loop playsinline preload="auto">
+    <source src="hero2.mp4" type="video/mp4">
+  </video>
 
-  <img class="logo-sticky" src="umanoai.png" alt="Logo">
+  <div class="bg-video-overlay"></div>
 
-  <header>
-    <video autoplay muted loop playsinline preload="auto">
-      <source src="hero.mp4" type="video/mp4" />
-    </video>
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRW2TPQR"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
 
-    <div class="hero-box">
-      <h1>Creación de Sitios Web Profesionales</h1>
-      <p>
-        Diseñamos páginas web modernas, rápidas y enfocadas en convertir visitas en clientes,
-        integradas con WhatsApp y listas para campañas.
-      </p>
+  <div class="um">
+    <img src="umanoai.png" alt="Logo Umanoai" class="logo-sticky">
 
-      <a href="https://wa.me/541125926977?text=Hola,%20quiero%20cotizar%20una%20web"
-         class="btn-wsp">
-        🚀 Cotizar mi web
-      </a>
-    </div>
-  </header>
+    <!-- ====================== NAVBAR ====================== -->
+    <nav>
+      <div class="nav-inner">
+        <div class="brand">Umanoai</div>
 
+        <ul class="links" id="desktopLinks">
+          <li><a href="#soluciones-umanoai">Soluciones</a></li>
+          <li><a href="#confian">Clientes</a></li>
+          <li><a href="#planes">Planes</a></li>
+          <li><a href="#reseñas">Reseñas</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
 
-  <section>
-    <div class="card">
-      <h2>¿Qué incluye tu página web?</h2>
+        <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
 
-      <ul style="line-height:1.75;">
-        <li>Diseño profesional y moderno</li>
-        <li>Optimización para móviles</li>
-        <li>Integración con WhatsApp</li>
-        <li>Dominio (.com.ar o .com) y hosting</li>
-        <li>Contenido estructurado correctamente</li>
-        <li>Certificado SSL</li>
-        <li>Google Analytics instalado</li>
-        <li>Configuración para campañas</li>
-      </ul>
-    </div>
-  </section>
+      <div class="links mobile" id="mobileMenu" hidden>
+        <a href="#soluciones-umanoai">Soluciones</a>
+        <a href="#confian">Clientes</a>
+        <a href="#planes">Planes</a>
+        <a href="#reseñas">Reseñas</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
 
+    <!-- ====================== HERO PRINCIPAL ====================== -->
+    <header>
+      <video autoplay muted loop playsinline preload="auto" poster="hero-poster.png">
+        <source src="hero.mp4" type="video/mp4">
+      </video>
 
-  <section>
-    <div class="card">
-      <h2>Ideal si querés</h2>
+      <div class="hero-bubble hero-bubble-title">
+        <h1>Bots de WhatsApp, automatización y BI para que tu pyme venda 24/7</h1>
+      </div>
 
-      <ul style="line-height:1.75;">
-        <li>Mostrarse profesional desde el inicio</li>
-        <li>Generar contactos por WhatsApp o correo</li>
-        <li>Promocionar productos o servicios</li>
-        <li>Que tus clientes te encuentren fácilmente</li>
-      </ul>
-    </div>
-  </section>
+      <div class="hero-bubble hero-bubble-subtitle">
+        <p class="hero-subtitle">
+          En <strong>UmanoAI</strong> combinamos <strong>bots de WhatsApp para pymes, automatización de procesos y tableros de Power BI</strong>
+          con sitios web diseñados para convertir, para que tu negocio de servicios o comercio en Argentina
+          atienda y venda en automático todos los días.
+        </p>
+        <p style="color:#fff; font-weight:600; font-size:16px; margin-top:8px;">
+          ⏱️ Tiempo promedio de implementación: 5 a 10 días hábiles
+        </p>
+      </div>
 
-
-  <section>
-    <div class="card">
-      <h2>Comentarios de clientes</h2>
-
-      <p>“Muy profesional y rápido, la web quedó increíble.”</p>
-      <p>“Empezaron a entrar consultas desde la primera semana.”</p>
-
-      <p style="text-align:center;margin-top:20px;">
-        <a href="https://wa.me/541125926977?text=Hola,%20quiero%20una%20web"
-           class="btn-wsp">
-          💬 Quiero mi sitio
+      <div class="hero-cta">
+        <a href="https://wa.me/5491125926977?text=Hola%20quiero%20saber%20m%C3%A1s%20sobre%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
+          📲 Hablar por WhatsApp
         </a>
-      </p>
-    </div>
-  </section>
+        <a href="#planes" class="btn-secundaria">
+          🤖 Quiero activar mi bot
+        </a>
+      </div>
 
+      <!-- 👉 burbuja pequeña AHORA va ANTES de la marquesina -->
+      <div class="hero-bubble hero-bubble-small">
+        <p style="margin:0; font-size:15px; line-height:1.5;">
+          👉 Te mostramos cómo responde un bot real antes de contratar
+        </p>
+      </div>
 
-  <footer>
-    © <span id="year"></span> UmanoAI — Desarrollo Web
-  </footer>
+      <div class="marquesina">
+        ⚡ Bots con IA + sitios web + automatización de procesos + BI en una sola solución ⚡
+      </div>
+    </header>
 
+    <!-- ====================== SECCIÓN: como funciona ====================== -->
+    <section id="como-funciona">
+      <div class="seccion">
+        <h2>🔥 Activamos tu solución en pocos días</h2>
 
-  <!-- Burbuja flotante WhatsApp mantenida -->
-  <a href="https://wa.me/541125926977" class="whatsapp-btn">
-    <img src="whatsapp.png" alt="whatsapp">
+        <ul style="line-height:1.6;">
+          <li><strong>Día 1:</strong> Relevamos tu proceso, mensajes frecuentes y objetivos</li>
+          <li><strong>Día 2 a 4:</strong> Armado del bot, automatizaciones y mensajes personalizados</li>
+          <li><strong>Día 5:</strong> Pruebas reales, ajustes y publicación</li>
+          <li><strong>Día 6 a 7:</strong> Métricas iniciales, reportes y seguimiento</li>
+        </ul>
+
+        <p style="margin-top:12px; text-align:center;">
+          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20activar%20un%20bot%20esta%20semana"
+             class="btn-primaria"
+             target="_blank">
+            🚀 Activarlo esta semana
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================== SECCIÓN: CONFÍAN EN NOSOTROS ====================== -->
+    <section id="confian">
+      <div class="seccion">
+        <h2>🤝 Confían en nosotros</h2>
+        <p style="text-align:center;color:#4b5563;">
+          Trabajamos junto a marcas y emprendedores que buscan dar un salto digital
+        </p>
+
+        <div class="logos-slider">
+          <div class="logos-track" id="logos-track"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== SECCIÓN: PLANES (SOLO PACK WEB + ANALÍTICA) ====================== -->
+    <section id="planes">
+      <div class="seccion">
+        <!-- Pack Web + Analítica intacto -->
+        <div class="pack-web">
+          <h3>🌐 Pack Web + Analítica</h3>
+
+          <p class="pack-desc">
+            Sitio de una página + configuración de Google Analytics 4 y Tag Manager +
+            botón de clic a WhatsApp + logo simple. Ideal como punto de partida digital
+            para conectar tu <strong>bot de WhatsApp</strong> con campañas y medir resultados.
+          </p>
+
+          <ul class="pack-list">
+            <li>✔️ Landing page profesional</li>
+            <li>✔️ GA4 y Tag Manager configurado</li>
+            <li>✔️ Evento de clic a WhatsApp</li>
+            <li>✔️ SSL + indexación en Google incluida</li>
+            <li>✔️ Formulario conectado a WhatsApp o email</li>
+            <li>✔️ Logo simple incluido</li>
+          </ul>
+
+          <p class="pack-price">USD 500 <span>(pago único)</span></p>
+
+          <a href="https://wa.me/5491125926977?text=Hola%20me%20interesa%20el%20pack%20web%20%2B%20anal%C3%ADtica"
+            class="pack-btn"
+            target="_blank">
+            🌐 Quiero el pack Web + Analítica
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== RESEÑAS DE GOOGLE (CON TARJETA BLANCA) =============== -->
+    <section id="reseñas">
+      <div class="seccion">
+        <div class="reviews-block">
+          <h3>⭐ Reseñas en Google</h3>
+          <p class="reviews-intro">
+            Lo que dicen algunos clientes sobre trabajar con UmanoAI.
+          </p>
+
+          <div class="reviews-grid">
+            <article class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Atención de 10! Superó todas mis expectativas! Me asesoró a crear mi espacio, con total sencillez, amabilidad y total eficacia. No me tuve que preocupar por ningún detalle. Lo recomiendo 100%."
+              </p>
+              <div class="review-author">Patricia</div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Excelente trabajo y atención!!"
+              </p>
+              <div class="review-author">Agencia de automotores</div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "La verdad que muy contento con el Bot, todo lo que le pedí y más"
+              </p>
+              <div class="review-author">Juan</div>
+            </article>
+          </div>
+
+          <p style="text-align:center; margin-top:16px;">
+            <a href="https://www.google.com/search?newwindow=1&sca_esv=d90e220b7d9405c9&sxsrf=AE3TifObmBF5qA6jWxCn-2L6ju7rI75QvA%3A1764565973953&q=UmanoAi&stick=H4sIAAAAAAAAAONgU1I1qDBJtDA3MzZPsTS2ME1MSjW1MqgwSjMBorREU1Oz1CRDi8RFrOyhuYl5-Y6ZADpgBqQzAAAA&mat=CYnJ1ShiZuOC&ved=2ahUKEwitvL3A0JuRAxXTK7kGHSWYK3AQrMcEegQIQBAC#"
+               class="btn-google-reviews"
+               target="_blank"
+               rel="noopener">
+              Ver más reseñas en Google
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== SECCIÓN: PREGUNTAS FRECUENTES (FAQ) ====================== -->
+    <section id="faq" class="faq-section">
+      <div class="faq-inner">
+        <h2>❓ Preguntas frecuentes</h2>
+        <p class="faq-intro">
+          Algunas de las dudas más comunes sobre bots de WhatsApp, automatización y BI con UmanoAI.
+        </p>
+
+        <ul class="faq-list">
+          <!-- tus items FAQ acá -->
+        </ul>
+
+        <div class="faq-cta">
+          ¿Tenés alguna otra duda?  <br>
+          Escribinos directo por WhatsApp y lo vemos en detalle:
+          <br>
+          <a href="https://wa.me/5491125926977?text=Hola%2C+tengo+algunas+preguntas+sobre+los+bots+de+UmanoAI"
+            class="btn-primaria"
+            target="_blank"
+            rel="noopener">
+            💬 Quiero hacer una consulta
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== SECCIÓN: CONTACTO ====================== -->
+    <section id="contacto">
+      <div class="seccion">
+        <h2>📞 Contacto</h2>
+        <p style="text-align:center;">
+          Contanos brevemente tu negocio y lo que te gustaría automatizar.
+          Te respondemos por WhatsApp con ideas concretas y próximos pasos.
+        </p>
+
+        <p style="margin-top:12px; text-align:center;">
+          WhatsApp directo: <strong>+54 9 11 2592-6977</strong><br>
+          Email: <strong>info@umanoai.com.ar</strong>
+        </p>
+
+        <p style="margin-top:14px; text-align:center;">
+          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20charlar%20sobre%20automatizaci%C3%B3n%20con%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
+            📲 Escribir por WhatsApp
+          </a>
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ====================== BOTÓN FLOTANTE DE WHATSAPP ====================== -->
+  <a class="whatsapp-float"
+    href="https://wa.me/5491125926977?text=Hola%20vengo%20desde%20la%20web%20de%20Umanoai"
+    target="_blank"
+    rel="noopener"
+    onclick="dataLayer.push({event: 'click_whatsapp', origen: 'burbuja'})">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+      alt="WhatsApp"
+      loading="lazy">
   </a>
 
+  <!-- ====================== JS: TOGGLE MENÚ MOBILE NAV ====================== -->
+  <script>
+    (function(){
+      const btn = document.querySelector('.um .hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      btn?.addEventListener('click', () => {
+        const isOpen = !mobileMenu.hasAttribute('hidden');
+        if (isOpen) {
+          mobileMenu.setAttribute('hidden','');
+          btn.setAttribute('aria-expanded','false');
+        } else {
+          mobileMenu.removeAttribute('hidden');
+          btn.setAttribute('aria-expanded','true');
+        }
+      });
+    })();
+  </script>
+
+  <!-- ====================== JS: LOGOS CONFÍAN EN NOSOTROS ====================== -->
+  <script>
+    const logosConfian = [
+      { src: "logo-cabana-alpina.png",    alt: "Cabaña Alpina Don Elisario" },
+      { src: "logo-la-angelica.png",      alt: "La Angélica Casa de Campo" },
+      { src: "logo-suarez-pastas.png",    alt: "Suarez Pastas" },
+      { src: "logo-mauregui.png",         alt: "Mauregui Automotores" },
+      { src: "logo-dsacine.jpg",          alt: "DSA CINE" },
+      { src: "logo-patricia-sebelli.png", alt: "Dra. Patricia Sebelli" },
+      { src: "logo-digiagro.png",         alt: "DigiAgro" },
+      { src: "umanoai.png", alt: "UmanoAI" },
+      { src: "logo-mabe.png", alt: "Lectura Saludable" }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const track = document.getElementById("logos-track");
+      if (!track) return;
+      function agregarLogos() {
+        logosConfian.forEach(logo => {
+          const img = document.createElement("img");
+          img.src = logo.src;
+          img.alt = logo.alt;
+          img.loading = "lazy";
+          track.appendChild(img);
+        });
+      }
+      agregarLogos();
+      agregarLogos();
+    });
+  </script>
+
+  <!-- ============================================================= -->
+  <!-- ============= MAPA DE SOLUCIONES UMANOAI (HTML) ============ -->
+  <!-- ============================================================= -->
+  <section id="soluciones-umanoai"
+    style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color:#f5f5f5;
+            padding:60px 20px;">
+    <div style="max-width:1100px;margin:0 auto;">
+
+      <!-- 🫧 Burbuja del título -->
+      <div class="solution-title-bubble">
+        <span class="solution-title-main">Mapa de soluciones</span>
+        <span class="solution-title-brand">UmanoAI</span>
+      </div>
+
+      <div class="solution-intro-bubble">
+        💡 Te mostramos cómo trabajamos el desarrollo de sitios web y qué podemos hacer por tu negocio.
+      </div>
+
+      <div id="soluciones-grid"
+          style="display:grid;
+                  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+                  gap:16px;
+                  margin-bottom:30px;">
+</div>
+      </header>
+
+      <div id="soluciones-grid"
+          style="display:grid;
+                  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+                  gap:16px;
+                  margin-bottom:30px;">
+
+        <button class="solucion-card is-active" data-solucion="web"
+                style="border:none;cursor:pointer;padding:16px 14px;
+                        border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
+                        color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
+                        box-shadow:0 12px 30px rgba(0,0,0,0.55);
+                        outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
+          <div style="font-size:1.1rem;margin-bottom:4px;">🌐 Desarrollo web</div>
+          <div style="font-size:0.85rem;color:#b6c2d6;">Sitios y landings pensadas para convertir y automatizar.</div>
+        </button>
+      </div>
+
+      <article id="solucion-detalle"
+        style="background:rgba(15,23,42,0.86);
+                border-radius:18px;
+                border:1px solid rgba(148,163,184,0.55);
+                padding:22px 20px;
+                box-shadow:0 20px 50px rgba(15,23,42,0.8);
+                backdrop-filter:blur(18px);
+                min-height:210px;">
+        <h3 id="detalle-titulo" style="font-size:1.4rem;margin-bottom:8px;">
+          Apps a medida
+        </h3>
+        <p id="detalle-intro"
+          style="font-size:0.95rem;line-height:1.6;color:#d4dde9;margin-bottom:12px;">
+          Diseñamos aplicaciones que siguen exactamente cómo funciona tu negocio:
+          nada de plantillas genéricas. Apps internas, formularios inteligentes
+          y portales con login para tus equipos, clientes o proveedores.
+        </p>
+
+        <ul id="detalle-lista"
+          style="margin:0 0 14px 18px;font-size:0.92rem;color:#c0cce0;line-height:1.6;">
+          <li>Apps internas para equipos de ventas, logística, operaciones o servicio.</li>
+          <li>Formularios inteligentes que reemplazan planillas y WhatsApps sueltos.</li>
+          <li>Todo construido con tecnologías como Power Apps, web o Flutter según el caso.</li>
+        </ul>
+
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;">
+          <p id="detalle-ideal"
+            style="margin:0;font-size:0.9rem;color:#9ca7c4;">
+            Ideal si querés dejar de depender de Excel y WhatsApp para gestionar tu operación.
+          </p>
+
+          <a id="detalle-cta"
+            href="https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio"
+            target="_blank" rel="noopener"
+            style="display:inline-flex;align-items:center;gap:6px;
+                    padding:9px 16px;border-radius:999px;
+                    background:linear-gradient(135deg,#00F6A4,#0CC5A7);
+                    color:#041316;text-decoration:none;font-size:0.9rem;font-weight:600;
+                    box-shadow:0 10px 30px rgba(0,246,164,0.4);">
+            <span>👉 Quiero hablar de esta solución</span>
+          </a>
+        </div>
+
+        <div id="detalle-videos" style="margin-top:28px;"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- ============= LÓGICA JS PARA EL MAPA DE SOLUCIONES ========= -->
+  <!-- ============================================================= -->
+  <script>
+    (function () {
+      const soluciones = {
+        web: {
+          titulo: "Desarrollo web",
+          intro:
+            "Diseñamos sitios y landings pensados para generar confianza, explicar bien tu propuesta y convertir visitas en contactos.",
+          bullets: [
+            "Landings para campañas con integración directa a WhatsApp o bots.",
+            "Sitios corporativos que explican claro qué hacés y cómo ayudás.",
+            "Portales para clientes o distribuidores conectados a tus sistemas.",
+            "Web preparada para futuras integraciones, automatizaciones y analítica."
+          ],
+          ideal:
+            "Ideal si querés que tu web sea parte de tu sistema comercial, no solo una tarjeta de presentación.",
+          cta:
+            "https://wa.me/5491125926977?text=Hola%2C+necesito+una+web+profesional+para+mi+negocio",
+          tituloImagenes: "🌐 Sitios y resultados creados por UmanoAI",
+          imagenes: [
+            {
+              src: "digiagro.png",
+              alt: "Sitio DigiAgro",
+              titulo: "DigiAgro – Sitio principal del ecosistema agro digital"
+            },
+            {
+              src: "dsacine.png",
+              alt: "Sitio DSACINE",
+              titulo: "DSACINE – Escuela de cine y artes audiovisuales"
+            },
+            {
+              src: "analytics.png",
+              alt: "Analytics de tráfico web",
+              titulo: "Analytics – Tráfico y eventos medidos"
+            },
+            {
+              src: "mauregui.png",
+              alt: "Sitio Mauregui Automotores",
+              titulo: "Mauregui Automotores – Sitio de multimarcas y usados"
+            },
+            {
+              src: "patricia-sebelli.png",
+              alt: "Sitio Dra. Patricia Sebelli",
+              titulo: "Dra. Patricia Sebelli – Odontología integral en Almagro"
+            }
+          ]
+        }
+      };
+
+      const cards = document.querySelectorAll("#soluciones-grid .solucion-card");
+      const titulo = document.getElementById("detalle-titulo");
+      const intro = document.getElementById("detalle-intro");
+      const lista = document.getElementById("detalle-lista");
+      const ideal = document.getElementById("detalle-ideal");
+      const cta = document.getElementById("detalle-cta");
+      const videosContainer = document.getElementById("detalle-videos");
+      const detalleArticulo = document.getElementById("solucion-detalle");
+
+      let rotadorInterval = null;
+
+      function limpiarRotador() {
+        if (rotadorInterval) {
+          clearInterval(rotadorInterval);
+          rotadorInterval = null;
+        }
+        const existing = detalleArticulo.querySelector(".auto-rotator");
+        if (existing) existing.remove();
+      }
+
+      function activarCard(card) {
+        cards.forEach(c => c.classList.remove("is-active"));
+        card.classList.add("is-active");
+      }
+
+      function actualizarDetalle(key) {
+        const data = soluciones[key];
+        if (!data) return;
+
+        titulo.textContent = data.titulo;
+        intro.textContent = data.intro;
+
+        lista.innerHTML = "";
+        data.bullets.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          lista.appendChild(li);
+        });
+
+        ideal.textContent = data.ideal;
+        cta.href = data.cta;
+
+        videosContainer.innerHTML = "";
+        limpiarRotador();
+
+        if (data.videos && data.videos.length > 0) {
+          const wrapper = document.createElement("div");
+
+          const title = document.createElement("h4");
+          title.textContent = data.tituloVideos || "🎥 Casos reales de esta solución";
+          title.style.fontSize = "1rem";
+          title.style.color = "#00F6A4";
+          title.style.margin = "22px 0 12px";
+          title.style.textAlign = "center";
+          wrapper.appendChild(title);
+
+          const grid = document.createElement("div");
+          grid.className = "video-grid";
+
+          if (data.videos.length === 1) {
+            grid.style.maxWidth = "520px";
+            grid.style.margin = "0 auto";
+          }
+
+          data.videos.forEach(v => {
+            const card = document.createElement("div");
+            card.className = "video-card";
+
+            const iframe = document.createElement("iframe");
+            iframe.width = "100%";
+            iframe.height = "260";
+            iframe.src = v.url;
+            iframe.title = v.titulo;
+            iframe.frameBorder = "0";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.referrerPolicy = "strict-origin-when-cross-origin";
+            iframe.allowFullscreen = true;
+            card.appendChild(iframe);
+
+            const caption = document.createElement("p");
+            caption.textContent = v.descripcion;
+            caption.style.fontSize = "0.82rem";
+            caption.style.marginTop = "6px";
+            caption.style.color = "#8ea4bf";
+            card.appendChild(caption);
+
+            grid.appendChild(card);
+          });
+
+          wrapper.appendChild(grid);
+          videosContainer.appendChild(wrapper);
+        }
+
+        if (data.imagenes && data.imagenes.length > 0) {
+          const cWrapper = document.createElement("div");
+          cWrapper.className = "bi-carousel";
+
+          const titleImg = document.createElement("h4");
+          titleImg.textContent = data.tituloImagenes || "📊 Ejemplos de reportes";
+          titleImg.style.fontSize = "1rem";
+          titleImg.style.color = "#00F6A4";
+          titleImg.style.margin = "24px 0 8px";
+          titleImg.style.textAlign = "center";
+          cWrapper.appendChild(titleImg);
+
+          const main = document.createElement("div");
+          main.className = "bi-carousel-main";
+
+          const mainImg = document.createElement("img");
+          mainImg.src = data.imagenes[0].src;
+          mainImg.alt = data.imagenes[0].alt || data.imagenes[0].titulo || "";
+          mainImg.loading = "lazy";
+          main.appendChild(mainImg);
+
+          const caption = document.createElement("div");
+          caption.className = "bi-carousel-caption";
+          caption.textContent = data.imagenes[0].titulo || "";
+
+          const thumbs = document.createElement("div");
+          thumbs.className = "bi-carousel-thumbs";
+
+          data.imagenes.forEach((imgData, index) => {
+            const tImg = document.createElement("img");
+            tImg.src = imgData.src;
+            tImg.alt = imgData.alt || imgData.titulo || "";
+            tImg.loading = "lazy";
+            if (index === 0) tImg.classList.add("active");
+
+            tImg.addEventListener("click", () => {
+              mainImg.src = imgData.src;
+              mainImg.alt = imgData.alt || imgData.titulo || "";
+              caption.textContent = imgData.titulo || "";
+              thumbs.querySelectorAll("img").forEach(im => im.classList.remove("active"));
+              tImg.classList.add("active");
+            });
+
+            thumbs.appendChild(tImg);
+          });
+
+          cWrapper.appendChild(main);
+          cWrapper.appendChild(caption);
+          cWrapper.appendChild(thumbs);
+          videosContainer.appendChild(cWrapper);
+        }
+      }
+
+      cards.forEach(card => {
+        card.addEventListener("click", () => {
+          const key = card.getAttribute("data-solucion");
+          activarCard(card);
+          actualizarDetalle(key);
+        });
+      });
+
+      actualizarDetalle("web");
+    })();
+  </script>
+  <!-- ====================== WIDGET CHAT TITO ====================== -->
+
+<div id="umanoai-chat-root">
+  <button id="umanoai-chat-toggle">
+    <img src="umanoai.png" alt="Hablar con Tito">
+  </button>
+
+  <div id="umanoai-chat-window">
+    <div class="um-chat-header">
+      <strong>Tito — Asistente Virtual</strong>
+      <span>Respondemos en segundos</span>
+    </div>
+
+    <div id="um-chat-messages"></div>
+
+    <form id="um-chat-form">
+      <input id="um-chat-input" type="text" placeholder="Escribime..." autocomplete="off">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
+
+  <!-- ============================================================= -->
+  <!-- ============= CHAT UMANOAI – LÓGICA DEL WIDGET ============ -->
+  <!-- ============================================================= -->
+ <script>
+(function () {
+  const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
+  const TOKEN = "umanoai-secure";
+  const SESSION_KEY = "umanoai-chat-session-id";
+
+  let sessionId = localStorage.getItem(SESSION_KEY);
+  if (!sessionId) {
+    sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
+    localStorage.setItem(SESSION_KEY, sessionId);
+  }
+
+  const toggle = document.getElementById("umanoai-chat-toggle");
+  const win = document.getElementById("umanoai-chat-window");
+  const messages = document.getElementById("um-chat-messages");
+  const form = document.getElementById("um-chat-form");
+  const input = document.getElementById("um-chat-input");
+
+  function addMessage(text, from) {
+    const div = document.createElement("div");
+    div.classList.add("um-chat-msg");
+    if (from === "user") div.classList.add("um-chat-user");
+    else if (from === "bot") div.classList.add("um-chat-bot");
+    else if (from === "loading") div.classList.add("um-chat-loading");
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  async function sendMessage(msg) {
+    addMessage(msg, "user");
+    input.value = "";
+    input.focus();
+
+    const loadingMsg = document.createElement("div");
+    loadingMsg.classList.add("um-chat-msg","um-chat-loading");
+    loadingMsg.textContent = "…";
+    messages.appendChild(loadingMsg);
+    messages.scrollTop = messages.scrollHeight;
+
+    try {
+      const res = await fetch(FLOW_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg, sessionId, token: TOKEN })
+      });
+
+      const raw = await res.text();
+      loadingMsg.remove();
+
+      let reply = raw;
+      try {
+        const parsed = JSON.parse(raw);
+        reply = parsed.reply || parsed.message || raw;
+      } catch {}
+
+      addMessage(reply, "bot");
+    } catch {
+      loadingMsg.remove();
+      addMessage("Tuve un problema 😥 Probá de nuevo.", "bot");
+    }
+  }
+
+  toggle.addEventListener("click", () => {
+    win.classList.toggle("open");
+  });
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const msg = input.value.trim();
+    if (!msg) return;
+    sendMessage(msg);
+  });
+
+  // Mensaje inicial
+  addMessage("👋 Hola! Soy Tito. ¿En qué te ayudo hoy?", "bot");
+})();
+</script>
+
+  <!-- ============================================================= -->
+  <!-- ========================= FOOTER ============================ -->
+  <!-- ============================================================= -->
+  <footer style="
+    background:#0f172a;
+    color:#e5e7eb;
+    padding:36px 16px;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    font-size:15px;
+    text-align:center;
+    margin-top:40px;
+    border-top:2px solid #1e293b;">
+
+    <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;" loading="lazy">
+
+    <p style="margin:6px 0;">
+      © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
+    </p>
+
+    <p style="margin:10px 0;">
+      <a href="politica.html" style="color:#38bdf8; text-decoration:none;">Política de Privacidad</a> ·
+      <a href="Eliminardatos.html" style="color:#38bdf8; text-decoration:none;">Eliminación de Datos</a> ·
+      <a href="#contacto" style="color:#38bdf8; text-decoration:none;">Contacto</a>
+    </p>
+
+    <p style="opacity:.8; font-size:13px; margin-top:10px;">
+      Desarrollado con el 💙 desde Argentina.
+    </p>
+  </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
+
