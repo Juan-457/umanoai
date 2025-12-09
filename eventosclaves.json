@@ -22,17 +22,17 @@
       "cantidad": 9
     },
     {
+      "fecha": "2025-12-09",
+      "evento": "click_whatsapp",
+      "cantidad": 9
+    },
+    {
       "fecha": "2025-12-03",
       "evento": "tito_chat_message",
       "cantidad": 4
     },
     {
       "fecha": "2025-12-05",
-      "evento": "click_whatsapp",
-      "cantidad": 4
-    },
-    {
-      "fecha": "2025-12-09",
       "evento": "click_whatsapp",
       "cantidad": 4
     },
