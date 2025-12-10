@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
   <!-- 🔹 TITLE orientado a búsqueda -->
-  <title>Diseño web profesional para pymes, automatización de procesos y Power BI | UmanoAI</title>
+  <title>Diseño web profesional para pymes y automatización de procesos  | UmanoAI</title>
 
   <meta name="description"
         content="UmanoAI diseña sitios web profesionales, landing pages, automatización de procesos y tableros de Power BI para pymes y negocios de servicios en Argentina. Conectamos tu web con WhatsApp y métricas para que convierta desde el primer día.">
@@ -821,6 +821,100 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 12px rgba(0,0,0,0.18);
     }
+     /* 🔹 NUEVOS PLANES WEB (3 PAQUETES) */
+    .plans-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+    .plan-card{
+      background:#f9fafb;
+      border-radius:16px;
+      border:1px solid #e5e7eb;
+      padding:18px 16px 20px;
+      box-shadow:0 10px 24px rgba(15,23,42,0.06);
+      text-align:left;
+      position:relative;
+      overflow:hidden;
+    }
+    .plan-card h3{
+      margin-top:0;
+      margin-bottom:6px;
+      font-size:1.1rem;
+    }
+    .plan-tag{
+      display:inline-block;
+      padding:3px 9px;
+      border-radius:999px;
+      font-size:0.75rem;
+      background:#e5f0ff;
+      color:#1d4ed8;
+      margin-bottom:6px;
+      font-weight:600;
+    }
+    .plan-price{
+      font-size:1.4rem;
+      font-weight:700;
+      margin:4px 0 8px;
+    }
+    .plan-price span{
+      display:block;
+      font-size:0.85rem;
+      font-weight:500;
+      color:#4b5563;
+    }
+    .plan-desc{
+      font-size:0.9rem;
+      color:#4b5563;
+      margin-bottom:10px;
+    }
+    .plan-list{
+      list-style:none;
+      padding:0;
+      margin:0 0 14px;
+      font-size:0.9rem;
+      color:#374151;
+      line-height:1.55;
+    }
+    .plan-list li::before{
+      content:"✔";
+      color:#16a34a;
+      margin-right:6px;
+    }
+    .plan-cta{
+      display:inline-block;
+      padding:9px 16px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#1d4ed8,#3b82f6);
+      color:#fff;
+      text-decoration:none;
+      font-size:0.9rem;
+      font-weight:600;
+      box-shadow:0 4px 10px rgba(37,99,235,0.35);
+      transition:transform .12s ease, box-shadow .12s ease;
+    }
+    .plan-cta:hover{
+      transform:translateY(-1px);
+      box-shadow:0 7px 16px rgba(37,99,235,0.45);
+    }
+    .plan-card.premium{
+      border-color:#0ea5e9;
+      box-shadow:0 16px 32px rgba(14,165,233,0.35);
+    }
+    .plan-card.premium::before{
+      content:"Más elegido";
+      position:absolute;
+      top:10px;
+      right:-40px;
+      transform:rotate(35deg);
+      background:#0ea5e9;
+      color:#0f172a;
+      font-size:0.7rem;
+      font-weight:700;
+      padding:4px 40px;
+      box-shadow:0 8px 18px rgba(14,165,233,0.45);
+    }
 
     .bg-video{
       position:fixed;
@@ -1235,7 +1329,7 @@
         <p>
           Ayudamos a <strong>pymes, estudios y comercios</strong> que necesitan una web clara,
           contacto rápido por WhatsApp y menos trabajo manual. Diseñamos un ecosistema donde
-          <strong>tu sitio web, las automatizaciones, los bots y Power BI</strong>
+          <strong>tu sitio web, las automatizaciones, los bots y BI</strong>
           trabajan juntos para vos.
         </p>
 
@@ -1243,7 +1337,6 @@
           <li>🌐 <strong>Desarrollo web:</strong> landing pages y sitios corporativos listos para captar contactos y medir resultados.</li>
           <li>📲 <strong>Botón y chat por WhatsApp:</strong> contacto inmediato desde la web, sin perder oportunidades.</li>
           <li>⚙️ <strong>Automatización de procesos:</strong> formularios, aprobaciones, envíos de documentos y notificaciones sin trabajo manual.</li>
-          <li>📊 <strong>Power BI para negocios:</strong> tableros simples con métricas de ventas, cobranza, operaciones y atención al cliente.</li>
         </ul>
 
         <p style="margin-top:10px; text-align:center;">
@@ -1283,7 +1376,7 @@
 
             <!-- Lectura Saludable -->
             <article class="site-card">
-              <img src="lectura-saludable.png" alt="Sitio Lectura Saludable">
+              <img src="lecturasaludable.png" alt="Sitio Lectura Saludable">
               <h3>Lectura Saludable</h3>
               <p>Escritura terapéutica y talleres online, con página de servicios y foco en reservas por formulario y chat.</p>
               <a href="#" target="_blank" rel="noopener">Ver sitio</a>
@@ -1372,39 +1465,115 @@
     <!-- ====================== SECCIÓN: PLANES ====================== -->
     <section id="planes">
       <div class="seccion">
-        <h2>💰 Planes de sitios web y automatización para pymes</h2>
+        <h2>💰 Planes de desarrollo web</h2>
+        <h2>💰 Planes de bots de WhatsApp para pymes</h2>
         <p style="text-align:center;">
-          Cada proyecto tiene necesidades distintas: una landing simple, un sitio completo o una web conectada
-          a automatizaciones y BI. <strong>No usamos tablas rígidas de precios para bots</strong>;
-          trabajamos con propuestas a medida según tu negocio.
+          Tres niveles de sitio pensados para <strong>pasar de cero presencia online</strong>
+          a un <strong>sitio que convierte y atiende con chat de IA 24/7</strong>.
         </p>
 
-        <!-- ====================== PACK WEB + ANALÍTICA ====================== -->
-        <div class="pack-web">
-          <h3>🌐 Pack Web + Analítica</h3>
+        <div class="plans-grid">
+          <!-- Plan 1: Starter Web -->
+          <article class="plan-card">
+            <span class="plan-tag">Presencia mínima</span>
+            <h3>Starter Web</h3>
+            <p class="plan-price">
+              USD 250
+              <span>Pago único · Desde</span>
+            </p>
+            <p class="plan-desc">
+              Ideal para una presencia simple pero profesional en internet.
+            </p>
+            <ul class="plan-list">
+              <li>Dominio .com o .com.ar configurado</li>
+              <li>DNS en Cloudflare listo para usar</li>
+              <li>Alta en Google Search Console</li>
+              <li>Landing de una página (Home)</li>
+              <li>Diseño responsive para móvil y computadora</li>
+              <li>Favicon y meta tags básicos</li>
+              <li>Botón de WhatsApp flotante</li>
+            </ul>
+            <a href="https://wa.me/5491125926977?text=Hola%2C+me+interesa+el+plan+Starter+Web"
+               class="plan-cta"
+               target="_blank" rel="noopener">
+              Quiero el plan Starter
+            </a>
+          </article>
 
-          <p class="pack-desc">
-            Sitio de una página + configuración de Google Analytics 4 y Tag Manager +
-            botón de clic a WhatsApp + logo simple. Ideal como punto de partida digital
-            para que tu <strong>sitio web</strong> empiece a medir resultados desde el día uno.
-          </p>
+          <!-- Plan 2: Web Profesional -->
+          <article class="plan-card">
+            <span class="plan-tag">Negocios en crecimiento</span>
+            <h3>Web Profesional</h3>
+            <p class="plan-price">
+              USD 490
+              <span>Pago único · Desde</span>
+            </p>
+            <p class="plan-desc">
+              Para negocios que necesitan explicar mejor sus servicios y captar más consultas.
+            </p>
+            <ul class="plan-list">
+              <li>Todo lo incluido en Starter Web</li>
+              <li>Hasta 4 secciones: Home, Servicios/Productos, Nosotros, Contacto</li>
+              <li>Formulario de contacto vinculado a email o WhatsApp</li>
+              <li>SEO inicial: estructura H1/H2, sitemap básico y metadescripciones</li>
+              <li>Integración simple con redes sociales</li>
+              <li>Certificado SSL activo</li>
+            </ul>
+            <a href="https://wa.me/5491125926977?text=Hola%2C+me+interesa+el+plan+Web+Profesional"
+               class="plan-cta"
+               target="_blank" rel="noopener">
+              Quiero el plan Profesional
+            </a>
+          </article>
 
-          <ul class="pack-list">
-            <li>✔️ Landing page profesional</li>
-            <li>✔️ GA4 y Tag Manager configurado</li>
-            <li>✔️ Evento de clic a WhatsApp</li>
-            <li>✔️ SSL + indexación en Google incluida</li>
-            <li>✔️ Formulario conectado a WhatsApp o email</li>
-            <li>✔️ Logo simple incluido</li>
-          </ul>
+          <!-- Plan 3: Web Premium & Conversión -->
+          <article class="plan-card premium">
+            <span class="plan-tag">Conversión + IA</span>
+            <h3>Web Premium &amp; Conversión</h3>
+            <p class="plan-price">
+              USD 1.000
+              <span>
+                Pago único del sitio + USD 120/mes
+                (web chat con IA y mantenimiento obligatorio)
+              </span>
+            </p>
+            <p class="plan-desc">
+              Pensado para negocios que invierten en publicidad y necesitan medir y atender 24/7.
+            </p>
+            <ul class="plan-list">
+              <li>Todo lo incluido en Web Profesional</li>
+              <li>Web chat con IA integrado en el sitio (atención 24/7)</li>
+              <li>Configuración de Analytics y Tag Manager con eventos clave</li>
+              <li>Captura automática de leads en Google Sheets o CRM</li>
+              <li>Sitemap avanzado y preparación para SEO</li>
+              <li>Landing optimizada para campañas (Meta Ads / Google Ads)</li>
+              <li>
+                Incluye plan de web chat con IA + mantenimiento:
+                USD 120/mes mientras el chat esté activo
+              </li>
+            </ul>
+            <a href="https://wa.me/5491125926977?text=Hola%2C+me+interesa+el+plan+Web+Premium+%26+Conversi%C3%B3n"
+               class="plan-cta"
+               target="_blank" rel="noopener">
+              Quiero el plan Premium
+            </a>
+          </article>
+        </div>
 
-          <p class="pack-price">USD 500 <span>(pago único)</span></p>
+        <p style="text-align:center;margin-top:18px;font-size:0.95rem;color:#4b5563;">
+          Todos los sitios se desarrollan listos para alojar en tu propio repositorio
+          (por ejemplo, GitHub Pages) y conectarse con tus bots y automatizaciones.
+        </p>
 
-          <a href="https://wa.me/5491125926977?text=Hola%20me%20interesa%20el%20pack%20web%20%2B%20anal%C3%ADtica"
-            class="pack-btn"
-            target="_blank">
-            🌐 Quiero el pack Web + Analítica
-          </a>
+        <hr style="margin:28px 0;border:none;border-top:1px solid #e5e7eb;">
+
+        <h3 style="text-align:center;margin-top:0;">🤖 Planes de bots de WhatsApp</h3>
+        <p style="text-align:center;font-size:0.95rem;color:#4b5563;">
+          Si además querés automatizar WhatsApp, estos son los planes mensuales de bot
+          según el volumen de conversaciones.
+          Empezá con un <strong>bot de WhatsApp enfocado en lo esencial</strong> y escalá a medida que crecen tus
+          conversaciones. Los planes incluyen configuración de flujos base, conexión con tus sistemas y soporte.
+        </p>
         </div>
       </div>
     </section>
