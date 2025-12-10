@@ -238,28 +238,28 @@
       margin:22px 0 42px;
     }
 
-  /* 🔵 Burbuja hero (título y subtítulo) */
-.hero-bubble{
-  background: linear-gradient(
-    92deg,
-    rgba(0, 118, 255, 0.38),
-    rgba(92, 56, 255, 0.40)
-  );
-  border: 1.3px solid rgba(255,255,255,0.35);
-  box-shadow:
-    0 8px 28px rgba(0, 118, 255, 0.30),
-    0 2px 12px rgba(0, 0, 0, 0.20);
-  
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  
-  border-radius: 22px;
-  padding: 14px 24px; /* 🔥 más chico, más elegante */
-  margin: 12px auto;
-  max-width: 1000px; /* 🔥 evita que haga pancarta enorme */
-  color: #ffffff;
-  animation: fadeInUp .55s ease forwards;
-}
+    /* 🔵 Burbuja hero (título y subtítulo) */
+    .hero-bubble{
+      background: linear-gradient(
+        92deg,
+        rgba(0, 118, 255, 0.38),
+        rgba(92, 56, 255, 0.40)
+      );
+      border: 1.3px solid rgba(255,255,255,0.35);
+      box-shadow:
+        0 8px 28px rgba(0, 118, 255, 0.30),
+        0 2px 12px rgba(0, 0, 0, 0.20);
+
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+
+      border-radius: 22px;
+      padding: 14px 24px;
+      margin: 12px auto;
+      max-width: 1000px;
+      color: #ffffff;
+      animation: fadeInUp .55s ease forwards;
+    }
     .um .logo-sticky{
       position:fixed;
       bottom:24px;
@@ -1058,7 +1058,7 @@
       }
     }
 
-    /* 🫧 Burbuja título "Mapa de soluciones UmanoAI" */
+    /* 🫧 Burbuja título "Mapa de soluciones UmanoAI" (ya no se usa pero no molesta) */
     .solution-title-bubble{
       display:inline-flex;
       align-items:center;
@@ -1091,49 +1091,96 @@
       line-height: 1.55;
       box-shadow: 0 12px 28px rgba(0,0,0,.45);
     }
+
+    /* 🔄 CARRUSEL DE SITIOS WEB */
+    .sites-carousel{
+      margin-top:18px;
+      overflow-x:auto;
+      padding-bottom:6px;
+      -webkit-overflow-scrolling:touch;
+    }
+    .sites-track{
+      display:flex;
+      gap:16px;
+      min-width:100%;
+      scroll-snap-type:x mandatory;
+    }
+    .site-card{
+      flex:0 0 260px;
+      background:#0f172a;
+      color:#e5e7eb;
+      border-radius:16px;
+      border:1px solid rgba(148,163,184,0.7);
+      box-shadow:0 14px 30px rgba(15,23,42,0.7);
+      padding:10px;
+      scroll-snap-align:start;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .site-card img{
+      border-radius:12px;
+      margin-bottom:8px;
+      display:block;
+    }
+    .site-card h3{
+      font-size:1rem;
+      margin:4px 0;
+      color:#f9fafb;
+    }
+    .site-card p{
+      font-size:0.85rem;
+      margin:4px 0 10px;
+      color:#cbd5f5;
+      line-height:1.45;
+    }
+    .site-card a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:0.86rem;
+      font-weight:600;
+      text-decoration:none;
+      background:linear-gradient(135deg,#22c55e,#16a34a);
+      color:#022c22;
+      box-shadow:0 8px 20px rgba(34,197,94,0.45);
+      margin-top:4px;
+    }
+    .site-card a:hover{
+      transform:translateY(-1px);
+      box-shadow:0 12px 28px rgba(34,197,94,0.65);
+    }
+
     /* 👇 Ajustes de tamaño solo para DESKTOP */
-@media (min-width: 1024px) {
-
-  /* Texto base un poco más chico */
-  .um {
-    font-size: 0.9rem;
-  }
-
-  /* Título principal más contenido */
-  .um header h1{
-    font-size: 34px; /* antes max 46px */
-  }
-
-  /* Subtítulo más chico */
-  .um header .hero-subtitle{
-    font-size: 15px;
-  }
-
-  /* Burbuja principal más compacta */
-  .hero-bubble{
-    padding: 14px 24px;
-    max-width: 1180px;
-  }
-
-  /* Botones un poco más chicos */
-  .um .btn-primaria,
-  .um .btn-secundaria{
-    font-size: 14px;
-    padding: 8px 18px;
-  }
-
-  /* Marquesina de abajo más compacta */
-  .um .marquesina{
-    font-size: 14px;
-    padding: 6px 12px;
-  }
-
-  /* Secciones de contenido más "apretadas" */
-  .um .seccion{
-    padding: 18px 18px;
-  }
-}
-
+    @media (min-width: 1024px) {
+      .um {
+        font-size: 0.9rem;
+      }
+      .um header h1{
+        font-size: 34px;
+      }
+      .um header .hero-subtitle{
+        font-size: 15px;
+      }
+      .hero-bubble{
+        padding: 14px 24px;
+        max-width: 1180px;
+      }
+      .um .btn-primaria,
+      .um .btn-secundaria{
+        font-size: 14px;
+        padding: 8px 18px;
+      }
+      .um .marquesina{
+        font-size: 14px;
+        padding: 6px 12px;
+      }
+      .um .seccion{
+        padding: 18px 18px;
+      }
+    }
   </style>
 </head>
 
@@ -1191,7 +1238,18 @@
       </video>
 
       <div class="hero-bubble hero-bubble-title">
-        <h1>Diseño web profesional para convertir desde el día uno</h1>
+        <h1>Bots de WhatsApp, automatización y BI para que tu pyme venda 24/7</h1>
+      </div>
+
+      <div class="hero-bubble hero-bubble-subtitle">
+        <p class="hero-subtitle">
+          En <strong>UmanoAI</strong> combinamos <strong>bots de WhatsApp para pymes, automatización de procesos y tableros de Power BI</strong>
+          con sitios web diseñados para convertir, para que tu negocio de servicios o comercio en Argentina
+          atienda y venda en automático todos los días.
+        </p>
+        <p style="color:#fff; font-weight:600; font-size:16px; margin-top:8px;">
+          ⏱️ Tiempo promedio de implementación: 5 a 10 días hábiles
+        </p>
       </div>
 
       <div class="hero-cta">
@@ -1199,32 +1257,32 @@
           📲 Hablar por WhatsApp
         </a>
         <a href="#planes" class="btn-secundaria">
-          🌐 Quiero mi sitio web
+          🤖 Quiero activar mi bot
         </a>
       </div>
 
       <!-- 👉 burbuja pequeña AHORA va ANTES de la marquesina -->
       <div class="hero-bubble hero-bubble-small">
         <p style="margin:0; font-size:15px; line-height:1.5;">
-          👉 Te mostramos ejemplos de sitios reales antes de avanzar
+          👉 Te mostramos cómo responde un bot real antes de contratar
         </p>
       </div>
 
       <div class="marquesina">
-        ⚡ Sitios web rápidos, listos para campañas y conectados a WhatsApp y analítica en una sola solución ⚡
+        ⚡ Bots con IA + sitios web + automatización de procesos + BI en una sola solución ⚡
       </div>
     </header>
 
     <!-- ====================== SECCIÓN: como funciona ====================== -->
     <section id="como-funciona">
       <div class="seccion">
-        <h2>🔥 Activamos tu sitio en pocos dias</h2>
+        <h2>🔥 Activamos tu solución en pocos días</h2>
 
         <ul style="line-height:1.6;">
-          <li><strong>Día 1:</strong> Relevamos tu negocio, servicios y objetivo del sitio</li>
-          <li><strong>Día 2 a 4:</strong> Diseñamos la estructura, textos clave y estética de la web</li>
-          <li><strong>Día 5:</strong> Maquetamos y adaptamos a mobile, ajustamos detalles visuales</li>
-          <li><strong>Día 6 a 7:</strong> Pruebas, carga final de contenido y publicación con dominio propio</li>
+          <li><strong>Día 1:</strong> Relevamos tu proceso, mensajes frecuentes y objetivos</li>
+          <li><strong>Día 2 a 4:</strong> Armado del bot, automatizaciones y mensajes personalizados</li>
+          <li><strong>Día 5:</strong> Pruebas reales, ajustes y publicación</li>
+          <li><strong>Día 6 a 7:</strong> Métricas iniciales, reportes y seguimiento</li>
         </ul>
 
         <p style="margin-top:12px; text-align:center;">
@@ -1234,6 +1292,94 @@
             🚀 Activarlo esta semana
           </a>
         </p>
+      </div>
+    </section>
+
+    <!-- ====================== SECCIÓN: QUÉ RESOLVEMOS ====================== -->
+    <section id="soluciones-umanoai">
+      <div class="seccion">
+        <h2>💡 Bots de WhatsApp, automatización y BI: todo en un solo equipo</h2>
+        <p>
+          Ayudamos a <strong>pymes, estudios y comercios</strong> que ya no dan abasto con WhatsApp, Excel y procesos manuales.
+          Diseñamos un ecosistema donde <strong>el bot de WhatsApp, tu web, las automatizaciones y Power BI</strong>
+          trabajan juntos para vos.
+        </p>
+
+        <ul>
+          <li>🤖 <strong>Bots de WhatsApp y Web:</strong> responden consultas frecuentes, califican leads y derivan a tu equipo comercial.</li>
+          <li>🌐 <strong>Desarrollo web:</strong> landing pages y sitios corporativos listos para captar contactos y medir resultados.</li>
+          <li>⚙️ <strong>Automatización de procesos:</strong> formularios, aprobaciones, envíos de documentos y notificaciones sin trabajo manual.</li>
+          <li>📊 <strong>Power BI para negocios:</strong> tableros simples con métricas de ventas, cobranza, operaciones y atención al cliente.</li>
+        </ul>
+
+        <p style="margin-top:10px; text-align:center;">
+          <a href="https://wa.me/5491125926977?text=Hola%20me%20gustar%C3%ADa%20ver%20un%20demo%20 de%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
+            🚀 Quiero ver un demo de bots y automatización
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================== NUEVA SECCIÓN: CARRUSEL DE SITIOS ====================== -->
+    <section id="sitios-umanoai">
+      <div class="seccion">
+        <h2>🌐 Algunos de los sitios creados por UmanoAI</h2>
+        <p style="text-align:center; color:#4b5563; max-width:640px; margin:0 auto 12px;">
+          Sitios rápidos, livianos y medibles, conectados con <strong>WhatsApp, bots y analítica</strong>.
+          Deslizá para ver algunos ejemplos.
+        </p>
+
+        <div class="sites-carousel">
+          <div class="sites-track">
+            <!-- DigiAgro -->
+            <article class="site-card">
+              <img src="digiagro.png" alt="Sitio DigiAgro">
+              <h3>DigiAgro</h3>
+              <p>Plataforma digital para el agro: automatización de trámites, tableros y contacto directo por WhatsApp.</p>
+              <a href="#" target="_blank" rel="noopener">Ver sitio</a>
+            </article>
+
+            <!-- Mauregui Automotores -->
+            <article class="site-card">
+              <img src="mauregui.png" alt="Sitio Mauregui Automotores">
+              <h3>Mauregui Automotores</h3>
+              <p>Multimarca de 0km y usados, con foco en contacto rápido, catálogo simple y leads directos por WhatsApp.</p>
+              <a href="#" target="_blank" rel="noopener">Ver sitio</a>
+            </article>
+
+            <!-- Lectura Saludable -->
+            <article class="site-card">
+              <img src="lectura-saludable.png" alt="Sitio Lectura Saludable">
+              <h3>Lectura Saludable</h3>
+              <p>Escritura terapéutica y talleres online, con página de servicios y foco en reservas por formulario y chat.</p>
+              <a href="#" target="_blank" rel="noopener">Ver sitio</a>
+            </article>
+
+            <!-- Cabaña Alpina Don Elisario -->
+            <article class="site-card">
+              <img src="cabana-alpina.png" alt="Cabaña Alpina Don Elisario">
+              <h3>Cabaña Alpina Don Elisario</h3>
+              <p>Escapada en San Miguel del Monte: fotos, servicios clave y CTA directo a consultas por WhatsApp.</p>
+              <a href="#" target="_blank" rel="noopener">Ver sitio</a>
+            </article>
+
+            <!-- DSACINE -->
+            <article class="site-card">
+              <img src="dsacine.png" alt="Sitio DSACINE">
+              <h3>DSACINE</h3>
+              <p>Escuela de cine y artes audiovisuales, con secciones para talleres, inscripciones y difusión de contenidos.</p>
+              <a href="#" target="_blank" rel="noopener">Ver sitio</a>
+            </article>
+
+            <!-- Dra. Patricia Sebelli -->
+            <article class="site-card">
+              <img src="patricia-sebelli.png" alt="Sitio Dra. Patricia Sebelli">
+              <h3>Dra. Patricia Sebelli</h3>
+              <p>Sitio profesional para consultorio odontológico, con foco en confianza, servicios y turnos rápidos.</p>
+              <a href="#" target="_blank" rel="noopener">Ver sitio</a>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1251,10 +1397,86 @@
       </div>
     </section>
 
-    <!-- ====================== SECCIÓN: PLANES (SOLO PACK WEB + ANALÍTICA) ====================== -->
+    <!-- ====================== ANTES / DESPUÉS ====================== -->
+    <section id="antes-despues">
+      <div class="seccion">
+        <h2>📊 Antes vs Después de automatizar</h2>
+
+        <table class="pricing-table" style="margin-top:10px;">
+          <tr>
+            <th>Antes</th>
+            <th>Después</th>
+          </tr>
+          <tr>
+            <td>Responder manualmente WhatsApps todo el día</td>
+            <td>Bot atiende y califica leads 24/7</td>
+          </tr>
+          <tr>
+            <td>No saber qué cliente pidió qué</td>
+            <td>Registro ordenado con seguimiento</td>
+          </tr>
+          <tr>
+            <td>Excel duplicados, info suelta</td>
+            <td>Automatizado en un solo lugar</td>
+          </tr>
+          <tr>
+            <td>Tiempo perdido en tareas repetidas</td>
+            <td>Notificaciones y acciones automáticas</td>
+          </tr>
+        </table>
+
+        <p style="text-align:center;margin-top:16px;">
+          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20automatizar%20estos%20problemas"
+             class="btn-secundaria"
+             target="_blank">
+            💬 Quiero automatizar ahora
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================== SECCIÓN: PLANES ====================== -->
     <section id="planes">
       <div class="seccion">
-        <!-- Pack Web + Analítica intacto -->
+        <h2>💰 Planes de bots de WhatsApp para pymes</h2>
+        <p style="text-align:center;">
+          Empezá con un <strong>bot de WhatsApp enfocado en lo esencial</strong> y escalá a medida que crecen tus
+          conversaciones. Los planes incluyen configuración de flujos base, conexión con tus sistemas y soporte.
+        </p>
+
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Respuestas incluidas</th>
+              <th>Precio mensual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Básico</td>
+              <td>200</td>
+              <td>USD 35</td>
+            </tr>
+            <tr>
+              <td>Pro</td>
+              <td>800</td>
+              <td>USD 65</td>
+            </tr>
+            <tr class="highlight">
+              <td>Power ⭐ (Pymes en crecimiento)</td>
+              <td>3.000</td>
+              <td>USD 120</td>
+            </tr>
+            <tr>
+              <td>Corporate</td>
+              <td>∞ Ilimitadas</td>
+              <td>USD 250</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ====================== PACK WEB + ANALÍTICA ====================== -->
         <div class="pack-web">
           <h3>🌐 Pack Web + Analítica</h3>
 
@@ -1440,410 +1662,108 @@
     });
   </script>
 
-  <!-- ============================================================= -->
-  <!-- ============= MAPA DE SOLUCIONES UMANOAI (HTML) ============ -->
-  <!-- ============================================================= -->
-  <section id="soluciones-umanoai"
-    style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color:#f5f5f5;
-            padding:60px 20px;">
-    <div style="max-width:1100px;margin:0 auto;">
-
-      <!-- 🫧 Burbuja del título -->
-      <div class="solution-title-bubble">
-        <span class="solution-title-main">Mapa de soluciones</span>
-        <span class="solution-title-brand">UmanoAI</span>
-      </div>
-
-      <div class="solution-intro-bubble">
-        💡 Te mostramos cómo trabajamos el desarrollo de sitios web y qué podemos hacer por tu negocio.
-      </div>
-
-      <div id="soluciones-grid"
-          style="display:grid;
-                  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-                  gap:16px;
-                  margin-bottom:30px;">
-</div>
-      </header>
-
-      <div id="soluciones-grid"
-          style="display:grid;
-                  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-                  gap:16px;
-                  margin-bottom:30px;">
-
-        <button class="solucion-card is-active" data-solucion="web"
-                style="border:none;cursor:pointer;padding:16px 14px;
-                        border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
-                        color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
-                        box-shadow:0 12px 30px rgba(0,0,0,0.55);
-                        outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;">
-          <div style="font-size:1.1rem;margin-bottom:4px;">🌐 Desarrollo web</div>
-          <div style="font-size:0.85rem;color:#b6c2d6;">Sitios y landings pensadas para convertir y automatizar.</div>
-        </button>
-      </div>
-
-      <article id="solucion-detalle"
-        style="background:rgba(15,23,42,0.86);
-                border-radius:18px;
-                border:1px solid rgba(148,163,184,0.55);
-                padding:22px 20px;
-                box-shadow:0 20px 50px rgba(15,23,42,0.8);
-                backdrop-filter:blur(18px);
-                min-height:210px;">
-        <h3 id="detalle-titulo" style="font-size:1.4rem;margin-bottom:8px;">
-          Apps a medida
-        </h3>
-        <p id="detalle-intro"
-          style="font-size:0.95rem;line-height:1.6;color:#d4dde9;margin-bottom:12px;">
-          Diseñamos aplicaciones que siguen exactamente cómo funciona tu negocio:
-          nada de plantillas genéricas. Apps internas, formularios inteligentes
-          y portales con login para tus equipos, clientes o proveedores.
-        </p>
-
-        <ul id="detalle-lista"
-          style="margin:0 0 14px 18px;font-size:0.92rem;color:#c0cce0;line-height:1.6;">
-          <li>Apps internas para equipos de ventas, logística, operaciones o servicio.</li>
-          <li>Formularios inteligentes que reemplazan planillas y WhatsApps sueltos.</li>
-          <li>Todo construido con tecnologías como Power Apps, web o Flutter según el caso.</li>
-        </ul>
-
-        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;">
-          <p id="detalle-ideal"
-            style="margin:0;font-size:0.9rem;color:#9ca7c4;">
-            Ideal si querés dejar de depender de Excel y WhatsApp para gestionar tu operación.
-          </p>
-
-          <a id="detalle-cta"
-            href="https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio"
-            target="_blank" rel="noopener"
-            style="display:inline-flex;align-items:center;gap:6px;
-                    padding:9px 16px;border-radius:999px;
-                    background:linear-gradient(135deg,#00F6A4,#0CC5A7);
-                    color:#041316;text-decoration:none;font-size:0.9rem;font-weight:600;
-                    box-shadow:0 10px 30px rgba(0,246,164,0.4);">
-            <span>👉 Quiero hablar de esta solución</span>
-          </a>
-        </div>
-
-        <div id="detalle-videos" style="margin-top:28px;"></div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ============================================================= -->
-  <!-- ============= LÓGICA JS PARA EL MAPA DE SOLUCIONES ========= -->
-  <!-- ============================================================= -->
-  <script>
-    (function () {
-      const soluciones = {
-        web: {
-          titulo: "Desarrollo web",
-          intro:
-            "Diseñamos sitios y landings pensados para generar confianza, explicar bien tu propuesta y convertir visitas en contactos.",
-          bullets: [
-            "Landings para campañas con integración directa a WhatsApp o bots.",
-            "Sitios corporativos que explican claro qué hacés y cómo ayudás.",
-            "Portales para clientes o distribuidores conectados a tus sistemas.",
-            "Web preparada para futuras integraciones, automatizaciones y analítica."
-          ],
-          ideal:
-            "Ideal si querés que tu web sea parte de tu sistema comercial, no solo una tarjeta de presentación.",
-          cta:
-            "https://wa.me/5491125926977?text=Hola%2C+necesito+una+web+profesional+para+mi+negocio",
-          tituloImagenes: "🌐 Sitios y resultados creados por UmanoAI",
-          imagenes: [
-            {
-              src: "digiagro.png",
-              alt: "Sitio DigiAgro",
-              titulo: "DigiAgro – Sitio principal del ecosistema agro digital"
-            },
-            {
-              src: "dsacine.png",
-              alt: "Sitio DSACINE",
-              titulo: "DSACINE – Escuela de cine y artes audiovisuales"
-            },
-            {
-              src: "analytics.png",
-              alt: "Analytics de tráfico web",
-              titulo: "Analytics – Tráfico y eventos medidos"
-            },
-            {
-              src: "mauregui.png",
-              alt: "Sitio Mauregui Automotores",
-              titulo: "Mauregui Automotores – Sitio de multimarcas y usados"
-            },
-            {
-              src: "patricia-sebelli.png",
-              alt: "Sitio Dra. Patricia Sebelli",
-              titulo: "Dra. Patricia Sebelli – Odontología integral en Almagro"
-            }
-          ]
-        }
-      };
-
-      const cards = document.querySelectorAll("#soluciones-grid .solucion-card");
-      const titulo = document.getElementById("detalle-titulo");
-      const intro = document.getElementById("detalle-intro");
-      const lista = document.getElementById("detalle-lista");
-      const ideal = document.getElementById("detalle-ideal");
-      const cta = document.getElementById("detalle-cta");
-      const videosContainer = document.getElementById("detalle-videos");
-      const detalleArticulo = document.getElementById("solucion-detalle");
-
-      let rotadorInterval = null;
-
-      function limpiarRotador() {
-        if (rotadorInterval) {
-          clearInterval(rotadorInterval);
-          rotadorInterval = null;
-        }
-        const existing = detalleArticulo.querySelector(".auto-rotator");
-        if (existing) existing.remove();
-      }
-
-      function activarCard(card) {
-        cards.forEach(c => c.classList.remove("is-active"));
-        card.classList.add("is-active");
-      }
-
-      function actualizarDetalle(key) {
-        const data = soluciones[key];
-        if (!data) return;
-
-        titulo.textContent = data.titulo;
-        intro.textContent = data.intro;
-
-        lista.innerHTML = "";
-        data.bullets.forEach(item => {
-          const li = document.createElement("li");
-          li.textContent = item;
-          lista.appendChild(li);
-        });
-
-        ideal.textContent = data.ideal;
-        cta.href = data.cta;
-
-        videosContainer.innerHTML = "";
-        limpiarRotador();
-
-        if (data.videos && data.videos.length > 0) {
-          const wrapper = document.createElement("div");
-
-          const title = document.createElement("h4");
-          title.textContent = data.tituloVideos || "🎥 Casos reales de esta solución";
-          title.style.fontSize = "1rem";
-          title.style.color = "#00F6A4";
-          title.style.margin = "22px 0 12px";
-          title.style.textAlign = "center";
-          wrapper.appendChild(title);
-
-          const grid = document.createElement("div");
-          grid.className = "video-grid";
-
-          if (data.videos.length === 1) {
-            grid.style.maxWidth = "520px";
-            grid.style.margin = "0 auto";
-          }
-
-          data.videos.forEach(v => {
-            const card = document.createElement("div");
-            card.className = "video-card";
-
-            const iframe = document.createElement("iframe");
-            iframe.width = "100%";
-            iframe.height = "260";
-            iframe.src = v.url;
-            iframe.title = v.titulo;
-            iframe.frameBorder = "0";
-            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-            iframe.referrerPolicy = "strict-origin-when-cross-origin";
-            iframe.allowFullscreen = true;
-            card.appendChild(iframe);
-
-            const caption = document.createElement("p");
-            caption.textContent = v.descripcion;
-            caption.style.fontSize = "0.82rem";
-            caption.style.marginTop = "6px";
-            caption.style.color = "#8ea4bf";
-            card.appendChild(caption);
-
-            grid.appendChild(card);
-          });
-
-          wrapper.appendChild(grid);
-          videosContainer.appendChild(wrapper);
-        }
-
-        if (data.imagenes && data.imagenes.length > 0) {
-          const cWrapper = document.createElement("div");
-          cWrapper.className = "bi-carousel";
-
-          const titleImg = document.createElement("h4");
-          titleImg.textContent = data.tituloImagenes || "📊 Ejemplos de reportes";
-          titleImg.style.fontSize = "1rem";
-          titleImg.style.color = "#00F6A4";
-          titleImg.style.margin = "24px 0 8px";
-          titleImg.style.textAlign = "center";
-          cWrapper.appendChild(titleImg);
-
-          const main = document.createElement("div");
-          main.className = "bi-carousel-main";
-
-          const mainImg = document.createElement("img");
-          mainImg.src = data.imagenes[0].src;
-          mainImg.alt = data.imagenes[0].alt || data.imagenes[0].titulo || "";
-          mainImg.loading = "lazy";
-          main.appendChild(mainImg);
-
-          const caption = document.createElement("div");
-          caption.className = "bi-carousel-caption";
-          caption.textContent = data.imagenes[0].titulo || "";
-
-          const thumbs = document.createElement("div");
-          thumbs.className = "bi-carousel-thumbs";
-
-          data.imagenes.forEach((imgData, index) => {
-            const tImg = document.createElement("img");
-            tImg.src = imgData.src;
-            tImg.alt = imgData.alt || imgData.titulo || "";
-            tImg.loading = "lazy";
-            if (index === 0) tImg.classList.add("active");
-
-            tImg.addEventListener("click", () => {
-              mainImg.src = imgData.src;
-              mainImg.alt = imgData.alt || imgData.titulo || "";
-              caption.textContent = imgData.titulo || "";
-              thumbs.querySelectorAll("img").forEach(im => im.classList.remove("active"));
-              tImg.classList.add("active");
-            });
-
-            thumbs.appendChild(tImg);
-          });
-
-          cWrapper.appendChild(main);
-          cWrapper.appendChild(caption);
-          cWrapper.appendChild(thumbs);
-          videosContainer.appendChild(cWrapper);
-        }
-      }
-
-      cards.forEach(card => {
-        card.addEventListener("click", () => {
-          const key = card.getAttribute("data-solucion");
-          activarCard(card);
-          actualizarDetalle(key);
-        });
-      });
-
-      actualizarDetalle("web");
-    })();
-  </script>
   <!-- ====================== WIDGET CHAT TITO ====================== -->
+  <div id="umanoai-chat-root">
+    <button id="umanoai-chat-toggle">
+      <img src="umanoai.png" alt="Hablar con Tito">
+    </button>
 
-<div id="umanoai-chat-root">
-  <button id="umanoai-chat-toggle">
-    <img src="umanoai.png" alt="Hablar con Tito">
-  </button>
+    <div id="umanoai-chat-window">
+      <div class="um-chat-header">
+        <strong>Tito — Asistente Virtual</strong>
+        <span>Respondemos en segundos</span>
+      </div>
 
-  <div id="umanoai-chat-window">
-    <div class="um-chat-header">
-      <strong>Tito — Asistente Virtual</strong>
-      <span>Respondemos en segundos</span>
+      <div id="um-chat-messages"></div>
+
+      <form id="um-chat-form">
+        <input id="um-chat-input" type="text" placeholder="Escribime..." autocomplete="off">
+        <button type="submit">Enviar</button>
+      </form>
     </div>
-
-    <div id="um-chat-messages"></div>
-
-    <form id="um-chat-form">
-      <input id="um-chat-input" type="text" placeholder="Escribime..." autocomplete="off">
-      <button type="submit">Enviar</button>
-    </form>
   </div>
-</div>
-
 
   <!-- ============================================================= -->
   <!-- ============= CHAT UMANOAI – LÓGICA DEL WIDGET ============ -->
   <!-- ============================================================= -->
- <script>
-(function () {
-  const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
-  const TOKEN = "umanoai-secure";
-  const SESSION_KEY = "umanoai-chat-session-id";
+  <script>
+  (function () {
+    const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
+    const TOKEN = "umanoai-secure";
+    const SESSION_KEY = "umanoai-chat-session-id";
 
-  let sessionId = localStorage.getItem(SESSION_KEY);
-  if (!sessionId) {
-    sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
-    localStorage.setItem(SESSION_KEY, sessionId);
-  }
-
-  const toggle = document.getElementById("umanoai-chat-toggle");
-  const win = document.getElementById("umanoai-chat-window");
-  const messages = document.getElementById("um-chat-messages");
-  const form = document.getElementById("um-chat-form");
-  const input = document.getElementById("um-chat-input");
-
-  function addMessage(text, from) {
-    const div = document.createElement("div");
-    div.classList.add("um-chat-msg");
-    if (from === "user") div.classList.add("um-chat-user");
-    else if (from === "bot") div.classList.add("um-chat-bot");
-    else if (from === "loading") div.classList.add("um-chat-loading");
-    div.textContent = text;
-    messages.appendChild(div);
-    messages.scrollTop = messages.scrollHeight;
-  }
-
-  async function sendMessage(msg) {
-    addMessage(msg, "user");
-    input.value = "";
-    input.focus();
-
-    const loadingMsg = document.createElement("div");
-    loadingMsg.classList.add("um-chat-msg","um-chat-loading");
-    loadingMsg.textContent = "…";
-    messages.appendChild(loadingMsg);
-    messages.scrollTop = messages.scrollHeight;
-
-    try {
-      const res = await fetch(FLOW_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: msg, sessionId, token: TOKEN })
-      });
-
-      const raw = await res.text();
-      loadingMsg.remove();
-
-      let reply = raw;
-      try {
-        const parsed = JSON.parse(raw);
-        reply = parsed.reply || parsed.message || raw;
-      } catch {}
-
-      addMessage(reply, "bot");
-    } catch {
-      loadingMsg.remove();
-      addMessage("Tuve un problema 😥 Probá de nuevo.", "bot");
+    let sessionId = localStorage.getItem(SESSION_KEY);
+    if (!sessionId) {
+      sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
+      localStorage.setItem(SESSION_KEY, sessionId);
     }
-  }
 
-  toggle.addEventListener("click", () => {
-    win.classList.toggle("open");
-  });
+    const toggle = document.getElementById("umanoai-chat-toggle");
+    const win = document.getElementById("umanoai-chat-window");
+    const messages = document.getElementById("um-chat-messages");
+    const form = document.getElementById("um-chat-form");
+    const input = document.getElementById("um-chat-input");
 
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    const msg = input.value.trim();
-    if (!msg) return;
-    sendMessage(msg);
-  });
+    function addMessage(text, from) {
+      const div = document.createElement("div");
+      div.classList.add("um-chat-msg");
+      if (from === "user") div.classList.add("um-chat-user");
+      else if (from === "bot") div.classList.add("um-chat-bot");
+      else if (from === "loading") div.classList.add("um-chat-loading");
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
 
-  // Mensaje inicial
-  addMessage("👋 Hola! Soy Tito. ¿En qué te ayudo hoy?", "bot");
-})();
-</script>
+    async function sendMessage(msg) {
+      addMessage(msg, "user");
+      input.value = "";
+      input.focus();
+
+      const loadingMsg = document.createElement("div");
+      loadingMsg.classList.add("um-chat-msg","um-chat-loading");
+      loadingMsg.textContent = "…";
+      messages.appendChild(loadingMsg);
+      messages.scrollTop = messages.scrollHeight;
+
+      try {
+        const res = await fetch(FLOW_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: msg, sessionId, token: TOKEN })
+        });
+
+        const raw = await res.text();
+        loadingMsg.remove();
+
+        let reply = raw;
+        try {
+          const parsed = JSON.parse(raw);
+          reply = parsed.reply || parsed.message || raw;
+        } catch {}
+
+        addMessage(reply, "bot");
+      } catch {
+        loadingMsg.remove();
+        addMessage("Tuve un problema 😥 Probá de nuevo.", "bot");
+      }
+    }
+
+    toggle.addEventListener("click", () => {
+      win.classList.toggle("open");
+    });
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const msg = input.value.trim();
+      if (!msg) return;
+      sendMessage(msg);
+    });
+
+    // Mensaje inicial
+    addMessage("👋 Hola! Soy Tito. ¿En qué te ayudo hoy?", "bot");
+  })();
+  </script>
 
   <!-- ============================================================= -->
   <!-- ========================= FOOTER ============================ -->
@@ -1879,6 +1799,8 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
+</html>
+
 </html>
 
 
