@@ -177,6 +177,31 @@
       padding-bottom:max(80px,var(--safe));
     }
 
+    /* más aire vertical entre secciones del contenido principal */
+    .um section{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      padding:42px 16px 50px;
+    }
+    .um section + section{
+      padding-top:56px;
+    }
+
+    .um .seccion{
+      width:min(920px,92%);
+      background:var(--bgCard);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:clamp(16px,3.6vw,24px);
+      color:#132135;
+    }
+    .um .seccion h2{
+      text-align:center;
+      margin-top:0;
+    }
+
     /* ====================== HEADER / HERO ====================== */
     .um header{
       position:relative;
@@ -191,7 +216,6 @@
       isolation:isolate;
       padding:0 16px;
       padding-top:calc(80px + env(safe-area-inset-top, 0px));
-      /* 👇 más espacio abajo para que no se pisen burbuja y marquesina */
       padding-bottom:calc(120px + env(safe-area-inset-bottom, 0px));
       background:#020617;
     }
@@ -238,28 +262,27 @@
       margin:22px 0 42px;
     }
 
-  /* 🔵 Burbuja hero (título y subtítulo) */
-.hero-bubble{
-  background: linear-gradient(
-    92deg,
-    rgba(0, 118, 255, 0.38),
-    rgba(92, 56, 255, 0.40)
-  );
-  border: 1.3px solid rgba(255,255,255,0.35);
-  box-shadow:
-    0 8px 28px rgba(0, 118, 255, 0.30),
-    0 2px 12px rgba(0, 0, 0, 0.20);
+    /* 🔵 Burbuja hero (título y subtítulo) */
+    .hero-bubble{
+      background: linear-gradient(
+        92deg,
+        rgba(0, 118, 255, 0.38),
+        rgba(92, 56, 255, 0.40)
+      );
+      border: 1.3px solid rgba(255,255,255,0.35);
+      box-shadow:
+        0 8px 28px rgba(0, 118, 255, 0.30),
+        0 2px 12px rgba(0, 0, 0, 0.20);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 22px;
+      padding: 14px 24px;
+      margin: 12px auto;
+      max-width: 1000px;
+      color: #ffffff;
+      animation: fadeInUp .55s ease forwards;
+    }
 
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-
-  border-radius: 22px;
-  padding: 14px 24px; /* 🔥 más chico, más elegante */
-  margin: 12px auto;
-  max-width: 1000px; /* 🔥 evita que haga pancarta enorme */
-  color: #ffffff;
-  animation: fadeInUp .55s ease forwards;
-}
     .um .logo-sticky{
       position:fixed;
       bottom:24px;
@@ -430,26 +453,6 @@
       border-bottom:none;
     }
 
-    .um section{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex-direction:column;
-      padding:36px 16px;
-    }
-    .um .seccion{
-      width:min(920px,92%);
-      background:var(--bgCard);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:clamp(16px,3.6vw,24px);
-      color:#132135;
-    }
-    .um .seccion h2{
-      text-align:center;
-      margin-top:0;
-    }
-
     .pricing-table{
       width:100%;
       border-collapse:collapse;
@@ -549,7 +552,7 @@
       display:flex;
       align-items:center;
       gap:10px;
-      font-size:1.36rem;
+      font-size:1.06rem;
       color:#e5e7eb;
       max-width:100%;
       overflow:hidden;
@@ -755,7 +758,7 @@
       .auto-rotator{
         flex-direction:column;
         align-items:flex-start;
-        font-size:1rem;
+        font-size:0.92rem;
         padding:10px 12px;
         overflow:visible;
         gap:6px;
@@ -767,7 +770,8 @@
         white-space:normal;
       }
     }
-     /* 🔹 NUEVOS PLANES WEB (3 PAQUETES) */
+
+    /* 🔹 NUEVOS PLANES WEB (3 PAQUETES) */
     .plans-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -861,6 +865,7 @@
       padding:4px 40px;
       box-shadow:0 8px 18px rgba(14,165,233,0.45);
     }
+
     .bg-video{
       position:fixed;
       inset:0;
@@ -871,7 +876,6 @@
       z-index:-1;
       background:#020617;
     }
-
     .bg-video-overlay {
       position: fixed;
       inset: 0;
@@ -895,14 +899,12 @@
       position:relative;
       padding:10px 0;
     }
-
     .logos-track{
       display:flex;
       gap:40px;
       align-items:center;
       animation:scrollLogos 20s linear infinite;
     }
-
     .logos-track img{
       height:70px;
       width:auto;
@@ -911,13 +913,11 @@
       filter:grayscale(100%);
       transition:opacity .2s ease, filter .2s ease, transform .2s ease;
     }
-
     .logos-track img:hover{
       filter:grayscale(0%);
       opacity:1;
       transform:scale(1.06);
     }
-
     @keyframes scrollLogos {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -928,9 +928,8 @@
       justify-content:center;
       align-items:center;
       flex-direction:column;
-      padding:36px 16px;
+      padding:42px 16px 56px;
     }
-
     .faq-inner{
       width:min(920px,92%);
       background:var(--bgCard);
@@ -939,35 +938,29 @@
       padding:clamp(16px,3.6vw,24px);
       color:#132135;
     }
-
     .faq-inner h2{
       text-align:center;
       margin-top:0;
       margin-bottom:10px;
     }
-
     .faq-intro{
       text-align:center;
       color:#4b5563;
       margin-bottom:20px;
       font-size:0.96rem;
     }
-
     .faq-list{
       list-style:none;
       padding:0;
       margin:0;
     }
-
     .faq-item{
       border-bottom:1px solid #e5e7eb;
       padding:10px 0;
     }
-
     .faq-item:last-child{
       border-bottom:none;
     }
-
     .faq-item summary{
       cursor:pointer;
       font-weight:600;
@@ -977,24 +970,20 @@
       align-items:center;
       justify-content:space-between;
     }
-
     .faq-item summary::-webkit-details-marker{
       display:none;
     }
-
     .faq-toggle-icon{
       margin-left:12px;
       font-size:0.9rem;
       color:#6b7280;
     }
-
     .faq-item p{
       margin:8px 0 4px;
       font-size:0.95rem;
       color:#374151;
       line-height:1.6;
     }
-
     .faq-cta{
       margin-top:18px;
       text-align:center;
@@ -1003,32 +992,27 @@
     }
 
     .reviews-block{
-      margin-top:24px;
+      margin-top:8px;
       padding-top:18px;
       border-top:1px solid #e5e7eb;
-      margin-top:8px;
     }
-
     .reviews-block h3{
       text-align:center;
       margin:0 0 8px;
       font-size:1.1rem;
     }
-
     .reviews-block p.reviews-intro{
       text-align:center;
       margin:0 0 18px;
       font-size:0.94rem;
       color:#4b5563;
     }
-
     .reviews-grid{
       display:flex;
       flex-wrap:wrap;
       gap:14px;
       justify-content:center;
     }
-
     .review-card{
       background:#f9fafb;
       border-radius:14px;
@@ -1038,30 +1022,21 @@
       box-shadow:0 4px 10px rgba(15,23,42,0.06);
       text-align:left;
     }
-
     .review-stars{
       color:#f59e0b;
       font-size:0.9rem;
       margin-bottom:4px;
     }
-
     .review-text{
       font-size:0.9rem;
       color:#374151;
       margin:0 0 8px;
     }
-
     .review-author{
       font-weight:600;
       font-size:0.9rem;
       color:#111827;
     }
-
-    .review-meta{
-      font-size:0.8rem;
-      color:#6b7280;
-    }
-
     .btn-google-reviews{
       display:inline-block;
       margin-top:12px;
@@ -1122,49 +1097,67 @@
       line-height: 1.55;
       box-shadow: 0 12px 28px rgba(0,0,0,.45);
     }
+
+    /* sección mapa de soluciones (para que no se pegue al contacto y al footer) */
+    .solution-map-section{
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:#f5f5f5;
+      padding:60px 20px 70px;
+      margin-top:60px;
+      margin-bottom:50px;
+    }
+
     /* 👇 Ajustes de tamaño solo para DESKTOP */
-@media (min-width: 1024px) {
+    @media (min-width: 1024px) {
+      .um {
+        font-size: 0.9rem;
+      }
+      .um header h1{
+        font-size: 34px;
+      }
+      .um header .hero-subtitle{
+        font-size: 15px;
+      }
+      .hero-bubble{
+        padding: 14px 24px;
+        max-width: 1180px;
+      }
+      .um .btn-primaria,
+      .um .btn-secundaria{
+        font-size: 14px;
+        padding: 8px 18px;
+      }
+      .um .marquesina{
+        font-size: 14px;
+        padding: 6px 12px;
+      }
+      .um .seccion{
+        padding: 18px 18px;
+      }
+    }
 
-  /* Texto base un poco más chico */
-  .um {
-    font-size: 0.9rem;
-  }
-
-  /* Título principal más contenido */
-  .um header h1{
-    font-size: 34px; /* antes max 46px */
-  }
-
-  /* Subtítulo más chico */
-  .um header .hero-subtitle{
-    font-size: 15px;
-  }
-
-  /* Burbuja principal más compacta */
-  .hero-bubble{
-    padding: 14px 24px;
-    max-width: 1180px;
-  }
-
-  /* Botones un poco más chicos */
-  .um .btn-primaria,
-  .um .btn-secundaria{
-    font-size: 14px;
-    padding: 8px 18px;
-  }
-
-  /* Marquesina de abajo más compacta */
-  .um .marquesina{
-    font-size: 14px;
-    padding: 6px 12px;
-  }
-
-  /* Secciones de contenido más "apretadas" */
-  .um .seccion{
-    padding: 18px 18px;
-  }
-}
-
+    /* FOOTER más grande y respirando */
+    .site-footer{
+      background:#0f172a;
+      color:#e5e7eb;
+      padding:48px 16px 56px;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-size:15px;
+      text-align:center;
+      margin-top:60px;
+      border-top:2px solid #1e293b;
+    }
+    .site-footer-inner{
+      max-width:1100px;
+      margin:0 auto;
+    }
+    .site-footer p{
+      margin:6px 0;
+    }
+    .site-footer small{
+      font-size:13px;
+      opacity:.8;
+    }
   </style>
 </head>
 
@@ -1245,7 +1238,6 @@
         </a>
       </div>
 
-      <!-- 👉 burbuja pequeña AHORA va ANTES de la marquesina -->
       <div class="hero-bubble hero-bubble-small">
         <p style="margin:0; font-size:15px; line-height:1.5;">
           👉 Te mostramos cómo responde un bot real antes de contratar
@@ -1309,8 +1301,8 @@
       <div class="seccion">
         <h2>🤝 Confían en nosotros</h2>
         <p style="text-align:center;color:#4b5563;">
-          Más de <strong>40 bots implementados</strong> y <strong>30 sitios profesionales entregados</strong>
-          Trabajamos junto a marcas y emprendedores que buscan dar un salto digital
+          Más de <strong>40 bots implementados</strong> y <strong>30 sitios profesionales entregados</strong>.
+          Trabajamos junto a marcas y emprendedores que buscan dar un salto digital.
         </p>
 
         <div class="logos-slider">
@@ -1398,10 +1390,9 @@
           </tbody>
         </table>
 
-        <!  <!-- ====================== SECCIÓN: PLANES ====================== -->
-    <section id="planes">
-      <div class="seccion">
-        <h2>💰 Planes de desarrollo web</h2>
+        <hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+
+        <h2 style="margin-top:8px;">💻 Planes de desarrollo web</h2>
         <p style="text-align:center;">
           Tres niveles de sitio pensados para <strong>pasar de cero presencia online</strong>
           a un <strong>sitio que convierte y atiende con chat de IA 24/7</strong>.
@@ -1499,12 +1490,10 @@
           Todos los sitios se desarrollan listos para alojar en tu propio repositorio
           (por ejemplo, GitHub Pages) y conectarse con tus bots y automatizaciones.
         </p>
-
-        <hr style="margin:28px 0;border:none;border-top:1px solid #e5e7eb;">
       </div>
     </section>
 
-    <!-- =============== RESEÑAS DE GOOGLE (CON TARJETA BLANCA) =============== -->
+    <!-- =============== RESEÑAS DE GOOGLE =============== -->
     <section id="reseñas">
       <div class="seccion">
         <div class="reviews-block">
@@ -1660,13 +1649,10 @@
     });
   </script>
 
-   <!-- ============================================================= -->
+  <!-- ============================================================= -->
   <!-- ============= MAPA DE SOLUCIONES UMANOAI (HTML) ============ -->
   <!-- ============================================================= -->
-  <section id="soluciones-umanoai"
-    style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-           color:#f5f5f5;
-           padding:60px 20px;">
+  <section id="soluciones-umanoai" class="solution-map-section">
     <div style="max-width:1100px;margin:0 auto;">
 
       <!-- 🫧 Burbuja del título -->
@@ -2182,139 +2168,129 @@
       actualizarDetalle("apps");
     })();
   </script>
+
   <!-- ====================== WIDGET CHAT TITO ====================== -->
+  <div id="umanoai-chat-root">
+    <button id="umanoai-chat-toggle">
+      <img src="umanoai.png" alt="Hablar con Tito">
+    </button>
 
-<div id="umanoai-chat-root">
-  <button id="umanoai-chat-toggle">
-    <img src="umanoai.png" alt="Hablar con Tito">
-  </button>
+    <div id="umanoai-chat-window">
+      <div class="um-chat-header">
+        <strong>Tito — Asistente Virtual</strong>
+        <span>Respondemos en segundos</span>
+      </div>
 
-  <div id="umanoai-chat-window">
-    <div class="um-chat-header">
-      <strong>Tito — Asistente Virtual</strong>
-      <span>Respondemos en segundos</span>
+      <div id="um-chat-messages"></div>
+
+      <form id="um-chat-form">
+        <input id="um-chat-input" type="text" placeholder="Escribime..." autocomplete="off">
+        <button type="submit">Enviar</button>
+      </form>
     </div>
-
-    <div id="um-chat-messages"></div>
-
-    <form id="um-chat-form">
-      <input id="um-chat-input" type="text" placeholder="Escribime..." autocomplete="off">
-      <button type="submit">Enviar</button>
-    </form>
   </div>
-</div>
-
 
   <!-- ============================================================= -->
   <!-- ============= CHAT UMANOAI – LÓGICA DEL WIDGET ============ -->
   <!-- ============================================================= -->
- <script>
-(function () {
-  const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
-  const TOKEN = "umanoai-secure";
-  const SESSION_KEY = "umanoai-chat-session-id";
+  <script>
+  (function () {
+    const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
+    const TOKEN = "umanoai-secure";
+    const SESSION_KEY = "umanoai-chat-session-id";
 
-  let sessionId = localStorage.getItem(SESSION_KEY);
-  if (!sessionId) {
-    sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
-    localStorage.setItem(SESSION_KEY, sessionId);
-  }
-
-  const toggle = document.getElementById("umanoai-chat-toggle");
-  const win = document.getElementById("umanoai-chat-window");
-  const messages = document.getElementById("um-chat-messages");
-  const form = document.getElementById("um-chat-form");
-  const input = document.getElementById("um-chat-input");
-
-  function addMessage(text, from) {
-    const div = document.createElement("div");
-    div.classList.add("um-chat-msg");
-    if (from === "user") div.classList.add("um-chat-user");
-    else if (from === "bot") div.classList.add("um-chat-bot");
-    else if (from === "loading") div.classList.add("um-chat-loading");
-    div.textContent = text;
-    messages.appendChild(div);
-    messages.scrollTop = messages.scrollHeight;
-  }
-
-  async function sendMessage(msg) {
-    addMessage(msg, "user");
-    input.value = "";
-    input.focus();
-
-    const loadingMsg = document.createElement("div");
-    loadingMsg.classList.add("um-chat-msg","um-chat-loading");
-    loadingMsg.textContent = "…";
-    messages.appendChild(loadingMsg);
-    messages.scrollTop = messages.scrollHeight;
-
-    try {
-      const res = await fetch(FLOW_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: msg, sessionId, token: TOKEN })
-      });
-
-      const raw = await res.text();
-      loadingMsg.remove();
-
-      let reply = raw;
-      try {
-        const parsed = JSON.parse(raw);
-        reply = parsed.reply || parsed.message || raw;
-      } catch {}
-
-      addMessage(reply, "bot");
-    } catch {
-      loadingMsg.remove();
-      addMessage("Tuve un problema 😥 Probá de nuevo.", "bot");
+    let sessionId = localStorage.getItem(SESSION_KEY);
+    if (!sessionId) {
+      sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
+      localStorage.setItem(SESSION_KEY, sessionId);
     }
-  }
 
-  toggle.addEventListener("click", () => {
-    win.classList.toggle("open");
-  });
+    const toggle = document.getElementById("umanoai-chat-toggle");
+    const win = document.getElementById("umanoai-chat-window");
+    const messages = document.getElementById("um-chat-messages");
+    const form = document.getElementById("um-chat-form");
+    const input = document.getElementById("um-chat-input");
 
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    const msg = input.value.trim();
-    if (!msg) return;
-    sendMessage(msg);
-  });
+    function addMessage(text, from) {
+      const div = document.createElement("div");
+      div.classList.add("um-chat-msg");
+      if (from === "user") div.classList.add("um-chat-user");
+      else if (from === "bot") div.classList.add("um-chat-bot");
+      else if (from === "loading") div.classList.add("um-chat-loading");
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
 
-  // Mensaje inicial
-  addMessage("👋 Hola! Soy Tito. ¿En qué te ayudo hoy?", "bot");
-})();
-</script>
+    async function sendMessage(msg) {
+      addMessage(msg, "user");
+      input.value = "";
+      input.focus();
 
-  <!-- ============================================================= -->
+      const loadingMsg = document.createElement("div");
+      loadingMsg.classList.add("um-chat-msg","um-chat-loading");
+      loadingMsg.textContent = "…";
+      messages.appendChild(loadingMsg);
+      messages.scrollTop = messages.scrollHeight;
+
+      try {
+        const res = await fetch(FLOW_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: msg, sessionId, token: TOKEN })
+        });
+
+        const raw = await res.text();
+        loadingMsg.remove();
+
+        let reply = raw;
+        try {
+          const parsed = JSON.parse(raw);
+          reply = parsed.reply || parsed.message || raw;
+        } catch {}
+
+        addMessage(reply, "bot");
+      } catch {
+        loadingMsg.remove();
+        addMessage("Tuve un problema 😥 Probá de nuevo.", "bot");
+      }
+    }
+
+    toggle.addEventListener("click", () => {
+      win.classList.toggle("open");
+    });
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const msg = input.value.trim();
+      if (!msg) return;
+      sendMessage(msg);
+    });
+
+    // Mensaje inicial
+    addMessage("👋 Hola! Soy Tito. ¿En qué te ayudo hoy?", "bot");
+  })();
+  </script>
+
   <!-- ========================= FOOTER ============================ -->
-  <!-- ============================================================= -->
-  <footer style="
-    background:#0f172a;
-    color:#e5e7eb;
-    padding:36px 16px;
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    font-size:15px;
-    text-align:center;
-    margin-top:40px;
-    border-top:2px solid #1e293b;">
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;" loading="lazy">
 
-    <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;" loading="lazy">
+      <p>
+        © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
+      </p>
 
-    <p style="margin:6px 0;">
-      © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
-    </p>
+      <p>
+        <a href="politica.html" style="color:#38bdf8; text-decoration:none;">Política de Privacidad</a> ·
+        <a href="Eliminardatos.html" style="color:#38bdf8; text-decoration:none;">Eliminación de Datos</a> ·
+        <a href="#contacto" style="color:#38bdf8; text-decoration:none;">Contacto</a>
+      </p>
 
-    <p style="margin:10px 0;">
-      <a href="politica.html" style="color:#38bdf8; text-decoration:none;">Política de Privacidad</a> ·
-      <a href="Eliminardatos.html" style="color:#38bdf8; text-decoration:none;">Eliminación de Datos</a> ·
-      <a href="#contacto" style="color:#38bdf8; text-decoration:none;">Contacto</a>
-    </p>
-
-    <p style="opacity:.8; font-size:13px; margin-top:10px;">
-      Desarrollado con el 💙 desde Argentina.
-    </p>
+      <p>
+        <small>Desarrollado con el 💙 desde Argentina.</small>
+      </p>
+    </div>
   </footer>
 
   <script>
