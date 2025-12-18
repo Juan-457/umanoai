@@ -27,17 +27,17 @@
       "cantidad": 47
     },
     {
+      "fecha": "2025-12-17",
+      "evento": "click_whatsapp",
+      "cantidad": 30
+    },
+    {
       "fecha": "2025-12-03",
       "evento": "click_whatsapp",
       "cantidad": 24
     },
     {
       "fecha": "2025-12-10",
-      "evento": "click_whatsapp",
-      "cantidad": 22
-    },
-    {
-      "fecha": "2025-12-17",
       "evento": "click_whatsapp",
       "cantidad": 22
     },
@@ -55,6 +55,11 @@
       "fecha": "2025-12-08",
       "evento": "click_whatsapp",
       "cantidad": 16
+    },
+    {
+      "fecha": "2025-12-18",
+      "evento": "click_whatsapp",
+      "cantidad": 14
     },
     {
       "fecha": "2025-12-09",
@@ -103,11 +108,6 @@
     },
     {
       "fecha": "2025-11-28",
-      "evento": "click_whatsapp",
-      "cantidad": 2
-    },
-    {
-      "fecha": "2025-12-18",
       "evento": "click_whatsapp",
       "cantidad": 2
     },
