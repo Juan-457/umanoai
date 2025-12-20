@@ -9,7 +9,7 @@
     {
       "fecha": "2025-12-19",
       "evento": "click_whatsapp",
-      "cantidad": 106
+      "cantidad": 107
     },
     {
       "fecha": "2025-12-14",
@@ -133,6 +133,11 @@
     },
     {
       "fecha": "2025-12-07",
+      "evento": "click_whatsapp",
+      "cantidad": 1
+    },
+    {
+      "fecha": "2025-12-20",
       "evento": "click_whatsapp",
       "cantidad": 1
     }
