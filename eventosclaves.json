@@ -62,14 +62,14 @@
       "cantidad": 21
     },
     {
+      "fecha": "2025-12-20",
+      "evento": "click_whatsapp",
+      "cantidad": 18
+    },
+    {
       "fecha": "2025-12-08",
       "evento": "click_whatsapp",
       "cantidad": 16
-    },
-    {
-      "fecha": "2025-12-20",
-      "evento": "click_whatsapp",
-      "cantidad": 11
     },
     {
       "fecha": "2025-12-09",
