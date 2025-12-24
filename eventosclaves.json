@@ -137,6 +137,11 @@
       "cantidad": 2
     },
     {
+      "fecha": "2025-12-24",
+      "evento": "click_whatsapp",
+      "cantidad": 2
+    },
+    {
       "fecha": "2025-11-25",
       "evento": "click_whatsapp",
       "cantidad": 1
