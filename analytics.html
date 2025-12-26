@@ -421,9 +421,12 @@
   </div>
 
   <script>
+    // Config de rango para textos (el JSON ya debería venir de últimos 30 días).
+    const RANGO_DIAS = 30;
+
     function resumenIA(m) {
       if (!m || !m.usuarios || !m.sesiones) {
-        return "Todavía no hay suficientes datos en los últimos 7 días para generar un resumen. Volvé a revisar este panel cuando el sitio tenga más visitas.";
+        return `Todavía no hay suficientes datos en los últimos ${RANGO_DIAS} días para generar un resumen. Volvé a revisar este panel cuando el sitio tenga más visitas.`;
       }
 
       const partes = [];
@@ -437,7 +440,7 @@
       const sesionesTxt = fmtNum(m.sesiones);
       const paginasTxt = fmtNum(m.paginas);
 
-      let intro = `En los últimos 7 días tu sitio recibió ${usuariosTxt} usuarios, ${sesionesTxt} sesiones y ${paginasTxt} páginas vistas.`;
+      let intro = `En los últimos ${RANGO_DIAS} días tu sitio recibió ${usuariosTxt} usuarios, ${sesionesTxt} sesiones y ${paginasTxt} páginas vistas.`;
       partes.push(intro);
 
       if (m.usuarios < 50) {
@@ -500,7 +503,7 @@
     // ➜ Análisis “IA” de los eventos clave (WhatsApp + Tito)
     function resumenEventosIA(eventos, conversiones) {
       if (!Array.isArray(eventos) || eventos.length === 0) {
-        return " Todavía no se registran eventos clave (clics en WhatsApp o mensajes en Tito) en los últimos días.";
+        return ` Todavía no se registran eventos clave (clics en WhatsApp o mensajes en Tito) en los últimos ${RANGO_DIAS} días.`;
       }
 
       const sumBy = (filtro) =>
@@ -514,7 +517,7 @@
       const diasUnicos = [...new Set(eventos.map(e => e.fecha))].length;
 
       const partes = [];
-      partes.push(` En los últimos ${diasUnicos} días analizados se registraron ${totalClicks} clics en WhatsApp y ${totalTito} eventos de chat con Tito.`);
+      partes.push(` En los últimos ${RANGO_DIAS} días analizados se registraron ${totalClicks} clics en WhatsApp y ${totalTito} eventos de chat con Tito.`);
 
       const parseDateNum = (f) => Number((f || "").replace(/-/g, ""));
       const clicksOrdenados = eventos
@@ -554,6 +557,10 @@
           partes.push(" Hay muchas conversaciones pero pocas terminan en conversión; conviene revisar el guion comercial en WhatsApp y los pasos siguientes (presupuesto, seguimiento, etc.).");
         }
       }
+
+      // Nota: dejamos la variable por si querés usar la cuenta real de días del JSON en otro lugar.
+      // eslint-disable-next-line no-unused-vars
+      const diasAnalizadosEnJson = diasUnicos;
 
       return partes.join(" ");
     }
@@ -748,4 +755,3 @@
 
 </body>
 </html>
-
