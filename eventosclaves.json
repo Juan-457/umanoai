@@ -42,6 +42,11 @@
       "cantidad": 115
     },
     {
+      "fecha": "2025-12-28",
+      "evento": "click_whatsapp",
+      "cantidad": 100
+    },
+    {
       "fecha": "2025-12-14",
       "evento": "click_whatsapp",
       "cantidad": 88
@@ -55,11 +60,6 @@
       "fecha": "2025-12-12",
       "evento": "click_whatsapp",
       "cantidad": 81
-    },
-    {
-      "fecha": "2025-12-28",
-      "evento": "click_whatsapp",
-      "cantidad": 78
     },
     {
       "fecha": "2025-12-21",
@@ -150,11 +150,6 @@
       "fecha": "2025-12-04",
       "evento": "tito_chat_message",
       "cantidad": 3
-    },
-    {
-      "fecha": "2025-11-28",
-      "evento": "click_whatsapp",
-      "cantidad": 2
     },
     {
       "fecha": "2025-12-01",
