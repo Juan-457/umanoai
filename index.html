@@ -274,28 +274,32 @@
       margin:22px 0 42px;
     }
 
-   /* 🔵 Burbuja hero (título y subtítulo) */
- .hero-bubble{
+/* 🔵 Burbuja hero (título y subtítulo) */
+.hero-bubble {
   background: linear-gradient(
     118deg,
-    rgba(12, 12, 12, 0.62),
-    rgba(18, 18, 18, 0.62),
-    rgba(10, 10, 10, 0.58)
+    rgba(12, 12, 12, 0.42),
+    rgba(18, 18, 18, 0.42),
+    rgba(10, 10, 10, 0.40)
   );
-  border: 1.4px solid rgba(255, 255, 255, 0.12);
+  border: 1.4px solid rgba(255, 255, 255, 0.14);
   box-shadow:
-  0 8px 28px rgba(0, 0, 0, 0.55),
-  0 12px 30px rgba(0, 0, 0, 0.38),
-  0 2px 12px rgba(0, 0, 0, 0.30);
+    0 8px 28px rgba(0, 0, 0, 0.55),
+    0 12px 30px rgba(0, 0, 0, 0.32),
+    0 4px 18px rgba(255, 181, 92, 0.18); /* ✨ Glow cálido */
+  
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+  
   border-radius: 22px;
   padding: 14px 24px;
   margin: 12px auto;
   max-width: 1000px;
   color: #ffffff;
+  
   animation: fadeInUp .55s ease forwards;
 }
+
 
     .um .logo-sticky{
       position:fixed;
