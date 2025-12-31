@@ -64,7 +64,7 @@
     {
       "fecha": "2025-12-30",
       "evento": "click_whatsapp",
-      "cantidad": 78
+      "cantidad": 80
     },
     {
       "fecha": "2025-12-21",
@@ -132,19 +132,9 @@
       "cantidad": 9
     },
     {
-      "fecha": "2025-11-30",
-      "evento": "click_whatsapp",
-      "cantidad": 8
-    },
-    {
       "fecha": "2025-12-29",
       "evento": "click_whatsapp",
       "cantidad": 8
-    },
-    {
-      "fecha": "2025-11-30",
-      "evento": "tito_chat_message",
-      "cantidad": 6
     },
     {
       "fecha": "2025-12-03",
