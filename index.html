@@ -1248,9 +1248,9 @@ index.html
 
     /* FOOTER más grande y respirando */
   .site-footer{
-  background:var(--bgCard);
-  color:#132135;
-  padding:46px 16px 52px;
+ background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(241,245,249,.9));
+  color:#0f172a;
+  padding:18px 14px calc(22px + var(--safe));
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   font-size:15px;
   text-align:center;
@@ -1262,6 +1262,10 @@ index.html
 .site-footer-inner{
   max-width:980px;
   margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
 }
   </style>
 </head>
