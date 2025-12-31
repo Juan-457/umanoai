@@ -1132,14 +1132,23 @@ body{
       box-shadow: 0 12px 28px rgba(0,0,0,.45);
     }
 
-    /* sección mapa de soluciones (para que no se pegue al contacto y al footer) */
-    .solution-map-section{
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color:#f5f5f5;
-      padding:60px 20px 70px;
-      margin-top:60px;
-      margin-bottom:50px;
-    }
+   /* sección mapa de soluciones (para que no se pegue al contacto y al footer) */
+.solution-map-section{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color:#132135;
+  padding:60px 16px 70px;
+  margin-top:60px;
+  margin-bottom:50px;
+  background:var(--bgCard);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  border:1px solid #d7e0eb;
+}
+
+.solution-map-wrapper{
+  max-width:1100px;
+  margin:0 auto;
+}
 
     /* 👇 Ajustes de tamaño solo para DESKTOP */
     @media (min-width: 1024px) {
@@ -1172,26 +1181,30 @@ body{
 
     /* FOOTER más grande y respirando */
     .site-footer{
-      background:#0f172a;
-      color:#e5e7eb;
-      padding:48px 16px 56px;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      font-size:15px;
-      text-align:center;
-      margin-top:60px;
-      border-top:2px solid #1e293b;
-    }
-    .site-footer-inner{
-      max-width:1100px;
-      margin:0 auto;
-    }
-    .site-footer p{
-      margin:6px 0;
-    }
-    .site-footer small{
-      font-size:13px;
-      opacity:.8;
-    }
+  background:var(--bgCard);
+  color:#132135;
+  padding:42px 16px 48px;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  font-size:15px;
+  text-align:center;
+  margin:70px auto 50px;
+  border:1px solid #d7e0eb;
+  border-top:3px solid #e2e8f0;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  width:min(1100px,94%);
+}
+.site-footer-inner{
+  max-width:900px;
+  margin:0 auto;
+}
+.site-footer p{
+  margin:6px 0;
+}
+.site-footer small{
+  font-size:13px;
+  opacity:.8;
+}
   </style>
 </head>
 
@@ -1790,34 +1803,34 @@ body{
   <!-- ============================================================= -->
   <!-- ============= MAPA DE SOLUCIONES UMANOAI (HTML) ============ -->
   <!-- ============================================================= -->
-  <section id="soluciones-umanoai" class="solution-map-section">
-    <div style="max-width:1100px;margin:0 auto;">
+ <section id="soluciones-umanoai" class="solution-map-section">
+  <div class="solution-map-wrapper">
 
-      <!-- 🫧 Burbuja del título -->
-      <div class="solution-title-bubble">
-        <span class="solution-title-main">Mapa de soluciones</span>
-        <span class="solution-title-brand">UmanoAI</span>
-      </div>
+    <!-- 🫧 Burbuja del título -->
+    <div class="solution-title-bubble">
+      <span class="solution-title-main">Mapa de soluciones</span>
+      <span class="solution-title-brand">UmanoAI</span>
+    </div>
 
-      <div class="solution-intro-bubble">
-        💡 Elegí una solución para ver cómo trabajamos ese vertical y qué podemos
-        hacer por tu negocio.
-        <br><br>
-        🙋‍♀️ Si querés hablar con una persona, pedí por <strong>Malena</strong> (agente de voz) por WhatsApp.
-        <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20conocer%20el%20mapa%20de%20soluciones%20y%20hablar%20de%20mi%20caso" target="_blank" rel="noopener" style="color:#00F6A4; font-weight:800; text-decoration:none;">
-          Abrir chat
-        </a>
-      </div>
+    <div class="solution-intro-bubble">
+      💡 Elegí una solución para ver cómo trabajamos ese vertical y qué podemos
+      hacer por tu negocio.
+      <br><br>
+      🙋‍♀️ Si querés hablar con una persona, pedí por <strong>Malena</strong> (agente de voz) por WhatsApp.
+      <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20conocer%20el%20mapa%20de%20soluciones%20y%20hablar%20de%20mi%20caso" target="_blank" rel="noopener" style="color:#00F6A4; font-weight:800; text-decoration:none;">
+        Abrir chat
+      </a>
+    </div>
 
-      <!-- GRID DE BOTONES CENTRADO -->
-      <div id="soluciones-grid"
-           style="
-             display:grid;
-             grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-             gap:16px;
-             max-width:800px;
-             margin:0 auto 30px;
-           ">
+    <!-- GRID DE BOTONES CENTRADO -->
+    <div id="soluciones-grid"
+         style="
+           display:grid;
+           grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+           gap:16px;
+           max-width:800px;
+           margin:0 auto 30px;
+         ">
 
         <button class="solucion-card is-active" data-solucion="apps"
                 style="border:none;cursor:pointer;padding:16px 14px;
@@ -2418,24 +2431,24 @@ body{
 
   <!-- ========================= FOOTER ============================ -->
   <footer class="site-footer">
-    <div class="site-footer-inner">
-      <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;" loading="lazy">
+  <div class="site-footer-inner">
+    <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;" loading="lazy">
 
-      <p>
-        © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
-      </p>
+    <p>
+      © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
+    </p>
 
-      <p>
-        <a href="politica.html" style="color:#38bdf8; text-decoration:none;">Política de Privacidad</a> ·
-        <a href="Eliminardatos.html" style="color:#38bdf8; text-decoration:none;">Eliminación de Datos</a> ·
-        <a href="#contacto" style="color:#38bdf8; text-decoration:none;">Contacto</a>
-      </p>
+    <p>
+      <a href="politica.html" style="color:#38bdf8; text-decoration:none;">Política de Privacidad</a> ·
+      <a href="Eliminardatos.html" style="color:#38bdf8; text-decoration:none;">Eliminación de Datos</a> ·
+      <a href="#contacto" style="color:#38bdf8; text-decoration:none;">Contacto</a>
+    </p>
 
-      <p>
-        <small>Desarrollado con el 💙 desde Argentina.</small>
-      </p>
-    </div>
-  </footer>
+    <p>
+      <small>Desarrollado con el 💙 desde Argentina.</small>
+    </p>
+  </div>
+</footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
