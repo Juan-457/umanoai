@@ -989,8 +989,18 @@ body{
       justify-content:space-between;
     }
     .faq-item summary::-webkit-details-marker{
-      display:none;
+      display:none;  
     }
+    .faq-item details[open] .faq-toggle-icon{
+  transform:rotate(45deg);
+  color:#111827;
+}
+.faq-toggle-icon{
+  margin-left:12px;
+  font-size:0.9rem;
+  color:#6b7280;
+  transition:transform .2s ease,color .2s ease;
+}
     .faq-toggle-icon{
       margin-left:12px;
       font-size:0.9rem;
@@ -1597,41 +1607,96 @@ body{
       </div>
     </section>
 
-    <!-- ====================== SECCIÓN: PREGUNTAS FRECUENTES (FAQ) ====================== -->
-    <section id="faq" class="faq-section">
-      <div class="faq-inner">
-        <h2>❓ Preguntas frecuentes</h2>
-        <p class="faq-intro">
-          Algunas de las dudas más comunes sobre bots de WhatsApp, automatización y BI con UmanoAI.
-        </p>
+   <!-- ====================== SECCIÓN: PREGUNTAS FRECUENTES (FAQ) ====================== -->
+<section id="faq" class="faq-section">
+  <div class="faq-inner">
+    <h2>❓ Preguntas frecuentes</h2>
+    <p class="faq-intro">
+      Algunas de las dudas más comunes sobre bots de WhatsApp, automatización y BI con UmanoAI.
+    </p>
 
-        <ul class="faq-list">
-          <!-- tus items FAQ acá -->
-          <!-- TODO: si querés, puedo completar el FAQ visual con el ítem de "hablar con Malena (agente de voz)" y otros 5-8 ítems -->
-        </ul>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <details open>
+          <summary>
+            ¿Cuánto cuesta un bot de WhatsApp con UmanoAI?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            Tenemos planes desde USD 35/mes hasta opciones Corporate, según volumen de respuestas y nivel de personalización. Revisamos tu caso y te sugerimos el plan correcto.
+          </p>
+        </details>
+      </li>
 
-        <div class="faq-cta">
-          ¿Tenés alguna otra duda?  <br>
-          Escribinos directo por WhatsApp y lo vemos en detalle:
-          <br>
-          <a href="https://wa.me/5491125926977?text=Hola%2C+tengo+algunas+preguntas+sobre+los+bots+de+UmanoAI"
-            class="btn-primaria"
-            target="_blank"
-            rel="noopener">
-            💬 Quiero hacer una consulta
-          </a>
-          <br><br>
-          O si querés atención humana directa:
-          <br>
-          <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20tengo%20dudas%20sobre%20bots%20conversacionales%20y%20quiero%20hablar%20con%20vos"
-            class="btn-secundaria"
-            target="_blank"
-            rel="noopener">
-            🙋‍♀️ Hablar con Malena (agente de voz)
-          </a>
-        </div>
-      </div>
-    </section>
+      <li class="faq-item">
+        <details>
+          <summary>
+            ¿Qué incluye la implementación?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            Incluye relevamiento del flujo, diseño de la conversación, armado del bot, conexión básica con tus sistemas o planillas y un período inicial de ajustes.
+          </p>
+        </details>
+      </li>
+
+      <li class="faq-item">
+        <details>
+          <summary>
+            ¿Necesito tener WhatsApp Business API antes de empezar?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            No necesariamente. Te ayudamos a elegir el proveedor adecuado, configurar el número y dejar listo el entorno para que el bot funcione estable.
+          </p>
+        </details>
+      </li>
+
+      <li class="faq-item">
+        <details>
+          <summary>
+            ¿En cuánto tiempo puede estar funcionando el bot?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            En proyectos estándar solemos dejar el bot operativo en pocos días hábiles. Los casos con integraciones avanzadas pueden requerir más tiempo.
+          </p>
+        </details>
+      </li>
+
+      <li class="faq-item">
+        <details>
+          <summary>
+            ¿Trabajan con pymes o solo con empresas grandes?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            UmanoAI está pensado sobre todo para pymes, negocios de servicios y profesionales que quieren escalar sin sumar tareas manuales. También atendemos proyectos corporativos.
+          </p>
+        </details>
+      </li>
+
+      <li class="faq-item">
+        <details>
+          <summary>
+            ¿Pueden integrar el bot con mi sistema, CRM o planillas?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            Sí. Integramos con CRMs, ERPs, Power BI, Google Sheets, bases de datos y otros sistemas mediante APIs, n8n o Power Automate para que la información fluya en automático.
+          </p>
+        </details>
+      </li>
+
+      <li class="faq-item">
+        <details>
+          <summary>
+            Si necesito hablar con una persona, ¿puedo pasar del bot a un humano?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            Sí. Los bots pueden derivar a atención humana cuando hace falta. Si querés, escribile a Malena (agente de voz) por WhatsApp y te asesora con tu caso.
+          </p>
 
     <!-- ====================== SECCIÓN: CONTACTO ====================== -->
     <section id="contacto">
