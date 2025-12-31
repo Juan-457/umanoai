@@ -1093,29 +1093,97 @@ body{
     }
 
     /* 🫧 Burbuja título "Mapa de soluciones UmanoAI" */
-    .solution-title-bubble{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:10px 22px;
-      border-radius:999px;
-      margin:0 auto 16px;
-      background:rgba(15,23,42,0.92);
-      border:1px solid rgba(148,163,184,0.7);
-      box-shadow:0 16px 40px rgba(0,0,0,0.75);
-      font-size:1.45rem;
-      font-weight:800;
-      color:#f9fafb;
-    }
-    .solution-title-bubble{
-      display: flex;            /* antes: inline-flex */
-      justify-content: center;  /* centra el contenido dentro */
-      width: fit-content;       /* se ajusta al texto */
-      margin: 0 auto 16px;      /* centra la burbuja */
-    }
-    .solution-title-bubble .solution-title-brand{
-      color:#00F6A4;
-    }
+   .solution-title-bubble{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:10px 22px;
+  border-radius:999px;
+  margin:0 auto 16px;
+  background:var(--bgCard);
+  border:1px solid #d7e0eb;
+  box-shadow:0 12px 28px rgba(0,0,0,0.15);
+  font-size:1.45rem;
+  font-weight:800;
+  color:#0f172a;
+}
+.solution-title-bubble .solution-title-brand{
+  color:#008cff;
+}
+
+.solution-intro-bubble {
+  max-width: 720px;
+  margin: 12px auto 28px;
+  padding: 16px 24px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #d7e0eb;
+  color: #0f172a;
+  font-size: 1rem;
+  line-height: 1.6;
+  box-shadow: 0 12px 24px rgba(0,0,0,.12);
+}
+
+/* sección mapa de soluciones (para que no se pegue al contacto y al footer) */
+.solution-map-section{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color:#132135;
+  padding:60px 16px 70px;
+  margin-top:60px;
+  margin-bottom:50px;
+  background:var(--bgCard);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  border:1px solid #d7e0eb;
+}
+
+.solution-map-wrapper{
+  max-width:1100px;
+  margin:0 auto;
+}
+
+#soluciones-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  max-width:800px;
+  margin:0 auto 30px;
+}
+
+.solucion-card{
+  border:none;
+  cursor:pointer;
+  padding:16px 14px;
+  border-radius:14px;
+  background:#ffffff;
+  color:#0f172a;
+  text-align:left;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 12px 26px rgba(15,23,42,0.14);
+  outline:none;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+  border:1px solid #d7e0eb;
+}
+.solucion-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 34px rgba(15,23,42,0.16);
+  border-color:#cbd5e1;
+}
+.solucion-card.is-active{
+  border-color:#0ea5e9;
+  box-shadow:0 18px 38px rgba(14,165,233,0.18);
+}
+.solucion-card .card-title{
+  font-size:1.08rem;
+  margin-bottom:4px;
+  font-weight:700;
+}
+.solucion-card .card-desc{
+  font-size:0.9rem;
+  color:#334155;
+index.html
 
     .solution-intro-bubble {
       max-width: 680px;
@@ -1180,31 +1248,21 @@ body{
     }
 
     /* FOOTER más grande y respirando */
-    .site-footer{
+  .site-footer{
   background:var(--bgCard);
   color:#132135;
-  padding:42px 16px 48px;
+  padding:46px 16px 52px;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   font-size:15px;
   text-align:center;
-  margin:70px auto 50px;
-  border:1px solid #d7e0eb;
+  margin:80px 0 0;
   border-top:3px solid #e2e8f0;
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  width:min(1100px,94%);
+  box-shadow:0 -6px 22px rgba(0,0,0,0.08);
+  width:100%;
 }
 .site-footer-inner{
-  max-width:900px;
+  max-width:980px;
   margin:0 auto;
-}
-.site-footer p{
-  margin:6px 0;
-}
-.site-footer small{
-  font-size:13px;
-  opacity:.8;
-}
   </style>
 </head>
 
@@ -1800,10 +1858,10 @@ body{
     });
   </script>
 
-  <!-- ============================================================= -->
-  <!-- ============= MAPA DE SOLUCIONES UMANOAI (HTML) ============ -->
-  <!-- ============================================================= -->
- <section id="soluciones-umanoai" class="solution-map-section">
+<!-- ============================================================= -->
+<!-- ============= MAPA DE SOLUCIONES UMANOAI (HTML) ============ -->
+<!-- ============================================================= -->
+<section id="soluciones-umanoai" class="solution-map-section">
   <div class="solution-map-wrapper">
 
     <!-- 🫧 Burbuja del título -->
@@ -1823,124 +1881,83 @@ body{
     </div>
 
     <!-- GRID DE BOTONES CENTRADO -->
-    <div id="soluciones-grid"
-         style="
-           display:grid;
-           grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-           gap:16px;
-           max-width:800px;
-           margin:0 auto 30px;
-         ">
+    <div id="soluciones-grid">
 
-        <button class="solucion-card is-active" data-solucion="apps"
-                style="border:none;cursor:pointer;padding:16px 14px;
-                       border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
-                       color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
-                       box-shadow:0 12px 30px rgba(0,0,0,0.55);
-                       outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;" type="button">
-          <div style="font-size:1.1rem;margin-bottom:4px;">📱 Apps a medida</div>
-          <div style="font-size:0.85rem;color:#b6c2d6;">Apps internas, formularios y portales hechos a tu medida.</div>
-        </button>
+      <button class="solucion-card is-active" data-solucion="apps" type="button">
+        <div class="card-title">📱 Apps a medida</div>
+        <div class="card-desc">Apps internas, formularios y portales hechos a tu medida.</div>
+      </button>
 
-        <button class="solucion-card" data-solucion="bots"
-                style="border:none;cursor:pointer;padding:16px 14px;
-                       border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
-                       color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
-                       box-shadow:0 12px 30px rgba(0,0,0,0.45);
-                       outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;" type="button">
-          <div style="font-size:1.1rem;margin-bottom:4px;">🤖 Bots</div>
-          <div style="font-size:0.85rem;color:#b6c2d6;">WhatsApp, webchat e Instagram con IA para vender y responder 24/7.</div>
-        </button>
+      <button class="solucion-card" data-solucion="bots" type="button">
+        <div class="card-title">🤖 Bots</div>
+        <div class="card-desc">WhatsApp, webchat e Instagram con IA para vender y responder 24/7.</div>
+      </button>
 
-        <button class="solucion-card" data-solucion="automatizaciones"
-                style="border:none;cursor:pointer;padding:16px 14px;
-                       border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
-                       color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
-                       box-shadow:0 12px 30px rgba(0,0,0,0.45);
-                       outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;" type="button">
-          <div style="font-size:1.1rem;margin-bottom:4px;">⚙️ Automatizaciones</div>
-          <div style="font-size:0.85rem;color:#b6c2d6;">Conectamos sistemas para que los procesos corran solos.</div>
-        </button>
+      <button class="solucion-card" data-solucion="automatizaciones" type="button">
+        <div class="card-title">⚙️ Automatizaciones</div>
+        <div class="card-desc">Conectamos sistemas para que los procesos corran solos.</div>
+      </button>
 
-        <button class="solucion-card" data-solucion="crm"
-                style="border:none;cursor:pointer;padding:16px 14px;
-                       border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
-                       color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
-                       box-shadow:0 12px 30px rgba(0,0,0,0.45);
-                       outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;" type="button">
-          <div style="font-size:1.1rem;margin-bottom:4px;">🧩 CRM a medida</div>
-          <div style="font-size:0.85rem;color:#b6c2d6;">Un CRM que se adapta a tu negocio, no al revés.</div>
-        </button>
+      <button class="solucion-card" data-solucion="crm" type="button">
+        <div class="card-title">🧩 CRM a medida</div>
+        <div class="card-desc">Un CRM que se adapta a tu negocio, no al revés.</div>
+      </button>
 
-        <button class="solucion-card" data-solucion="powerbi"
-                style="border:none;cursor:pointer;padding:16px 14px;
-                       border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
-                       color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
-                       box-shadow:0 12px 30px rgba(0,0,0,0.45);
-                       outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;" type="button">
-          <div style="font-size:1.1rem;margin-bottom:4px;">📊 Power BI</div>
-          <div style="font-size:0.85rem;color:#b6c2d6;">Dashboards y reportes en tiempo real para decidir con datos.</div>
-        </button>
+      <button class="solucion-card" data-solucion="powerbi" type="button">
+        <div class="card-title">📊 Power BI</div>
+        <div class="card-desc">Dashboards y reportes en tiempo real para decidir con datos.</div>
+      </button>
 
-        <button class="solucion-card" data-solucion="web"
-                style="border:none;cursor:pointer;padding:16px 14px;
-                       border-radius:14px;background:linear-gradient(145deg,#121725,#1f2937);
-                       color:#f5f5f5;text-align:left;position:relative;overflow:hidden;
-                       box-shadow:0 12px 30px rgba(0,0,0,0.45);
-                       outline:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;" type="button">
-          <div style="font-size:1.1rem;margin-bottom:4px;">🌐 Desarrollo web</div>
-          <div style="font-size:0.85rem;color:#b6c2d6;">Sitios y landings pensadas para convertir y automatizar.</div>
-        </button>
+      <button class="solucion-card" data-solucion="web" type="button">
+        <div class="card-title">🌐 Desarrollo web</div>
+        <div class="card-desc">Sitios y landings pensadas para convertir y automatizar.</div>
+      </button>
 
-      </div><!-- /#soluciones-grid -->
+    </div><!-- /#soluciones-grid -->
 
-      <article id="solucion-detalle"
-        style="background:rgba(15,23,42,0.86);
-               border-radius:18px;
-               border:1px solid rgba(148,163,184,0.55);
-               padding:22px 20px;
-               box-shadow:0 20px 50px rgba(15,23,42,0.8);
-               backdrop-filter:blur(18px);
-               min-height:210px;">
-        <h3 id="detalle-titulo" style="font-size:1.4rem;margin-bottom:8px;">
-          Apps a medida
-        </h3>
-        <p id="detalle-intro"
-           style="font-size:0.95rem;line-height:1.6;color:#d4dde9;margin-bottom:12px;">
-          Diseñamos aplicaciones que siguen exactamente cómo funciona tu negocio:
-          nada de plantillas genéricas. Apps internas, formularios inteligentes
-          y portales con login para tus equipos, clientes o proveedores.
+    <article id="solucion-detalle"
+      style="background:#ffffff;
+             border-radius:18px;
+             border:1px solid #d7e0eb;
+             padding:22px 20px;
+             box-shadow:0 20px 46px rgba(15,23,42,0.14);
+             min-height:210px;">
+      <h3 id="detalle-titulo" style="font-size:1.4rem;margin-bottom:8px;color:#0f172a;">
+        Apps a medida
+      </h3>
+      <p id="detalle-intro"
+         style="font-size:0.95rem;line-height:1.6;color:#1f2937;margin-bottom:12px;">
+        Diseñamos aplicaciones que siguen exactamente cómo funciona tu negocio:
+        nada de plantillas genéricas. Apps internas, formularios inteligentes
+        y portales con login para tus equipos, clientes o proveedores.
+      </p>
+
+      <ul id="detalle-lista"
+          style="margin:0 0 14px 18px;font-size:0.92rem;color:#334155;line-height:1.6;">
+        <li>Apps internas para equipos de ventas, logística, operaciones o servicio.</li>
+        <li>Formularios inteligentes que reemplazan planillas y WhatsApps sueltos.</li>
+        <li>Todo construido con tecnologías como Power Apps, web o Flutter según el caso.</li>
+      </ul>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;">
+        <p id="detalle-ideal"
+           style="margin:0;font-size:0.9rem;color:#475569;">
+          Ideal si querés dejar de depender de Excel y WhatsApp para gestionar tu operación.
         </p>
 
-        <ul id="detalle-lista"
-            style="margin:0 0 14px 18px;font-size:0.92rem;color:#c0cce0;line-height:1.6;">
-          <li>Apps internas para equipos de ventas, logística, operaciones o servicio.</li>
-          <li>Formularios inteligentes que reemplazan planillas y WhatsApps sueltos.</li>
-          <li>Todo construido con tecnologías como Power Apps, web o Flutter según el caso.</li>
-        </ul>
+        <a id="detalle-cta"
+           href="https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio"
+           target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:6px;
+                  padding:9px 16px;border-radius:999px;
+                  background:linear-gradient(135deg,#00F6A4,#0CC5A7);
+                  color:#041316;text-decoration:none;font-size:0.9rem;font-weight:600;
+                  box-shadow:0 10px 30px rgba(0,246,164,0.4);">
+          <span>👉 Quiero hablar de esta solución</span>
+        </a>
+      </div>
 
-        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;">
-          <p id="detalle-ideal"
-             style="margin:0;font-size:0.9rem;color:#9ca7c4;">
-            Ideal si querés dejar de depender de Excel y WhatsApp para gestionar tu operación.
-          </p>
-
-          <a id="detalle-cta"
-             href="https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio"
-             target="_blank" rel="noopener"
-             style="display:inline-flex;align-items:center;gap:6px;
-                    padding:9px 16px;border-radius:999px;
-                    background:linear-gradient(135deg,#00F6A4,#0CC5A7);
-                    color:#041316;text-decoration:none;font-size:0.9rem;font-weight:600;
-                    box-shadow:0 10px 30px rgba(0,246,164,0.4);">
-            <span>👉 Quiero hablar de esta solución</span>
-          </a>
-        </div>
-
-        <div id="detalle-videos" style="margin-top:28px;"></div>
-      </article>
-    </div>
-  </section>
+      <div id="detalle-videos" style="margin-top:28px;"></div>
 
   <!-- ============================================================= -->
   <!-- ============= LÓGICA JS PARA EL MAPA DE SOLUCIONES ========= -->
