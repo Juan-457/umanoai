@@ -72,12 +72,12 @@
       "cantidad": 76
     },
     {
-      "fecha": "2025-12-15",
+      "fecha": "2025-12-31",
       "evento": "click_whatsapp",
-      "cantidad": 61
+      "cantidad": 65
     },
     {
-      "fecha": "2025-12-31",
+      "fecha": "2025-12-15",
       "evento": "click_whatsapp",
       "cantidad": 61
     },
