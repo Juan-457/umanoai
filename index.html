@@ -1237,22 +1237,23 @@
     }
 
     /* ✅ FOOTER: ocupa toda la parte inferior + color como secciones */
-    .site-footer{
-      position:relative;
-      z-index:2;
-      isolation:isolate;
-      background:var(--bgCard);                 /* como .seccion */
-      color:#132135;
-      padding:32px 14px calc(22px + env(safe-area-inset-bottom, 0px));
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      font-size:15px;
-      text-align:center;
-      border-top:1px solid #d7e0eb;
-      box-shadow:0 -10px 30px rgba(0,0,0,0.12);
-      width:100%;
-      backdrop-filter: blur(8px);
-      margin-top:auto;                          /* ✅ clave para quedar abajo */
-    }
+   .site-footer{
+  position:relative;
+  z-index:2;
+  isolation:isolate;
+  background:var(--bgCard);
+  color:#132135;
+  padding:16px 12px 12px; /* antes 32px → mucho menos alto */
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  font-size:14px; /* antes 15 */
+  line-height:1.25;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,0.25);
+  box-shadow:0 -6px 18px rgba(0,0,0,0.09);
+  width:100%;
+  backdrop-filter: blur(6px);
+  margin-top:auto;
+}
 
     .site-footer::before{
   content:"";
