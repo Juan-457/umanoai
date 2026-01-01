@@ -1239,65 +1239,43 @@
     }
 
     /* ✅ FOOTER: ocupa toda la parte inferior + color como secciones */
-   .site-footer{
-  position:relative;
-  z-index:2;
-  isolation:isolate;
-  background:var(--bgCard);
-  color:#132135;
-  padding:10px 10px 8px; /* antes 32px → mucho menos alto */
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  font-size:14px; /* antes 15 */
-  line-height:1.25;
-  text-align:center;
-  border-top:1px solid rgba(255,255,255,0.25);
-  box-shadow:0 -6px 18px rgba(0,0,0,0.09);
-  width:100%;
-  backdrop-filter: blur(6px);
-  margin-top:auto;
+  .site-footer{
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(8px);
+  padding: 12px 20px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  font-size: 14px;
+  color: #0f172a;
 }
 
-    .site-footer::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:4px;  /* antes 14px → mucho más fino */
-  background:linear-gradient(
-    90deg,
-    rgba(14,165,233,0.55),
-    rgba(34,211,238,0.55),
-    rgba(14,165,233,0.55)
-  );
-  opacity:0.6; /* antes 0.95 → más transparente */
-  box-shadow:0 4px 14px rgba(14,165,233,0.25); /* sombra más suave */
+.footer-line{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap; /* 📱 para que en móvil no se rompa */
 }
 
-    .site-footer-inner{
-      position: relative;
-      z-index: 1;
-      max-width: 980px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items:center;
-      justify-content:center;
-    }
+.footer-logo{
+  height: 32px;
+  opacity: 0.8;
+}
 
-    .site-footer a{
-      color:#0ea5e9;
-      text-decoration:none;
-      font-weight:700;
-    }
-    .site-footer a:hover{
-      text-decoration:underline;
-    }
+.footer-nav a{
+  color: #0ea5e9;
+  text-decoration: none;
+  font-weight: 500;
+}
 
-    /* spacer */
-    /* spacer */
-    /* spacer */
+.footer-nav a:hover{
+  text-decoration: underline;
+}
+
+.footer-copy{
+  color: #334155;
+  font-weight: 500;
+}
+
   </style>
 </head>
 
@@ -2492,25 +2470,23 @@
   </main>
 
   <!-- ========================= FOOTER ============================ -->
-  <footer class="site-footer">
-    <div class="site-footer-inner">
-      <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;" loading="lazy">
+ <footer class="site-footer">
+  <div class="footer-line">
+    <img src="umanoai.png" alt="Logo Umanoai" class="footer-logo">
 
-      <p>
-        © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
-      </p>
+    <nav class="footer-nav">
+      <a href="politica.html">Política de Privacidad</a> ·
+      <a href="Eliminardatos.html">Eliminación de Datos</a> ·
+      <a href="#contacto">Contacto</a>
+    </nav>
 
-      <p>
-        <a href="politica.html">Política de Privacidad</a> ·
-        <a href="Eliminardatos.html">Eliminación de Datos</a> ·
-        <a href="#contacto">Contacto</a>
-      </p>
+    <span class="footer-copy">© <span id="year"></span> Umanoai</span>
+  </div>
+</footer>
 
-      <p>
-        <small>Desarrollado con el 💙 desde Argentina.</small>
-      </p>
-    </div>
-  </footer>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
