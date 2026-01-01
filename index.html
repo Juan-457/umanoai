@@ -173,24 +173,24 @@
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    html, body { height: 100%; }
+html{scroll-behavior:smooth}
+html, body {
+  height: 100%;
+}
 
-    body{
-      margin:0;
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      background:#020617 url('fondo.png') center/cover fixed;
-    }
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:#020617 url('fondo.png') center/cover fixed;
+}
 
-    /* el contenido principal ocupa todo el alto disponible */
-    .page-main{
-      flex:1;
-      display:flex;
-      flex-direction:column;
-      min-height:0;
-    }
+/* el contenido principal ocupa todo el alto disponible */
+.page-main{
+  flex:1;
+}
+
 
     img{max-width:100%;height:auto;}
 
@@ -200,10 +200,6 @@
       line-height:1.45;
       background:transparent;
       padding-bottom:max(80px,var(--safe));
-      flex:1;                 /* ✅ empuja footer al fondo */
-      display:flex;           /* ✅ */
-      flex-direction:column;  /* ✅ */
-      min-height:0;           /* ✅ */
     }
 
     /* más aire vertical entre secciones del contenido principal */
@@ -291,31 +287,32 @@
       margin:22px 0 42px;
     }
 
-    /* 🔵 Burbuja hero (título y subtítulo) */
-    .hero-bubble {
-      background: linear-gradient(
-        118deg,
-        rgba(12, 12, 12, 0.42),
-        rgba(18, 18, 18, 0.42),
-        rgba(10, 10, 10, 0.40)
-      );
-      border: 1.4px solid rgba(255, 255, 255, 0.14);
-      box-shadow:
-        0 8px 28px rgba(0, 0, 0, 0.55),
-        0 12px 30px rgba(0, 0, 0, 0.32),
-        0 4px 18px rgba(255, 181, 92, 0.18); /* ✨ Glow cálido */
+/* 🔵 Burbuja hero (título y subtítulo) */
+.hero-bubble {
+  background: linear-gradient(
+    118deg,
+    rgba(12, 12, 12, 0.42),
+    rgba(18, 18, 18, 0.42),
+    rgba(10, 10, 10, 0.40)
+  );
+  border: 1.4px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.55),
+    0 12px 30px rgba(0, 0, 0, 0.32),
+    0 4px 18px rgba(255, 181, 92, 0.18); /* ✨ Glow cálido */
 
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 
-      border-radius: 22px;
-      padding: 14px 24px;
-      margin: 12px auto;
-      max-width: 1000px;
-      color: #ffffff;
+  border-radius: 22px;
+  padding: 14px 24px;
+  margin: 12px auto;
+  max-width: 1000px;
+  color: #ffffff;
 
-      animation: fadeInUp .55s ease forwards;
-    }
+  animation: fadeInUp .55s ease forwards;
+}
+
 
     .um .logo-sticky{
       position:fixed;
@@ -1005,17 +1002,22 @@
       justify-content:space-between;
     }
     .faq-item summary::-webkit-details-marker{
-      display:none;
+      display:none;  
     }
     .faq-item details[open] .faq-toggle-icon{
-      transform:rotate(45deg);
-      color:#111827;
-    }
+  transform:rotate(45deg);
+  color:#111827;
+}
+.faq-toggle-icon{
+  margin-left:12px;
+  font-size:0.9rem;
+  color:#6b7280;
+  transition:transform .2s ease,color .2s ease;
+}
     .faq-toggle-icon{
       margin-left:12px;
       font-size:0.9rem;
       color:#6b7280;
-      transition:transform .2s ease,color .2s ease;
     }
     .faq-item p{
       margin:8px 0 4px;
@@ -1104,112 +1106,103 @@
     }
 
     /* 🫧 Burbuja título "Mapa de soluciones UmanoAI" */
-    .solution-title-bubble{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:6px;
-      padding:10px 22px;
-      border-radius:999px;
-      margin:0 auto 16px;
-      background:var(--bgCard);
-      border:1px solid #d7e0eb;
-      box-shadow:0 12px 28px rgba(0,0,0,0.15);
-      font-size:1.45rem;
-      font-weight:800;
-      color:#0f172a;
-    }
-    .solution-title-bubble .solution-title-brand{
-      color:#008cff;
-    }
-
-    /* sección mapa de soluciones (para que no se pegue al contacto y al footer) */
-    .solution-map-section{
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color:#132135;
-      padding:60px 16px 70px;
-      margin:70px auto 120px;
-      background:var(--bgCard);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      border:1px solid #d7e0eb;
-    }
-
-    .solution-map-wrapper{
-      max-width:1100px;
-      margin:0 auto;
-    }
-
-    #soluciones-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:16px;
-      max-width:800px;
-      margin:0 auto 30px;
-    }
-
-    .solucion-card{
-      border:none;
-      cursor:pointer;
-      padding:16px 14px;
-      border-radius:14px;
-      background:#ffffff;
-      color:#0f172a;
-      text-align:left;
-      position:relative;
-      overflow:hidden;
-      box-shadow:0 12px 26px rgba(15,23,42,0.14);
-      outline:none;
-      transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
-      border:1px solid #d7e0eb;
-    }
-    .solucion-card:hover{
-      transform:translateY(-3px);
-      box-shadow:0 16px 34px rgba(15,23,42,0.16);
-      border-color:#cbd5e1;
-    }
-    .solucion-card.is-active{
-      border-color:#0ea5e9;
-      box-shadow:0 18px 38px rgba(14,165,233,0.18);
-    }
-    .solucion-card .card-title{
-      font-size:1.08rem;
-      margin-bottom:4px;
-      font-weight:700;
-    }
-    .solucion-card .card-desc{
-      font-size:0.9rem;
-      color:#334155;
-    }
-
-    /* ===========================================================
-       ✅ BLOQUE ORIGINAL “ROTO/DUPLICADO” CONSERVADO COMO COMENTARIO
-       (incluía el texto suelto "index.html" dentro del CSS, y un
-       bloque repetido de .solution-map-section que podía romper el CSS)
-       ===========================================================
-
-      index.html
+   .solution-title-bubble{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:10px 22px;
+  border-radius:999px;
+  margin:0 auto 16px;
+  background:var(--bgCard);
+  border:1px solid #d7e0eb;
+  box-shadow:0 12px 28px rgba(0,0,0,0.15);
+  font-size:1.45rem;
+  font-weight:800;
+  color:#0f172a;
+}
+.solution-title-bubble .solution-title-brand{
+  color:#008cff;
+}
 
 
-       /* sección mapa de soluciones (para que no se pegue al contacto y al footer) * /
-      .solution-map-section{
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        color:#132135;
-        padding:60px 16px 70px;
-        margin-top:60px;
-        margin-bottom:50px;
-        background:var(--bgCard);
-        border-radius:var(--radius);
-        box-shadow:var(--shadow);
-        border:1px solid #d7e0eb;
-      }
+/* sección mapa de soluciones (para que no se pegue al contacto y al footer) */
+.solution-map-section{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color:#132135;
+  padding:60px 16px 70px;
+  margin:70px auto 120px;
+  background:var(--bgCard);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  border:1px solid #d7e0eb;
+}
 
-      .solution-map-wrapper{
-        max-width:1100px;
-        margin:0 auto;
-      }
+.solution-map-wrapper{
+  max-width:1100px;
+  margin:0 auto;
+}
 
-      =========================================================== */
+#soluciones-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  max-width:800px;
+  margin:0 auto 30px;
+}
+
+.solucion-card{
+  border:none;
+  cursor:pointer;
+  padding:16px 14px;
+  border-radius:14px;
+  background:#ffffff;
+  color:#0f172a;
+  text-align:left;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 12px 26px rgba(15,23,42,0.14);
+  outline:none;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+  border:1px solid #d7e0eb;
+}
+.solucion-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 34px rgba(15,23,42,0.16);
+  border-color:#cbd5e1;
+}
+.solucion-card.is-active{
+  border-color:#0ea5e9;
+  box-shadow:0 18px 38px rgba(14,165,233,0.18);
+}
+.solucion-card .card-title{
+  font-size:1.08rem;
+  margin-bottom:4px;
+  font-weight:700;
+}
+.solucion-card .card-desc{
+  font-size:0.9rem;
+  color:#334155;
+index.html
+
+
+   /* sección mapa de soluciones (para que no se pegue al contacto y al footer) */
+.solution-map-section{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color:#132135;
+  padding:60px 16px 70px;
+  margin-top:60px;
+  margin-bottom:50px;
+  background:var(--bgCard);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  border:1px solid #d7e0eb;
+}
+
+.solution-map-wrapper{
+  max-width:1100px;
+  margin:0 auto;
+}
 
     /* 👇 Ajustes de tamaño solo para DESKTOP */
     @media (min-width: 1024px) {
@@ -1240,60 +1233,44 @@
       }
     }
 
-    /* ✅ FOOTER: ocupa toda la parte inferior + color como secciones */
-    .site-footer{
-      position:relative;
-      z-index:2;
-      isolation:isolate;
-      background:var(--bgCard);                 /* como .seccion */
-      color:#132135;
-      padding:32px 14px calc(22px + env(safe-area-inset-bottom, 0px));
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      font-size:15px;
-      text-align:center;
-      border-top:1px solid #d7e0eb;
-      box-shadow:0 -10px 30px rgba(0,0,0,0.12);
-      width:100%;
-      backdrop-filter: blur(8px);
-      margin-top:auto;                          /* ✅ clave para quedar abajo */
-    }
+  /* FOOTER más grande y respirando */
+.site-footer {
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  background: linear-gradient(180deg, #e2e8f0 0%, #f8fafc 32%, #ffffff 100%);
+  color: #0f172a;
+  padding: 32px 14px calc(22px + env(safe-area-inset-bottom, 0px));
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 80px;
+  border-top: 3px solid #cbd5e1;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.12);
+  width: 100%;
+  backdrop-filter: blur(8px);
+}
 
-    .site-footer::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height:14px;
-      background:linear-gradient(90deg, #0ea5e9, #22d3ee, #0ea5e9);
-      opacity:0.95;
-      box-shadow:0 10px 24px rgba(14,165,233,0.35);
-    }
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: linear-gradient(90deg, #0ea5e9, #22d3ee, #0ea5e9);
+  opacity: 0.95;
+  box-shadow: 0 10px 24px rgba(14,165,233,0.35);
+}
 
-    .site-footer-inner{
-      position: relative;
-      z-index: 1;
-      max-width: 980px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .site-footer a{
-      color:#0ea5e9;
-      text-decoration:none;
-      font-weight:700;
-    }
-    .site-footer a:hover{
-      text-decoration:underline;
-    }
-
-    /* spacer */
-    /* spacer */
-    /* spacer */
+.site-footer-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   </style>
 </head>
 
@@ -1308,1200 +1285,1210 @@
       height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
 
-  <main class="page-main">
-    <div class="um">
-      <img src="umanoai.png" alt="Logo Umanoai" class="logo-sticky">
-
-      <!-- ====================== NAVBAR ====================== -->
-      <nav>
-        <div class="nav-inner">
-          <div class="brand">Umanoai</div>
-
-          <ul class="links" id="desktopLinks">
-            <li><a href="#soluciones-umanoai">Soluciones</a></li>
-            <li><a href="#confian">Clientes</a></li>
-            <li><a href="#planes">Planes</a></li>
-            <li><a href="#reseñas">Reseñas</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-          </ul>
-
-          <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu" type="button">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6h18M3 12h18M3 18h18M3 18h18"/>
-            </svg>
-          </button>
-        </div>
-
-        <div class="links mobile" id="mobileMenu" hidden>
-          <a href="#soluciones-umanoai">Soluciones</a>
-          <a href="#confian">Clientes</a>
-          <a href="#planes">Planes</a>
-          <a href="#reseñas">Reseñas</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contacto">Contacto</a>
-        </div>
-      </nav>
-
-      <!-- ====================== HERO PRINCIPAL ====================== -->
-      <header>
-        <video autoplay muted loop playsinline preload="auto" poster="hero-poster.png">
-          <source src="hero.mp4" type="video/mp4">
-        </video>
-
-        <div class="hero-bubble hero-bubble-title">
-          <h1>Bots de WhatsApp (Voz y Texto), Diseño Web y automatización para que tu pyme venda 24/7</h1>
-        </div>
-
-        <div class="hero-bubble hero-bubble-subtitle">
-          <p class="hero-subtitle">
-            En <strong>UmanoAI</strong> combinamos <strong>agentes de voz, bots conversacionales de WhatsApp para pymes,</strong>
-            con sitios web diseñados para convertir, para que tu negocio atienda y venda en automático todos los días.
-          </p>
-          <p style="color:#fff; font-weight:600; font-size:16px; margin-top:8px;">
-            ⏱️ Tiempo promedio de implementación: 5 a 10 días hábiles
-          </p>
-          <p style="color:#fff; font-weight:600; font-size:15px; margin-top:8px; opacity:.95;">
-            🙋‍♀️ ¿Preferís hablar con una persona? Pedí por <strong>Malena</strong> (agente de voz) y te asesoramos por WhatsApp.
-          </p>
-        </div>
-
-        <div class="hero-cta">
-          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20saber%20m%C3%A1s%20sobre%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
-            📲 Hablar por WhatsApp
-          </a>
-          <a href="#planes" class="btn-secundaria">
-            🤖 Quiero activar mi bot
-          </a>
-          <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20hablar%20sobre%20un%20bot%20conversacional%20para%20mi%20negocio" class="btn-secundaria" target="_blank" rel="noopener">
-            🙋‍♀️ Hablar con Malena (agente de voz)
-          </a>
-        </div>
-
-        <div class="hero-bubble hero-bubble-small">
-          <p style="margin:0; font-size:15px; line-height:1.5;">
-            👉 Te mostramos cómo responde un bot real antes de contratar
-          </p>
-        </div>
-
-        <div class="marquesina">
-          ⚡ Agentes de voz + bots conversacionales con IA + sitios web + automatización de procesos + BI en una sola solución ⚡
-        </div>
-      </header>
-
-      <!-- ====================== SECCIÓN: como funciona ====================== -->
-      <section id="como-funciona">
-        <div class="seccion">
-          <h2>🔥 Activamos tu solución en pocos días</h2>
-
-          <ul style="line-height:1.6;">
-            <li><strong>Día 1:</strong> Relevamos tu proceso, mensajes frecuentes y objetivos</li>
-            <li><strong>Día 2 a 4:</strong> Armado del bot, automatizaciones y mensajes personalizados</li>
-            <li><strong>Día 5:</strong> Pruebas reales, ajustes y publicación</li>
-            <li><strong>Día 6 a 7:</strong> Métricas iniciales, reportes y seguimiento</li>
-          </ul>
-
-          <p style="margin-top:12px; text-align:center;">
-            <a href="https://wa.me/5491125926977?text=Hola%20quiero%20activar%20un%20bot%20esta%20semana"
-               class="btn-primaria"
-               target="_blank" rel="noopener">
-              🚀 Activarlo esta semana
-            </a>
-          </p>
-
-          <p style="margin-top:10px; text-align:center; color:#4b5563; font-size:0.95rem;">
-            Si querés que lo vea una persona del equipo, escribile a <strong>Malena</strong> (agente de voz):
-            <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20activar%20un%20bot%20esta%20semana%20y%20tengo%20unas%20dudas" target="_blank" rel="noopener" style="color:#16a34a; font-weight:700; text-decoration:none;">
-              abrir WhatsApp
-            </a>
-          </p>
-        </div>
-      </section>
-
-      <!-- ====================== SECCIÓN: QUÉ RESOLVEMOS ====================== -->
-      <section id="soluciones">
-        <div class="seccion">
-          <h2>💡 Bots de WhatsApp, automatización y BI: todo en un solo equipo</h2>
-          <p>
-            Ayudamos a <strong>pymes, estudios y comercios</strong> que ya no dan abasto con WhatsApp, Excel y procesos manuales.
-            Diseñamos un ecosistema donde <strong>el bot de WhatsApp, tu web, las automatizaciones y Power BI</strong>
-            trabajan juntos para vos.
-          </p>
-
-          <ul>
-            <li>🤖 <strong>Bots conversacionales de WhatsApp y Web:</strong> responden consultas frecuentes, califican leads y derivan a tu equipo comercial. <strong>Si el cliente necesita humano, puede pedir por Malena (agente de voz) y seguimos por WhatsApp.</strong></li>
-            <li>🌐 <strong>Desarrollo web:</strong> landing pages y sitios corporativos listos para captar contactos y medir resultados.</li>
-            <li>⚙️ <strong>Automatización de procesos:</strong> formularios, aprobaciones, envíos de documentos y notificaciones sin trabajo manual.</li>
-            <li>📊 <strong>Power BI para negocios:</strong> tableros simples con métricas de ventas, cobranza, operaciones y atención al cliente.</li>
-          </ul>
-
-          <p style="margin-top:10px; text-align:center;">
-            <a href="https://wa.me/5491125926977?text=Hola%20me%20gustar%C3%ADa%20ver%20un%20demo%20 de%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
-              🚀 Quiero ver un demo de bots y automatización
-            </a>
-          </p>
-
-          <p style="margin-top:10px; text-align:center;">
-            <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20ver%20un%20demo%20de%20bots%20conversacionales%20y%20hablar%20sobre%20mi%20caso" class="btn-secundaria" target="_blank" rel="noopener">
-              🙋‍♀️ Pedir demo con Malena (agente de voz)
-            </a>
-          </p>
-        </div>
-      </section>
-
-      <!-- ====================== SECCIÓN: CONFÍAN EN NOSOTROS ====================== -->
-      <section id="confian">
-        <div class="seccion">
-          <h2>🤝 Confían en nosotros</h2>
-          <p style="text-align:center;color:#4b5563;">
-            Trabajamos junto a marcas y emprendedores que buscan dar un salto digital.
-          </p>
-
-          <div class="logos-slider">
-            <div class="logos-track" id="logos-track"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====================== ANTES / DESPUÉS ====================== -->
-      <section id="antes-despues">
-        <div class="seccion">
-          <h2>📊 Antes vs Después de automatizar</h2>
-
-          <table class="pricing-table" style="margin-top:10px;">
-            <tr>
-              <th>Antes</th>
-              <th>Después</th>
-            </tr>
-            <tr>
-              <td>Responder manualmente WhatsApps todo el día</td>
-              <td>Bot conversacional atiende y califica leads 24/7</td>
-            </tr>
-            <tr>
-              <td>No saber qué cliente pidió qué</td>
-              <td>Registro ordenado con seguimiento</td>
-            </tr>
-            <tr>
-              <td>Excel duplicados, info suelta</td>
-              <td>Automatizado en un solo lugar</td>
-            </tr>
-            <tr>
-              <td>Tiempo perdido en tareas repetidas</td>
-              <td>Notificaciones y acciones automáticas</td>
-            </tr>
-          </table>
-
-          <p style="text-align:center;margin-top:16px;">
-            <a href="https://wa.me/5491125926977?text=Hola%20quiero%20automatizar%20estos%20problemas"
-               class="btn-secundaria"
-               target="_blank" rel="noopener">
-              💬 Quiero automatizar ahora
-            </a>
-          </p>
-
-          <p style="text-align:center;margin-top:10px;">
-            <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20automatizar%20estos%20problemas%20y%20necesito%20asesoramiento" class="btn-primaria" target="_blank" rel="noopener">
-              🙋‍♀️ Hablar con Malena (agente de voz)
-            </a>
-          </p>
-        </div>
-      </section>
-
-      <!-- ====================== SECCIÓN: PLANES ====================== -->
-      <section id="planes">
-        <div class="seccion">
-          <h2>💰 Planes de bots de WhatsApp para pymes</h2>
-          <p style="text-align:center;">
-            Empezá con un <strong>bot conversacional de WhatsApp enfocado en lo esencial</strong> y escalá a medida que crecen tus
-            conversaciones. Los planes incluyen configuración de flujos base, conexión con tus sistemas y soporte.
-          </p>
-
-          <table class="pricing-table">
-            <thead>
-              <tr>
-                <th>Plan</th>
-                <th>Respuestas incluidas</th>
-                <th>Precio mensual</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Básico</td>
-                <td>200</td>
-                <td>USD 35</td>
-              </tr>
-              <tr>
-                <td>Pro</td>
-                <td>800</td>
-                <td>USD 65</td>
-              </tr>
-              <tr class="highlight">
-                <td>Power ⭐ (Pymes en crecimiento)</td>
-                <td>3.000</td>
-                <td>USD 120</td>
-              </tr>
-              <tr>
-                <td>Corporate</td>
-                <td>∞ Ilimitadas</td>
-                <td>USD 250</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <p style="text-align:center;margin-top:12px;">
-            <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20que%20me%20recomiendes%20un%20plan%20de%20bot%20conversacional" class="btn-primaria" target="_blank" rel="noopener">
-              🙋‍♀️ Que Malena (agente de voz) me recomiende un plan
-            </a>
-          </p>
-
-          <hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
-
-          <h2 style="margin-top:8px;">💻 Planes de desarrollo web</h2>
-          <p style="text-align:center;">
-            Tres niveles de sitio pensados para <strong>pasar de cero presencia online</strong>
-            a un <strong>sitio que convierte y atiende con chat de IA 24/7</strong>.
-          </p>
-
-          <div class="plans-grid">
-            <!-- Plan 1: Starter Web -->
-            <article class="plan-card">
-              <span class="plan-tag">Presencia mínima</span>
-              <h3>Starter Web</h3>
-              <p class="plan-price">
-                USD 250
-                <span>Pago único · Desde</span>
-              </p>
-              <p class="plan-desc">
-                Ideal para una presencia simple pero profesional en internet.
-              </p>
-              <ul class="plan-list">
-                <li>Dominio.com.ar configurado</li>
-                <li>DNS en Cloudflare listo para usar</li>
-                <li>Alta en Google Search Console</li>
-                <li>Landing de una página (Home)</li>
-                <li>Diseño responsive para móvil y computadora</li>
-                <li>Favicon y meta tags básicos</li>
-                <li>Botón de WhatsApp flotante</li>
-              </ul>
-              <a href="https://wa.me/5491125926977?text=Hola%2C+me+interesa+el+plan+Starter+Web"
-                 class="plan-cta"
-                 target="_blank" rel="noopener">
-                Quiero el plan Starter
-              </a>
-            </article>
-
-            <!-- Plan 2: Web Profesional -->
-            <article class="plan-card">
-              <span class="plan-tag">Negocios en crecimiento</span>
-              <h3>Web Profesional</h3>
-              <p class="plan-price">
-                USD 490
-                <span>Pago único · Desde</span>
-              </p>
-              <p class="plan-desc">
-                Para negocios que necesitan explicar mejor sus servicios y captar más consultas.
-              </p>
-              <ul class="plan-list">
-                <li>Todo lo incluido en Starter Web</li>
-                <li>Hasta 4 secciones: Home, Servicios/Productos, Nosotros, Contacto</li>
-                <li>Formulario de contacto vinculado a email o WhatsApp</li>
-                <li>SEO inicial: estructura H1/H2, sitemap básico y metadescripciones</li>
-                <li>Integración simple con redes sociales</li>
-                <li>Certificado SSL activo</li>
-              </ul>
-              <a href="https://wa.me/5491125926977?text=Hola%2C+me+interesa+el+plan+Web+Profesional"
-                 class="plan-cta"
-                 target="_blank" rel="noopener">
-                Quiero el plan Profesional
-              </a>
-            </article>
-
-            <!-- Plan 3: Web Premium & Conversión -->
-            <article class="plan-card premium">
-              <span class="plan-tag">Conversión + IA</span>
-              <h3>Web Premium &amp; Conversión</h3>
-              <p class="plan-price">
-                USD 1.000
-                <span>
-                  Pago único del sitio + USD 120/mes
-                  (web chat con IA)
-                </span>
-              </p>
-              <p class="plan-desc">
-                Pensado para negocios que invierten en publicidad y necesitan medir y atender 24/7.
-              </p>
-              <ul class="plan-list">
-                <li>Todo lo incluido en Web Profesional</li>
-                <li>Web chat con IA integrado en el sitio (atención 24/7)</li>
-                <li>Configuración de Analytics y Tag Manager con eventos clave</li>
-                <li>Captura automática de leads en Google Sheets o CRM</li>
-                <li>Sitemap avanzado y preparación para SEO</li>
-                <li>Landing optimizada para campañas (Meta Ads / Google Ads)</li>
-                <li>
-                  Incluye plan de web chat con IA + mantenimiento:
-                  USD 120/mes mientras el chat esté activo
-                </li>
-              </ul>
-              <a href="https://wa.me/5491125926977?text=Hola%2C+me+interesa+el+plan+Web+Premium+%26+Conversi%C3%B3n"
-                 class="plan-cta"
-                 target="_blank" rel="noopener">
-                Quiero el plan Premium
-              </a>
-            </article>
-          </div>
-
-          <p style="text-align:center;margin-top:18px;font-size:0.95rem;color:#4b5563;">
-            Todos los sitios se desarrollan listos para alojar en tu propio repositorio
-            (por ejemplo, GitHub Pages) y conectarse con tus bots conversacionales y automatizaciones.
-          </p>
-
-          <p style="text-align:center;margin-top:10px;">
-            <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20mejorar%20mi%20SEO%20y%20activar%20un%20bot%20conversacional%20en%20mi%20web" class="btn-secundaria" target="_blank" rel="noopener">
-              🙋‍♀️ SEO + Bots con Malena (agente de voz)
-            </a>
-          </p>
-        </div>
-      </section>
-
-      <!-- =============== RESEÑAS DE GOOGLE =============== -->
-      <section id="reseñas">
-        <div class="seccion">
-          <div class="reviews-block">
-            <h3>⭐ Reseñas en Google</h3>
-            <p class="reviews-intro">
-              Lo que dicen algunos clientes sobre trabajar con UmanoAI.
-            </p>
-
-            <div class="reviews-grid">
-              <article class="review-card">
-                <div class="review-stars">★★★★★</div>
-                <p class="review-text">
-                  "Atención de 10! Superó todas mis expectativas! Me asesoró a crear mi espacio, con total sencillez, amabilidad y total eficacia. No me tuve que preocupar por ningún detalle. Lo recomiendo 100%."
-                </p>
-                <div class="review-author">Patricia</div>
-              </article>
-
-              <article class="review-card">
-                <div class="review-stars">★★★★★</div>
-                <p class="review-text">
-                  "Excelente trabajo y atención!!"
-                </p>
-                <div class="review-author">Agencia de automotores</div>
-              </article>
-
-              <article class="review-card">
-                <div class="review-stars">★★★★★</div>
-                <p class="review-text">
-                  "La verdad que muy contento con el Bot, todo lo que le pedí y más"
-                </p>
-                <div class="review-author">Juan</div>
-              </article>
-            </div>
-
-            <p style="text-align:center; margin-top:16px;">
-              <a href="https://www.google.com/search?newwindow=1&sca_esv=d90e220b7d9405c9&sxsrf=AE3TifObmBF5qA6jWxCn-2L6ju7rI75QvA%3A1764565973953&q=UmanoAi&stick=H4sIAAAAAAAAAONgU1I1qDBJtDA3MzZPsTS2ME1MSjW1MqgwSjMBorREU1Oz1CRDi8RFrOyhuYl5-Y6ZADpgBqQzAAAA&mat=CYnJ1ShiZuOC&ved=2ahUKEwitvL3A0JuRAxXTK7kGHSWYK3AQrMcEegQIQBAC#"
-                 class="btn-google-reviews"
-                 target="_blank"
-                 rel="noopener">
-                Ver más reseñas en Google
-              </a>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====================== SECCIÓN: PREGUNTAS FRECUENTES (FAQ) ====================== -->
-      <section id="faq" class="faq-section">
-        <div class="faq-inner">
-          <h2>❓ Preguntas frecuentes</h2>
-          <p class="faq-intro">
-            Algunas de las dudas más comunes sobre bots de WhatsApp, automatización y BI con UmanoAI.
-          </p>
-
-          <ul class="faq-list">
-            <li class="faq-item">
-              <details open>
-                <summary>
-                  ¿Cuánto cuesta un bot de WhatsApp con UmanoAI?
-                  <span class="faq-toggle-icon">＋</span>
-                </summary>
-                <p>
-                  Tenemos planes desde USD 35/mes hasta opciones Corporate, según volumen de respuestas y nivel de personalización. Revisamos tu caso y te sugerimos el plan correcto.
-                </p>
-              </details>
-            </li>
-
-            <li class="faq-item">
-              <details>
-                <summary>
-                  ¿Qué incluye la implementación?
-                  <span class="faq-toggle-icon">＋</span>
-                </summary>
-                <p>
-                  Incluye relevamiento del flujo, diseño de la conversación, armado del bot, conexión básica con tus sistemas o planillas y un período inicial de ajustes.
-                </p>
-              </details>
-            </li>
-
-            <li class="faq-item">
-              <details>
-                <summary>
-                  ¿Necesito tener WhatsApp Business API antes de empezar?
-                  <span class="faq-toggle-icon">＋</span>
-                </summary>
-                <p>
-                  No necesariamente. Te ayudamos a elegir el proveedor adecuado, configurar el número y dejar listo el entorno para que el bot funcione estable.
-                </p>
-              </details>
-            </li>
-
-            <li class="faq-item">
-              <details>
-                <summary>
-                  ¿En cuánto tiempo puede estar funcionando el bot?
-                  <span class="faq-toggle-icon">＋</span>
-                </summary>
-                <p>
-                  En proyectos estándar solemos dejar el bot operativo en pocos días hábiles. Los casos con integraciones avanzadas pueden requerir más tiempo.
-                </p>
-              </details>
-            </li>
-
-            <li class="faq-item">
-              <details>
-                <summary>
-                  ¿Trabajan con pymes o solo con empresas grandes?
-                  <span class="faq-toggle-icon">＋</span>
-                </summary>
-                <p>
-                  UmanoAI está pensado sobre todo para pymes, negocios de servicios y profesionales que quieren escalar sin sumar tareas manuales. También atendemos proyectos corporativos.
-                </p>
-              </details>
-            </li>
-
-            <li class="faq-item">
-              <details>
-                <summary>
-                  ¿Pueden integrar el bot con mi sistema, CRM o planillas?
-                  <span class="faq-toggle-icon">＋</span>
-                </summary>
-                <p>
-                  Sí. Integramos con CRMs, ERPs, Power BI, Google Sheets, bases de datos y otros sistemas mediante APIs, n8n o Power Automate para que la información fluya en automático.
-                </p>
-              </details>
-            </li>
-
-            <li class="faq-item">
-              <details>
-                <summary>
-                  Si necesito hablar con una persona, ¿puedo pasar del bot a un humano?
-                  <span class="faq-toggle-icon">＋</span>
-                </summary>
-                <p>
-                  Sí. Los bots pueden derivar a atención humana cuando hace falta. Si querés, escribile a Malena (agente de voz) por WhatsApp y te asesora con tu caso.
-                </p>
-              </details>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- ====================== SECCIÓN: CONTACTO ====================== -->
-      <section id="contacto">
-        <div class="seccion">
-          <h2>📞 Contacto</h2>
-          <p style="text-align:center;">
-            Contanos brevemente tu negocio y lo que te gustaría automatizar.
-            Te respondemos por WhatsApp con ideas concretas y próximos pasos.
-          </p>
-
-          <p style="margin-top:12px; text-align:center;">
-            WhatsApp directo: <strong>+54 9 11 2592-6977</strong><br>
-            Email: <strong>info@umanoai.com.ar</strong>
-          </p>
-
-          <p style="margin-top:14px; text-align:center;">
-            <a href="https://wa.me/5491125926977?text=Hola%20quiero%20charlar%20sobre%20automatizaci%C3%B3n%20con%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
-              📲 Escribir por WhatsApp
-            </a>
-          </p>
-
-          <p style="margin-top:10px; text-align:center;">
-            <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20charlar%20sobre%20bots%20conversacionales%20y%20automatizaci%C3%B3n%20para%20mi%20negocio" class="btn-secundaria" target="_blank" rel="noopener">
-              🙋‍♀️ Escribirle a Malena (agente de voz)
-            </a>
-          </p>
-        </div>
-      </section>
-
-      <!-- ====================== BOTÓN FLOTANTE DE WHATSAPP ====================== -->
-      <a class="whatsapp-float"
-        href="https://wa.me/5491125926977?text=Hola%20vengo%20desde%20la%20web%20de%20Umanoai%20y%20quiero%20hablar%20con%20Malena"
-        target="_blank"
-        rel="noopener"
-        onclick="dataLayer.push({event: 'click_whatsapp', origen: 'burbuja'})">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-          alt="WhatsApp"
-          loading="lazy">
-      </a>
-
-      <!-- ====================== JS: TOGGLE MENÚ MOBILE NAV ====================== -->
-      <script>
-        (function(){
-          const btn = document.querySelector('.um .hamburger');
-          const mobileMenu = document.getElementById('mobileMenu');
-          btn?.addEventListener('click', () => {
-            const isOpen = !mobileMenu.hasAttribute('hidden');
-            if (isOpen) {
-              mobileMenu.setAttribute('hidden','');
-              btn.setAttribute('aria-expanded','false');
-            } else {
-              mobileMenu.removeAttribute('hidden');
-              btn.setAttribute('aria-expanded','true');
-            }
-          });
-        })();
-      </script>
-
-      <!-- ====================== JS: LOGOS CONFÍAN EN NOSOTROS ====================== -->
-      <script>
-        const logosConfian = [
-          { src: "logo-cabana-alpina.png",    alt: "Cabaña Alpina Don Elisario" },
-          { src: "logo-la-angelica.png",      alt: "La Angélica Casa de Campo" },
-          { src: "logo-suarez-pastas.png",    alt: "Suarez Pastas" },
-          { src: "logo-mauregui.png",         alt: "Mauregui Automotores" },
-          { src: "logo-dsacine.jpg",          alt: "DSA CINE" },
-          { src: "logo-patricia-sebelli.png", alt: "Dra. Patricia Sebelli" },
-          { src: "logo-digiagro.png",         alt: "DigiAgro" },
-          { src: "umanoai.png", alt: "UmanoAI" },
-          { src: "logo-mabe.png", alt: "Lectura Saludable" }
-        ];
-
-        document.addEventListener("DOMContentLoaded", () => {
-          const track = document.getElementById("logos-track");
-          if (!track) return;
-          function agregarLogos() {
-            logosConfian.forEach(logo => {
-              const img = document.createElement("img");
-              img.src = logo.src;
-              img.alt = logo.alt;
-              img.loading = "lazy";
-              track.appendChild(img);
-            });
-          }
-          agregarLogos();
-          agregarLogos();
-        });
-      </script>
-
-      <!-- ============================================================= -->
-      <!-- ============= MAPA DE SOLUCIONES UMANOAI (HTML) ============ -->
-      <!-- ============================================================= -->
-      <section id="soluciones-umanoai" class="solution-map-section">
-        <div class="solution-map-wrapper">
-
-          <!-- 🫧 Burbuja del título -->
-          <div class="solution-title-bubble">
-            <span class="solution-title-main">Mapa de soluciones</span>
-            <span class="solution-title-brand">UmanoAI</span>
-          </div>
-
-          <div class="solution-intro-bubble">
-            💡 Elegí una solución para ver cómo trabajamos ese vertical y qué podemos
-            hacer por tu negocio.
-            <br><br>
-            🙋‍♀️ Si querés hablar con una persona, pedí por <strong>Malena</strong> (agente de voz) por WhatsApp.
-            <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20conocer%20el%20mapa%20de%20soluciones%20y%20hablar%20de%20mi%20caso" target="_blank" rel="noopener" style="color:#00F6A4; font-weight:800; text-decoration:none;">
-              Abrir chat
-            </a>
-          </div>
-
-          <!-- GRID DE BOTONES CENTRADO -->
-          <div id="soluciones-grid">
-
-            <button class="solucion-card is-active" data-solucion="apps" type="button">
-              <div class="card-title">📱 Apps a medida</div>
-              <div class="card-desc">Apps internas, formularios y portales hechos a tu medida.</div>
-            </button>
-
-            <button class="solucion-card" data-solucion="bots" type="button">
-              <div class="card-title">🤖 Bots</div>
-              <div class="card-desc">WhatsApp, webchat e Instagram con IA para vender y responder 24/7.</div>
-            </button>
-
-            <button class="solucion-card" data-solucion="automatizaciones" type="button">
-              <div class="card-title">⚙️ Automatizaciones</div>
-              <div class="card-desc">Conectamos sistemas para que los procesos corran solos.</div>
-            </button>
-
-            <button class="solucion-card" data-solucion="crm" type="button">
-              <div class="card-title">🧩 CRM a medida</div>
-              <div class="card-desc">Un CRM que se adapta a tu negocio, no al revés.</div>
-            </button>
-
-            <button class="solucion-card" data-solucion="powerbi" type="button">
-              <div class="card-title">📊 Power BI</div>
-              <div class="card-desc">Dashboards y reportes en tiempo real para decidir con datos.</div>
-            </button>
-
-            <button class="solucion-card" data-solucion="web" type="button">
-              <div class="card-title">🌐 Desarrollo web</div>
-              <div class="card-desc">Sitios y landings pensadas para convertir y automatizar.</div>
-            </button>
-
-          </div><!-- /#soluciones-grid -->
-
-          <article id="solucion-detalle"
-            style="background:#ffffff;
-                   border-radius:18px;
-                   border:1px solid #d7e0eb;
-                   padding:22px 20px;
-                   box-shadow:0 20px 46px rgba(15,23,42,0.14);
-                   min-height:210px;">
-            <h3 id="detalle-titulo" style="font-size:1.4rem;margin-bottom:8px;color:#0f172a;">
-              Apps a medida
-            </h3>
-            <p id="detalle-intro"
-               style="font-size:0.95rem;line-height:1.6;color:#1f2937;margin-bottom:12px;">
-              Diseñamos aplicaciones que siguen exactamente cómo funciona tu negocio:
-              nada de plantillas genéricas. Apps internas, formularios inteligentes
-              y portales con login para tus equipos, clientes o proveedores.
-            </p>
-
-            <ul id="detalle-lista"
-                style="margin:0 0 14px 18px;font-size:0.92rem;color:#334155;line-height:1.6;">
-              <li>Apps internas para equipos de ventas, logística, operaciones o servicio.</li>
-              <li>Formularios inteligentes que reemplazan planillas y WhatsApps sueltos.</li>
-              <li>Todo construido con tecnologías como Power Apps, web o Flutter según el caso.</li>
-            </ul>
-
-            <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;">
-              <p id="detalle-ideal"
-                 style="margin:0;font-size:0.9rem;color:#475569;">
-                Ideal si querés dejar de depender de Excel y WhatsApp para gestionar tu operación.
-              </p>
-
-              <a id="detalle-cta"
-                 href="https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio"
-                 target="_blank" rel="noopener"
-                 style="display:inline-flex;align-items:center;gap:6px;
-                        padding:9px 16px;border-radius:999px;
-                        background:linear-gradient(135deg,#00F6A4,#0CC5A7);
-                        color:#041316;text-decoration:none;font-size:0.9rem;font-weight:600;
-                        box-shadow:0 10px 30px rgba(0,246,164,0.4);">
-                <span>👉 Quiero hablar de esta solución</span>
-              </a>
-            </div>
-
-            <div id="detalle-videos" style="margin-top:28px;"></div>
-          </article>
-        </div>
-      </section>
-
-      <!-- ============================================================= -->
-      <!-- ============= LÓGICA JS PARA EL MAPA DE SOLUCIONES ========= -->
-      <!-- ============================================================= -->
-      <script>
-        (function () {
-          const soluciones = {
-            apps: {
-              titulo: "Apps a medida",
-              intro:
-                "Diseñamos aplicaciones que siguen exactamente cómo funciona tu negocio: nada de plantillas genéricas.",
-              bullets: [
-                "Apps internas para ventas, logística, operaciones o servicio al cliente.",
-                "Formularios inteligentes que reemplazan planillas y mensajes sueltos.",
-                "Portales con login para clientes, distribuidores o proveedores.",
-                "Podemos trabajar con Power Apps, web o Flutter según el caso."
-              ],
-              ideal:
-                "Ideal si tenés muchos procesos en Excel, mail o WhatsApp y querés ordenarlos en un solo lugar.",
-              cta:
-                "https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio",
-              tituloVideos: "🎥 Casos reales: apps desarrolladas con UmanoAI",
-              videos: [
-                {
-                  titulo: "Trazabilidad Agro · UmanoAI",
-                  url: "https://www.youtube.com/embed/2U_MAXnkoYo",
-                  descripcion: "🌱 Trazabilidad Agro + SENASA (automatización completa)"
-                },
-                {
-                  titulo: "App de Viáticos · UmanoAI",
-                  url: "https://www.youtube.com/embed/a14vI059ydA",
-                  descripcion: "💼 App de Viáticos: control, auditoría y reportes simples"
-                }
-              ]
-            },
-            bots: {
-              titulo: "Bots",
-              intro:
-                "Implementamos bots conversacionales que atienden, califican leads y responden preguntas frecuentes en automático.",
-              bullets: [
-                "Bots conversacionales de WhatsApp para atención, ventas, soporte o pedidos.",
-                "Bots en la web o Instagram que usan IA y tu propia base de conocimiento.",
-                "Flujos con lógica de negocio: no solo chat, también acciones reales.",
-                "Integración con CRM, planillas, ERPs u otros sistemas.",
-                "Derivación a humano cuando hace falta: el cliente puede pedir por Malena (agente de voz) y seguir por WhatsApp."
-              ],
-              ideal:
-                "Ideal si recibís muchos mensajes repetidos o querés vender 24/7 sin sumar más personas al equipo.",
-              cta:
-                "https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20un%20bot%20conversacional%20para%20mi%20negocio",
-              tituloVideos: "🎥 Casos reales: bots de WhatsApp con UmanoAI",
-              videos: [
-                {
-                  titulo: "Bots de WhatsApp · UmanoAI",
-                  url: "https://www.youtube.com/embed/OPJiz1-9x1k",
-                  descripcion: "🤖 Cómo funcionan los bots de WhatsApp conectados a tus sistemas"
-                }
-              ]
-            },
-            automatizaciones: {
-              titulo: "Automatizaciones",
-              intro:
-                "Conectamos sistemas para que la información fluya sola: menos tareas manuales, menos errores.",
-              bullets: [
-                "Automatización de procesos con n8n, Power Automate u otras herramientas.",
-                "Integraciones entre ERPs, CRMs, planillas, formularios y bots.",
-                "Notificaciones, aprobaciones y recordatorios automáticos.",
-                "Procesos de facturación, logística, seguimiento y reportes sin trabajo manual."
-              ],
-              ideal:
-                "Ideal si todos los días alguien del equipo está 'haciendo de puente' entre sistemas que no se hablan.",
-              cta:
-                "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+ los+procesos+de+mi+negocio",
-              rotadorTitulo: "Ejemplos de automatizaciones reales",
-              rotador: [
-                "Actualización automatica de Sitios Web",
-                "Generación automática de remitos",
-                "Cálculo de distancias y tiempos de transporte",
-                "Envío automático de documentación",
-                "Digitalización y archivo de documentos",
-                "Seguimientos automáticos de cuentas",
-                "Formularios automáticos conectados a tu ERP",
-                "Envío de correos con adjuntos desde flujos",
-                "Aprobaciones y circuitos de firma",
-                "RPA para tareas repetitivas",
-                "Generación automática de eventos y recordatorios",
-                "Obtención de cheques rechazados y estado crediticio",
-                "Obtención automática del tipo de cambio",
-                "Notificaciones desde Excel o BI hacia WhatsApp"
-              ]
-            },
-            crm: {
-              titulo: "CRM a medida",
-              intro:
-                "Creamos un CRM que refleja tu proceso real de ventas, postventa o servicio, sin obligarte a encajar en un sistema estándar.",
-              bullets: [
-                "Un CRM a tu medida, que interactúa con tu WhatsApp para que no se escape nada.",
-                "Pipelines adaptados a cómo vendés de verdad (no al modelo de otro software).",
-                "Registro ordenado de clientes, oportunidades, actividades y tareas.",
-                "Integración con bots para capturar leads automáticamente.",
-                "Vinculado a Power BI y automatizaciones para ver el impacto real."
-              ],
-              ideal:
-                "Ideal si probaste CRMs genéricos y sentiste que eran pesados, complicados o poco usados por el equipo.",
-              cta:
-                "https://wa.me/5491125926977?text=Hola%2C+quiero+un+CRM+a+medida+para+mi+negocio",
-              tituloVideos: "🎥 Caso real: CRM a medida con UmanoAI",
-              videos: [
-                {
-                  titulo: "CRM a medida · UmanoAI",
-                  url: "https://www.youtube.com/embed/_RRgkrPKPCw",
-                  descripcion:
-                    "🧩 Seguimiento de clientes, oportunidades y tareas en un CRM simple y hecho a medida."
-                }
-              ]
-            },
-            powerbi: {
-              titulo: "Power BI",
-              intro:
-                "Convertimos tus datos en tableros claros para que tomes decisiones rápidas y con contexto.",
-              bullets: [
-                "Dashboards comerciales, operativos o financieros en Power BI.",
-                "Integración con ERPs, CRMs, planillas o bases de datos.",
-                "KPIs y vistas adaptadas a gerencia, equipo comercial u operaciones.",
-                "Automatización de actualizaciones para que no tengas que 'armar el reporte' todos los meses."
-              ],
-              ideal:
-                "Ideal si tenés datos por todos lados y querés ver todo en un solo tablero claro y accionable.",
-              cta:
-                "https://wa.me/5491125926977?text=Hola%2C+quiero+un+dashboard+en+Power+BI",
-              tituloImagenes: "📊 Ejemplos de tableros en Power BI",
-              imagenes: [
-                {
-                  src: "Coberturas de Stocks.png",
-                  alt: "Cobertura de stock",
-                  titulo: "Stock Forward Coverage"
-                },
-                {
-                  src: "Seguimiento de deuda por whatsapp.png",
-                  alt: "Seguimiento de deuda por WhatsApp",
-                  titulo: "Seguimiento de deuda"
-                },
-                {
-                  src: "Ventas Geograficas.png",
-                  alt: "Ventas por ubicación geográfica",
-                  titulo: "Ventas Geográficas"
-                },
-                {
-                  src: "Net Promoter Score.png",
-                  alt: "NPS clientes",
-                  titulo: "Net Promoter Score"
-                }
-              ]
-            },
-            web: {
-              titulo: "Desarrollo web",
-              intro:
-                "Diseñamos sitios y landings pensados para generar confianza, explicar bien tu propuesta y convertir visitas en contactos.",
-              bullets: [
-                "Landings para campañas con integración directa a WhatsApp o bots.",
-                "Sitios corporativos que explican claro qué hacés y cómo ayudás.",
-                "Portales para clientes o distribuidores conectados a tus sistemas.",
-                "Web preparada para futuras integraciones, automatizaciones y analítica."
-              ],
-              ideal:
-                "Ideal si querés que tu web sea parte de tu sistema comercial, no solo una tarjeta de presentación.",
-              cta:
-                "https://wa.me/5491125926977?text=Hola%2C+necesito+una+web+profesional+para+mi+negocio",
-              tituloImagenes: "🌐 Sitios y resultados creados por UmanoAI",
-              imagenes: [
-                {
-                  src: "digiagro.png",
-                  alt: "Sitio DigiAgro",
-                  titulo: "DigiAgro – Sitio principal del ecosistema agro digital"
-                },
-                {
-                  src: "dsacine.png",
-                  alt: "Sitio DSACINE",
-                  titulo: "DSACINE – Escuela de cine y artes audiovisuales"
-                },
-                {
-                  src: "analytics.png",
-                  alt: "Analytics de tráfico web",
-                  titulo: "Analytics – Tráfico y eventos medidos"
-                },
-                {
-                  src: "mauregui.png",
-                  alt: "Sitio Mauregui Automotores",
-                  titulo: "Mauregui Automotores – Sitio de multimarcas y usados"
-                },
-                {
-                  src: "patricia-sebelli.png",
-                  alt: "Sitio Dra. Patricia Sebelli",
-                  titulo: "Dra. Patricia Sebelli – Odontología integral en Almagro"
-                }
-              ]
-            }
-          };
-
-          const cards = document.querySelectorAll("#soluciones-grid .solucion-card");
-          const titulo = document.getElementById("detalle-titulo");
-          const intro = document.getElementById("detalle-intro");
-          const lista = document.getElementById("detalle-lista");
-          const ideal = document.getElementById("detalle-ideal");
-          const cta = document.getElementById("detalle-cta");
-          const videosContainer = document.getElementById("detalle-videos");
-          const detalleArticulo = document.getElementById("solucion-detalle");
-
-          let rotadorInterval = null;
-
-          function limpiarRotador() {
-            if (rotadorInterval) {
-              clearInterval(rotadorInterval);
-              rotadorInterval = null;
-            }
-            const existing = detalleArticulo.querySelector(".auto-rotator");
-            if (existing) existing.remove();
-          }
-
-          function activarCard(card) {
-            cards.forEach(c => c.classList.remove("is-active"));
-            card.classList.add("is-active");
-          }
-
-          function actualizarDetalle(key) {
-            const data = soluciones[key];
-            if (!data) return;
-
-            titulo.textContent = data.titulo;
-            intro.textContent = data.intro;
-
-            lista.innerHTML = "";
-            data.bullets.forEach(item => {
-              const li = document.createElement("li");
-              li.textContent = item;
-              lista.appendChild(li);
-            });
-
-            ideal.textContent = data.ideal;
-            cta.href = data.cta;
-
-            videosContainer.innerHTML = "";
-            limpiarRotador();
-
-            if (data.rotador && data.rotador.length > 0) {
-              const rotWrapper = document.createElement("div");
-              rotWrapper.className = "auto-rotator";
-
-              const label = document.createElement("span");
-              label.className = "auto-rotator-label";
-              label.textContent = "🔁 " + (data.rotadorTitulo || "Ejemplos de automatización:");
-
-              const textSpan = document.createElement("span");
-              textSpan.className = "auto-rotator-text";
-
-              let index = 0;
-              textSpan.textContent = data.rotador[index];
-
-              rotWrapper.appendChild(label);
-              rotWrapper.appendChild(textSpan);
-
-              detalleArticulo.insertBefore(rotWrapper, videosContainer);
-
-              rotadorInterval = setInterval(() => {
-                index = (index + 1) % data.rotador.length;
-                textSpan.classList.remove("auto-rotator-text");
-                void textSpan.offsetWidth;
-                textSpan.textContent = data.rotador[index];
-                textSpan.classList.add("auto-rotator-text");
-              }, 2600);
-            }
-
-            if (data.videos && data.videos.length > 0) {
-              const wrapper = document.createElement("div");
-
-              const title = document.createElement("h4");
-              title.textContent = data.tituloVideos || "🎥 Casos reales de esta solución";
-              title.style.fontSize = "1rem";
-              title.style.color = "#00F6A4";
-              title.style.margin = "22px 0 12px";
-              title.style.textAlign = "center";
-              wrapper.appendChild(title);
-
-              const grid = document.createElement("div");
-              grid.className = "video-grid";
-
-              if (data.videos.length === 1) {
-                grid.style.maxWidth = "520px";
-                grid.style.margin = "0 auto";
-              }
-
-              data.videos.forEach(v => {
-                const card = document.createElement("div");
-                card.className = "video-card";
-
-                const iframe = document.createElement("iframe");
-                iframe.width = "100%";
-                iframe.height = "260";
-                iframe.src = v.url;
-                iframe.title = v.titulo;
-                iframe.frameBorder = "0";
-                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-                iframe.referrerPolicy = "strict-origin-when-cross-origin";
-                iframe.allowFullscreen = true;
-                card.appendChild(iframe);
-
-                const caption = document.createElement("p");
-                caption.textContent = v.descripcion;
-                caption.style.fontSize = "0.82rem";
-                caption.style.marginTop = "6px";
-                caption.style.color = "#8ea4bf";
-                card.appendChild(caption);
-
-                grid.appendChild(card);
-              });
-
-              wrapper.appendChild(grid);
-              videosContainer.appendChild(wrapper);
-            }
-
-            if (data.imagenes && data.imagenes.length > 0) {
-              const cWrapper = document.createElement("div");
-              cWrapper.className = "bi-carousel";
-
-              const titleImg = document.createElement("h4");
-              titleImg.textContent = data.tituloImagenes || "📊 Ejemplos de reportes";
-              titleImg.style.fontSize = "1rem";
-              titleImg.style.color = "#00F6A4";
-              titleImg.style.margin = "24px 0 8px";
-              titleImg.style.textAlign = "center";
-              cWrapper.appendChild(titleImg);
-
-              const main = document.createElement("div");
-              main.className = "bi-carousel-main";
-
-              const mainImg = document.createElement("img");
-              mainImg.src = data.imagenes[0].src;
-              mainImg.alt = data.imagenes[0].alt || data.imagenes[0].titulo || "";
-              mainImg.loading = "lazy";
-              main.appendChild(mainImg);
-
-              const caption = document.createElement("div");
-              caption.className = "bi-carousel-caption";
-              caption.textContent = data.imagenes[0].titulo || "";
-
-              const thumbs = document.createElement("div");
-              thumbs.className = "bi-carousel-thumbs";
-
-              data.imagenes.forEach((imgData, index) => {
-                const tImg = document.createElement("img");
-                tImg.src = imgData.src;
-                tImg.alt = imgData.alt || imgData.titulo || "";
-                tImg.loading = "lazy";
-                if (index === 0) tImg.classList.add("active");
-
-                tImg.addEventListener("click", () => {
-                  mainImg.src = imgData.src;
-                  mainImg.alt = imgData.alt || imgData.titulo || "";
-                  caption.textContent = imgData.titulo || "";
-                  thumbs.querySelectorAll("img").forEach(im => im.classList.remove("active"));
-                  tImg.classList.add("active");
-                });
-
-                thumbs.appendChild(tImg);
-              });
-
-              cWrapper.appendChild(main);
-              cWrapper.appendChild(caption);
-              cWrapper.appendChild(thumbs);
-              videosContainer.appendChild(cWrapper);
-            }
-          }
-
-          cards.forEach(card => {
-            card.addEventListener("click", () => {
-              const key = card.getAttribute("data-solucion");
-              activarCard(card);
-              actualizarDetalle(key);
-            });
-          });
-
-          actualizarDetalle("apps");
-        })();
-      </script>
-
-      <!-- ====================== WIDGET CHAT MALENA ====================== -->
-      <div id="umanoai-chat-root">
-        <button id="umanoai-chat-toggle" type="button">
-          <img src="umanoai.png" alt="Hablar con MALENA">
+  <div class="um">
+    <img src="umanoai.png" alt="Logo Umanoai" class="logo-sticky">
+
+    <!-- ====================== NAVBAR ====================== -->
+    <nav>
+      <div class="nav-inner">
+        <div class="brand">Umanoai</div>
+
+        <ul class="links" id="desktopLinks">
+          <li><a href="#soluciones-umanoai">Soluciones</a></li>
+          <li><a href="#confian">Clientes</a></li>
+          <li><a href="#planes">Planes</a></li>
+          <li><a href="#reseñas">Reseñas</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+
+        <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6h18M3 12h18M3 18h18M3 18h18"/>
+          </svg>
         </button>
-
-        <div id="umanoai-chat-window">
-          <div class="um-chat-header">
-            <strong>MALENA — Asistente Virtual</strong>
-            <span>Respondemos en segundos</span>
-          </div>
-
-          <div id="um-chat-messages"></div>
-
-          <form id="um-chat-form">
-            <input id="um-chat-input" type="text" placeholder="Escribime..." autocomplete="off">
-            <button type="submit">Enviar</button>
-          </form>
-        </div>
       </div>
 
-      <!-- ============================================================= -->
-      <!-- ============= CHAT UMANOAI – LÓGICA DEL WIDGET ============ -->
-      <!-- ============================================================= -->
-      <script>
-      (function () {
-        const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
-        const TOKEN = "umanoai-secure";
-        const SESSION_KEY = "umanoai-chat-session-id";
+      <div class="links mobile" id="mobileMenu" hidden>
+        <a href="#soluciones-umanoai">Soluciones</a>
+        <a href="#confian">Clientes</a>
+        <a href="#planes">Planes</a>
+        <a href="#reseñas">Reseñas</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
 
-        let sessionId = localStorage.getItem(SESSION_KEY);
-        if (!sessionId) {
-          sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
-          localStorage.setItem(SESSION_KEY, sessionId);
+    <!-- ====================== HERO PRINCIPAL ====================== -->
+    <header>
+      <video autoplay muted loop playsinline preload="auto" poster="hero-poster.png">
+        <source src="hero.mp4" type="video/mp4">
+      </video>
+
+      <div class="hero-bubble hero-bubble-title">
+        <h1>Bots de WhatsApp (Voz y Texto), Diseño Web y automatización para que tu pyme venda 24/7</h1>
+      </div>
+
+      <div class="hero-bubble hero-bubble-subtitle">
+        <p class="hero-subtitle">
+          En <strong>UmanoAI</strong> combinamos <strong>agentes de voz, bots conversacionales de WhatsApp para pymes,</strong>
+          con sitios web diseñados para convertir, para que tu negocio atienda y venda en automático todos los días.
+        </p>
+        <p style="color:#fff; font-weight:600; font-size:16px; margin-top:8px;">
+          ⏱️ Tiempo promedio de implementación: 5 a 10 días hábiles
+        </p>
+        <p style="color:#fff; font-weight:600; font-size:15px; margin-top:8px; opacity:.95;">
+          🙋‍♀️ ¿Preferís hablar con una persona? Pedí por <strong>Malena</strong> (agente de voz) y te asesoramos por WhatsApp.
+        </p>
+      </div>
+
+      <div class="hero-cta">
+        <a href="https://wa.me/5491125926977?text=Hola%20quiero%20saber%20m%C3%A1s%20sobre%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
+          📲 Hablar por WhatsApp
+        </a>
+        <a href="#planes" class="btn-secundaria">
+          🤖 Quiero activar mi bot
+        </a>
+        <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20hablar%20sobre%20un%20bot%20conversacional%20para%20mi%20negocio" class="btn-secundaria" target="_blank" rel="noopener">
+          🙋‍♀️ Hablar con Malena (agente de voz)
+        </a>
+      </div>
+
+      <div class="hero-bubble hero-bubble-small">
+        <p style="margin:0; font-size:15px; line-height:1.5;">
+          👉 Te mostramos cómo responde un bot real antes de contratar
+        </p>
+      </div>
+
+      <div class="marquesina">
+        ⚡ Agentes de voz + bots conversacionales con IA + sitios web + automatización de procesos + BI en una sola solución ⚡
+      </div>
+    </header>
+
+    <!-- ====================== SECCIÓN: como funciona ====================== -->
+    <section id="como-funciona">
+      <div class="seccion">
+        <h2>🔥 Activamos tu solución en pocos días</h2>
+
+        <ul style="line-height:1.6;">
+          <li><strong>Día 1:</strong> Relevamos tu proceso, mensajes frecuentes y objetivos</li>
+          <li><strong>Día 2 a 4:</strong> Armado del bot, automatizaciones y mensajes personalizados</li>
+          <li><strong>Día 5:</strong> Pruebas reales, ajustes y publicación</li>
+          <li><strong>Día 6 a 7:</strong> Métricas iniciales, reportes y seguimiento</li>
+        </ul>
+
+        <p style="margin-top:12px; text-align:center;">
+          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20activar%20un%20bot%20esta%20semana"
+             class="btn-primaria"
+             target="_blank" rel="noopener">
+            🚀 Activarlo esta semana
+          </a>
+        </p>
+
+        <p style="margin-top:10px; text-align:center; color:#4b5563; font-size:0.95rem;">
+          Si querés que lo vea una persona del equipo, escribile a <strong>Malena</strong> (agente de voz):
+          <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20activar%20un%20bot%20esta%20semana%20y%20tengo%20unas%20dudas" target="_blank" rel="noopener" style="color:#16a34a; font-weight:700; text-decoration:none;">
+            abrir WhatsApp
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================== SECCIÓN: QUÉ RESOLVEMOS ====================== -->
+    <section id="soluciones">
+      <div class="seccion">
+        <h2>💡 Bots de WhatsApp, automatización y BI: todo en un solo equipo</h2>
+        <p>
+          Ayudamos a <strong>pymes, estudios y comercios</strong> que ya no dan abasto con WhatsApp, Excel y procesos manuales.
+          Diseñamos un ecosistema donde <strong>el bot de WhatsApp, tu web, las automatizaciones y Power BI</strong>
+          trabajan juntos para vos.
+        </p>
+
+        <ul>
+          <li>🤖 <strong>Bots conversacionales de WhatsApp y Web:</strong> responden consultas frecuentes, califican leads y derivan a tu equipo comercial. <strong>Si el cliente necesita humano, puede pedir por Malena (agente de voz) y seguimos por WhatsApp.</strong></li>
+          <li>🌐 <strong>Desarrollo web:</strong> landing pages y sitios corporativos listos para captar contactos y medir resultados.</li>
+          <li>⚙️ <strong>Automatización de procesos:</strong> formularios, aprobaciones, envíos de documentos y notificaciones sin trabajo manual.</li>
+          <li>📊 <strong>Power BI para negocios:</strong> tableros simples con métricas de ventas, cobranza, operaciones y atención al cliente.</li>
+        </ul>
+
+        <p style="margin-top:10px; text-align:center;">
+          <a href="https://wa.me/5491125926977?text=Hola%20me%20gustar%C3%ADa%20ver%20un%20demo%20 de%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
+            🚀 Quiero ver un demo de bots y automatización
+          </a>
+        </p>
+
+        <p style="margin-top:10px; text-align:center;">
+          <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20ver%20un%20demo%20de%20bots%20conversacionales%20y%20hablar%20sobre%20mi%20caso" class="btn-secundaria" target="_blank" rel="noopener">
+            🙋‍♀️ Pedir demo con Malena (agente de voz)
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================== SECCIÓN: CONFÍAN EN NOSOTROS ====================== -->
+    <section id="confian">
+      <div class="seccion">
+        <h2>🤝 Confían en nosotros</h2>
+        <p style="text-align:center;color:#4b5563;">
+          Trabajamos junto a marcas y emprendedores que buscan dar un salto digital.
+        </p>
+
+        <div class="logos-slider">
+          <div class="logos-track" id="logos-track"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== ANTES / DESPUÉS ====================== -->
+    <section id="antes-despues">
+      <div class="seccion">
+        <h2>📊 Antes vs Después de automatizar</h2>
+
+        <table class="pricing-table" style="margin-top:10px;">
+          <tr>
+            <th>Antes</th>
+            <th>Después</th>
+          </tr>
+          <tr>
+            <td>Responder manualmente WhatsApps todo el día</td>
+            <td>Bot conversacional atiende y califica leads 24/7</td>
+          </tr>
+          <tr>
+            <td>No saber qué cliente pidió qué</td>
+            <td>Registro ordenado con seguimiento</td>
+          </tr>
+          <tr>
+            <td>Excel duplicados, info suelta</td>
+            <td>Automatizado en un solo lugar</td>
+          </tr>
+          <tr>
+            <td>Tiempo perdido en tareas repetidas</td>
+            <td>Notificaciones y acciones automáticas</td>
+          </tr>
+        </table>
+
+        <p style="text-align:center;margin-top:16px;">
+          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20automatizar%20estos%20problemas"
+             class="btn-secundaria"
+             target="_blank" rel="noopener">
+            💬 Quiero automatizar ahora
+          </a>
+        </p>
+
+        <p style="text-align:center;margin-top:10px;">
+          <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20automatizar%20estos%20problemas%20y%20necesito%20asesoramiento" class="btn-primaria" target="_blank" rel="noopener">
+            🙋‍♀️ Hablar con Malena (agente de voz)
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================== SECCIÓN: PLANES ====================== -->
+    <section id="planes">
+      <div class="seccion">
+        <h2>💰 Planes de bots de WhatsApp para pymes</h2>
+        <p style="text-align:center;">
+          Empezá con un <strong>bot conversacional de WhatsApp enfocado en lo esencial</strong> y escalá a medida que crecen tus
+          conversaciones. Los planes incluyen configuración de flujos base, conexión con tus sistemas y soporte.
+        </p>
+
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Respuestas incluidas</th>
+              <th>Precio mensual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Básico</td>
+              <td>200</td>
+              <td>USD 35</td>
+            </tr>
+            <tr>
+              <td>Pro</td>
+              <td>800</td>
+              <td>USD 65</td>
+            </tr>
+            <tr class="highlight">
+              <td>Power ⭐ (Pymes en crecimiento)</td>
+              <td>3.000</td>
+              <td>USD 120</td>
+            </tr>
+            <tr>
+              <td>Corporate</td>
+              <td>∞ Ilimitadas</td>
+              <td>USD 250</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="text-align:center;margin-top:12px;">
+          <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20que%20me%20recomiendes%20un%20plan%20de%20bot%20conversacional" class="btn-primaria" target="_blank" rel="noopener">
+            🙋‍♀️ Que Malena (agente de voz) me recomiende un plan
+          </a>
+        </p>
+
+        <hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+
+        <h2 style="margin-top:8px;">💻 Planes de desarrollo web</h2>
+        <p style="text-align:center;">
+          Tres niveles de sitio pensados para <strong>pasar de cero presencia online</strong>
+          a un <strong>sitio que convierte y atiende con chat de IA 24/7</strong>.
+        </p>
+
+        <div class="plans-grid">
+          <!-- Plan 1: Starter Web -->
+          <article class="plan-card">
+            <span class="plan-tag">Presencia mínima</span>
+            <h3>Starter Web</h3>
+            <p class="plan-price">
+              USD 250
+              <span>Pago único · Desde</span>
+            </p>
+            <p class="plan-desc">
+              Ideal para una presencia simple pero profesional en internet.
+            </p>
+            <ul class="plan-list">
+              <li>Dominio.com.ar configurado</li>
+              <li>DNS en Cloudflare listo para usar</li>
+              <li>Alta en Google Search Console</li>
+              <li>Landing de una página (Home)</li>
+              <li>Diseño responsive para móvil y computadora</li>
+              <li>Favicon y meta tags básicos</li>
+              <li>Botón de WhatsApp flotante</li>
+            </ul>
+            <a href="https://wa.me/5491125926977?text=Hola%2C+me+interesa+el+plan+Starter+Web"
+               class="plan-cta"
+               target="_blank" rel="noopener">
+              Quiero el plan Starter
+            </a>
+          </article>
+
+          <!-- Plan 2: Web Profesional -->
+          <article class="plan-card">
+            <span class="plan-tag">Negocios en crecimiento</span>
+            <h3>Web Profesional</h3>
+            <p class="plan-price">
+              USD 490
+              <span>Pago único · Desde</span>
+            </p>
+            <p class="plan-desc">
+              Para negocios que necesitan explicar mejor sus servicios y captar más consultas.
+            </p>
+            <ul class="plan-list">
+              <li>Todo lo incluido en Starter Web</li>
+              <li>Hasta 4 secciones: Home, Servicios/Productos, Nosotros, Contacto</li>
+              <li>Formulario de contacto vinculado a email o WhatsApp</li>
+              <li>SEO inicial: estructura H1/H2, sitemap básico y metadescripciones</li>
+              <li>Integración simple con redes sociales</li>
+              <li>Certificado SSL activo</li>
+            </ul>
+            <a href="https://wa.me/5491125926977?text=Hola%2C+me+interesa+el+plan+Web+Profesional"
+               class="plan-cta"
+               target="_blank" rel="noopener">
+              Quiero el plan Profesional
+            </a>
+          </article>
+
+          <!-- Plan 3: Web Premium & Conversión -->
+          <article class="plan-card premium">
+            <span class="plan-tag">Conversión + IA</span>
+            <h3>Web Premium &amp; Conversión</h3>
+            <p class="plan-price">
+              USD 1.000
+              <span>
+                Pago único del sitio + USD 120/mes
+                (web chat con IA)
+              </span>
+            </p>
+            <p class="plan-desc">
+              Pensado para negocios que invierten en publicidad y necesitan medir y atender 24/7.
+            </p>
+            <ul class="plan-list">
+              <li>Todo lo incluido en Web Profesional</li>
+              <li>Web chat con IA integrado en el sitio (atención 24/7)</li>
+              <li>Configuración de Analytics y Tag Manager con eventos clave</li>
+              <li>Captura automática de leads en Google Sheets o CRM</li>
+              <li>Sitemap avanzado y preparación para SEO</li>
+              <li>Landing optimizada para campañas (Meta Ads / Google Ads)</li>
+              <li>
+                Incluye plan de web chat con IA + mantenimiento:
+                USD 120/mes mientras el chat esté activo
+              </li>
+            </ul>
+            <a href="https://wa.me/5491125926977?text=Hola%2C+me+interesa+el+plan+Web+Premium+%26+Conversi%C3%B3n"
+               class="plan-cta"
+               target="_blank" rel="noopener">
+              Quiero el plan Premium
+            </a>
+          </article>
+        </div>
+
+        <p style="text-align:center;margin-top:18px;font-size:0.95rem;color:#4b5563;">
+          Todos los sitios se desarrollan listos para alojar en tu propio repositorio
+          (por ejemplo, GitHub Pages) y conectarse con tus bots conversacionales y automatizaciones.
+        </p>
+
+        <p style="text-align:center;margin-top:10px;">
+          <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20mejorar%20mi%20SEO%20y%20activar%20un%20bot%20conversacional%20en%20mi%20web" class="btn-secundaria" target="_blank" rel="noopener">
+            🙋‍♀️ SEO + Bots con Malena (agente de voz)
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- =============== RESEÑAS DE GOOGLE =============== -->
+    <section id="reseñas">
+      <div class="seccion">
+        <div class="reviews-block">
+          <h3>⭐ Reseñas en Google</h3>
+          <p class="reviews-intro">
+            Lo que dicen algunos clientes sobre trabajar con UmanoAI.
+          </p>
+
+          <div class="reviews-grid">
+            <article class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Atención de 10! Superó todas mis expectativas! Me asesoró a crear mi espacio, con total sencillez, amabilidad y total eficacia. No me tuve que preocupar por ningún detalle. Lo recomiendo 100%."
+              </p>
+              <div class="review-author">Patricia</div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Excelente trabajo y atención!!"
+              </p>
+              <div class="review-author">Agencia de automotores</div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "La verdad que muy contento con el Bot, todo lo que le pedí y más"
+              </p>
+              <div class="review-author">Juan</div>
+            </article>
+          </div>
+
+          <p style="text-align:center; margin-top:16px;">
+            <a href="https://www.google.com/search?newwindow=1&sca_esv=d90e220b7d9405c9&sxsrf=AE3TifObmBF5qA6jWxCn-2L6ju7rI75QvA%3A1764565973953&q=UmanoAi&stick=H4sIAAAAAAAAAONgU1I1qDBJtDA3MzZPsTS2ME1MSjW1MqgwSjMBorREU1Oz1CRDi8RFrOyhuYl5-Y6ZADpgBqQzAAAA&mat=CYnJ1ShiZuOC&ved=2ahUKEwitvL3A0JuRAxXTK7kGHSWYK3AQrMcEegQIQBAC#"
+               class="btn-google-reviews"
+               target="_blank"
+               rel="noopener">
+              Ver más reseñas en Google
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+   <!-- ====================== SECCIÓN: PREGUNTAS FRECUENTES (FAQ) ====================== -->
+<section id="faq" class="faq-section">
+  <div class="faq-inner">
+    <h2>❓ Preguntas frecuentes</h2>
+    <p class="faq-intro">
+      Algunas de las dudas más comunes sobre bots de WhatsApp, automatización y BI con UmanoAI.
+    </p>
+
+    <ul class="faq-list">
+      <li class="faq-item">
+        <details open>
+          <summary>
+            ¿Cuánto cuesta un bot de WhatsApp con UmanoAI?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            Tenemos planes desde USD 35/mes hasta opciones Corporate, según volumen de respuestas y nivel de personalización. Revisamos tu caso y te sugerimos el plan correcto.
+          </p>
+        </details>
+      </li>
+
+      <li class="faq-item">
+        <details>
+          <summary>
+            ¿Qué incluye la implementación?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            Incluye relevamiento del flujo, diseño de la conversación, armado del bot, conexión básica con tus sistemas o planillas y un período inicial de ajustes.
+          </p>
+        </details>
+      </li>
+
+      <li class="faq-item">
+        <details>
+          <summary>
+            ¿Necesito tener WhatsApp Business API antes de empezar?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            No necesariamente. Te ayudamos a elegir el proveedor adecuado, configurar el número y dejar listo el entorno para que el bot funcione estable.
+          </p>
+        </details>
+      </li>
+
+      <li class="faq-item">
+        <details>
+          <summary>
+            ¿En cuánto tiempo puede estar funcionando el bot?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            En proyectos estándar solemos dejar el bot operativo en pocos días hábiles. Los casos con integraciones avanzadas pueden requerir más tiempo.
+          </p>
+        </details>
+      </li>
+
+      <li class="faq-item">
+        <details>
+          <summary>
+            ¿Trabajan con pymes o solo con empresas grandes?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            UmanoAI está pensado sobre todo para pymes, negocios de servicios y profesionales que quieren escalar sin sumar tareas manuales. También atendemos proyectos corporativos.
+          </p>
+        </details>
+      </li>
+
+      <li class="faq-item">
+        <details>
+          <summary>
+            ¿Pueden integrar el bot con mi sistema, CRM o planillas?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            Sí. Integramos con CRMs, ERPs, Power BI, Google Sheets, bases de datos y otros sistemas mediante APIs, n8n o Power Automate para que la información fluya en automático.
+          </p>
+        </details>
+      </li>
+
+      <li class="faq-item">
+        <details>
+          <summary>
+            Si necesito hablar con una persona, ¿puedo pasar del bot a un humano?
+            <span class="faq-toggle-icon">＋</span>
+          </summary>
+          <p>
+            Sí. Los bots pueden derivar a atención humana cuando hace falta. Si querés, escribile a Malena (agente de voz) por WhatsApp y te asesora con tu caso.
+          </p>
+
+    <!-- ====================== SECCIÓN: CONTACTO ====================== -->
+    <section id="contacto">
+      <div class="seccion">
+        <h2>📞 Contacto</h2>
+        <p style="text-align:center;">
+          Contanos brevemente tu negocio y lo que te gustaría automatizar.
+          Te respondemos por WhatsApp con ideas concretas y próximos pasos.
+        </p>
+
+        <p style="margin-top:12px; text-align:center;">
+          WhatsApp directo: <strong>+54 9 11 2592-6977</strong><br>
+          Email: <strong>info@umanoai.com.ar</strong>
+        </p>
+
+        <p style="margin-top:14px; text-align:center;">
+          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20charlar%20sobre%20automatizaci%C3%B3n%20con%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
+            📲 Escribir por WhatsApp
+          </a>
+        </p>
+
+        <p style="margin-top:10px; text-align:center;">
+          <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20charlar%20sobre%20bots%20conversacionales%20y%20automatizaci%C3%B3n%20para%20mi%20negocio" class="btn-secundaria" target="_blank" rel="noopener">
+            🙋‍♀️ Escribirle a Malena (agente de voz)
+          </a>
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ====================== BOTÓN FLOTANTE DE WHATSAPP ====================== -->
+  <a class="whatsapp-float"
+    href="https://wa.me/5491125926977?text=Hola%20vengo%20desde%20la%20web%20de%20Umanoai%20y%20quiero%20hablar%20con%20Malena"
+    target="_blank"
+    rel="noopener"
+    onclick="dataLayer.push({event: 'click_whatsapp', origen: 'burbuja'})">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+      alt="WhatsApp"
+      loading="lazy">
+  </a>
+
+  <!-- ====================== JS: TOGGLE MENÚ MOBILE NAV ====================== -->
+  <script>
+    (function(){
+      const btn = document.querySelector('.um .hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      btn?.addEventListener('click', () => {
+        const isOpen = !mobileMenu.hasAttribute('hidden');
+        if (isOpen) {
+          mobileMenu.setAttribute('hidden','');
+          btn.setAttribute('aria-expanded','false');
+        } else {
+          mobileMenu.removeAttribute('hidden');
+          btn.setAttribute('aria-expanded','true');
+        }
+      });
+    })();
+  </script>
+
+  <!-- ====================== JS: LOGOS CONFÍAN EN NOSOTROS ====================== -->
+  <script>
+    const logosConfian = [
+      { src: "logo-cabana-alpina.png",    alt: "Cabaña Alpina Don Elisario" },
+      { src: "logo-la-angelica.png",      alt: "La Angélica Casa de Campo" },
+      { src: "logo-suarez-pastas.png",    alt: "Suarez Pastas" },
+      { src: "logo-mauregui.png",         alt: "Mauregui Automotores" },
+      { src: "logo-dsacine.jpg",          alt: "DSA CINE" },
+      { src: "logo-patricia-sebelli.png", alt: "Dra. Patricia Sebelli" },
+      { src: "logo-digiagro.png",         alt: "DigiAgro" },
+      { src: "umanoai.png", alt: "UmanoAI" },
+      { src: "logo-mabe.png", alt: "Lectura Saludable" }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const track = document.getElementById("logos-track");
+      if (!track) return;
+      function agregarLogos() {
+        logosConfian.forEach(logo => {
+          const img = document.createElement("img");
+          img.src = logo.src;
+          img.alt = logo.alt;
+          img.loading = "lazy";
+          track.appendChild(img);
+        });
+      }
+      agregarLogos();
+      agregarLogos();
+    });
+  </script>
+
+<!-- ============================================================= -->
+<!-- ============= MAPA DE SOLUCIONES UMANOAI (HTML) ============ -->
+<!-- ============================================================= -->
+<section id="soluciones-umanoai" class="solution-map-section">
+  <div class="solution-map-wrapper">
+
+    <!-- 🫧 Burbuja del título -->
+    <div class="solution-title-bubble">
+      <span class="solution-title-main">Mapa de soluciones</span>
+      <span class="solution-title-brand">UmanoAI</span>
+    </div>
+
+    <div class="solution-intro-bubble">
+      💡 Elegí una solución para ver cómo trabajamos ese vertical y qué podemos
+      hacer por tu negocio.
+      <br><br>
+      🙋‍♀️ Si querés hablar con una persona, pedí por <strong>Malena</strong> (agente de voz) por WhatsApp.
+      <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20conocer%20el%20mapa%20de%20soluciones%20y%20hablar%20de%20mi%20caso" target="_blank" rel="noopener" style="color:#00F6A4; font-weight:800; text-decoration:none;">
+        Abrir chat
+      </a>
+    </div>
+
+    <!-- GRID DE BOTONES CENTRADO -->
+    <div id="soluciones-grid">
+
+      <button class="solucion-card is-active" data-solucion="apps" type="button">
+        <div class="card-title">📱 Apps a medida</div>
+        <div class="card-desc">Apps internas, formularios y portales hechos a tu medida.</div>
+      </button>
+
+      <button class="solucion-card" data-solucion="bots" type="button">
+        <div class="card-title">🤖 Bots</div>
+        <div class="card-desc">WhatsApp, webchat e Instagram con IA para vender y responder 24/7.</div>
+      </button>
+
+      <button class="solucion-card" data-solucion="automatizaciones" type="button">
+        <div class="card-title">⚙️ Automatizaciones</div>
+        <div class="card-desc">Conectamos sistemas para que los procesos corran solos.</div>
+      </button>
+
+      <button class="solucion-card" data-solucion="crm" type="button">
+        <div class="card-title">🧩 CRM a medida</div>
+        <div class="card-desc">Un CRM que se adapta a tu negocio, no al revés.</div>
+      </button>
+
+      <button class="solucion-card" data-solucion="powerbi" type="button">
+        <div class="card-title">📊 Power BI</div>
+        <div class="card-desc">Dashboards y reportes en tiempo real para decidir con datos.</div>
+      </button>
+
+      <button class="solucion-card" data-solucion="web" type="button">
+        <div class="card-title">🌐 Desarrollo web</div>
+        <div class="card-desc">Sitios y landings pensadas para convertir y automatizar.</div>
+      </button>
+
+    </div><!-- /#soluciones-grid -->
+
+    <article id="solucion-detalle"
+      style="background:#ffffff;
+             border-radius:18px;
+             border:1px solid #d7e0eb;
+             padding:22px 20px;
+             box-shadow:0 20px 46px rgba(15,23,42,0.14);
+             min-height:210px;">
+      <h3 id="detalle-titulo" style="font-size:1.4rem;margin-bottom:8px;color:#0f172a;">
+        Apps a medida
+      </h3>
+      <p id="detalle-intro"
+         style="font-size:0.95rem;line-height:1.6;color:#1f2937;margin-bottom:12px;">
+        Diseñamos aplicaciones que siguen exactamente cómo funciona tu negocio:
+        nada de plantillas genéricas. Apps internas, formularios inteligentes
+        y portales con login para tus equipos, clientes o proveedores.
+      </p>
+
+      <ul id="detalle-lista"
+          style="margin:0 0 14px 18px;font-size:0.92rem;color:#334155;line-height:1.6;">
+        <li>Apps internas para equipos de ventas, logística, operaciones o servicio.</li>
+        <li>Formularios inteligentes que reemplazan planillas y WhatsApps sueltos.</li>
+        <li>Todo construido con tecnologías como Power Apps, web o Flutter según el caso.</li>
+      </ul>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;">
+        <p id="detalle-ideal"
+           style="margin:0;font-size:0.9rem;color:#475569;">
+          Ideal si querés dejar de depender de Excel y WhatsApp para gestionar tu operación.
+        </p>
+
+        <a id="detalle-cta"
+           href="https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio"
+           target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:6px;
+                  padding:9px 16px;border-radius:999px;
+                  background:linear-gradient(135deg,#00F6A4,#0CC5A7);
+                  color:#041316;text-decoration:none;font-size:0.9rem;font-weight:600;
+                  box-shadow:0 10px 30px rgba(0,246,164,0.4);">
+          <span>👉 Quiero hablar de esta solución</span>
+        </a>
+      </div>
+
+      <div id="detalle-videos" style="margin-top:28px;"></div>
+        </article>
+  </div>
+</section>
+
+  <!-- ============================================================= -->
+  <!-- ============= LÓGICA JS PARA EL MAPA DE SOLUCIONES ========= -->
+  <!-- ============================================================= -->
+  <script>
+    (function () {
+      const soluciones = {
+        apps: {
+          titulo: "Apps a medida",
+          intro:
+            "Diseñamos aplicaciones que siguen exactamente cómo funciona tu negocio: nada de plantillas genéricas.",
+          bullets: [
+            "Apps internas para ventas, logística, operaciones o servicio al cliente.",
+            "Formularios inteligentes que reemplazan planillas y mensajes sueltos.",
+            "Portales con login para clientes, distribuidores o proveedores.",
+            "Podemos trabajar con Power Apps, web o Flutter según el caso."
+          ],
+          ideal:
+            "Ideal si tenés muchos procesos en Excel, mail o WhatsApp y querés ordenarlos en un solo lugar.",
+          cta:
+            "https://wa.me/5491125926977?text=Hola%2C+quiero+una+app+a+medida+para+mi+negocio",
+          tituloVideos: "🎥 Casos reales: apps desarrolladas con UmanoAI",
+          videos: [
+            {
+              titulo: "Trazabilidad Agro · UmanoAI",
+              url: "https://www.youtube.com/embed/2U_MAXnkoYo",
+              descripcion: "🌱 Trazabilidad Agro + SENASA (automatización completa)"
+            },
+            {
+              titulo: "App de Viáticos · UmanoAI",
+              url: "https://www.youtube.com/embed/a14vI059ydA",
+              descripcion: "💼 App de Viáticos: control, auditoría y reportes simples"
+            }
+          ]
+        },
+        bots: {
+          titulo: "Bots",
+          intro:
+            "Implementamos bots conversacionales que atienden, califican leads y responden preguntas frecuentes en automático.",
+          bullets: [
+            "Bots conversacionales de WhatsApp para atención, ventas, soporte o pedidos.",
+            "Bots en la web o Instagram que usan IA y tu propia base de conocimiento.",
+            "Flujos con lógica de negocio: no solo chat, también acciones reales.",
+            "Integración con CRM, planillas, ERPs u otros sistemas.",
+            "Derivación a humano cuando hace falta: el cliente puede pedir por Malena (agente de voz) y seguir por WhatsApp."
+          ],
+          ideal:
+            "Ideal si recibís muchos mensajes repetidos o querés vender 24/7 sin sumar más personas al equipo.",
+          cta:
+            "https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20un%20bot%20conversacional%20para%20mi%20negocio",
+          tituloVideos: "🎥 Casos reales: bots de WhatsApp con UmanoAI",
+          videos: [
+            {
+              titulo: "Bots de WhatsApp · UmanoAI",
+              url: "https://www.youtube.com/embed/OPJiz1-9x1k",
+              descripcion: "🤖 Cómo funcionan los bots de WhatsApp conectados a tus sistemas"
+            }
+          ]
+        },
+        automatizaciones: {
+          titulo: "Automatizaciones",
+          intro:
+            "Conectamos sistemas para que la información fluya sola: menos tareas manuales, menos errores.",
+          bullets: [
+            "Automatización de procesos con n8n, Power Automate u otras herramientas.",
+            "Integraciones entre ERPs, CRMs, planillas, formularios y bots.",
+            "Notificaciones, aprobaciones y recordatorios automáticos.",
+            "Procesos de facturación, logística, seguimiento y reportes sin trabajo manual."
+          ],
+          ideal:
+            "Ideal si todos los días alguien del equipo está 'haciendo de puente' entre sistemas que no se hablan.",
+          cta:
+            "https://wa.me/5491125926977?text=Hola%2C+quiero+automatizar+ los+procesos+de+mi+negocio",
+          rotadorTitulo: "Ejemplos de automatizaciones reales",
+          rotador: [
+            "Actualización automatica de Sitios Web",
+            "Generación automática de remitos",
+            "Cálculo de distancias y tiempos de transporte",
+            "Envío automático de documentación",
+            "Digitalización y archivo de documentos",
+            "Seguimientos automáticos de cuentas",
+            "Formularios automáticos conectados a tu ERP",
+            "Envío de correos con adjuntos desde flujos",
+            "Aprobaciones y circuitos de firma",
+            "RPA para tareas repetitivas",
+            "Generación automática de eventos y recordatorios",
+            "Obtención de cheques rechazados y estado crediticio",
+            "Obtención automática del tipo de cambio",
+            "Notificaciones desde Excel o BI hacia WhatsApp"
+          ]
+        },
+        crm: {
+          titulo: "CRM a medida",
+          intro:
+            "Creamos un CRM que refleja tu proceso real de ventas, postventa o servicio, sin obligarte a encajar en un sistema estándar.",
+          bullets: [
+            "Un CRM a tu medida, que interactúa con tu WhatsApp para que no se escape nada.",
+            "Pipelines adaptados a cómo vendés de verdad (no al modelo de otro software).",
+            "Registro ordenado de clientes, oportunidades, actividades y tareas.",
+            "Integración con bots para capturar leads automáticamente.",
+            "Vinculado a Power BI y automatizaciones para ver el impacto real."
+          ],
+          ideal:
+            "Ideal si probaste CRMs genéricos y sentiste que eran pesados, complicados o poco usados por el equipo.",
+          cta:
+            "https://wa.me/5491125926977?text=Hola%2C+quiero+un+CRM+a+medida+para+mi+negocio",
+          tituloVideos: "🎥 Caso real: CRM a medida con UmanoAI",
+          videos: [
+            {
+              titulo: "CRM a medida · UmanoAI",
+              url: "https://www.youtube.com/embed/_RRgkrPKPCw",
+              descripcion:
+                "🧩 Seguimiento de clientes, oportunidades y tareas en un CRM simple y hecho a medida."
+            }
+          ]
+        },
+        powerbi: {
+          titulo: "Power BI",
+          intro:
+            "Convertimos tus datos en tableros claros para que tomes decisiones rápidas y con contexto.",
+          bullets: [
+            "Dashboards comerciales, operativos o financieros en Power BI.",
+            "Integración con ERPs, CRMs, planillas o bases de datos.",
+            "KPIs y vistas adaptadas a gerencia, equipo comercial u operaciones.",
+            "Automatización de actualizaciones para que no tengas que 'armar el reporte' todos los meses."
+          ],
+          ideal:
+            "Ideal si tenés datos por todos lados y querés ver todo en un solo tablero claro y accionable.",
+          cta:
+            "https://wa.me/5491125926977?text=Hola%2C+quiero+un+dashboard+en+Power+BI",
+          tituloImagenes: "📊 Ejemplos de tableros en Power BI",
+          imagenes: [
+            {
+              src: "Coberturas de Stocks.png",
+              alt: "Cobertura de stock",
+              titulo: "Stock Forward Coverage"
+            },
+            {
+              src: "Seguimiento de deuda por whatsapp.png",
+              alt: "Seguimiento de deuda por WhatsApp",
+              titulo: "Seguimiento de deuda"
+            },
+            {
+              src: "Ventas Geograficas.png",
+              alt: "Ventas por ubicación geográfica",
+              titulo: "Ventas Geográficas"
+            },
+            {
+              src: "Net Promoter Score.png",
+              alt: "NPS clientes",
+              titulo: "Net Promoter Score"
+            }
+          ]
+        },
+        web: {
+          titulo: "Desarrollo web",
+          intro:
+            "Diseñamos sitios y landings pensados para generar confianza, explicar bien tu propuesta y convertir visitas en contactos.",
+          bullets: [
+            "Landings para campañas con integración directa a WhatsApp o bots.",
+            "Sitios corporativos que explican claro qué hacés y cómo ayudás.",
+            "Portales para clientes o distribuidores conectados a tus sistemas.",
+            "Web preparada para futuras integraciones, automatizaciones y analítica."
+          ],
+          ideal:
+            "Ideal si querés que tu web sea parte de tu sistema comercial, no solo una tarjeta de presentación.",
+          cta:
+            "https://wa.me/5491125926977?text=Hola%2C+necesito+una+web+profesional+para+mi+negocio",
+          tituloImagenes: "🌐 Sitios y resultados creados por UmanoAI",
+          imagenes: [
+            {
+              src: "digiagro.png",
+              alt: "Sitio DigiAgro",
+              titulo: "DigiAgro – Sitio principal del ecosistema agro digital"
+            },
+            {
+              src: "dsacine.png",
+              alt: "Sitio DSACINE",
+              titulo: "DSACINE – Escuela de cine y artes audiovisuales"
+            },
+            {
+              src: "analytics.png",
+              alt: "Analytics de tráfico web",
+              titulo: "Analytics – Tráfico y eventos medidos"
+            },
+            {
+              src: "mauregui.png",
+              alt: "Sitio Mauregui Automotores",
+              titulo: "Mauregui Automotores – Sitio de multimarcas y usados"
+            },
+            {
+              src: "patricia-sebelli.png",
+              alt: "Sitio Dra. Patricia Sebelli",
+              titulo: "Dra. Patricia Sebelli – Odontología integral en Almagro"
+            }
+          ]
+        }
+      };
+
+      const cards = document.querySelectorAll("#soluciones-grid .solucion-card");
+      const titulo = document.getElementById("detalle-titulo");
+      const intro = document.getElementById("detalle-intro");
+      const lista = document.getElementById("detalle-lista");
+      const ideal = document.getElementById("detalle-ideal");
+      const cta = document.getElementById("detalle-cta");
+      const videosContainer = document.getElementById("detalle-videos");
+      const detalleArticulo = document.getElementById("solucion-detalle");
+
+      let rotadorInterval = null;
+
+      function limpiarRotador() {
+        if (rotadorInterval) {
+          clearInterval(rotadorInterval);
+          rotadorInterval = null;
+        }
+        const existing = detalleArticulo.querySelector(".auto-rotator");
+        if (existing) existing.remove();
+      }
+
+      function activarCard(card) {
+        cards.forEach(c => c.classList.remove("is-active"));
+        card.classList.add("is-active");
+      }
+
+      function actualizarDetalle(key) {
+        const data = soluciones[key];
+        if (!data) return;
+
+        titulo.textContent = data.titulo;
+        intro.textContent = data.intro;
+
+        lista.innerHTML = "";
+        data.bullets.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          lista.appendChild(li);
+        });
+
+        ideal.textContent = data.ideal;
+        cta.href = data.cta;
+
+        videosContainer.innerHTML = "";
+        limpiarRotador();
+
+        if (data.rotador && data.rotador.length > 0) {
+          const rotWrapper = document.createElement("div");
+          rotWrapper.className = "auto-rotator";
+
+          const label = document.createElement("span");
+          label.className = "auto-rotator-label";
+          label.textContent = "🔁 " + (data.rotadorTitulo || "Ejemplos de automatización:");
+
+          const textSpan = document.createElement("span");
+          textSpan.className = "auto-rotator-text";
+
+          let index = 0;
+          textSpan.textContent = data.rotador[index];
+
+          rotWrapper.appendChild(label);
+          rotWrapper.appendChild(textSpan);
+
+          detalleArticulo.insertBefore(rotWrapper, videosContainer);
+
+          rotadorInterval = setInterval(() => {
+            index = (index + 1) % data.rotador.length;
+            textSpan.classList.remove("auto-rotator-text");
+            void textSpan.offsetWidth;
+            textSpan.textContent = data.rotador[index];
+            textSpan.classList.add("auto-rotator-text");
+          }, 2600);
         }
 
-        const toggle = document.getElementById("umanoai-chat-toggle");
-        const win = document.getElementById("umanoai-chat-window");
-        const messages = document.getElementById("um-chat-messages");
-        const form = document.getElementById("um-chat-form");
-        const input = document.getElementById("um-chat-input");
+        if (data.videos && data.videos.length > 0) {
+          const wrapper = document.createElement("div");
 
-        function addMessage(text, from) {
-          const div = document.createElement("div");
-          div.classList.add("um-chat-msg");
-          if (from === "user") div.classList.add("um-chat-user");
-          else if (from === "bot") div.classList.add("um-chat-bot");
-          else if (from === "loading") div.classList.add("um-chat-loading");
-          div.textContent = text;
-          messages.appendChild(div);
-          messages.scrollTop = messages.scrollHeight;
+          const title = document.createElement("h4");
+          title.textContent = data.tituloVideos || "🎥 Casos reales de esta solución";
+          title.style.fontSize = "1rem";
+          title.style.color = "#00F6A4";
+          title.style.margin = "22px 0 12px";
+          title.style.textAlign = "center";
+          wrapper.appendChild(title);
+
+          const grid = document.createElement("div");
+          grid.className = "video-grid";
+
+          if (data.videos.length === 1) {
+            grid.style.maxWidth = "520px";
+            grid.style.margin = "0 auto";
+          }
+
+          data.videos.forEach(v => {
+            const card = document.createElement("div");
+            card.className = "video-card";
+
+            const iframe = document.createElement("iframe");
+            iframe.width = "100%";
+            iframe.height = "260";
+            iframe.src = v.url;
+            iframe.title = v.titulo;
+            iframe.frameBorder = "0";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.referrerPolicy = "strict-origin-when-cross-origin";
+            iframe.allowFullscreen = true;
+            card.appendChild(iframe);
+
+            const caption = document.createElement("p");
+            caption.textContent = v.descripcion;
+            caption.style.fontSize = "0.82rem";
+            caption.style.marginTop = "6px";
+            caption.style.color = "#8ea4bf";
+            card.appendChild(caption);
+
+            grid.appendChild(card);
+          });
+
+          wrapper.appendChild(grid);
+          videosContainer.appendChild(wrapper);
         }
 
-        async function sendMessage(msg) {
-          addMessage(msg, "user");
-          input.value = "";
-          input.focus();
+        if (data.imagenes && data.imagenes.length > 0) {
+          const cWrapper = document.createElement("div");
+          cWrapper.className = "bi-carousel";
 
-          const loadingMsg = document.createElement("div");
-          loadingMsg.classList.add("um-chat-msg","um-chat-loading");
-          loadingMsg.textContent = "…";
-          messages.appendChild(loadingMsg);
-          messages.scrollTop = messages.scrollHeight;
+          const titleImg = document.createElement("h4");
+          titleImg.textContent = data.tituloImagenes || "📊 Ejemplos de reportes";
+          titleImg.style.fontSize = "1rem";
+          titleImg.style.color = "#00F6A4";
+          titleImg.style.margin = "24px 0 8px";
+          titleImg.style.textAlign = "center";
+          cWrapper.appendChild(titleImg);
 
-          try {
-            const res = await fetch(FLOW_URL, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ message: msg, sessionId, token: TOKEN })
+          const main = document.createElement("div");
+          main.className = "bi-carousel-main";
+
+          const mainImg = document.createElement("img");
+          mainImg.src = data.imagenes[0].src;
+          mainImg.alt = data.imagenes[0].alt || data.imagenes[0].titulo || "";
+          mainImg.loading = "lazy";
+          main.appendChild(mainImg);
+
+          const caption = document.createElement("div");
+          caption.className = "bi-carousel-caption";
+          caption.textContent = data.imagenes[0].titulo || "";
+
+          const thumbs = document.createElement("div");
+          thumbs.className = "bi-carousel-thumbs";
+
+          data.imagenes.forEach((imgData, index) => {
+            const tImg = document.createElement("img");
+            tImg.src = imgData.src;
+            tImg.alt = imgData.alt || imgData.titulo || "";
+            tImg.loading = "lazy";
+            if (index === 0) tImg.classList.add("active");
+
+            tImg.addEventListener("click", () => {
+              mainImg.src = imgData.src;
+              mainImg.alt = imgData.alt || imgData.titulo || "";
+              caption.textContent = imgData.titulo || "";
+              thumbs.querySelectorAll("img").forEach(im => im.classList.remove("active"));
+              tImg.classList.add("active");
             });
 
-            const raw = await res.text();
-            loadingMsg.remove();
+            thumbs.appendChild(tImg);
+          });
 
-            let reply = raw;
-            try {
-              const parsed = JSON.parse(raw);
-              reply = parsed.reply || parsed.message || raw;
-            } catch {}
-
-            addMessage(reply, "bot");
-          } catch {
-            loadingMsg.remove();
-            addMessage("Tuve un problema 😥 Probá de nuevo.", "bot");
-          }
+          cWrapper.appendChild(main);
+          cWrapper.appendChild(caption);
+          cWrapper.appendChild(thumbs);
+          videosContainer.appendChild(cWrapper);
         }
+      }
 
-        toggle.addEventListener("click", () => {
-          win.classList.toggle("open");
+      cards.forEach(card => {
+        card.addEventListener("click", () => {
+          const key = card.getAttribute("data-solucion");
+          activarCard(card);
+          actualizarDetalle(key);
         });
+      });
 
-        form.addEventListener("submit", e => {
-          e.preventDefault();
-          const msg = input.value.trim();
-          if (!msg) return;
-          sendMessage(msg);
-        });
+      actualizarDetalle("apps");
+    })();
+  </script>
 
-        // Mensaje inicial
-        addMessage("👋 Hola! Soy Malena. ¿En qué te ayudo hoy?", "bot");
-      })();
-      </script>
+  <!-- ====================== WIDGET CHAT MALENA ====================== -->
+  <div id="umanoai-chat-root">
+    <button id="umanoai-chat-toggle" type="button">
+      <img src="umanoai.png" alt="Hablar con MALENA">
+    </button>
+
+    <div id="umanoai-chat-window">
+      <div class="um-chat-header">
+        <strong>MALENA — Asistente Virtual</strong>
+        <span>Respondemos en segundos</span>
+      </div>
+
+      <div id="um-chat-messages"></div>
+
+      <form id="um-chat-form">
+        <input id="um-chat-input" type="text" placeholder="Escribime..." autocomplete="off">
+        <button type="submit">Enviar</button>
+      </form>
     </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- ============= CHAT UMANOAI – LÓGICA DEL WIDGET ============ -->
+  <!-- ============================================================= -->
+  <script>
+  (function () {
+    const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
+    const TOKEN = "umanoai-secure";
+    const SESSION_KEY = "umanoai-chat-session-id";
+
+    let sessionId = localStorage.getItem(SESSION_KEY);
+    if (!sessionId) {
+      sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
+      localStorage.setItem(SESSION_KEY, sessionId);
+    }
+
+    const toggle = document.getElementById("umanoai-chat-toggle");
+    const win = document.getElementById("umanoai-chat-window");
+    const messages = document.getElementById("um-chat-messages");
+    const form = document.getElementById("um-chat-form");
+    const input = document.getElementById("um-chat-input");
+
+    function addMessage(text, from) {
+      const div = document.createElement("div");
+      div.classList.add("um-chat-msg");
+      if (from === "user") div.classList.add("um-chat-user");
+      else if (from === "bot") div.classList.add("um-chat-bot");
+      else if (from === "loading") div.classList.add("um-chat-loading");
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    async function sendMessage(msg) {
+      addMessage(msg, "user");
+      input.value = "";
+      input.focus();
+
+      const loadingMsg = document.createElement("div");
+      loadingMsg.classList.add("um-chat-msg","um-chat-loading");
+      loadingMsg.textContent = "…";
+      messages.appendChild(loadingMsg);
+      messages.scrollTop = messages.scrollHeight;
+
+      try {
+        const res = await fetch(FLOW_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: msg, sessionId, token: TOKEN })
+        });
+
+        const raw = await res.text();
+        loadingMsg.remove();
+
+        let reply = raw;
+        try {
+          const parsed = JSON.parse(raw);
+          reply = parsed.reply || parsed.message || raw;
+        } catch {}
+
+        addMessage(reply, "bot");
+      } catch {
+        loadingMsg.remove();
+        addMessage("Tuve un problema 😥 Probá de nuevo.", "bot");
+      }
+    }
+
+    toggle.addEventListener("click", () => {
+      win.classList.toggle("open");
+    });
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const msg = input.value.trim();
+      if (!msg) return;
+      sendMessage(msg);
+    });
+
+    // Mensaje inicial
+    addMessage("👋 Hola! Soy Malena. ¿En qué te ayudo hoy?", "bot");
+  })();
+  </script>
   </main>
+
 
   <!-- ========================= FOOTER ============================ -->
   <footer class="site-footer">
+  <div class="site-footer-inner">
+    <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;" loading="lazy">
     <div class="site-footer-inner">
       <img src="umanoai.png" alt="Logo Umanoai" style="height:50px; opacity:.85; margin-bottom:12px;" loading="lazy">
 
+    <p>
+      © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
+    </p>
       <p>
         © <span id="year"></span> Umanoai · IA · Bots · Automatización · BI
       </p>
 
+    <p>
+      <a href="politica.html" style="color:#38bdf8; text-decoration:none;">Política de Privacidad</a> ·
+      <a href="Eliminardatos.html" style="color:#38bdf8; text-decoration:none;">Eliminación de Datos</a> ·
+      <a href="#contacto" style="color:#38bdf8; text-decoration:none;">Contacto</a>
+    </p>
       <p>
         <a href="politica.html">Política de Privacidad</a> ·
         <a href="Eliminardatos.html">Eliminación de Datos</a> ·
         <a href="#contacto">Contacto</a>
       </p>
 
+    <p>
+      <small>Desarrollado con el 💙 desde Argentina.</small>
+    </p>
+  </div>
+</footer>
       <p>
         <small>Desarrollado con el 💙 desde Argentina.</small>
       </p>
@@ -2513,6 +2500,3 @@
   </script>
 </body>
 </html>
-
-
-
