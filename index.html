@@ -1222,7 +1222,9 @@ index.html
 
   /* FOOTER más grande y respirando */
 .site-footer {
-  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(241,245,249,.9));
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, #ffffff, #f1f5f9);
   color: #0f172a;
   padding: 18px 14px calc(22px + env(safe-area-inset-bottom, 0px));
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -1232,6 +1234,7 @@ index.html
   border-top: 3px solid #e2e8f0;
   box-shadow: 0 -6px 22px rgba(0,0,0,0.08);
   width: 100%;
+  backdrop-filter: blur(6px);
 }
 
 .site-footer-inner {
