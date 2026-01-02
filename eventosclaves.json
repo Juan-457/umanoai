@@ -72,14 +72,14 @@
       "cantidad": 76
     },
     {
+      "fecha": "2026-01-01",
+      "evento": "click_whatsapp",
+      "cantidad": 67
+    },
+    {
       "fecha": "2025-12-31",
       "evento": "click_whatsapp",
       "cantidad": 65
-    },
-    {
-      "fecha": "2026-01-01",
-      "evento": "click_whatsapp",
-      "cantidad": 64
     },
     {
       "fecha": "2025-12-15",
