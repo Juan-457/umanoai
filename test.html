@@ -367,14 +367,21 @@
       bottom:16px;
       left:50%;
       transform:translateX(-50%);
-      background:rgba(0,0,0,.5);
-      color:#fff;
-      padding:8px 14px;
+      background:var(--metallic-blue);
+      color:#eaf6ff;
+      padding:10px 16px;
       border-radius:999px;
-      backdrop-filter:blur(4px);
+      border:1.4px solid rgba(190, 226, 255, 0.7);
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.38),
+        0 18px 42px rgba(0, 92, 179, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      backdrop-filter:blur(16px) saturate(120%);
+      -webkit-backdrop-filter:blur(16px) saturate(120%);
       max-width:92%;
       font-weight:700;
       font-size:clamp(14px,3.2vw,20px);
+      text-shadow:0 1px 12px rgba(0,0,0,0.55);
     }
 
     /* NAVBAR */
@@ -1253,7 +1260,7 @@
       }
       .um .marquesina{
         font-size: 14px;
-        padding: 6px 12px;
+        padding: 8px 14px;
       }
       .um .seccion{
         padding: 18px 18px;
