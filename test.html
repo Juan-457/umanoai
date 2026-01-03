@@ -295,25 +295,25 @@
     /* 🔵 Burbuja hero (título y subtítulo) */
     .hero-bubble {
       background: linear-gradient(
-        118deg,
-        rgba(12, 12, 12, 0.42),
-        rgba(18, 18, 18, 0.42),
-        rgba(10, 10, 10, 0.40)
+        128deg,
+        rgba(6, 12, 28, 0.82),
+        rgba(10, 20, 44, 0.78),
+        rgba(14, 28, 58, 0.82)
       );
-      border: 1.4px solid rgba(255, 255, 255, 0.14);
+      border: 1.4px solid rgba(113, 178, 255, 0.28);
       box-shadow:
-        0 8px 28px rgba(0, 0, 0, 0.55),
-        0 12px 30px rgba(0, 0, 0, 0.32),
-        0 4px 18px rgba(255, 181, 92, 0.18); /* ✨ Glow cálido */
+        0 10px 30px rgba(0, 0, 0, 0.6),
+        0 14px 36px rgba(2, 6, 23, 0.42),
+        0 6px 20px rgba(73, 130, 200, 0.22); /* ✨ Halo frío */
 
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
 
       border-radius: 22px;
       padding: 14px 24px;
       margin: 12px auto;
       max-width: 1000px;
-      color: #ffffff;
+      color: #f8fbff;
 
       animation: fadeInUp .55s ease forwards;
     }
@@ -386,44 +386,50 @@
     /* NAVBAR */
     .um nav{
       position:fixed;
-      top:0;
+      top:16px;
       left:0;
       right:0;
       z-index:1200;
-      background:linear-gradient(90deg,#020617,#0f172a,#111827);
-      background-size:200% 100%;
-      box-shadow:0 2px 12px rgba(0,0,0,.35);
-      backdrop-filter:blur(10px);
-      animation:navGlow 18s ease-in-out infinite alternate;
-    }
-    @keyframes navGlow{
-      from{background-position:0% 0}
-      to{background-position:100% 0}
+      background:transparent;
+      padding:0 18px;
     }
 
     .um nav .nav-inner{
-      max-width:1100px;
+      width:fit-content;
+      max-width:980px;
       margin:0 auto;
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap:22px;
-      padding:10px 12px 10px;
+      justify-content:center;
+      gap:16px;
+      padding:12px 20px;
+      background:linear-gradient(130deg,rgba(4,13,32,0.9),rgba(10,24,52,0.82));
+      border:1px solid rgba(113,178,255,0.4);
+      border-radius:999px;
+      box-shadow:
+        0 14px 44px rgba(0,0,0,0.45),
+        inset 0 0 0 1px rgba(255,255,255,0.06);
+      backdrop-filter:blur(16px);
     }
 
     .um nav .brand{
-      color:#f9fafb;
-      font-weight:600;
-      letter-spacing:.06em;
+      color:#e0e7ff;
+      font-weight:700;
+      letter-spacing:.1em;
       text-transform:uppercase;
-      font-size:13px;
-      opacity:.9;
-      margin-left:12px;
+      font-size:12px;
+      background:rgba(10,24,52,0.8);
+      border:1px solid rgba(113,178,255,0.45);
+      border-radius:999px;
+      padding:8px 12px;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.08),
+        0 10px 24px rgba(2,6,23,0.5);
     }
 
     .um nav .links{
       display:flex;
-      gap:22px;
+      gap:12px;
       list-style:none;
       margin:0;
       padding:0;
@@ -433,33 +439,44 @@
       font-size:12px;
     }
     .um nav .links a{
-      color:#f9fafb;
-      padding:8px 6px;
-      border-radius:999px;
-      opacity:.85;
-      transition:opacity .15s ease, background .15s ease, transform .1s ease;
+      color:#e5edff;
+      padding:10px 12px;
+      border-radius:12px;
+      opacity:.9;
+      transition:opacity .15s ease, background .15s ease, transform .1s ease, box-shadow .15s ease;
+      background:linear-gradient(150deg,rgba(11,18,40,0.8),rgba(16,32,64,0.7));
+      border:1px solid rgba(113,178,255,0.28);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,0.04);
     }
     .um nav .links a:hover{
       opacity:1;
-      background:rgba(255,255,255,.08);
+      background:linear-gradient(135deg,rgba(35,58,112,0.9),rgba(20,36,70,0.86));
       transform:translateY(-1px);
+      box-shadow:0 10px 22px rgba(2,6,23,0.32);
     }
 
     .um nav .hamburger{
       display:none;
       cursor:pointer;
-      border:2px solid rgba(255,255,255,.7);
-      background:rgba(15,23,42,.85);
-      color:#fff;
+      border:1px solid rgba(113,178,255,.55);
+      background:rgba(4,13,32,.82);
+      color:#e5edff;
       padding:8px;
-      border-radius:999px;
+      border-radius:12px;
       margin-left:8px;
-      box-shadow:0 2px 8px rgba(0,0,0,.4);
+      box-shadow:0 10px 24px rgba(0,0,0,.4);
     }
     .um nav .hamburger svg{
       width:26px;
       height:26px;
       display:block;
+    }
+
+    @media (max-width: 900px){
+      .um nav{top:12px;padding:0 12px;}
+      .um nav .nav-inner{width:100%; justify-content:space-between;}
+      .um nav .links{display:none;}
+      .um nav .hamburger{display:inline-flex; align-items:center; justify-content:center;}
     }
 
     .um .links.mobile{
@@ -470,10 +487,11 @@
       left:0;
       right:0;
       top:100%;
-      background:rgba(15,23,42,.96);
+      background:linear-gradient(165deg,rgba(4,13,32,0.96),rgba(12,26,55,0.92));
       border-radius:0 0 16px 16px;
-      box-shadow:0 16px 30px rgba(0,0,0,.45);
-      padding:10px 16px 14px;
+      box-shadow:0 16px 30px rgba(0,0,0,.52);
+      padding:12px 18px 16px;
+      border:1px solid rgba(113,178,255,0.24);
       z-index:1202;
     }
     .um .links.mobile[hidden]{display:none!important}
