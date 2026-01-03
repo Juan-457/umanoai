@@ -462,15 +462,18 @@
     }
 
     .um nav .hamburger{
-      display:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       cursor:pointer;
-      border:1px solid rgba(255,255,255,.55);
-      background:rgba(2,6,23,.72);
+      border:1px solid rgba(255,255,255,.65);
+      background:rgba(2,6,23,.88);
       color:#fff;
       padding:8px;
       border-radius:12px;
       margin-left:8px;
-      box-shadow:0 10px 24px rgba(0,0,0,.35);
+      box-shadow:0 10px 24px rgba(0,0,0,.42);
+      z-index:1301;
     }
     .um nav .hamburger svg{
       width:26px;
@@ -482,7 +485,10 @@
       .um nav{top:12px;padding:0 12px;}
       .um nav .nav-inner{width:100%; justify-content:space-between;}
       .um nav .links{display:none;}
-      .um nav .hamburger{display:inline-flex; align-items:center; justify-content:center;}
+    }
+
+    @media (min-width: 901px){
+      .um nav .hamburger{display:none;}
     }
 
     .um .links.mobile{
@@ -662,6 +668,9 @@
       }
       .um header {
         padding-bottom: 120px !important;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
       }
       .hero-content {
         padding-left: 8px !important;
