@@ -233,6 +233,19 @@
       margin-top:0;
     }
 
+    /* En mobile las secciones ocupan todo el ancho, igual que el mapa de soluciones */
+    @media (max-width: 768px) {
+      .um section{
+        padding-left:0;
+        padding-right:0;
+      }
+      .um .seccion{
+        width:100%;
+        border-radius:0;
+        box-shadow:none;
+      }
+    }
+
     /* ====================== HEADER / HERO ====================== */
     .um header{
       position:relative;
