@@ -236,13 +236,17 @@
     /* En mobile las secciones ocupan todo el ancho, igual que el mapa de soluciones */
     @media (max-width: 768px) {
       .um section{
-        padding-left:0;
-        padding-right:0;
+        padding:42px 0 50px;
+        margin:0;
+      }
+      .um section + section{
+        padding-top:36px;
       }
       .um .seccion{
         width:100%;
         border-radius:0;
         box-shadow:none;
+        padding:20px 18px 26px;
       }
     }
 
@@ -528,6 +532,31 @@
     }
     .um .links.mobile a:last-child{
       border-bottom:none;
+    }
+
+    @media (max-width: 900px){
+      body.menu-open{overflow:hidden;}
+
+      .um .links.mobile{
+        position:fixed;
+        inset:0;
+        top:0;
+        border-radius:0;
+        padding:calc(84px + env(safe-area-inset-top, 0px)) 18px calc(28px + env(safe-area-inset-bottom, 0px));
+        max-height:100svh;
+        overflow-y:auto;
+        background:linear-gradient(170deg,rgba(10,20,42,0.96),rgba(2,6,23,0.94));
+        backdrop-filter:blur(16px) saturate(120%);
+        -webkit-backdrop-filter:blur(16px) saturate(120%);
+        box-shadow:0 20px 42px rgba(0,0,0,.55);
+      }
+
+      .um .links.mobile a{
+        padding:14px 12px;
+        border-radius:12px;
+        background:rgba(255,255,255,0.06);
+        border:1px solid rgba(255,255,255,0.08);
+      }
     }
 
     .pricing-table{
@@ -1193,7 +1222,7 @@
       .solution-map-section {
         width:100%;
         margin:0;
-        padding:50px 16px 60px;
+        padding:48px 16px 56px;
         border-radius:0;
         box-shadow:none;
         border:none;
@@ -1201,6 +1230,17 @@
 
       .solution-map-wrapper {
         max-width:none;
+      }
+    }
+
+    @media (max-width: 768px){
+      .solution-map-section,
+      #contacto .seccion{
+        min-height:100dvh;
+        min-height:100svh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
       }
     }
 
@@ -1903,10 +1943,20 @@
             if (isOpen) {
               mobileMenu.setAttribute('hidden','');
               btn.setAttribute('aria-expanded','false');
+              document.body.classList.remove('menu-open');
             } else {
               mobileMenu.removeAttribute('hidden');
               btn.setAttribute('aria-expanded','true');
+              document.body.classList.add('menu-open');
             }
+          });
+
+          mobileMenu?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+              mobileMenu.setAttribute('hidden','');
+              btn?.setAttribute('aria-expanded','false');
+              document.body.classList.remove('menu-open');
+            });
           });
         })();
       </script>
