@@ -187,6 +187,14 @@
       background:#020617 url('fondo.png') center/cover fixed;
     }
 
+    /* ✅ Mobile-first: evitar saltos de scroll con fondos fijos */
+    @media (max-width: 768px){
+      body{
+        background-attachment:scroll;
+        background-size:cover;
+      }
+    }
+
     /* el contenido principal ocupa todo el alto disponible */
     .page-main {
   min-height: auto;
@@ -323,7 +331,7 @@
       border-radius: 22px;
       padding: 14px 24px;
       margin: 12px auto;
-      max-width: 1000px;
+      max-width: min(94vw, 1000px);
       color: #e8f5ff;
       text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
       animation: fadeInUp .55s ease forwards;
@@ -355,6 +363,7 @@
       cursor:pointer;
       border:2px solid transparent;
       transition:background .15s ease, color .15s ease, transform .1s ease, box-shadow .15s ease, border-color .15s ease;
+      min-width:min(260px, 100%);
     }
 
     .um .btn-primaria{
@@ -413,8 +422,8 @@
     }
 
     .um nav .nav-inner{
-      width:fit-content;
-      max-width:980px;
+      width:100%;
+      max-width:1100px;
       margin:0 auto;
       display:flex;
       align-items:center;
@@ -500,7 +509,7 @@
 
     @media (max-width: 900px){
       .um nav{top:12px;padding:0 12px;}
-      .um nav .nav-inner{width:100%; justify-content:space-between;}
+      .um nav .nav-inner{width:100%; justify-content:space-between; padding:10px 16px;}
       .um nav .links{display:none;}
     }
 
@@ -564,6 +573,10 @@
       border-collapse:collapse;
       margin:16px auto;
       font-size:14px;
+      display:block;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      white-space:nowrap;
     }
     .pricing-table th,
     .pricing-table td{
@@ -682,7 +695,7 @@
     .whatsapp-float{
       position:fixed;
       right:20px;
-      bottom:24px;
+      bottom:calc(24px + env(safe-area-inset-bottom, 0px));
       z-index:1300;
       display:inline-flex;
       align-items:center;
@@ -718,6 +731,20 @@
         padding-left: 8px !important;
         padding-right: 8px !important;
       }
+    }
+
+    /* ✅ Mejor apilado de CTA y burbuja en mobile */
+    @media (max-width: 700px){
+      .um header .hero-cta{
+        width:100%;
+        padding:0 6px;
+        gap:12px;
+      }
+      .um header .hero-cta .btn-primaria,
+      .um header .hero-cta .btn-secundaria{
+        width:100%;
+      }
+      .hero-bubble{padding:14px 16px;}
     }
 
     /* DESKTOP – burbuja pequeña más grande y separada */
