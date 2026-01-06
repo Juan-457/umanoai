@@ -568,15 +568,27 @@
       }
     }
 
-    .pricing-table{
-      width:100%;
-      border-collapse:collapse;
+    .pricing-table-container{
+      display:flex;
+      justify-content:center;
       margin:16px auto;
-      font-size:14px;
-      display:block;
       overflow-x:auto;
       -webkit-overflow-scrolling:touch;
-      white-space:nowrap;
+      padding-bottom:6px;
+    }
+    .pricing-table{
+      width:auto;
+      min-width:540px;
+      border-collapse:collapse;
+      font-size:14px;
+      background:#fff;
+      border-radius:10px;
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    }
+    @media (max-width: 640px){
+      .pricing-table-container{justify-content:flex-start;}
+      .pricing-table{min-width:480px;}
     }
     .pricing-table th,
     .pricing-table td{
@@ -1676,28 +1688,30 @@
         <div class="seccion">
           <h2>📊 Antes vs Después de automatizar</h2>
 
-          <table class="pricing-table" style="margin-top:10px;">
-            <tr>
-              <th>Antes</th>
-              <th>Después</th>
-            </tr>
-            <tr>
-              <td>Responder manualmente WhatsApps todo el día</td>
-              <td>Bot conversacional atiende y califica leads 24/7</td>
-            </tr>
-            <tr>
-              <td>No saber qué cliente pidió qué</td>
-              <td>Registro ordenado con seguimiento</td>
-            </tr>
-            <tr>
-              <td>Excel duplicados, info suelta</td>
-              <td>Automatizado en un solo lugar</td>
-            </tr>
-            <tr>
-              <td>Tiempo perdido en tareas repetidas</td>
-              <td>Notificaciones y acciones automáticas</td>
-            </tr>
-          </table>
+          <div class="pricing-table-container" style="margin-top:10px;">
+            <table class="pricing-table">
+              <tr>
+                <th>Antes</th>
+                <th>Después</th>
+              </tr>
+              <tr>
+                <td>Responder manualmente WhatsApps todo el día</td>
+                <td>Bot conversacional atiende y califica leads 24/7</td>
+              </tr>
+              <tr>
+                <td>No saber qué cliente pidió qué</td>
+                <td>Registro ordenado con seguimiento</td>
+              </tr>
+              <tr>
+                <td>Excel duplicados, info suelta</td>
+                <td>Automatizado en un solo lugar</td>
+              </tr>
+              <tr>
+                <td>Tiempo perdido en tareas repetidas</td>
+                <td>Notificaciones y acciones automáticas</td>
+              </tr>
+            </table>
+          </div>
 
           <p style="text-align:center;margin-top:16px;">
             <a href="https://wa.me/5491125926977?text=Hola%20quiero%20automatizar%20estos%20problemas"
@@ -1724,37 +1738,39 @@
             conversaciones. Los planes incluyen configuración de flujos base, conexión con tus sistemas y soporte.
           </p>
 
-          <table class="pricing-table">
-            <thead>
-              <tr>
-                <th>Plan</th>
-                <th>Respuestas incluidas</th>
-                <th>Precio mensual</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Básico</td>
-                <td>200</td>
-                <td>USD 35</td>
-              </tr>
-              <tr>
-                <td>Pro</td>
-                <td>800</td>
-                <td>USD 65</td>
-              </tr>
-              <tr class="highlight">
-                <td>Power ⭐ (Pymes en crecimiento)</td>
-                <td>3.000</td>
-                <td>USD 120</td>
-              </tr>
-              <tr>
-                <td>Corporate</td>
-                <td>∞ Ilimitadas</td>
-                <td>USD 250</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="pricing-table-container">
+            <table class="pricing-table">
+              <thead>
+                <tr>
+                  <th>Plan</th>
+                  <th>Respuestas incluidas</th>
+                  <th>Precio mensual</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Básico</td>
+                  <td>200</td>
+                  <td>USD 35</td>
+                </tr>
+                <tr>
+                  <td>Pro</td>
+                  <td>800</td>
+                  <td>USD 65</td>
+                </tr>
+                <tr class="highlight">
+                  <td>Power ⭐ (Pymes en crecimiento)</td>
+                  <td>3.000</td>
+                  <td>USD 120</td>
+                </tr>
+                <tr>
+                  <td>Corporate</td>
+                  <td>∞ Ilimitadas</td>
+                  <td>USD 250</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <p style="text-align:center;margin-top:12px;">
             <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20que%20me%20recomiendes%20un%20plan%20de%20bot%20conversacional" class="btn-primaria" target="_blank" rel="noopener">
