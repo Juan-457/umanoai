@@ -520,6 +520,17 @@
       background:rgba(59,130,246,0.3);
       transform:translateY(-1px);
     }
+    @media (max-width: 900px){
+      .lang-switch{
+        top:calc(64px + env(safe-area-inset-top, 0px));
+        left:12px;
+        gap:6px;
+      }
+      .lang-switch a{
+        font-size:16px;
+        padding:5px 7px;
+      }
+    }
 
     .um nav .hamburger{
       display:inline-flex;
