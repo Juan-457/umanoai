@@ -2,11 +2,6 @@
   "rango": "ultimos_7_dias",
   "eventos": [
     {
-      "fecha": "2026-01-03",
-      "evento": "click_whatsapp",
-      "cantidad": 1
-    },
-    {
       "fecha": "2026-02-02",
       "evento": "click_whatsapp",
       "cantidad": 1
