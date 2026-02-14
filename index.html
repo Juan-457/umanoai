@@ -313,16 +313,13 @@
     }
 
     .um header .content .inner{
-      background:var(--metallic-blue);
-      border:1.6px solid rgba(190, 226, 255, 0.6);
-      box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.45),
-        0 22px 48px rgba(0, 92, 179, 0.45),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-      backdrop-filter:blur(18px) saturate(130%);
-      -webkit-backdrop-filter:blur(18px) saturate(130%);
-      border-radius:22px;
-      padding:18px 24px;
+      background:transparent;
+      border:none;
+      box-shadow:none;
+      backdrop-filter:none;
+      -webkit-backdrop-filter:none;
+      border-radius:0;
+      padding:0;
       color:#e8f5ff;
       text-shadow:0 1px 12px rgba(0,0,0,.55);
     }
@@ -366,7 +363,15 @@
       flex-wrap:wrap;
       gap:10px;
       justify-content:center;
-      margin:22px 0 42px;
+      margin:28px 0 24px;
+    }
+
+    .um nav,
+    .um section,
+    .solution-map-section,
+    .site-footer,
+    .logo-sticky {
+      display:none !important;
     }
 
     /* 🔵 Burbuja hero (título y subtítulo) */
@@ -1698,14 +1703,8 @@
         </div>
 
         <div class="hero-cta">
-          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20saber%20m%C3%A1s%20sobre%20Umanoai" class="btn-primaria" target="_blank" rel="noopener">
-            📲 Hablar por WhatsApp
-          </a>
-          <a href="#planes" class="btn-secundaria">
-            🤖 Quiero activar mi bot
-          </a>
           <a href="https://wa.me/5491125926977?text=Hola%20Malena%2C%20quiero%20hablar%20sobre%20un%20bot%20conversacional%20para%20mi%20negocio" class="btn-secundaria" target="_blank" rel="noopener">
-            🙋‍♀️ Hablar con Malena (agente de voz)
+            🙋‍♀️ Hablar con Malena
           </a>
         </div>
       </header>
