@@ -174,7 +174,7 @@
       --metallic-blue: linear-gradient(125deg, rgba(12,78,166,0.72), rgba(37,99,235,0.62), rgba(14,165,233,0.55));
       --verde:#22c55e;
       --verde-oscuro:#16a34a;
-      --bgCard: rgba(255,255,255,.98);
+      --bgCard: rgba(255,255,255,.96);
       --shadow:0 4px 10px rgba(0,0,0,.12);
       --radius:14px;
       --safe: env(safe-area-inset-bottom);
@@ -240,10 +240,6 @@
       padding:clamp(16px,3.6vw,24px);
       color:#132135;
     }
-    .um .seccion p{
-      color:#0f1f33;
-      line-height:1.6;
-    }
     .um .seccion h2{
       text-align:center;
       margin-top:0;
@@ -283,7 +279,8 @@
       padding-bottom:calc(120px + env(safe-area-inset-bottom, 0px));
       background:#020617;
     }
-    .um header video{
+    .um header video,
+    .um header .hero-video{
       position:absolute;
       inset:0;
       width:100%;
@@ -292,6 +289,39 @@
       object-position:center;
       z-index:-2;
       background:#020617;
+    }
+
+    .um header .hero-overlay{
+      position:absolute;
+      inset:0;
+      z-index:-1;
+      background:linear-gradient(180deg, rgba(2,6,23,.5), rgba(2,6,23,.72));
+    }
+
+    .um header .logo{
+      margin-bottom:18px;
+    }
+
+    .um header .logo img{
+      width:min(150px,42vw);
+      opacity:.95;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,.45));
+    }
+
+    .um header .content{
+      width:min(980px,95%);
+    }
+
+    .um header .content .inner{
+      background:transparent;
+      border:none;
+      box-shadow:none;
+      backdrop-filter:none;
+      -webkit-backdrop-filter:none;
+      border-radius:0;
+      padding:0;
+      color:#e8f5ff;
+      text-shadow:0 1px 12px rgba(0,0,0,.55);
     }
 
     .um header::before{
@@ -318,12 +348,22 @@
       font-weight:500;
       text-shadow:0 2px 10px rgba(0,0,0,.6);
     }
+    .um header .content p{
+      color:#f5f5f5;
+      margin:0;
+      font-size:clamp(15px,3.1vw,19px);
+      font-weight:500;
+      text-shadow:0 2px 10px rgba(0,0,0,.6);
+    }
+    .hero-subtitle-mobile{
+      display:none;
+    }
     .um header .hero-cta{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
       justify-content:center;
-      margin:22px 0 42px;
+      margin:28px 0 24px;
     }
 
     /* 🔵 Burbuja hero (título y subtítulo) */
@@ -418,81 +458,38 @@
       text-shadow:0 1px 12px rgba(0,0,0,0.55);
     }
 
-    /* NAVBAR */
-    .um nav{
-      position:fixed;
-      top:16px;
-      left:0;
-      right:0;
-      z-index:1200;
-      background:transparent;
-      padding:0 18px;
+    /* NAVBAR (estilo/ubicación tipo index-dimension) */
+    .um header nav{
+      position:relative;
+      z-index:3;
+      margin-top:20px;
     }
 
-    .um nav .nav-inner{
-      width:100%;
-      max-width:1100px;
-      margin:0 auto;
+    .um header nav ul{
+      list-style:none;
+      margin:1.25rem 0 0;
+      padding:0;
       display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:.6rem;
+    }
+
+    .um header nav a{
+      display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:16px;
-      padding:12px 20px;
-      background:var(--metallic-blue);
-      border:1.4px solid rgba(190, 226, 255, 0.68);
+      padding:.5rem .9rem;
       border-radius:999px;
-      box-shadow:
-        0 18px 48px rgba(4, 56, 115, 0.42),
-        0 10px 28px rgba(0, 0, 0, 0.32),
-        inset 0 1px 0 rgba(255,255,255,0.25);
-      backdrop-filter:blur(16px) saturate(120%);
-      -webkit-backdrop-filter:blur(16px) saturate(120%);
-    }
-
-    .um nav .brand{
-      color:#eaf6ff;
-      font-weight:700;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-      font-size:12px;
-      background:linear-gradient(135deg, rgba(15, 23, 42, 0.55), rgba(59, 130, 246, 0.55));
-      border:1px solid rgba(221, 239, 255, 0.55);
-      border-radius:999px;
-      padding:8px 12px;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.08),
-        0 10px 24px rgba(0, 56, 115, 0.35);
-    }
-
-    .um nav .links{
-      display:flex;
-      gap:12px;
-      list-style:none;
-      margin:0;
-      padding:0;
-      font-weight:700;
-      letter-spacing:.04em;
-      text-transform:uppercase;
-      font-size:12px;
-    }
-    .um nav .links a{
-      color:#f8fafc;
-      padding:10px 12px;
-      border-radius:12px;
-      opacity:.95;
-      transition:opacity .15s ease, background .15s ease, transform .1s ease, box-shadow .15s ease, border-color .15s ease;
-      background:linear-gradient(140deg, rgba(255,255,255,0.14), rgba(184, 230, 255, 0.1));
       border:1px solid rgba(209, 233, 255, 0.45);
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.05),
-        0 10px 20px rgba(0,0,0,0.18);
+      color:#edf4ff;
+      text-decoration:none;
+      transition:.2s ease;
+      background:rgba(8, 16, 33, 0.45);
     }
-    .um nav .links a:hover{
-      opacity:1;
-      background:linear-gradient(135deg, rgba(59,130,246,0.32), rgba(14,165,233,0.26));
-      transform:translateY(-1px);
-      border-color:rgba(225, 245, 255, 0.85);
-      box-shadow:0 12px 26px rgba(0,61,128,0.35);
+
+    .um header nav a:hover{
+      background: rgba(90,176,255,.16);
     }
 
     .lang-switch{
@@ -536,86 +533,6 @@
       }
     }
 
-    .um nav .hamburger{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      border:1px solid rgba(255,255,255,.65);
-      background:rgba(2,6,23,.88);
-      color:#fff;
-      padding:8px;
-      border-radius:12px;
-      margin-left:8px;
-      box-shadow:0 10px 24px rgba(0,0,0,.42);
-      z-index:1301;
-    }
-    .um nav .hamburger svg{
-      width:26px;
-      height:26px;
-      display:block;
-    }
-
-    @media (max-width: 900px){
-      .um nav{top:12px;padding:0 12px;}
-      .um nav .nav-inner{width:100%; justify-content:space-between; padding:10px 16px;}
-      .um nav .links{display:none;}
-    }
-
-    @media (min-width: 901px){
-      .um nav .hamburger{display:none;}
-    }
-
-    .um .links.mobile{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-      position:absolute;
-      left:0;
-      right:0;
-      top:100%;
-      background:linear-gradient(160deg,rgba(15,23,42,0.95),rgba(2,6,23,0.9));
-      border-radius:0 0 16px 16px;
-      box-shadow:0 16px 30px rgba(0,0,0,.45);
-      padding:12px 18px 16px;
-      border:1px solid rgba(255,255,255,0.08);
-      z-index:1202;
-    }
-    .um .links.mobile[hidden]{display:none!important}
-    .um .links.mobile a{
-      padding:10px 0;
-      border-radius:10px;
-      color:#f9fafb;
-      border-bottom:1px solid rgba(148,163,184,.3);
-    }
-    .um .links.mobile a:last-child{
-      border-bottom:none;
-    }
-
-    @media (max-width: 900px){
-      body.menu-open{overflow:hidden;}
-
-      .um .links.mobile{
-        position:fixed;
-        inset:0;
-        top:0;
-        border-radius:0;
-        padding:calc(84px + env(safe-area-inset-top, 0px)) 18px calc(28px + env(safe-area-inset-bottom, 0px));
-        max-height:100svh;
-        overflow-y:auto;
-        background:linear-gradient(170deg,rgba(10,20,42,0.96),rgba(2,6,23,0.94));
-        backdrop-filter:blur(16px) saturate(120%);
-        -webkit-backdrop-filter:blur(16px) saturate(120%);
-        box-shadow:0 20px 42px rgba(0,0,0,.55);
-      }
-
-      .um .links.mobile a{
-        padding:14px 12px;
-        border-radius:12px;
-        background:rgba(255,255,255,0.06);
-        border:1px solid rgba(255,255,255,0.08);
-      }
-    }
 
     .pricing-table-container{
       display:flex;
@@ -772,18 +689,13 @@
     .whatsapp-float img{width:34px;height:34px}
     .whatsapp-float:hover{transform:scale(1.06)}
 
-    @media (min-width:900px){
-      .um nav .brand{display:none;}
-      .um nav .nav-inner{justify-content:center;}
-    }
-
     /* MOBILE HERO – espaciado y contraste */
-    @media (max-width: 700px){
+    @media (max-width: 768px){
       .hero-bubble-small {
         max-width: 88% !important;
       }
       .um header {
-        padding-bottom: 120px !important;
+        padding-bottom: 88px !important;
         width: 100vw;
         margin-left: calc(50% - 50vw);
         margin-right: calc(50% - 50vw);
@@ -792,18 +704,32 @@
         padding-left: 8px !important;
         padding-right: 8px !important;
       }
+      .hero-bubble{
+        margin:8px auto;
+      }
+      .hero-subtitle-desktop,
+      .hero-subtitle-extra{
+        display:none;
+      }
+      .hero-subtitle-mobile{
+        display:inline;
+      }
     }
 
     /* ✅ Mejor apilado de CTA y burbuja en mobile */
-    @media (max-width: 700px){
+    @media (max-width: 768px){
       .um header .hero-cta{
         width:100%;
         padding:0 6px;
         gap:12px;
+        margin:16px 0 28px;
       }
       .um header .hero-cta .btn-primaria,
       .um header .hero-cta .btn-secundaria{
         width:100%;
+      }
+      .um header .hero-cta .btn-secundaria{
+        display:none;
       }
       .hero-bubble{padding:14px 16px;}
     }
@@ -1050,7 +976,7 @@
       box-shadow:0 16px 32px rgba(14,165,233,0.35);
     }
     .plan-card.premium::before{
-      content:"Mais escolhido";
+      content:"Más elegido";
       position:absolute;
       top:10px;
       right:-40px;
@@ -1073,14 +999,6 @@
       z-index:-1;
       background:#020617;
     }
-    .bg-video-overlay {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(2, 6, 23, 0.55), rgba(2, 6, 23, 0.65));
-      pointer-events: none;
-      z-index: -1;
-    }
-
     .um-box,
     .um-card,
     .card-box,
@@ -1554,6 +1472,18 @@
   font-weight: 500;
 }
 
+.footer-social{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+.footer-social svg{
+  width:16px;
+  height:16px;
+  fill:currentColor;
+}
+
 .footer-nav a:hover{
   text-decoration: underline;
 }
@@ -1570,7 +1500,6 @@
   <!-- Fondo gráfico global -->
   <img class="bg-video" src="fondo.png" alt="Fundo decorativo" loading="lazy">
 
-  <div class="bg-video-overlay"></div>
 
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRW2TPQR"
@@ -1587,79 +1516,43 @@
         <a href="index-en.html" lang="en" aria-label="English (United States)" title="English (United States)">🇺🇸</a>
         <a href="index-pt.html" lang="pt" aria-current="page" aria-label="Português (Brasil)" title="Português (Brasil)">🇧🇷</a>
       </div>
-      <nav>
-        <div class="nav-inner">
-          <div class="brand">Umanoai</div>
-
-          <ul class="links" id="desktopLinks">
-            <li><a href="#soluciones-umanoai">Soluções</a></li>
-            <li><a href="#confian">Clientes</a></li>
-            <li><a href="#planes">Planos</a></li>
-            <li><a href="#reseñas">Avaliações</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contacto">Contato</a></li>
-          </ul>
-
-          <button class="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6h18M3 12h18M3 18h18M3 18h18"/>
-            </svg>
-          </button>
-        </div>
-
-        <div class="links mobile" id="mobileMenu" hidden>
-          <a href="#soluciones-umanoai">Soluções</a>
-          <a href="#confian">Clientes</a>
-          <a href="#planes">Planos</a>
-          <a href="#reseñas">Avaliações</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contacto">Contato</a>
-        </div>
-      </nav>
 
       <!-- ====================== HERO PRINCIPAL ====================== -->
       <header>
-        <video autoplay muted loop playsinline preload="auto" poster="hero-poster.png">
+        <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero-poster.png">
           <source src="hero.mp4" type="video/mp4">
         </video>
+        <div class="hero-overlay" aria-hidden="true"></div>
 
-        <div class="hero-bubble hero-bubble-title">
-          <h1>Bots de WhatsApp (voz e texto), design web e automação para sua PME vender 24/7</h1>
+        <div class="logo">
+          <img src="umanoai.png" alt="UmanoAI">
         </div>
 
-        <div class="hero-bubble hero-bubble-subtitle">
-          <p class="hero-subtitle">
-            Na <strong>UmanoAI</strong> combinamos <strong>agentes de voz e bots conversacionais de WhatsApp para PMEs</strong>
-            com sites pensados para converter, para que seu negócio atenda e venda no automático todos os dias.
-          </p>
-          <p style="color:#fff; font-weight:600; font-size:16px; margin-top:8px;">
-            ⏱️ Tempo médio de implementação: 5 a 10 dias úteis
-          </p>
-          <p style="color:#fff; font-weight:600; font-size:15px; margin-top:8px; opacity:.95;">
-            🙋‍♀️ Prefere falar com uma pessoa? Peça pela <strong>Malena</strong> (agente de voz) e te atendemos no WhatsApp.
-          </p>
+        <div class="content">
+          <div class="inner">
+            <h1>Bots de WhatsApp (voz e texto), design web e automação</h1>
+            <p>
+              Na <strong>UmanoAI</strong>, combinamos agentes de voz, bots conversacionais de WhatsApp para PMEs,
+              automação de processos e dashboards para que seu negócio atenda e venda 24/7.
+            </p>
+          </div>
         </div>
+
+        <nav>
+          <ul>
+            <li><a href="#como-funciona">Início</a></li>
+            <li><a href="#soluciones-umanoai">Soluções</a></li>
+            <li><a href="#confian">Clientes</a></li>
+            <li><a href="#planes">Planos</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contacto">Contato</a></li>
+          </ul>
+        </nav>
 
         <div class="hero-cta">
-          <a href="https://wa.me/5491125926977?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20UmanoAI" class="btn-primaria" target="_blank" rel="noopener">
-            📲 Falar no WhatsApp
-          </a>
-          <a href="#planes" class="btn-secundaria">
-            🤖 Quero ativar meu bot
-          </a>
           <a href="https://wa.me/5491125926977?text=Ol%C3%A1%20Malena%2C%20quero%20falar%20sobre%20um%20bot%20conversacional%20para%20meu%20neg%C3%B3cio" class="btn-secundaria" target="_blank" rel="noopener">
-            🙋‍♀️ Falar com a Malena (agente de voz)
+            🙋‍♀️ Falar com a Malena
           </a>
-        </div>
-
-        <div class="hero-bubble hero-bubble-small">
-          <p style="margin:0; font-size:15px; line-height:1.5;">
-            👉 Mostramos como um bot real responde antes de contratar
-          </p>
-        </div>
-
-        <div class="marquesina">
-          ⚡ Agentes de voz + bots conversacionais com IA + sites + automação de processos + BI em uma só solução ⚡
         </div>
       </header>
 
