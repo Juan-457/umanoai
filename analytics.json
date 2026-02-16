@@ -1,10 +1,10 @@
 {
-  "usuarios": 164,
-  "sesiones": 194,
-  "paginas_vistas": 223,
+  "usuarios": 165,
+  "sesiones": 195,
+  "paginas_vistas": 224,
   "interaccion_media_seg": 1650,
-  "rebote": 87.62886597938144,
+  "rebote": 87.6923076923077,
   "conversiones": 2,
-  "tasa_conversion": 1.0309278350515463,
+  "tasa_conversion": 1.0256410256410255,
   "trafico_organico": null
 }
