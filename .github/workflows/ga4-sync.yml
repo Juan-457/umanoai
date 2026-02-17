@@ -1,0 +1,43 @@
+name: Sync GA4 analytics
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install google-auth requests
+
+      - name: Update analytics files from GA4
+        env:
+          GA_SERVICE_ACCOUNT_JSON: ${{ secrets.GA_SERVICE_ACCOUNT_JSON }}
+          GA4_PROPERTY_ID: ${{ vars.GA4_PROPERTY_ID || '514206699' }}
+          GA4_WAIT_SECONDS: ${{ vars.GA4_WAIT_SECONDS || '60' }}
+        run: python scripts/update_analytics.py
+
+      - name: Commit and push changes
+        run: |
+          if git diff --quiet -- analytics.json eventosclaves.json; then
+            echo "No hay cambios en analytics.json/eventosclaves.json"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add analytics.json eventosclaves.json
+          git commit -m "chore: actualizar métricas de GA4"
+          git push
