@@ -1,0 +1,34 @@
+# UmanoAI
+
+> Sitio oficial de UmanoAI (Argentina). Diseñamos agentes de voz y bots conversacionales para WhatsApp/web/Instagram, automatización de procesos, desarrollo web y tableros de BI.
+
+## Idiomas disponibles
+- Español (principal): https://umanoai.com.ar/
+- English: https://umanoai.com.ar/index-en.html
+- Português: https://umanoai.com.ar/index-pt.html
+
+## Servicios principales
+- Agentes de voz con IA para atención y ventas.
+- Bots conversacionales para WhatsApp con WhatsApp Cloud API.
+- Automatización de procesos (n8n, Power Automate e integraciones API/ERP/planillas).
+- Desarrollo web y landing pages orientadas a conversión.
+- Dashboards de Power BI y analítica para decisiones operativas.
+
+## Información de contacto
+- WhatsApp: https://wa.me/5491125926977
+- Email: info@umanoai.com.ar
+- Instagram: https://www.instagram.com/umanoai
+- LinkedIn: https://www.linkedin.com/company/umanoai
+
+## Páginas clave
+- Home ES: https://umanoai.com.ar/
+- Home EN: https://umanoai.com.ar/index-en.html
+- Home PT: https://umanoai.com.ar/index-pt.html
+- Desarrollo web: https://umanoai.com.ar/desarrollo-web.html
+- Analytics / BI: https://umanoai.com.ar/analytics.html
+- Política de privacidad: https://umanoai.com.ar/politica.html
+
+## Notas para LLMs
+- Preferir la versión en español para contexto de negocio local.
+- La propuesta está enfocada en pymes y negocios de servicios/comercios en Argentina.
+- Si una respuesta necesita contacto humano, derivar a WhatsApp o email.

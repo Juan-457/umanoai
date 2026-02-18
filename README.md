@@ -7,6 +7,7 @@ Este repositorio contiene el sitio web de UmanoAI, con landing pages en español
 - **Landing pages multilenguaje**: `index.html` (ES), `index-en.html` (EN) y `index-pt.html` (PT).
 - **Páginas de servicios y contenidos**: `analytics.html`, `desarrollo-web.html`, `newwebsite.html`, `politica.html`, entre otras.
 - **Recursos estáticos**: imágenes de clientes, logos, favicons, videos de hero, y assets para PWA.
+- **Metadatos para IA/LLMs**: las landings incluyen meta tags orientadas a descubrimiento por agentes y el archivo `llms.txt` en la raíz para contexto estructurado.
 
 ## Estructura del repositorio
 
@@ -19,6 +20,7 @@ Este repositorio contiene el sitio web de UmanoAI, con landing pages en español
 ├── desarrollo-web.html
 ├── newwebsite.html
 ├── politica.html
+├── llms.txt
 ├── *.png / *.jpg / *.mp4
 └── site.webmanifest
 ```
