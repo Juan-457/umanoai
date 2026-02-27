@@ -84,20 +84,30 @@
 
     .calendar-card {
       padding: 18px;
+      display: grid;
+      gap: 12px;
     }
 
     .calendar-title {
-      margin: 0 0 12px;
+      margin: 0;
       font-size: 1.1rem;
       color: var(--accent);
     }
 
-    .calendly-inline-widget {
+    .calendly-frame {
       width: 100%;
-      min-height: 760px;
+      height: clamp(760px, 82vh, 980px);
       border-radius: 12px;
       overflow: hidden;
       background: #fff;
+    }
+
+    .calendly-inline-widget {
+      width: 100% !important;
+      height: 100% !important;
+      min-width: 320px;
+      min-height: 760px;
+      border: 0;
     }
 
     .note {
@@ -134,11 +144,13 @@
     <section class="calendar-card">
       <h2 class="calendar-title">Agenda de reservas (Calendly)</h2>
 
-      <div
-        class="calendly-inline-widget"
-        data-url="https://calendly.com/galvan457/30min"
-
-      ></div>
+      <div class="calendly-frame">
+        <div
+          class="calendly-inline-widget"
+          data-url="https://calendly.com/galvan457/30min"
+          style="min-width:320px;height:100%;"
+        ></div>
+      </div>
       <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
       <p class="note">
