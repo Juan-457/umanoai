@@ -3,9 +3,10 @@
 <html class="dark" lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skol Barbería - Estilo y Tradición</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
@@ -13,142 +14,225 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#ec9213",
+                        "primary": "#eca413",
                         "background-light": "#f8f7f6",
-                        "background-dark": "#1a1612",
-                        "neutral-dark": "#2a241e",
+                        "background-dark": "#221c10",
                     },
                     fontFamily: {
-                        "display": ["Manrope", "sans-serif"]
+                        "display": ["Work Sans", "sans-serif"]
                     },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
                 },
             },
         }
     </script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        body {
+            font-family: 'Work Sans', sans-serif;
         }
     </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
 <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-<!-- Header -->
-<header class="sticky top-0 z-50 flex items-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md p-4 justify-between border-b border-primary/10">
-<div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-<span class="material-symbols-outlined text-primary">menu</span>
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+<div class="flex items-center gap-3 text-primary">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-background-dark">
+<span class="material-symbols-outlined text-2xl font-bold">content_cut</span>
 </div>
-<h2 class="text-slate-900 dark:text-slate-100 text-lg font-extrabold tracking-tight flex-1 text-center">SKOL BARBERÍA</h2>
-<div class="flex w-10 items-center justify-end">
-<button class="flex items-center justify-center rounded-full size-10 bg-primary text-background-dark">
-<span class="material-symbols-outlined text-[20px]">person</span>
-</button>
+<h2 class="text-xl font-black uppercase tracking-wider text-slate-900 dark:text-slate-100">Skol Barbería</h2>
+</div>
+<nav class="hidden flex-1 justify-center gap-10 md:flex">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Inicio</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#servicios">Servicios</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#galeria">Galería</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#contacto">Contacto</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-background-dark transition-all hover:bg-primary/90 sm:block">
+                        Reservar Ahora
+                    </button>
+<div class="h-10 w-10 overflow-hidden rounded-full border-2 border-primary/30">
+<img class="h-full w-full object-cover" data-alt="Avatar of a stylish customer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR3s1WBPkqbJIzDyjKsgIw-WuCmBAN4PbVkhaWuQZOtQiSFeneGDNI6HqJ01NknGsZoxuqw_LzNmJizeZZ4taOiUvXEhpLMyfomOYHAhpsvadB3_6f2975-HnFxs01lYR1m0L9YsNWYbGh163livUnul6eo7MFydwZo1-bJ1JksXnu97f_jJJGdITeWB7AF-ncZ0laLYJfPDf_EvMIfqrD0ay2R1AJW656__p-4n3P3aLSIRYPoFXMLtKDJneHr1BUDOpYxTxBYDqa"/>
+</div>
+</div>
 </div>
 </header>
+<main class="flex-grow">
 <!-- Hero Section -->
-<section class="px-4 py-4">
-<div class="relative h-80 w-full overflow-hidden rounded-xl bg-neutral-dark">
-<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent z-10"></div>
-<img alt="Professional barber at work" class="h-full w-full object-cover" data-alt="Professional barber performing a precision haircut" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaMkSiOlzuA0E4nH_VCMmOvdg9E6fLQvw7DcuFrAzEi_GGFBMRmdanjxJaH01agKg1y70rirnh2a7_flsZG5thxT_U6PGwUw2YozPe-Jvcowa3H3s-lUeM2DJB-1T4h3YH-VEQ9Rxdy0zogxlJ3m32wS4Pw3A906a04jit5FVn9kacSR4t1osgbLAqeLQpJJDi2kYAvdC2KreEzhO-n9rXBw4t2wO76gTU1C82QxpWc-wIkfslZKMvUVA6OWR57cGOkoY5Ok-SEh1K"/>
-<div class="absolute bottom-0 left-0 p-6 z-20 w-full">
-<span class="inline-block px-3 py-1 mb-3 rounded-full bg-primary text-[10px] font-bold uppercase tracking-widest text-background-dark">Premium Experience</span>
-<h1 class="text-white text-3xl font-extrabold leading-tight tracking-tight">Estilo y Tradición</h1>
+<section class="relative h-[80vh] w-full overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-background-dark via-background-dark/60 to-transparent z-10"></div>
+<img class="h-full w-full object-cover grayscale-[20%] brightness-75" data-alt="Interior of a luxury modern barbershop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1TBZtoJYwTzkFKQSU59bYWRJ_Y-5pnDpORvj4YL3OQzWCF8-3n0kCb4JL8OQrJq5L3bxYVswWbMrVA0UIEdzqrMSTefb3gO6YGkhbqOMTfL-gSyZ0R6KD-qYynA5krr1LtHH3kpoaipxByR9nWlIR9qo8RtOqQTzNDwsACcpjJcc0Cc0cbaEsdKQPjpLdlSBWiDKKm7Ilq_RWPPxvAjwz93cuzvCliOuKduPicj3nFzIbXAq59haeoYQjyJuSLFecjjdi3tL1qSyP"/>
+</div>
+<div class="relative z-20 flex h-full items-center px-6 lg:px-20">
+<div class="max-w-3xl space-y-6">
+<div class="inline-block rounded-full bg-primary/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary border border-primary/30">
+                            Experiencia Premium
+                        </div>
+<h1 class="text-5xl font-black leading-tight tracking-tight text-white md:text-7xl">
+                            Skol Barbería:<br/><span class="text-primary">Estilo y Tradición</span>
+</h1>
+<p class="max-w-lg text-lg text-slate-300">
+                            Donde la maestría clásica se encuentra con el estilo moderno. Vive la experiencia de un corte premium diseñado para el hombre contemporáneo.
+                        </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="rounded-lg bg-primary px-8 py-4 text-base font-bold text-background-dark transition-all hover:scale-105 active:scale-95">
+                                Reservar Cita
+                            </button>
+<button class="rounded-lg border-2 border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all hover:bg-white/10">
+                                Ver Servicios
+                            </button>
 </div>
 </div>
-</section>
-<!-- Introduction -->
-<section class="px-6 py-4 text-center">
-<p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
-                Descubre la combinación perfecta entre técnica clásica y modernidad en un ambiente diseñado para el hombre actual que valora la excelencia.
-            </p>
-<div class="mt-6">
-<button class="w-full py-4 bg-primary text-background-dark font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
-                    Reservar Cita Ahora
-                </button>
 </div>
 </section>
 <!-- Services Section -->
-<section class="px-6 py-8">
-<div class="flex items-center justify-between mb-6">
-<h3 class="text-xl font-bold tracking-tight">Servicios Core</h3>
-<a class="text-primary text-sm font-semibold" href="#">Ver todos</a>
+<section class="py-24 px-6 lg:px-20" id="servicios">
+<div class="mx-auto max-w-7xl">
+<div class="mb-16 text-center">
+<h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-2">Qué hacemos</h2>
+<h3 class="text-4xl font-black text-slate-900 dark:text-slate-100">Nuestros Servicios Exclusivos</h3>
+<div class="mx-auto mt-4 h-1 w-20 bg-primary"></div>
 </div>
-<div class="space-y-4">
-<!-- Service Item 1 -->
-<div class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-neutral-dark border border-slate-200 dark:border-primary/10">
-<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-<span class="material-symbols-outlined">content_cut</span>
+<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+<!-- Service Card 1 -->
+<div class="group flex flex-col gap-6 rounded-xl border border-primary/10 bg-white p-8 shadow-xl transition-all hover:-translate-y-2 hover:border-primary/40 dark:bg-primary/5">
+<div class="flex h-14 w-14 items-center justify-center rounded-lg bg-primary text-background-dark transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-3xl">content_cut</span>
 </div>
-<div class="flex-1">
-<h4 class="font-bold text-slate-900 dark:text-slate-100">Corte de Cabello</h4>
-<p class="text-xs text-slate-500 dark:text-slate-400">Asesoría de imagen y lavado premium.</p>
-</div>
-<div class="text-primary font-bold">$25</div>
-</div>
-<!-- Service Item 2 -->
-<div class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-neutral-dark border border-slate-200 dark:border-primary/10">
-<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-<span class="material-symbols-outlined">face</span>
-</div>
-<div class="flex-1">
-<h4 class="font-bold text-slate-900 dark:text-slate-100">Afeitado Clásico</h4>
-<p class="text-xs text-slate-500 dark:text-slate-400">Toalla caliente y navaja tradicional.</p>
-</div>
-<div class="text-primary font-bold">$20</div>
-</div>
-<!-- Service Item 3 -->
-<div class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-neutral-dark border border-slate-200 dark:border-primary/10">
-<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-<span class="material-symbols-outlined">brush</span>
-</div>
-<div class="flex-1">
-<h4 class="font-bold text-slate-900 dark:text-slate-100">Cuidado de Barba</h4>
-<p class="text-xs text-slate-500 dark:text-slate-400">Perfilado y nutrición con aceites.</p>
-</div>
-<div class="text-primary font-bold">$15</div>
+<div class="space-y-3">
+<h4 class="text-xl font-bold text-slate-900 dark:text-slate-100 uppercase tracking-tight">Corte de Cabello</h4>
+<p class="text-slate-600 dark:text-slate-400">Corte personalizado con acabado profesional. Incluye lavado y peinado con productos de alta gama.</p>
+<div class="pt-4 text-2xl font-black text-primary">$25</div>
 </div>
 </div>
-</section>
-<!-- Location Preview (Minimal) -->
-<section class="px-6 py-4 mb-24">
-<div class="p-6 rounded-xl bg-primary/5 border border-primary/20">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-primary">location_on</span>
-<span class="font-bold">Visítanos</span>
+<!-- Service Card 2 -->
+<div class="group flex flex-col gap-6 rounded-xl border border-primary/10 bg-white p-8 shadow-xl transition-all hover:-translate-y-2 hover:border-primary/40 dark:bg-primary/5">
+<div class="flex h-14 w-14 items-center justify-center rounded-lg bg-primary text-background-dark transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-3xl">face_6</span>
 </div>
-<p class="text-sm text-slate-600 dark:text-slate-400">Av. Principal 123, Distrito Central.</p>
-<div class="mt-4 h-32 w-full rounded-lg overflow-hidden bg-neutral-dark relative">
-<img alt="Map location" class="h-full w-full object-cover opacity-50 grayscale" data-alt="Map showing barber shop location" data-location="Madrid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeyz_xh7avrxnvavbmttJNYZe_RN2y6SAnAbYDkeWbkNJsosRRh0i8nLZkMbCVIxlmJrM9gFtiKBRa9Pcgc_YneQO9CkVxkHsxJhq6a66vOERZVAQD_dLiHVbzxJQ-M2PirLySAMI-MeYmhCnjN2y2l5bE2WTycoLiOTuM3gPvka7YTC95CGe7qVPWD4o2L-2C5djZqow-g3Umj84LZpFyafv8tP2bk73JCRoRG0XTnkD4J93gvy2W79ghq76a-cwq3aaQ5ZaNRR-H"/>
-<div class="absolute inset-0 flex items-center justify-center">
-<div class="size-8 bg-primary rounded-full animate-pulse border-4 border-background-dark"></div>
+<div class="space-y-3">
+<h4 class="text-xl font-bold text-slate-900 dark:text-slate-100 uppercase tracking-tight">Arreglo de Barba</h4>
+<p class="text-slate-600 dark:text-slate-400">Perfilado y cuidado de barba con toalla caliente y aceites esenciales para una hidratación profunda.</p>
+<div class="pt-4 text-2xl font-black text-primary">$15</div>
+</div>
+</div>
+<!-- Service Card 3 -->
+<div class="group flex flex-col gap-6 rounded-xl border border-primary/10 bg-white p-8 shadow-xl transition-all hover:-translate-y-2 hover:border-primary/40 dark:bg-primary/5">
+<div class="flex h-14 w-14 items-center justify-center rounded-lg bg-primary text-background-dark transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-3xl">spa</span>
+</div>
+<div class="space-y-3">
+<h4 class="text-xl font-bold text-slate-900 dark:text-slate-100 uppercase tracking-tight">Tratamientos Faciales</h4>
+<p class="text-slate-600 dark:text-slate-400">Limpieza profunda y revitalización facial. Elimina impurezas y refresca tu rostro.</p>
+<div class="pt-4 text-2xl font-black text-primary">$20</div>
+</div>
 </div>
 </div>
 </div>
 </section>
-<!-- Bottom Navigation Bar -->
-<nav class="fixed bottom-0 left-0 right-0 z-50 flex border-t border-slate-200 dark:border-primary/20 bg-background-light dark:bg-background-dark/95 backdrop-blur-lg px-4 pb-6 pt-3">
-<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
-<span class="material-symbols-outlined fill-1">home</span>
-<p class="text-[10px] font-bold uppercase tracking-wider">Inicio</p>
+<!-- Gallery Section -->
+<section class="bg-primary/5 py-24 px-6 lg:px-20" id="galeria">
+<div class="mx-auto max-w-7xl">
+<div class="mb-12 flex flex-col items-end justify-between gap-4 md:flex-row">
+<div>
+<h2 class="text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-slate-100">Galería de Estilos</h2>
+<p class="mt-2 text-slate-600 dark:text-slate-400">Echa un vistazo a nuestros últimos trabajos.</p>
+</div>
+<button class="text-sm font-bold text-primary hover:underline flex items-center gap-2">
+                            Ver Instagram <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+<div class="group relative aspect-square overflow-hidden rounded-xl">
+<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close up of a fade haircut" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD12U8AvtcFnbqSd-SQN1_JbWNxrK2bXHehKZhUB3wSqqlnpHyjnlHQA9J3ArKavwkMb-9TPdJymJGN6e1MPd56fEHj0NF7_i2buWiYcHjAevCA6GeVC4A-JcXJq46OfI3uWgy-Pnv35OUV_iSXFzHULC6m4R04KFG49pQe1QFu2-ax-hnBHxRJL7FN85pZE5myNlCkYZisaJPaM5w6vYnE7LoH7lQW9aT_8X3bi-VFEk8ZjkK-aGfgts852nDZEN27q_rk2hStn8iS"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 transition-opacity group-hover:opacity-100"></div>
+</div>
+<div class="group relative aspect-square overflow-hidden rounded-xl">
+<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Man getting beard trim with razor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxd6N1bg6GyIWL-rJlzSvNHBAoPrBIZsOQgoJCiv5TWj_Arx8fbBdQ1rt5IAc1gkwJDSfrAspOX_JSsRTS2arNLUifIm6cwIp-MPbcFWcX9ABvfoRkstsHWW5RVcPR5PZkaHoytbhfdgsxcNsmZXl0p6jKh0RMWggUVOxtSEhxytjEC44F0Po965nNPcuwvoMS38VUC5sRUg5u0_uGOKb-HA7EAW3COoRc58y9rsNGZz0hxtdrJXWIb9cKLXIpEjfgDG19n_6ezTB2"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 transition-opacity group-hover:opacity-100"></div>
+</div>
+<div class="group relative aspect-square overflow-hidden rounded-xl">
+<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Detailed hair styling in barbershop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALh03CD6aNbTfql0btt_NdgyxonObtWWn9daHaIwilsi8W0bPHxxKmNGmqECFfy4poIAEmvaNIfDuVDE7mD9x4mGPZdf67It2IaRv9F_z-H0SUchaYvfDXj1w_L_fpedKtqG074Z3thDA7m7ijDoJBvApXNeEOlYTQ6Tfe01K-hJswMZ-ixqct9EnFnHtwDR7IMciny8eNUy8-4ckZL2DTw2VE9sWmw0McV6mD4Z-Ghw-sFXiaqSGoj_yow1YhkPODUfC8E5LRQJ0I"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 transition-opacity group-hover:opacity-100"></div>
+</div>
+<div class="group relative aspect-square overflow-hidden rounded-xl">
+<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Modern barbershop chair and equipment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1xTwhJSFZYfmGXqganrN-aoaDYNZwwQuo3V8vn7m5O3VrD07qX_P-5wl44MxIIpps8f5mEAhaLUKOkWMi3vrbujrvBgIuKAlTU9bfhioCqzOVSvM8UgpyB3s-JagWtxEI8yXjkU97SLS-e7o3dPg4GvAQ3Z2kV37Y03tvzP5QLMz8EOhsIYIySWXVMsfYpHAlGQHalx46LXDO28p7lK3uIy3IHw8_JacJkf9PSnONijOa459759ZMFDMWEZ7HV7j_HAkLkKcP4ddn"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 transition-opacity group-hover:opacity-100"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Banner -->
+<section class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+<div class="relative overflow-hidden rounded-2xl bg-primary px-8 py-16 text-center text-background-dark lg:px-20">
+<div class="relative z-10 mx-auto max-w-2xl space-y-6">
+<h2 class="text-4xl font-black uppercase md:text-5xl">¿Listo para un cambio de imagen?</h2>
+<p class="text-lg font-medium opacity-90">No esperes más para conseguir el look que mereces. Agenda tu cita en segundos.</p>
+<button class="mt-4 rounded-full bg-background-dark px-10 py-4 text-lg font-black uppercase text-primary transition-all hover:scale-105 active:scale-95 shadow-xl">
+                            Reservar mi Turno
+                        </button>
+</div>
+<!-- Decorative Elements -->
+<span class="material-symbols-outlined absolute -left-10 -top-10 text-[200px] opacity-10">content_cut</span>
+<span class="material-symbols-outlined absolute -right-10 -bottom-10 text-[200px] opacity-10">face_6</span>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-primary/10 bg-background-light py-16 dark:bg-background-dark" id="contacto">
+<div class="mx-auto max-w-7xl px-6 lg:px-10">
+<div class="grid grid-cols-1 gap-12 md:grid-cols-4">
+<div class="space-y-6">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-2xl font-bold">content_cut</span>
+<h2 class="text-xl font-black uppercase tracking-wider text-slate-900 dark:text-slate-100">Skol</h2>
+</div>
+<p class="text-slate-600 dark:text-slate-400">Excelencia en peluquería masculina. Tradición artesana y las últimas tendencias.</p>
+<div class="flex gap-4">
+<a class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-background-dark transition-colors" href="#">
+<span class="material-symbols-outlined">share</span>
 </a>
-<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
-<span class="material-symbols-outlined">content_cut</span>
-<p class="text-[10px] font-bold uppercase tracking-wider">Servicios</p>
+<a class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-background-dark transition-colors" href="#">
+<span class="material-symbols-outlined">public</span>
 </a>
-<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
-<span class="material-symbols-outlined">calendar_month</span>
-<p class="text-[10px] font-bold uppercase tracking-wider">Citas</p>
-</a>
-<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
-<span class="material-symbols-outlined">account_circle</span>
-<p class="text-[10px] font-bold uppercase tracking-wider">Perfil</p>
-</a>
-</nav>
+</div>
+</div>
+<div>
+<h4 class="mb-6 text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100">Horario</h4>
+<ul class="space-y-3 text-slate-600 dark:text-slate-400">
+<li class="flex justify-between"><span>Lun - Vie:</span> <span>9:00 - 20:00</span></li>
+<li class="flex justify-between"><span>Sábado:</span> <span>10:00 - 18:00</span></li>
+<li class="flex justify-between"><span>Domingo:</span> <span>Cerrado</span></li>
+</ul>
+</div>
+<div>
+<h4 class="mb-6 text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100">Contacto</h4>
+<ul class="space-y-3 text-slate-600 dark:text-slate-400">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">call</span> +34 912 345 678</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">mail</span> info@skolbarberia.com</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">location_on</span> Calle Principal 123, Madrid</li>
+</ul>
+</div>
+<div>
+<h4 class="mb-6 text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100">Newsletter</h4>
+<form class="space-y-4">
+<input class="w-full rounded-lg border-primary/20 bg-primary/5 px-4 py-2 text-slate-100 placeholder-slate-500 focus:border-primary focus:ring-primary" placeholder="Tu email" type="email"/>
+<button class="w-full rounded-lg bg-primary py-2 font-bold text-background-dark hover:bg-primary/90">Suscribirse</button>
+</form>
+</div>
+</div>
+<div class="mt-16 border-t border-primary/10 pt-8 text-center text-sm text-slate-500">
+<p>© 2024 Skol Barbería. Todos los derechos reservados.</p>
+</div>
+</div>
+</footer>
 </div>
 </body></html>
