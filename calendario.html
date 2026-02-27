@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barbería El Corte - Reservas Online</title>
+  <style>
+    :root {
+      --bg: #0f0f12;
+      --card: #1a1a20;
+      --text: #f4f4f5;
+      --accent: #d4af37;
+      --muted: #b7b7c0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(circle at top, #1e1f28 0%, var(--bg) 45%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .container {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 24px;
+    }
+
+    .hero,
+    .calendar-card {
+      background: rgba(26, 26, 32, 0.92);
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero {
+      padding: 28px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .badge {
+      width: fit-content;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(212, 175, 55, 0.12);
+      color: var(--accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      line-height: 1.15;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      max-width: 70ch;
+      line-height: 1.6;
+    }
+
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .calendar-card {
+      padding: 18px;
+    }
+
+    .calendar-title {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    .calendly-inline-widget {
+      width: 100%;
+      min-height: 760px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .note {
+      margin: 12px 0 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: #ffe9a4;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <span class="badge">Barbería El Corte</span>
+      <h1>Agenda tu turno en línea</h1>
+      <p class="lead">
+        Esta es una página de ejemplo para mostrar turnos disponibles de una barbería
+        con integración visible de Calendly directamente en el sitio.
+      </p>
+      <div class="details">
+        <span>📍 Av. Principal 123</span>
+        <span>📞 +54 11 5555-1234</span>
+        <span>🕒 Lun a Sáb · 09:00 - 20:00</span>
+      </div>
+    </section>
+
+    <section class="calendar-card">
+      <h2 class="calendar-title">Agenda de reservas (Calendly)</h2>
+
+      <div
+        class="calendly-inline-widget"
+        data-url="https://calendly.com/galvan457/30min"
+
+      ></div>
+      <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+      <p class="note">
+        Integración activa con Calendly usando tu enlace de reservas.
+        Si en el futuro cambias de cuenta o tipo de turno, solo actualiza la URL
+        en <code>data-url=...</code>.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
