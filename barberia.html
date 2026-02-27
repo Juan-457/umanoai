@@ -185,6 +185,16 @@
 <span class="material-symbols-outlined absolute -right-10 -bottom-10 text-[200px] opacity-10">face_6</span>
 </div>
 </section>
+<!-- Calendly Section -->
+<section class="hidden px-6 pb-20 lg:px-20" id="calendly-section">
+<div class="mx-auto max-w-7xl rounded-2xl border border-primary/30 bg-white p-6 shadow-2xl dark:bg-slate-900 md:p-8">
+<h3 class="mb-4 text-2xl font-black text-slate-900 dark:text-slate-100">Agenda tu cita</h3>
+<p class="mb-6 text-slate-600 dark:text-slate-400">Selecciona el día y horario que más te convenga en nuestro calendario online.</p>
+<div class="overflow-hidden rounded-xl bg-white" style="height: min(82vh, 980px); min-height: 760px;">
+<div class="calendly-inline-widget h-full w-full" data-url="https://calendly.com/galvan457/30min" style="min-width:320px;height:100%;"></div>
+</div>
+</div>
+</section>
 </main>
 <!-- Footer -->
 <footer class="border-t border-primary/10 bg-background-light py-16 dark:bg-background-dark" id="contacto">
@@ -235,4 +245,19 @@
 </div>
 </footer>
 </div>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+    const calendlySection = document.getElementById('calendly-section');
+    const reservaButtons = Array.from(document.querySelectorAll('button')).filter((button) => {
+        const label = button.textContent?.trim().toLowerCase() ?? '';
+        return label.includes('reservar');
+    });
+
+    reservaButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            calendlySection.classList.remove('hidden');
+            calendlySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+</script>
 </body></html>
