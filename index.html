@@ -2073,13 +2073,14 @@
 
           <div style="max-width:720px;margin:18px auto 0;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;">
             <h3 style="margin:0 0 10px;">✍️ O dejanos tus datos y te contactamos</h3>
-            <form action="https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/ccd8f926357f476d92fbacaa4b1a26e8/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=gCbQihJEwY-sO3wVbD7NeRBMkt8PoW29KqN5amcmNlM" method="post" target="_blank">
+            <form id="lead-form" action="https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/ccd8f926357f476d92fbacaa4b1a26e8/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=gCbQihJEwY-sO3wVbD7NeRBMkt8PoW29KqN5amcmNlM">
               <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
                 <input required name="nombre" placeholder="Nombre" style="padding:10px;border:1px solid #d1d5db;border-radius:8px;">
                 <input name="rubro" placeholder="Rubro" style="padding:10px;border:1px solid #d1d5db;border-radius:8px;">
               </div>
               <textarea required name="problema" placeholder="¿Cuál es tu principal problema hoy?" style="margin-top:10px;width:100%;min-height:90px;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></textarea>
               <button class="btn-secundaria" type="submit" style="margin-top:10px;">Enviar diagnóstico rápido</button>
+              <p id="lead-form-status" style="margin-top:8px;font-size:.92rem;color:#4b5563;"></p>
             </form>
           </div>
         </div>
@@ -2109,6 +2110,51 @@
                 if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
             });
+          });
+        });
+      </script>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const form = document.getElementById("lead-form");
+          const status = document.getElementById("lead-form-status");
+          if (!form) return;
+
+          form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            const payload = {
+              nombre: (form.nombre?.value || "").trim(),
+              rubro: (form.rubro?.value || "").trim(),
+              problema: (form.problema?.value || "").trim(),
+              source: "umanoai_web",
+              timestamp: new Date().toISOString()
+            };
+
+            if (!payload.nombre || !payload.problema) {
+              if (status) status.textContent = "Completá nombre y problema para enviar.";
+              return;
+            }
+
+            try {
+              if (btn) { btn.disabled = true; btn.textContent = "Enviando..."; }
+              if (status) status.textContent = "Enviando...";
+
+              const res = await fetch(form.action, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+              });
+
+              if (!res.ok) throw new Error(`HTTP ${res.status}`);
+              if (status) status.textContent = "¡Gracias! Te vamos a contactar pronto.";
+              form.reset();
+            } catch (err) {
+              console.error(err);
+              if (status) status.textContent = "No se pudo enviar ahora. Escribinos por WhatsApp y lo resolvemos al toque.";
+            } finally {
+              if (btn) { btn.disabled = false; btn.textContent = "Enviar diagnóstico rápido"; }
+            }
           });
         });
       </script>
