@@ -437,6 +437,22 @@
       transform:translateY(-1px);
     }
 
+    /* Unificamos color para CTAs de contacto (WhatsApp)
+       y dejamos otro color para botones de navegación/selección */
+    .um a[href*="wa.me"].btn-primaria,
+    .um a[href*="wa.me"].btn-secundaria{
+      background:linear-gradient(135deg,#2563eb,#1d4ed8);
+      color:#eff6ff;
+      border-color:rgba(147,197,253,0.75);
+      box-shadow:0 8px 22px rgba(37,99,235,0.36);
+    }
+
+    .um a[href*="wa.me"].btn-primaria:hover,
+    .um a[href*="wa.me"].btn-secundaria:hover{
+      background:linear-gradient(135deg,#3b82f6,#2563eb);
+      box-shadow:0 10px 26px rgba(37,99,235,0.46);
+    }
+
     .um .marquesina{
       position:absolute;
       bottom:16px;
@@ -1566,7 +1582,7 @@
             <button class="btn-secundaria pain-btn" data-msg="Hola, pierdo tiempo en tareas manuales y quiero automatizar procesos." data-target="#soluciones">⚙️ Pierdo tiempo en tareas manuales</button>
             <button class="btn-secundaria pain-btn" data-msg="Hola, mi web no convierte y quiero mejorar captación de leads." data-target="#planes">🌐 Mi web no convierte</button>
           </div>
-          <p style="text-align:center;margin-top:14px;">
+          <p style="display:flex;justify-content:center;margin-top:14px;">
             <a id="cta-dinamico" href="https://wa.me/5491125926977?text=Hola%20quiero%20resolver%20mi%20principal%20dolor%20de%20negocio" class="btn-primaria" target="_blank" rel="noopener">🚀 Hablar con el equipo (IA + persona real)</a>
           </p>
         </div>
