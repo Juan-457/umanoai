@@ -2077,6 +2077,7 @@
               <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
                 <input required name="nombre" placeholder="Nombre" style="padding:10px;border:1px solid #d1d5db;border-radius:8px;">
                 <input name="rubro" placeholder="Rubro" style="padding:10px;border:1px solid #d1d5db;border-radius:8px;">
+                <input name="telefonoEmail" placeholder="Teléfono o Email" style="padding:10px;border:1px solid #d1d5db;border-radius:8px;">
               </div>
               <textarea required name="problema" placeholder="¿Cuál es tu principal problema hoy?" style="margin-top:10px;width:100%;min-height:90px;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></textarea>
               <button class="btn-secundaria" type="submit" style="margin-top:10px;">Enviar diagnóstico rápido</button>
@@ -2127,6 +2128,7 @@
               nombre: (form.nombre?.value || "").trim(),
               rubro: (form.rubro?.value || "").trim(),
               problema: (form.problema?.value || "").trim(),
+              "Telefono/Email": (form.telefonoEmail?.value || "").trim(),
               source: "umanoai_web",
               timestamp: new Date().toISOString()
             };
