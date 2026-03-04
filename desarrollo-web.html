@@ -1637,12 +1637,12 @@
       { src: "logo-cabana-alpina.png",    alt: "Cabaña Alpina Don Elisario" },
       { src: "logo-la-angelica.png",      alt: "La Angélica Casa de Campo" },
       { src: "logo-suarez-pastas.png",    alt: "Suarez Pastas" },
-      { src: "logo-mauregui.png",         alt: "Mauregui Automotores" },
-      { src: "logo-dsacine.jpg",          alt: "DSA CINE" },
-      { src: "logo-patricia-sebelli.png", alt: "Dra. Patricia Sebelli" },
-      { src: "logo-digiagro.png",         alt: "DigiAgro" },
-      { src: "Agricheck color.png", alt: "Agricheck" },
-      { src: "logo-mabe.png", alt: "Lectura Saludable" }
+      { src: "logo-mauregui.png",         alt: "Mauregui Automotores", href: "https://mauregui.com.ar" },
+      { src: "logo-dsacine.jpg",          alt: "DSA CINE", href: "https://dsacine.com.ar" },
+      { src: "logo-patricia-sebelli.png", alt: "Dra. Patricia Sebelli", href: "https://drapatriciasebelli.com.ar" },
+      { src: "logo-digiagro.png",         alt: "DigiAgro", href: "https://digiagro.com.ar" },
+      { src: "Agricheck color.png", alt: "Agricheck", href: "https://agrichecksrl.com" },
+      { src: "logo-mabe.png", alt: "Lectura Saludable", href: "https://lecturasaludable.com.ar" }
     ];
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -1654,6 +1654,21 @@
           img.src = logo.src;
           img.alt = logo.alt;
           img.loading = "lazy";
+
+          if (logo.href) {
+            img.style.cursor = "pointer";
+            img.addEventListener("click", () => window.open(logo.href, "_blank", "noopener"));
+            img.setAttribute("role", "link");
+            img.setAttribute("tabindex", "0");
+            img.setAttribute("aria-label", `Ir al sitio de ${logo.alt}`);
+            img.addEventListener("keydown", (event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                window.open(logo.href, "_blank", "noopener");
+              }
+            });
+          }
+
           track.appendChild(img);
         });
       }
@@ -1800,5 +1815,4 @@
   </script>
 </body>
 </html>
-
 
