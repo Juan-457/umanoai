@@ -1656,20 +1656,16 @@
           img.loading = "lazy";
 
           if (logo.href) {
-            img.style.cursor = "pointer";
-            img.addEventListener("click", () => window.open(logo.href, "_blank", "noopener"));
-            img.setAttribute("role", "link");
-            img.setAttribute("tabindex", "0");
-            img.setAttribute("aria-label", `Ir al sitio de ${logo.alt}`);
-            img.addEventListener("keydown", (event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                window.open(logo.href, "_blank", "noopener");
-              }
-            });
+            const enlace = document.createElement("a");
+            enlace.href = logo.href;
+            enlace.target = "_blank";
+            enlace.rel = "noopener";
+            enlace.ariaLabel = `Ir al sitio de ${logo.alt}`;
+            enlace.appendChild(img);
+            track.appendChild(enlace);
+          } else {
+            track.appendChild(img);
           }
-
-          track.appendChild(img);
         });
       }
       agregarLogos();
