@@ -1637,12 +1637,12 @@
       { src: "logo-cabana-alpina.png",    alt: "Cabaña Alpina Don Elisario" },
       { src: "logo-la-angelica.png",      alt: "La Angélica Casa de Campo" },
       { src: "logo-suarez-pastas.png",    alt: "Suarez Pastas" },
-      { src: "logo-mauregui.png",         alt: "Mauregui Automotores" },
-      { src: "logo-dsacine.jpg",          alt: "DSA CINE" },
-      { src: "logo-patricia-sebelli.png", alt: "Dra. Patricia Sebelli" },
-      { src: "logo-digiagro.png",         alt: "DigiAgro" },
-      { src: "Agricheck color.png", alt: "Agricheck" },
-      { src: "logo-mabe.png", alt: "Lectura Saludable" }
+      { src: "logo-mauregui.png",         alt: "Mauregui Automotores", href: "https://mauregui.com.ar" },
+      { src: "logo-dsacine.jpg",          alt: "DSA CINE", href: "https://dsacine.com.ar" },
+      { src: "logo-patricia-sebelli.png", alt: "Dra. Patricia Sebelli", href: "https://drapatriciasebelli.com.ar" },
+      { src: "logo-digiagro.png",         alt: "DigiAgro", href: "https://digiagro.com.ar" },
+      { src: "Agricheck color.png", alt: "Agricheck", href: "https://agrichecksrl.com" },
+      { src: "logo-mabe.png", alt: "Lectura Saludable", href: "https://lecturasaludable.com.ar" }
     ];
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -1654,7 +1654,18 @@
           img.src = logo.src;
           img.alt = logo.alt;
           img.loading = "lazy";
-          track.appendChild(img);
+
+          if (logo.href) {
+            const enlace = document.createElement("a");
+            enlace.href = logo.href;
+            enlace.target = "_blank";
+            enlace.rel = "noopener";
+            enlace.ariaLabel = `Ir al sitio de ${logo.alt}`;
+            enlace.appendChild(img);
+            track.appendChild(enlace);
+          } else {
+            track.appendChild(img);
+          }
         });
       }
       agregarLogos();
@@ -1800,5 +1811,4 @@
   </script>
 </body>
 </html>
-
 
