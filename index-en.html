@@ -1025,14 +1025,17 @@
       height:70px;
       width:auto;
       object-fit:contain;
-      opacity:0.85;
-      filter:grayscale(100%);
-      transition:opacity .2s ease, filter .2s ease, transform .2s ease;
+      background:#f8fafc;
+      padding:8px 12px;
+      border-radius:12px;
+      border:1px solid #dbe3ee;
+      opacity:1;
+      filter:none;
+      transition:transform .2s ease, box-shadow .2s ease;
     }
     .logos-track img:hover{
-      filter:grayscale(0%);
-      opacity:1;
       transform:scale(1.06);
+      box-shadow:0 8px 20px rgba(15,23,42,.12);
     }
     @keyframes scrollLogos {
       0% { transform: translateX(0); }
@@ -1627,7 +1630,55 @@
           </p>
 
           <div class="logos-slider">
-            <div class="logos-track" id="logos-track"></div>
+            <div class="logos-track" id="logos-track">
+              <a href="https://juan-457.github.io/donelisario/" target="_blank" rel="noopener" aria-label="Cabaña Alpina Don Elisario">
+                <img src="logo-cabana-alpina.png" alt="Cabaña Alpina Don Elisario" loading="lazy">
+              </a>
+              <img src="logo-la-angelica.png" alt="La Angélica Casa de Campo" loading="lazy">
+              <img src="logo-suarez-pastas.png" alt="Suarez Pastas" loading="lazy">
+              <a href="https://mauregui.com.ar" target="_blank" rel="noopener" aria-label="Mauregui Automotores">
+                <img src="logo-mauregui.png" alt="Mauregui Automotores" loading="lazy">
+              </a>
+              <a href="https://dsacine.com.ar" target="_blank" rel="noopener" aria-label="DSA CINE">
+                <img src="logo-dsacine.jpg" alt="DSA CINE" loading="lazy">
+              </a>
+              <a href="https://drapatriciasebelli.com.ar" target="_blank" rel="noopener" aria-label="Dra. Patricia Sebelli">
+                <img src="logo-patricia-sebelli.png" alt="Dra. Patricia Sebelli" loading="lazy">
+              </a>
+              <a href="https://digiagro.com.ar" target="_blank" rel="noopener" aria-label="DigiAgro">
+                <img src="logo-digiagro.png" alt="DigiAgro" loading="lazy">
+              </a>
+              <a href="https://agrichecksrl.com" target="_blank" rel="noopener" aria-label="Agricheck">
+                <img src="Agricheck color.png" alt="Agricheck" loading="lazy">
+              </a>
+              <a href="https://lecturasaludable.com.ar" target="_blank" rel="noopener" aria-label="Lectura Saludable">
+                <img src="logo-lectura-saludable.jpg" alt="Lectura Saludable" loading="lazy">
+              </a>
+
+              <a href="https://juan-457.github.io/donelisario/" target="_blank" rel="noopener" aria-label="Cabaña Alpina Don Elisario" aria-hidden="true" tabindex="-1">
+                <img src="logo-cabana-alpina.png" alt="" loading="lazy">
+              </a>
+              <img src="logo-la-angelica.png" alt="" loading="lazy" aria-hidden="true">
+              <img src="logo-suarez-pastas.png" alt="" loading="lazy" aria-hidden="true">
+              <a href="https://mauregui.com.ar" target="_blank" rel="noopener" aria-label="Mauregui Automotores" aria-hidden="true" tabindex="-1">
+                <img src="logo-mauregui.png" alt="" loading="lazy">
+              </a>
+              <a href="https://dsacine.com.ar" target="_blank" rel="noopener" aria-label="DSA CINE" aria-hidden="true" tabindex="-1">
+                <img src="logo-dsacine.jpg" alt="" loading="lazy">
+              </a>
+              <a href="https://drapatriciasebelli.com.ar" target="_blank" rel="noopener" aria-label="Dra. Patricia Sebelli" aria-hidden="true" tabindex="-1">
+                <img src="logo-patricia-sebelli.png" alt="" loading="lazy">
+              </a>
+              <a href="https://digiagro.com.ar" target="_blank" rel="noopener" aria-label="DigiAgro" aria-hidden="true" tabindex="-1">
+                <img src="logo-digiagro.png" alt="" loading="lazy">
+              </a>
+              <a href="https://agrichecksrl.com" target="_blank" rel="noopener" aria-label="Agricheck" aria-hidden="true" tabindex="-1">
+                <img src="Agricheck color.png" alt="" loading="lazy">
+              </a>
+              <a href="https://lecturasaludable.com.ar" target="_blank" rel="noopener" aria-label="Lectura Saludable" aria-hidden="true" tabindex="-1">
+                <img src="logo-lectura-saludable.jpg" alt="" loading="lazy">
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -2044,37 +2095,6 @@
             });
           });
         })();
-      </script>
-
-      <!-- ====================== JS: LOGOS CONFÍAN EN NOSOTROS ====================== -->
-      <script>
-        const logosConfian = [
-          { src: "logo-cabana-alpina.png",    alt: "Cabaña Alpina Don Elisario" },
-          { src: "logo-la-angelica.png",      alt: "La Angélica Casa de Campo" },
-          { src: "logo-suarez-pastas.png",    alt: "Suarez Pastas" },
-          { src: "logo-mauregui.png",         alt: "Mauregui Automotores" },
-          { src: "logo-dsacine.jpg",          alt: "DSA CINE" },
-          { src: "logo-patricia-sebelli.png", alt: "Dra. Patricia Sebelli" },
-          { src: "logo-digiagro.png",         alt: "DigiAgro" },
-          { src: "umanoai.png", alt: "UmanoAI" },
-          { src: "logo-mabe.png", alt: "Lectura Saludable" }
-        ];
-
-        document.addEventListener("DOMContentLoaded", () => {
-          const track = document.getElementById("logos-track");
-          if (!track) return;
-          function agregarLogos() {
-            logosConfian.forEach(logo => {
-              const img = document.createElement("img");
-              img.src = logo.src;
-              img.alt = logo.alt;
-              img.loading = "lazy";
-              track.appendChild(img);
-            });
-          }
-          agregarLogos();
-          agregarLogos();
-        });
       </script>
 
       <!-- ============================================================= -->
