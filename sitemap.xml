@@ -3,14 +3,68 @@
 
   <url>
     <loc>https://umanoai.com.ar/</loc>
-    <lastmod>2025-01-08</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://umanoai.com.ar/desarrollo-web.html</loc>
-    <lastmod>2025-01-08</lastmod>
+    <loc>https://umanoai.com.ar/index-en.html</loc>
+    <lastmod>2026-03-05</lastmod>
     <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/index-pt.html</loc>
+    <lastmod>2026-03-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/desarrollo-web.html</loc>
+    <lastmod>2026-03-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/analytics.html</loc>
+    <lastmod>2026-03-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/politica.html</loc>
+    <lastmod>2026-03-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/Eliminardatos.html</loc>
+    <lastmod>2026-03-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/barberia.html</loc>
+    <lastmod>2026-03-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/calendario.html</loc>
+    <lastmod>2026-03-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/index-dimension.html</loc>
+    <lastmod>2026-03-05</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/newwebsite.html</loc>
+    <lastmod>2026-03-05</lastmod>
+    <priority>0.6</priority>
   </url>
 
 </urlset>
