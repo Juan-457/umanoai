@@ -2842,5 +2842,44 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
+  <!-- Google tag (gtag.js) event - delayed navigation helper -->
+  <script>
+    // Helper function to delay opening a URL until a gtag event is sent.
+    // Call it in response to an action that should navigate to a URL.
+    function gtagSendEvent(url, target) {
+      var callback = function () {
+        if (typeof url === 'string') {
+          if (target === '_blank') {
+            window.open(url, '_blank', 'noopener');
+          } else {
+            window.location = url;
+          }
+        }
+      };
+
+      if (typeof gtag !== 'function') {
+        callback();
+        return false;
+      }
+
+      gtag('event', 'conversion_event_contact', {
+        'event_callback': callback,
+        'event_timeout': 2000,
+      });
+      return false;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var whatsappLinks = document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+      whatsappLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+          gtagSendEvent(link.href, link.target);
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>
