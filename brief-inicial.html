@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brief Inicial – Asistente Conversacional | UmanoAI</title>
+  <meta name="description" content="Formulario de brief inicial para crear asistentes conversacionales de UmanoAI." />
+  <style>
+    :root{
+      --azul:#008cff;
+      --bg:#020617;
+      --card:rgba(255,255,255,.97);
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#cbd5e1;
+      --ok:#16a34a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:#020617 url('fondo.png') center/cover fixed;
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:28px 16px 56px}
+    .brand{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+    .brand img{height:50px;width:auto}
+    .brand h1{margin:0;color:#fff;font-size:1.3rem}
+    .card{
+      background:var(--card);
+      border-radius:16px;
+      padding:22px;
+      box-shadow:0 10px 26px rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.35);
+    }
+    p.lead{margin-top:0;color:var(--muted)}
+    .section{padding-top:18px;margin-top:18px;border-top:1px dashed var(--border)}
+    .section h2{font-size:1.08rem;margin:0 0 12px;color:#0b3f7d}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    label{font-weight:600;font-size:.93rem}
+    input,textarea,select{
+      width:100%;padding:10px 11px;border:1px solid var(--border);border-radius:10px;
+      font:inherit;background:#fff;
+    }
+    textarea{min-height:88px;resize:vertical}
+    .checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px 12px;margin-top:8px}
+    .checks label{font-weight:500;display:flex;align-items:flex-start;gap:8px}
+    .checks input{width:auto;margin-top:3px}
+    .full{grid-column:1/-1}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+    button{border:0;border-radius:999px;padding:11px 17px;font-weight:700;cursor:pointer}
+    #submitBtn{background:var(--azul);color:#fff}
+    #clearBtn{background:#e2e8f0;color:#0f172a}
+    #status{margin-top:10px;font-weight:700}
+    #status.ok{color:var(--ok)}
+    #status.err{color:#b91c1c}
+    @media (max-width:760px){body{background-attachment:scroll}.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="brand">
+      <img src="umanoai.png" alt="UmanoAI" />
+      <h1>Brief Inicial – Asistente Conversacional</h1>
+    </div>
+
+    <form id="briefForm" class="card">
+      <p class="lead"><strong>Objetivo:</strong> este documento nos ayuda a entender tu negocio y crear una primera versión funcional del bot rápidamente, evitando errores por falta de contexto. No es necesario responder perfecto todo. Con información básica podemos avanzar y luego ajustamos. <strong>Tiempo estimado:</strong> 10–15 minutos.</p>
+
+      <section class="section">
+        <h2>1. Información básica de la empresa</h2>
+        <div class="row">
+          <div class="field"><label for="empresa_nombre">Nombre de la empresa</label><input id="empresa_nombre" name="empresa_nombre" /></div>
+          <div class="field"><label for="empresa_rubro">Rubro / actividad</label><input id="empresa_rubro" name="empresa_rubro" /></div>
+          <div class="field"><label for="empresa_ubicacion">Ciudad / Provincia / País</label><input id="empresa_ubicacion" name="empresa_ubicacion" /></div>
+          <div class="field"><label for="empresa_redes">Sitio web / Instagram / redes</label><input id="empresa_redes" name="empresa_redes" /></div>
+          <div class="field full"><label>Canales donde querés usar el bot</label><div class="checks"><label><input type="checkbox" name="canales" value="WhatsApp"> WhatsApp</label><label><input type="checkbox" name="canales" value="Web Chat"> Web Chat</label></div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>2. Qué hace tu empresa</h2>
+        <div class="field"><label for="empresa_que_hace">¿Qué vende o qué servicio brinda tu empresa?</label><textarea id="empresa_que_hace" name="empresa_que_hace"></textarea></div>
+        <div class="field"><label for="empresa_principal">¿Cuál es tu producto o servicio principal?</label><textarea id="empresa_principal" name="empresa_principal"></textarea></div>
+        <div class="field"><label for="empresa_diferencial">¿Qué te diferencia de tu competencia?</label><textarea id="empresa_diferencial" name="empresa_diferencial"></textarea></div>
+      </section>
+
+      <section class="section">
+        <h2>3. Objetivo del bot</h2>
+        <div class="field"><label>¿Para qué querés usar el bot? (marcá lo principal)</label><div class="checks" id="objetivos_bot"></div></div>
+        <div class="field"><label for="bot_logro">¿Qué debería lograr sí o sí el bot?</label><textarea id="bot_logro" name="bot_logro"></textarea></div>
+        <div class="field"><label for="bot_evitar">¿Qué problema querés evitar con el bot?</label><textarea id="bot_evitar" name="bot_evitar"></textarea></div>
+      </section>
+
+      <section class="section">
+        <h2>4. Qué consultas puede responder el bot</h2>
+        <div class="field"><label for="consultas_automaticas">¿Qué consultas querés que responda automáticamente?</label><textarea id="consultas_automaticas" name="consultas_automaticas"></textarea></div>
+      </section>
+
+      <section class="section">
+        <h2>5. Qué NO debe responder el bot</h2>
+        <div class="field"><label for="consultas_no">¿Qué temas nunca debería responder el bot?</label><textarea id="consultas_no" name="consultas_no"></textarea></div>
+      </section>
+
+      <section class="section">
+        <h2>6. Datos que querés pedir al usuario</h2>
+        <div class="field"><label>Marcá solo los necesarios</label><div class="checks" id="datos_usuario"></div></div>
+        <div class="field"><label for="datos_obligatorios">¿Qué datos son obligatorios antes de derivar a un asesor?</label><textarea id="datos_obligatorios" name="datos_obligatorios"></textarea></div>
+      </section>
+
+      <section class="section">
+        <h2>7. Derivación a una persona</h2>
+        <div class="field"><label for="derivacion_casos">¿En qué casos querés que el bot derive a un humano?</label><textarea id="derivacion_casos" name="derivacion_casos"></textarea></div>
+        <div class="row">
+          <div class="field"><label for="derivacion_a_quien">¿A quién debe derivar? (nombre/rol/área)</label><input id="derivacion_a_quien" name="derivacion_a_quien" /></div>
+          <div class="field"><label for="derivacion_reglas">¿Hay reglas para asignar asesores?</label><input id="derivacion_reglas" name="derivacion_reglas" /></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>8. Equipo comercial o de soporte</h2>
+        <div class="row">
+          <div class="field"><label for="asesor1">Asesor/persona 1 (nombre - zona/criterio - WhatsApp/teléfono)</label><textarea id="asesor1" name="asesor1"></textarea></div>
+          <div class="field"><label for="asesor2">Asesor/persona 2 (nombre - zona/criterio - WhatsApp/teléfono)</label><textarea id="asesor2" name="asesor2"></textarea></div>
+          <div class="field full"><label for="asesor3">Asesor/persona 3 (nombre - zona/criterio - WhatsApp/teléfono)</label><textarea id="asesor3" name="asesor3"></textarea></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>9. Productos o servicios principales</h2>
+        <div class="row">
+          <div class="field"><label for="producto1">Producto/servicio 1 - descripción breve</label><textarea id="producto1" name="producto1"></textarea></div>
+          <div class="field"><label for="producto2">Producto/servicio 2 - descripción breve</label><textarea id="producto2" name="producto2"></textarea></div>
+          <div class="field full"><label for="producto3">Producto/servicio 3 - descripción breve</label><textarea id="producto3" name="producto3"></textarea></div>
+        </div>
+        <div class="field"><label for="catalogo_ref">¿Tenés catálogo, web o PDF para usar como referencia?</label><input id="catalogo_ref" name="catalogo_ref" /></div>
+      </section>
+
+      <section class="section">
+        <h2>10. Preguntas frecuentes de clientes</h2>
+        <div class="field"><label for="preguntas_frecuentes">Agregá algunas preguntas típicas (una por línea)</label><textarea id="preguntas_frecuentes" name="preguntas_frecuentes"></textarea></div>
+      </section>
+
+      <section class="section">
+        <h2>11. Estilo de comunicación del bot</h2>
+        <div class="field"><label>¿Cómo debería sonar el bot?</label><div class="checks" id="estilo_bot"></div></div>
+        <div class="row">
+          <div class="field"><label for="uso_emojis">¿Querés que use emojis?</label><select id="uso_emojis" name="uso_emojis"><option>No</option><option>Algunos</option><option>Sí</option></select></div>
+          <div class="field"><label for="largo_mensajes">Preferís mensajes</label><select id="largo_mensajes" name="largo_mensajes"><option>Muy cortos</option><option selected>Normales</option><option>Explicativos</option></select></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>12. Integraciones o sistemas</h2>
+        <div class="field"><label>¿El bot debería conectarse con alguno de estos?</label><div class="checks" id="integraciones"></div></div>
+        <div class="field"><label for="integraciones_objetivo">¿Qué debería hacer el bot con esos sistemas?</label><textarea id="integraciones_objetivo" name="integraciones_objetivo"></textarea></div>
+      </section>
+
+      <section class="section">
+        <h2>13. Manejo de errores</h2>
+        <div class="field"><label for="error_no_entiende">Si el bot no entiende algo, ¿qué debería hacer?</label><textarea id="error_no_entiende" name="error_no_entiende"></textarea></div>
+        <div class="field"><label for="error_integracion">Si una integración falla, ¿qué debería decir?</label><textarea id="error_integracion" name="error_integracion"></textarea></div>
+        <div class="field"><label for="error_cliente_enojado">Si un cliente se enoja o reclama, ¿qué debería pasar?</label><textarea id="error_cliente_enojado" name="error_cliente_enojado"></textarea></div>
+      </section>
+
+      <section class="section">
+        <h2>14. Casos especiales</h2>
+        <div class="field"><label for="casos_especiales">¿Hay situaciones que cambien la lógica del bot?</label><textarea id="casos_especiales" name="casos_especiales"></textarea></div>
+      </section>
+
+      <section class="section">
+        <h2>15. Prioridades para la primera versión</h2>
+        <div class="field"><label>Marcá lo más importante</label><div class="checks" id="prioridades_v1"></div></div>
+      </section>
+
+      <section class="section">
+        <h2>16. Material para construir el bot</h2>
+        <div class="field"><label for="materiales">Links o archivos de referencia</label><textarea id="materiales" name="materiales"></textarea></div>
+      </section>
+
+      <section class="section">
+        <h2>17. Observaciones finales</h2>
+        <div class="field"><label for="observaciones_finales">¿Hay algo importante que el bot debería saber y no te preguntamos?</label><textarea id="observaciones_finales" name="observaciones_finales"></textarea></div>
+      </section>
+
+      <div class="actions">
+        <button id="submitBtn" type="submit">Enviar brief</button>
+        <button id="clearBtn" type="reset">Limpiar formulario</button>
+      </div>
+      <p id="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <script>
+    const WEBHOOK = 'https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/0344ad6a2b7e4bc79cd8b85b8b2d7fe3/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=n0YANwWkhbhVxnH0vNne2sr8lurPIlVU-fb2W2nksg8';
+
+    const checkboxGroups = {
+      objetivos_bot: ['Responder consultas frecuentes','Captar leads','Derivar a vendedores','Agendar reuniones','Atención al cliente','Cotizaciones','Soporte técnico','Otro'],
+      datos_usuario: ['Nombre','Teléfono','Email','Empresa','Rubro','Provincia','Localidad','Producto de interés','Necesidad / consulta','Urgencia'],
+      estilo_bot: ['Profesional','Cercano','Directo','Técnico','Amigable'],
+      integraciones: ['Google Sheets','CRM','WhatsApp API','Google Calendar','Formularios','Webhooks / API','Ninguno por ahora'],
+      prioridades_v1: ['saludo correcto','responder consultas básicas','pedir datos del cliente','guardar leads','derivar a asesor','evitar errores o inventar respuestas']
+    };
+
+    function renderCheckboxes(containerId, options, name = containerId){
+      const container = document.getElementById(containerId);
+      container.innerHTML = options.map(item => `<label><input type="checkbox" name="${name}" value="${item}"> ${item}</label>`).join('');
+    }
+
+    Object.entries(checkboxGroups).forEach(([id, options]) => renderCheckboxes(id, options));
+
+    const form = document.getElementById('briefForm');
+    const status = document.getElementById('status');
+
+    function value(id){ return document.getElementById(id)?.value?.trim() || 'No especificado'; }
+    function checked(name){
+      const values = [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(el => el.value);
+      return values.length ? values.join(', ') : 'No especificado';
+    }
+
+    function section(title, content){ return `${title}\n${content}\n`; }
+
+    function buildPlainText(){
+      return [
+        'Brief Inicial – Asistente Conversacional',
+        `Fecha: ${new Date().toLocaleString('es-AR')}`,
+        '----------------------------------------',
+        section('1) Información básica de la empresa',
+          `Nombre de la empresa: ${value('empresa_nombre')}\nRubro / actividad: ${value('empresa_rubro')}\nCiudad / Provincia / País: ${value('empresa_ubicacion')}\nSitio web / Instagram / redes: ${value('empresa_redes')}\nCanales: ${checked('canales')}`),
+        section('2) Qué hace tu empresa',
+          `¿Qué vende o servicio brinda?: ${value('empresa_que_hace')}\nProducto/servicio principal: ${value('empresa_principal')}\nDiferencial: ${value('empresa_diferencial')}`),
+        section('3) Objetivo del bot',
+          `Objetivos principales: ${checked('objetivos_bot')}\nDebe lograr sí o sí: ${value('bot_logro')}\nProblema a evitar: ${value('bot_evitar')}`),
+        section('4) Consultas automáticas', value('consultas_automaticas')),
+        section('5) Temas que NO debe responder', value('consultas_no')),
+        section('6) Datos a pedir al usuario',
+          `Datos seleccionados: ${checked('datos_usuario')}\nObligatorios para derivar: ${value('datos_obligatorios')}`),
+        section('7) Derivación humana',
+          `Casos de derivación: ${value('derivacion_casos')}\nDerivar a: ${value('derivacion_a_quien')}\nReglas de asignación: ${value('derivacion_reglas')}`),
+        section('8) Equipo comercial o soporte', `Persona 1: ${value('asesor1')}\nPersona 2: ${value('asesor2')}\nPersona 3: ${value('asesor3')}`),
+        section('9) Productos o servicios', `Producto/servicio 1: ${value('producto1')}\nProducto/servicio 2: ${value('producto2')}\nProducto/servicio 3: ${value('producto3')}\nCatálogo/Web/PDF: ${value('catalogo_ref')}`),
+        section('10) Preguntas frecuentes', value('preguntas_frecuentes')),
+        section('11) Estilo de comunicación', `Tono: ${checked('estilo_bot')}\nEmojis: ${value('uso_emojis')}\nLargo de mensajes: ${value('largo_mensajes')}`),
+        section('12) Integraciones o sistemas', `Integraciones: ${checked('integraciones')}\nQué debería hacer: ${value('integraciones_objetivo')}`),
+        section('13) Manejo de errores', `Si no entiende: ${value('error_no_entiende')}\nSi falla integración: ${value('error_integracion')}\nCliente enojado/reclamo: ${value('error_cliente_enojado')}`),
+        section('14) Casos especiales', value('casos_especiales')),
+        section('15) Prioridades v1', checked('prioridades_v1')),
+        section('16) Material de referencia', value('materiales')),
+        section('17) Observaciones finales', value('observaciones_finales'))
+      ].join('\n');
+    }
+
+    function buildAgentPrompt(briefBody){
+      return [
+        'PROMPT DEL AGENTE: CONSTRUCTOR DE PRIMERA VERSION DEL BOT',
+        '=========================================================',
+        'Rol del agente:',
+        'Sos un especialista en diseño de asistentes conversacionales B2B para WhatsApp y Web Chat.',
+        '',
+        'Objetivo:',
+        'Usar el Brief Inicial recibido para diseñar una primera versión funcional del bot, lista para implementar y luego iterar con el cliente.',
+        '',
+        'Instrucciones obligatorias:',
+        '1) Basate SOLO en la información del brief. Si falta contexto, no inventes datos sensibles.',
+        '2) Priorizá seguridad y precisión: nunca inventar respuestas ni prometer lo que no está definido.',
+        '3) Respetá explícitamente: objetivos del bot, temas que SI responde, temas que NO responde, datos obligatorios, reglas de derivación y prioridades de V1.',
+        '4) Si detectás contradicciones, proponé una decisión por defecto y marcala como "A validar".',
+        '5) Escribí todo en español neutro, claro y accionable.',
+        '',
+        'Entregables que debés devolver (en este orden):',
+        'A. Resumen ejecutivo (10-15 líneas).',
+        'B. Definición de alcance V1: qué incluye y qué NO incluye.',
+        'C. Personalidad y estilo del bot (tono, emojis, largo de mensajes, ejemplos de respuesta).',
+        'D. Flujo conversacional V1 en pasos (saludo, detección intención, respuesta, captura de datos, derivación, cierre).',
+        'E. Árbol de decisiones de derivación humana (con disparadores concretos).',
+        'F. Lista de datos a solicitar y validaciones mínimas por campo.',
+        'G. Base inicial de conocimiento: FAQ y respuestas sugeridas (si no hay FAQ, proponer 10 genéricas del rubro y marcarlas como "Borrador").',
+        'H. Reglas de guardrail: qué no debe responder y cómo redirigir correctamente.',
+        'I. Manejo de errores: no entiende, falla integración, cliente molesto/reclamo.',
+        'J. Integraciones: qué evento dispara cada integración y qué payload mínimo enviar.',
+        'K. KPIs iniciales de operación (captura de leads, tasa de derivación, resolución automática, etc.).',
+        'L. Lista de pendientes "A validar con cliente".',
+        '',
+        'Formato de salida:',
+        '- Usar títulos con numeración.',
+        '- Incluir tablas cuando ayuden a implementar más rápido.',
+        '- Incluir al final una sección llamada "Prompt inicial del bot" (texto listo para pegar en el sistema del bot).',
+        '',
+        '--- INICIO DEL BRIEF DEL CLIENTE ---',
+        briefBody,
+        '--- FIN DEL BRIEF DEL CLIENTE ---'
+      ].join('\n');
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.className = '';
+      status.textContent = 'Enviando brief...';
+      const briefBody = buildPlainText();
+      const payload = buildAgentPrompt(briefBody);
+
+      try {
+        const res = await fetch(WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+          body: payload
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        status.className = 'ok';
+        status.textContent = '✅ Brief enviado correctamente.';
+        form.reset();
+      } catch (error) {
+        status.className = 'err';
+        status.textContent = `❌ No se pudo enviar el brief. Detalle: ${error.message}`;
+      }
+    });
+  </script>
+</body>
+</html>
