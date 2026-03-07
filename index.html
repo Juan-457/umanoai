@@ -1470,6 +1470,19 @@
       }
     }
 
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:12px;
+      align-items:stretch;
+    }
+
+    @media (max-width: 1100px){
+      .services-grid{
+        grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      }
+    }
+
     /* ✅ FOOTER: ocupa toda la parte inferior + color como secciones */
   .site-footer{
   background: rgba(255,255,255,0.75);
@@ -1635,9 +1648,9 @@
         <div class="seccion">
           <h2>🧩 Servicios de UmanoAI</h2>
           <p style="text-align:center;max-width:900px;margin:0 auto 14px;color:#334155;">Diseñamos soluciones simples y mantenibles para atención al cliente, atención ciudadana y operación comercial en Argentina.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+          <div class="services-grid">
             <article class="card"><h3>💬 Chatbots de WhatsApp</h3><p>Automatizamos consultas frecuentes, calificación de leads, turnos y seguimiento comercial.</p></article>
-            <article class="card"><h3>📞 Voicebots para atención telefónica</h3><p>Atención automática con inteligencia artificial, integración con call center y derivación a humano.</p><p><a aria-disabled="true" style="color:#16a34a;font-weight:700;">Ver página de voicebots</a></p></article>
+            <article class="card"><h3>📞 Voicebots para atención telefónica</h3><p>Atención automática con inteligencia artificial, integración con call center y derivación a humano.</p></article>
             <article class="card"><h3>⚙️ Automatización de procesos</h3><p>Conectamos CRM, planillas y sistemas para reducir tareas manuales y errores.</p></article>
             <article class="card"><h3>🌐 Sitios web</h3><p>Webs y landings pensadas para captar consultas y explicar claramente cada servicio.</p></article>
             <article class="card"><h3>📊 Dashboards y analítica</h3><p>Reportes operativos para medir atención, ventas y desempeño del equipo.</p></article>
