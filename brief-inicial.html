@@ -251,54 +251,11 @@
       ].join('\n');
     }
 
-    function buildAgentPrompt(briefBody){
-      return [
-        'PROMPT DEL AGENTE: CONSTRUCTOR DE PRIMERA VERSION DEL BOT',
-        '=========================================================',
-        'Rol del agente:',
-        'Sos un especialista en diseño de asistentes conversacionales B2B para WhatsApp y Web Chat.',
-        '',
-        'Objetivo:',
-        'Usar el Brief Inicial recibido para diseñar una primera versión funcional del bot, lista para implementar y luego iterar con el cliente.',
-        '',
-        'Instrucciones obligatorias:',
-        '1) Basate SOLO en la información del brief. Si falta contexto, no inventes datos sensibles.',
-        '2) Priorizá seguridad y precisión: nunca inventar respuestas ni prometer lo que no está definido.',
-        '3) Respetá explícitamente: objetivos del bot, temas que SI responde, temas que NO responde, datos obligatorios, reglas de derivación y prioridades de V1.',
-        '4) Si detectás contradicciones, proponé una decisión por defecto y marcala como "A validar".',
-        '5) Escribí todo en español neutro, claro y accionable.',
-        '',
-        'Entregables que debés devolver (en este orden):',
-        'A. Resumen ejecutivo (10-15 líneas).',
-        'B. Definición de alcance V1: qué incluye y qué NO incluye.',
-        'C. Personalidad y estilo del bot (tono, emojis, largo de mensajes, ejemplos de respuesta).',
-        'D. Flujo conversacional V1 en pasos (saludo, detección intención, respuesta, captura de datos, derivación, cierre).',
-        'E. Árbol de decisiones de derivación humana (con disparadores concretos).',
-        'F. Lista de datos a solicitar y validaciones mínimas por campo.',
-        'G. Base inicial de conocimiento: FAQ y respuestas sugeridas (si no hay FAQ, proponer 10 genéricas del rubro y marcarlas como "Borrador").',
-        'H. Reglas de guardrail: qué no debe responder y cómo redirigir correctamente.',
-        'I. Manejo de errores: no entiende, falla integración, cliente molesto/reclamo.',
-        'J. Integraciones: qué evento dispara cada integración y qué payload mínimo enviar.',
-        'K. KPIs iniciales de operación (captura de leads, tasa de derivación, resolución automática, etc.).',
-        'L. Lista de pendientes "A validar con cliente".',
-        '',
-        'Formato de salida:',
-        '- Usar títulos con numeración.',
-        '- Incluir tablas cuando ayuden a implementar más rápido.',
-        '- Incluir al final una sección llamada "Prompt inicial del bot" (texto listo para pegar en el sistema del bot).',
-        '',
-        '--- INICIO DEL BRIEF DEL CLIENTE ---',
-        briefBody,
-        '--- FIN DEL BRIEF DEL CLIENTE ---'
-      ].join('\n');
-    }
-
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       status.className = '';
       status.textContent = 'Enviando brief...';
-      const briefBody = buildPlainText();
-      const payload = buildAgentPrompt(briefBody);
+      const payload = buildPlainText();
 
       try {
         const res = await fetch(WEBHOOK, {
