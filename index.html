@@ -1065,6 +1065,71 @@
       100% { transform: translateX(-50%); }
     }
 
+
+    .founder-box{
+      margin-top:26px;
+      padding:22px;
+      background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);
+      border:1px solid #dbe3ee;
+      border-radius:18px;
+      box-shadow:0 12px 28px rgba(15,23,42,0.08);
+    }
+
+    .founder-content{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .founder-text{
+      max-width:760px;
+      text-align:center;
+    }
+
+    .founder-kicker{
+      display:inline-block;
+      margin-bottom:8px;
+      padding:6px 12px;
+      border-radius:999px;
+      background:#eaf4ff;
+      color:#1d4ed8;
+      font-size:0.85rem;
+      font-weight:700;
+    }
+
+    .founder-text h3{
+      margin:0 0 10px;
+      font-size:1.5rem;
+      color:#0f172a;
+    }
+
+    .founder-text p{
+      margin:0 0 10px;
+      color:#334155;
+      line-height:1.65;
+    }
+
+    .founder-linkedin{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:10px;
+      padding:10px 18px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#2563eb,#1d4ed8);
+      color:#eff6ff;
+      text-decoration:none;
+      font-weight:700;
+      box-shadow:0 8px 22px rgba(37,99,235,0.28);
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    .founder-linkedin:hover{
+      transform:translateY(-1px);
+      background:linear-gradient(135deg,#3b82f6,#2563eb);
+      box-shadow:0 10px 26px rgba(37,99,235,0.38);
+    }
+
     .faq-section{
       display:flex;
       justify-content:center;
@@ -1208,6 +1273,27 @@
     @media(max-width:700px){
       .review-card{
         max-width:100%;
+      }
+    }
+
+
+    @media (max-width: 768px){
+      .founder-box{
+        margin-top:20px;
+        padding:18px 16px;
+        border-radius:14px;
+      }
+
+      .founder-text h3{
+        font-size:1.28rem;
+      }
+
+      .founder-text p{
+        font-size:0.95rem;
+      }
+
+      .founder-linkedin{
+        width:100%;
       }
     }
 
@@ -1744,8 +1830,66 @@
               </a>
             </div>
           </div>
+
+          <div class="founder-box">
+            <div class="founder-content">
+              <div class="founder-text">
+                <span class="founder-kicker">👤 Quién está detrás de UmanoAI</span>
+                <h3>Juan José Galván</h3>
+                <p>
+                  UmanoAI fue fundada por <strong>Juan José Galván</strong>, profesional enfocado en automatización de procesos,
+                  análisis de datos y digitalización de operaciones.
+                </p>
+                <p>
+                  Combina experiencia práctica en negocio, operaciones y tecnología para implementar soluciones concretas como
+                  <strong>bots de WhatsApp, automatizaciones, dashboards y sitios web orientados a resultados</strong>.
+                </p>
+                <p>
+                  Su enfoque está puesto en ayudar a empresas a ordenar procesos, responder más rápido y convertir mejor,
+                  sin complejidad innecesaria.
+                </p>
+                <!-- TODO: Reemplazar por el enlace real de LinkedIn de Juan José Galván -->
+                <a href="https://www.linkedin.com/in/REEMPLAZAR-POR-LINK-REAL/"
+                   class="founder-linkedin"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Ver perfil profesional de Juan José Galván en LinkedIn">
+                  Ver perfil en LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+
+      <!-- ====================== SECCIÓN: POR QUÉ UMANOAI ====================== -->
+      <section id="diferencial">
+        <div class="seccion">
+          <h2>🧠 ¿Por qué UmanoAI es distinto?</h2>
+          <ul>
+            <li><strong>Implementación rápida:</strong> primeros resultados en 5 a 7 días hábiles.</li>
+            <li><strong>Un solo equipo:</strong> bot + automatización + web + BI integrados.</li>
+            <li><strong>Derivación humana real:</strong> si el cliente quiere, pasa a una persona al instante.</li>
+            <li><strong>Casos con evidencia:</strong> mostramos métricas y capturas reales, no promesas vacías.</li>
+          </ul>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px;">
+            <figure style="margin:0;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:8px;">
+              <img src="analytics.png" alt="Métricas reales" style="width:100%;border-radius:8px;" loading="lazy">
+              <figcaption style="font-size:.9rem;color:#4b5563;padding:6px 4px;">+ orden y trazabilidad de resultados</figcaption>
+            </figure>
+            <figure style="margin:0;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:8px;">
+              <img src="Seguimiento de deuda por whatsapp.png" alt="Seguimiento WhatsApp" style="width:100%;border-radius:8px;" loading="lazy">
+              <figcaption style="font-size:.9rem;color:#4b5563;padding:6px 4px;">Automatización real de seguimiento por WhatsApp</figcaption>
+            </figure>
+          </div>
+
+          <p style="text-align:center;margin-top:14px;">
+            <strong>Tomamos cupos limitados por semana para implementación rápida.</strong>
+          </p>
+        </div>
+      </section>
+
 
       <!-- ====================== ANTES / DESPUÉS ====================== -->
       <section id="antes-despues">
@@ -1990,34 +2134,6 @@
               </a>
             </p>
           </div>
-        </div>
-      </section>
-
-      <!-- ====================== SECCIÓN: POR QUÉ UMANOAI ====================== -->
-      <section id="diferencial">
-        <div class="seccion">
-          <h2>🧠 ¿Por qué UmanoAI es distinto?</h2>
-          <ul>
-            <li><strong>Implementación rápida:</strong> primeros resultados en 5 a 7 días hábiles.</li>
-            <li><strong>Un solo equipo:</strong> bot + automatización + web + BI integrados.</li>
-            <li><strong>Derivación humana real:</strong> si el cliente quiere, pasa a una persona al instante.</li>
-            <li><strong>Casos con evidencia:</strong> mostramos métricas y capturas reales, no promesas vacías.</li>
-          </ul>
-
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px;">
-            <figure style="margin:0;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:8px;">
-              <img src="analytics.png" alt="Métricas reales" style="width:100%;border-radius:8px;" loading="lazy">
-              <figcaption style="font-size:.9rem;color:#4b5563;padding:6px 4px;">+ orden y trazabilidad de resultados</figcaption>
-            </figure>
-            <figure style="margin:0;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:8px;">
-              <img src="Seguimiento de deuda por whatsapp.png" alt="Seguimiento WhatsApp" style="width:100%;border-radius:8px;" loading="lazy">
-              <figcaption style="font-size:.9rem;color:#4b5563;padding:6px 4px;">Automatización real de seguimiento por WhatsApp</figcaption>
-            </figure>
-          </div>
-
-          <p style="text-align:center;margin-top:14px;">
-            <strong>Tomamos cupos limitados por semana para implementación rápida.</strong>
-          </p>
         </div>
       </section>
 
