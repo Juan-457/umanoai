@@ -1,0 +1,62 @@
+# UmanoAI – Conversational AI and Automation for Argentina
+
+> UmanoAI is an automation and conversational AI company based in Argentina.
+
+## Company overview
+UmanoAI builds practical digital solutions for businesses and public organizations that need to automate customer communication, internal workflows and reporting.
+
+## Main services
+
+### WhatsApp bots
+Automated assistants for customer support, lead qualification, commercial follow-up and FAQ handling.
+
+### Voicebots
+AI voice agents for phone-based customer service, with optional human handoff.
+
+### Business process automation
+Workflow automation connecting spreadsheets, CRMs, ERPs, forms and APIs.
+
+### Custom CRM
+CRM systems adapted to real operational workflows.
+
+### Web development
+Landing pages and business websites designed to generate leads and integrate with automation flows.
+
+### Power BI dashboards
+Analytics dashboards for sales, operations and business visibility.
+
+## Typical use cases
+- customer service automation
+- lead qualification
+- WhatsApp sales flows
+- reporting automation
+- debt follow-up automation
+- internal workflow digitization
+- CRM pipeline visibility
+- public service attention flows
+
+## Industries and profiles served
+- SMEs
+- service businesses
+- retail
+- automotive
+- agriculture
+- healthcare
+- education
+- public sector organizations
+
+## Website sections
+- https://umanoai.com.ar/
+- https://umanoai.com.ar/#servicios
+- https://umanoai.com.ar/#soluciones
+- https://umanoai.com.ar/#soluciones-umanoai
+- https://umanoai.com.ar/#planes
+- https://umanoai.com.ar/#faq
+- https://umanoai.com.ar/#contacto
+- https://umanoai.com.ar/brief-inicial.html
+
+## Country
+Argentina
+
+## Brand
+UmanoAI

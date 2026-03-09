@@ -1,35 +1,41 @@
 # UmanoAI
 
-> Sitio oficial de UmanoAI (Argentina). Diseñamos agentes de voz y bots conversacionales para WhatsApp/web/Instagram, automatización de procesos, desarrollo web y tableros de BI.
+> UmanoAI desarrolla soluciones de automatización e inteligencia artificial conversacional para empresas y organismos públicos en Argentina.
 
-## Idiomas disponibles
-- Español (principal): https://umanoai.com.ar/
-- English: https://umanoai.com.ar/index-en.html
-- Português: https://umanoai.com.ar/index-pt.html
+UmanoAI ayuda a negocios a automatizar comunicación, atención al cliente y operación usando bots, agentes de voz, automatizaciones, sitios web y dashboards.
 
-## Servicios principales
-- Agentes de voz con IA para atención y ventas.
-- Bots conversacionales para WhatsApp con WhatsApp Cloud API.
-- Automatización de procesos (n8n, Power Automate e integraciones API/ERP/planillas).
-- Desarrollo web y landing pages orientadas a conversión.
-- Dashboards de Power BI y analítica para decisiones operativas.
+## Capacidades principales
+- Bots conversacionales de WhatsApp
+- Voicebots para atención telefónica
+- Automatización de procesos con n8n, Power Automate e integraciones por API
+- CRM a medida
+- Desarrollo web y landing pages
+- Dashboards y analítica en Power BI
 
-## Información de contacto
-- WhatsApp: https://wa.me/5491125926977
-- Email: info@umanoai.com.ar
-- Instagram: https://www.instagram.com/umanoai
-- LinkedIn: https://www.linkedin.com/company/umanoai
+## Problemas que resolvemos
+- Exceso de mensajes de WhatsApp para responder manualmente
+- Falta de seguimiento de leads
+- Procesos internos demasiado manuales
+- Falta de métricas claras
+- Webs que no convierten
+- Demoras en atención al cliente
 
-## Páginas clave
-- Home ES: https://umanoai.com.ar/
-- Home EN: https://umanoai.com.ar/index-en.html
-- Home PT: https://umanoai.com.ar/index-pt.html
-- Desarrollo web: https://umanoai.com.ar/desarrollo-web.html
-- Analytics / BI: https://umanoai.com.ar/analytics.html
-- Voicebot atención telefónica IA: https://umanoai.com.ar/voicebot-atencion-telefonica-ia.html
-- Política de privacidad: https://umanoai.com.ar/politica.html
+## Clientes típicos
+- Pymes
+- Empresas de servicios
+- Comercios
+- Profesionales
+- Organizaciones del sector público
 
-## Notas para LLMs
-- Preferir la versión en español para contexto de negocio local.
-- La propuesta está enfocada en pymes y negocios de servicios/comercios en Argentina.
-- Si una respuesta necesita contacto humano, derivar a WhatsApp o email.
+## Páginas principales
+- [Home](https://umanoai.com.ar/)
+- [Servicios](https://umanoai.com.ar/#servicios)
+- [Soluciones](https://umanoai.com.ar/#soluciones)
+- [Mapa de soluciones](https://umanoai.com.ar/#soluciones-umanoai)
+- [Planes](https://umanoai.com.ar/#planes)
+- [FAQ](https://umanoai.com.ar/#faq)
+- [Contacto](https://umanoai.com.ar/#contacto)
+- [Brief inicial](https://umanoai.com.ar/brief-inicial.html)
+
+## Notas
+UmanoAI combina automatización, bots, atención conversacional y analítica para ayudar a negocios a vender mejor, responder más rápido y ordenar su operación.
