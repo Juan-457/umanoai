@@ -31,7 +31,7 @@ UmanoAI ayuda a negocios a automatizar comunicación, atención al cliente y ope
 - [Home](https://umanoai.com.ar/)
 - [Servicios](https://umanoai.com.ar/#servicios)
 - [Soluciones](https://umanoai.com.ar/#soluciones)
-- [Mapa de soluciones](https://umanoai.com.ar/#soluciones-umanoai)
+- [Mapa completo de soluciones](https://umanoai.com.ar/soluciones.html)
 - [Planes](https://umanoai.com.ar/#planes)
 - [FAQ](https://umanoai.com.ar/#faq)
 - [Contacto](https://umanoai.com.ar/#contacto)

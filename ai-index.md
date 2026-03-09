@@ -36,6 +36,9 @@ Reports and dashboards for sales, operations and performance tracking.
 ## Website
 https://umanoai.com.ar
 
+## Solution map
+https://umanoai.com.ar/soluciones.html
+
 ## Resource guides (ES)
 - https://umanoai.com.ar/recursos.html
 - https://umanoai.com.ar/cuanto-cuesta-bot-whatsapp-empresa-argentina.html

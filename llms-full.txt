@@ -30,7 +30,7 @@ Analytics dashboards for sales, operations and business visibility.
 - lead qualification
 - WhatsApp sales flows
 - reporting automation
-- debt follow-up automation
+- debt follow-up workflows
 - internal workflow digitization
 - CRM pipeline visibility
 - public service attention flows
@@ -49,7 +49,7 @@ Analytics dashboards for sales, operations and business visibility.
 - https://umanoai.com.ar/
 - https://umanoai.com.ar/#servicios
 - https://umanoai.com.ar/#soluciones
-- https://umanoai.com.ar/#soluciones-umanoai
+- https://umanoai.com.ar/soluciones.html
 - https://umanoai.com.ar/#planes
 - https://umanoai.com.ar/#faq
 - https://umanoai.com.ar/#contacto
