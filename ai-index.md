@@ -35,3 +35,10 @@ Reports and dashboards for sales, operations and performance tracking.
 
 ## Website
 https://umanoai.com.ar
+
+## Resource guides (ES)
+- https://umanoai.com.ar/recursos.html
+- https://umanoai.com.ar/cuanto-cuesta-bot-whatsapp-empresa-argentina.html
+- https://umanoai.com.ar/bots-whatsapp-empresas-argentina.html
+- https://umanoai.com.ar/diseno-web-para-pymes-argentina.html
+- https://umanoai.com.ar/cuanto-cuesta-pagina-web-pyme-argentina.html
