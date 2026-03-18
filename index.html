@@ -2443,20 +2443,59 @@
       </a>
 
       <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const cta = document.getElementById("cta-dinamico");
-          document.querySelectorAll('.pain-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-              const msg = btn.getAttribute('data-msg') || 'Hola, quiero una demo.';
-              cta.href = 'https://wa.me/5491125926977?text=' + encodeURIComponent(msg);
-              const target = btn.getAttribute('data-target');
-              if (target) {
-                const el = document.querySelector(target);
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
+        (function () {
+          function pushDataLayerEvent(eventName, extraData) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(Object.assign({
+              event: eventName,
+              page_path: window.location.pathname,
+              page_title: document.title,
+              page_location: window.location.href
+            }, extraData || {}));
+          }
+
+          window.umanoaiTracking = {
+            pushDataLayerEvent
+          };
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const cta = document.getElementById("cta-dinamico");
+            document.querySelectorAll('.pain-btn').forEach(btn => {
+              btn.addEventListener('click', () => {
+                const msg = btn.getAttribute('data-msg') || 'Hola, quiero una demo.';
+                cta.href = 'https://wa.me/5491125926977?text=' + encodeURIComponent(msg);
+
+                pushDataLayerEvent('pain_point_cta_click', {
+                  cta_message: msg,
+                  cta_target: btn.getAttribute('data-target') || ''
+                });
+
+                const target = btn.getAttribute('data-target');
+                if (target) {
+                  const el = document.querySelector(target);
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              });
+            });
+
+            const whatsappLinks = document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+            whatsappLinks.forEach((link) => {
+              link.addEventListener('click', () => {
+                let destination = '';
+                try {
+                  destination = new URL(link.href, window.location.href).hostname;
+                } catch {}
+
+                pushDataLayerEvent('whatsapp_click_contact', {
+                  link_text: (link.textContent || '').trim().slice(0, 120),
+                  link_destination: destination,
+                  link_url: link.href,
+                  open_in_new_tab: link.target === '_blank'
+                });
+              });
             });
           });
-        });
+        })();
       </script>
 
       <script>
@@ -2494,9 +2533,23 @@
 
               if (!res.ok) throw new Error(`HTTP ${res.status}`);
               if (status) status.textContent = "¡Gracias! Te vamos a contactar pronto.";
+
+              window.umanoaiTracking?.pushDataLayerEvent('lead_form_submit_success', {
+                form_id: 'lead-form',
+                lead_source: payload.source,
+                lead_has_contact_data: Boolean(payload['Telefono/Email']),
+                lead_rubro: payload.rubro || 'no_informado'
+              });
+
               form.reset();
             } catch (err) {
               console.error(err);
+
+              window.umanoaiTracking?.pushDataLayerEvent('lead_form_submit_error', {
+                form_id: 'lead-form',
+                error_message: String(err && err.message ? err.message : err)
+              });
+
               if (status) status.textContent = "No se pudo enviar ahora. Escribinos por WhatsApp y lo resolvemos al toque.";
             } finally {
               if (btn) { btn.disabled = false; btn.textContent = "Enviar diagnóstico rápido"; }
@@ -2580,6 +2633,8 @@
         const TOKEN = "umanoai-secure";
         const SESSION_KEY = "umanoai-chat-session-id";
 
+        let hasTrackedFirstMessage = false;
+
         let sessionId = localStorage.getItem(SESSION_KEY);
         if (!sessionId) {
           sessionId = "sess-" + Math.random().toString(36).slice(2) + Date.now();
@@ -2605,6 +2660,18 @@
 
         async function sendMessage(msg) {
           addMessage(msg, "user");
+
+          window.umanoaiTracking?.pushDataLayerEvent('chat_message_sent', {
+            chat_channel: 'website_widget',
+            message_length: msg.length
+          });
+
+          if (!hasTrackedFirstMessage) {
+            hasTrackedFirstMessage = true;
+            window.umanoaiTracking?.pushDataLayerEvent('chat_first_message', {
+              chat_channel: 'website_widget'
+            });
+          }
           input.value = "";
           input.focus();
 
@@ -2639,6 +2706,12 @@
 
         toggle.addEventListener("click", () => {
           win.classList.toggle("open");
+
+          if (win.classList.contains('open')) {
+            window.umanoaiTracking?.pushDataLayerEvent('chat_widget_open', {
+              chat_channel: 'website_widget'
+            });
+          }
         });
 
         form.addEventListener("submit", e => {
@@ -2685,44 +2758,6 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-
-  <!-- Google tag (gtag.js) event - delayed navigation helper -->
-  <script>
-    // Helper function to delay opening a URL until a gtag event is sent.
-    // Call it in response to an action that should navigate to a URL.
-    function gtagSendEvent(url, target) {
-      var callback = function () {
-        if (typeof url === 'string') {
-          if (target === '_blank') {
-            window.open(url, '_blank', 'noopener');
-          } else {
-            window.location = url;
-          }
-        }
-      };
-
-      if (typeof gtag !== 'function') {
-        callback();
-        return false;
-      }
-
-      gtag('event', 'conversion_event_contact', {
-        'event_callback': callback,
-        'event_timeout': 2000,
-      });
-      return false;
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      var whatsappLinks = document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
-      whatsappLinks.forEach(function (link) {
-        link.addEventListener('click', function (event) {
-          event.preventDefault();
-          gtagSendEvent(link.href, link.target);
-        });
-      });
-    });
   </script>
 
 </body>
