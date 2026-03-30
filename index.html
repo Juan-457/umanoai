@@ -2448,7 +2448,7 @@
 
           <div style="max-width:720px;margin:18px auto 0;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;">
             <h3 style="margin:0 0 10px;">✍️ O dejanos tus datos y te contactamos</h3>
-            <form id="lead-form" action="https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/ccd8f926357f476d92fbacaa4b1a26e8/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=gCbQihJEwY-sO3wVbD7NeRBMkt8PoW29KqN5amcmNlM">
+            <form id="lead-form" action="https://api.umanoai.com.ar/webhook/umanoai-lead">
               <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
                 <input required name="nombre" placeholder="Nombre" style="padding:10px;border:1px solid #d1d5db;border-radius:8px;">
                 <input name="rubro" placeholder="Rubro" style="padding:10px;border:1px solid #d1d5db;border-radius:8px;">
@@ -2659,8 +2659,7 @@
       <!-- ============================================================= -->
       <script>
       (function () {
-        const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
-        const TOKEN = "umanoai-secure";
+        const FLOW_URL = "https://api.umanoai.com.ar/webhook/8c90edd6-52a3-4069-8afd-d97a9fd86e31/chat";
         const SESSION_KEY = "umanoai-chat-session-id";
 
         let hasTrackedFirstMessage = false;
@@ -2715,7 +2714,7 @@
             const res = await fetch(FLOW_URL, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ message: msg, sessionId, token: TOKEN })
+              body: JSON.stringify({ chatInput: msg, sessionId })
             });
 
             const raw = await res.text();
@@ -2724,7 +2723,7 @@
             let reply = raw;
             try {
               const parsed = JSON.parse(raw);
-              reply = parsed.reply || parsed.message || raw;
+              reply = parsed.output || parsed.reply || parsed.message || raw;
             } catch {}
 
             addMessage(reply, "bot");
