@@ -2660,6 +2660,7 @@
       <script>
       (function () {
         const FLOW_URL = "https://api.umanoai.com.ar/webhook/8c90edd6-52a3-4069-8afd-d97a9fd86e31/chat";
+        const TOKEN = "umanoai-secure";
         const SESSION_KEY = "umanoai-chat-session-id";
 
         let hasTrackedFirstMessage = false;
@@ -2714,7 +2715,7 @@
             const res = await fetch(FLOW_URL, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ chatInput: msg, sessionId })
+              body: JSON.stringify({ message: msg, sessionId, token: TOKEN })
             });
 
             const raw = await res.text();
