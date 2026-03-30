@@ -12,6 +12,15 @@ UmanoAI ayuda a negocios a automatizar comunicación, atención al cliente y ope
 - Desarrollo web y landing pages
 - Dashboards y analítica en Power BI
 
+
+## Solución destacada para pymes: UmanoSoft
+- Facturación electrónica AFIP
+- CRM comercial y seguimiento de oportunidades
+- Control de gastos y orden financiero
+- Seguimiento de objetivos y tareas del equipo
+- Cotizaciones profesionales en minutos
+- Soporte SEO y actualización de activos para LLMs
+
 ## Problemas que resolvemos
 - Exceso de mensajes de WhatsApp para responder manualmente
 - Falta de seguimiento de leads
@@ -29,6 +38,7 @@ UmanoAI ayuda a negocios a automatizar comunicación, atención al cliente y ope
 
 ## Páginas principales
 - [Home](https://umanoai.com.ar/)
+- [UmanoSoft](https://umanoai.com.ar/#umanosoft)
 - [Servicios](https://umanoai.com.ar/#servicios)
 - [Soluciones](https://umanoai.com.ar/#soluciones)
 - [Mapa completo de soluciones](https://umanoai.com.ar/soluciones.html)
