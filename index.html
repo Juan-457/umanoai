@@ -2724,7 +2724,7 @@
             let reply = raw;
             try {
               const parsed = JSON.parse(raw);
-              reply = parsed.output || parsed.reply || parsed.message || raw;
+              reply = parsed.Respuesta || parsed.output || parsed.reply || parsed.message || raw;
             } catch {}
 
             addMessage(reply, "bot");
