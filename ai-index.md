@@ -25,6 +25,9 @@ Websites and landing pages designed to convert traffic into conversations.
 ### Power BI dashboards
 Reports and dashboards for sales, operations and performance tracking.
 
+### UmanoSoft for SMEs
+An integrated web app for SMEs that includes AFIP invoicing, CRM, expense control, goal tracking, task management and professional quote generation in minutes.
+
 ## Audience
 - SMEs
 - service businesses
@@ -38,6 +41,9 @@ https://umanoai.com.ar
 
 ## Solution map
 https://umanoai.com.ar/soluciones.html
+
+## UmanoSoft
+- https://umanoai.com.ar/#umanosoft
 
 ## Resource guides (ES)
 - https://umanoai.com.ar/recursos.html

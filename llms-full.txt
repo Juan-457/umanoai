@@ -25,6 +25,9 @@ Landing pages and business websites designed to generate leads and integrate wit
 ### Power BI dashboards
 Analytics dashboards for sales, operations and business visibility.
 
+### UmanoSoft (SME web app)
+Integrated solution for SMEs with AFIP invoicing, CRM, expense control, objective and task tracking, plus professional quote creation in minutes.
+
 ## Typical use cases
 - customer service automation
 - lead qualification
@@ -47,6 +50,7 @@ Analytics dashboards for sales, operations and business visibility.
 
 ## Website sections
 - https://umanoai.com.ar/
+- https://umanoai.com.ar/#umanosoft
 - https://umanoai.com.ar/#servicios
 - https://umanoai.com.ar/#soluciones
 - https://umanoai.com.ar/soluciones.html
