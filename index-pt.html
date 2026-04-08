@@ -690,7 +690,7 @@
     .whatsapp-float{
       position:fixed;
       right:20px;
-      bottom:calc(24px + env(safe-area-inset-bottom, 0px));
+      bottom:calc(100px + env(safe-area-inset-bottom, 0px));
       z-index:1300;
       display:inline-flex;
       align-items:center;
@@ -705,6 +705,26 @@
     }
     .whatsapp-float img{width:34px;height:34px}
     .whatsapp-float:hover{transform:scale(1.06)}
+    @media (max-width: 700px){
+      .whatsapp-float{
+        bottom:calc(92px + env(safe-area-inset-bottom, 0px));
+      }
+    }
+
+    #elevenlabs-widget-anchor{
+      position:fixed;
+      right:20px;
+      bottom:calc(20px + env(safe-area-inset-bottom, 0px));
+      z-index:1290;
+      width:0;
+      height:0;
+    }
+    @media (max-width: 700px){
+      #elevenlabs-widget-anchor{
+        right:18px;
+        bottom:calc(16px + env(safe-area-inset-bottom, 0px));
+      }
+    }
 
     /* MOBILE HERO – espaciado y contraste */
     @media (max-width: 768px){
@@ -764,7 +784,7 @@
     #umanoai-chat-root{
       position:fixed;
       right:20px;
-      bottom:96px;
+      bottom:calc(176px + env(safe-area-inset-bottom, 0px));
       z-index:1500;
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
     }
@@ -880,7 +900,7 @@
     @media (max-width:700px){
       #umanoai-chat-root{
         right:18px;
-        bottom:110px;
+        bottom:calc(164px + env(safe-area-inset-bottom, 0px));
       }
       #umanoai-chat-window{
         width:calc(100vw - 28px);
@@ -2708,6 +2728,14 @@
           actualizarDetalle("apps");
         })();
       </script>
+
+
+
+      <div id="elevenlabs-widget-anchor">
+        <elevenlabs-convai agent-id="agent_9101kdp0jw11fmzvd70wh1jz0dgm"></elevenlabs-convai>
+      </div>
+
+      <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
       <!-- ====================== WIDGET CHAT MALENA ====================== -->
       <div id="umanoai-chat-root">
