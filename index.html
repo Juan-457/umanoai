@@ -777,6 +777,98 @@
     .whatsapp-float img{width:34px;height:34px}
     .whatsapp-float:hover{transform:scale(1.06)}
 
+    .voice-demo-section{
+      margin-top:18px;
+    }
+    .voice-demo-wrap{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+      gap:18px;
+      align-items:stretch;
+    }
+    .voice-demo-copy{
+      background:linear-gradient(135deg,rgba(15,23,42,.96),rgba(15,118,110,.88));
+      color:#e2e8f0;
+      border:1px solid rgba(125,211,252,.3);
+      border-radius:22px;
+      padding:24px;
+      box-shadow:0 18px 44px rgba(2,6,23,.28);
+    }
+    .voice-demo-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:12px;
+      padding:6px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.86rem;
+      font-weight:700;
+      letter-spacing:.02em;
+      color:#a5f3fc;
+    }
+    .voice-demo-copy h2{
+      margin:0 0 12px;
+      color:#f8fafc;
+      font-size:clamp(1.8rem,2.6vw,2.6rem);
+      line-height:1.08;
+    }
+    .voice-demo-copy p{
+      margin:0 0 14px;
+      color:#dbeafe;
+    }
+    .voice-demo-points{
+      margin:16px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .voice-demo-points li{
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.08);
+      color:#e5f0ff;
+    }
+    .voice-demo-card{
+      background:#ffffff;
+      border:1px solid rgba(148,163,184,.28);
+      border-radius:22px;
+      padding:16px;
+      box-shadow:0 18px 44px rgba(15,23,42,.12);
+    }
+    .voice-demo-card h3{
+      margin:0 0 6px;
+      color:#0f172a;
+      font-size:1.05rem;
+    }
+    .voice-demo-card p{
+      margin:0 0 12px;
+      color:#475569;
+      font-size:.95rem;
+    }
+    .voice-demo-widget{
+      min-height:560px;
+      border-radius:18px;
+      overflow:hidden;
+      background:#f8fafc;
+    }
+    .voice-demo-widget elevenlabs-convai{
+      display:block;
+      width:100%;
+      min-height:560px;
+    }
+    @media (max-width: 900px){
+      .voice-demo-wrap{
+        grid-template-columns:1fr;
+      }
+      .voice-demo-card{
+        order:-1;
+      }
+    }
+
     /* MOBILE HERO – espaciado y contraste */
     @media (max-width: 768px){
       .hero-bubble-small {
@@ -1759,9 +1851,9 @@
 
         <div class="content">
           <div class="inner">
-            <h1>Chatbots de WhatsApp y voicebots para atención telefónica con IA</h1>
+            <h1>Agentes de voz y chatbots con IA para vender y atender mejor</h1>
             <p>
-              UmanoAI desarrolla soluciones de automatización con inteligencia artificial para empresas y organismos públicos en Argentina. Implementamos chatbots, voicebots, automatizaciones y analítica para mejorar la atención y ordenar la operación. <strong>Si la consulta requiere intervención humana, la conversación puede derivarse a un operador.</strong>
+              UmanoAI desarrolla soluciones de automatización con inteligencia artificial para empresas y organismos públicos en Argentina. Implementamos <strong>agentes de voz para web y atención telefónica</strong>, chatbots, automatizaciones y analítica para mejorar la atención y ordenar la operación. <strong>Si la consulta requiere intervención humana, la conversación puede derivarse a un operador.</strong>
             </p>
           </div>
         </div>
@@ -1780,11 +1872,41 @@
         </nav>
 
         <div class="hero-cta">
-          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20una%20demo%20de%20WhatsApp%20%2B%20automatizacion%20para%20mi%20negocio" class="btn-secundaria" target="_blank" rel="noopener">
+          <a href="#demo-voz" class="btn-primaria">
+            🎙️ Probar demo por voz
+          </a>
+          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20una%20demo%20de%20voz%20%2B%20automatizacion%20para%20mi%20negocio" class="btn-secundaria" target="_blank" rel="noopener">
             🙋‍♀️ Hablar con Malena
           </a>
         </div>
       </header>
+
+      <section id="demo-voz" class="voice-demo-section">
+        <div class="seccion">
+          <div class="voice-demo-wrap">
+            <div class="voice-demo-copy">
+              <div class="voice-demo-kicker">VOICE AI EN LA WEB</div>
+              <h2>Tu visitante puede hablarle al bot desde la página</h2>
+              <p>
+                Integramos el agente de ElevenLabs directamente en la web para que el usuario elija entre escribir o hablar. Esto le da más protagonismo a <strong>voice</strong> y convierte la demo en algo tangible desde el primer scroll.
+              </p>
+              <ul class="voice-demo-points">
+                <li><strong>Atención inmediata:</strong> responde preguntas frecuentes, califica interés y toma datos sin fricción.</li>
+                <li><strong>Canal visible:</strong> deja de ser un servicio escondido y pasa a mostrarse como producto principal.</li>
+                <li><strong>Derivación simple:</strong> si hace falta, el flujo termina en WhatsApp o con una persona real del equipo.</li>
+              </ul>
+            </div>
+
+            <div class="voice-demo-card">
+              <h3>Demo en vivo de Malena</h3>
+              <p>Probá el agente real de UmanoAI desde la web. Se puede usar con voz y también con texto.</p>
+              <div class="voice-demo-widget">
+                <elevenlabs-convai agent-id="agent_9101kdp0jw11fmzvd70wh1jz0dgm"></elevenlabs-convai>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
       <section id="umanosoft">
@@ -1822,6 +1944,7 @@
           <p style="text-align:center;color:#4b5563;max-width:860px;margin:0 auto 12px;">Elegí tu dolor principal y te llevamos a la solución más relevante.</p>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:12px;">
             <button class="btn-secundaria pain-btn" data-msg="Hola, no doy abasto con WhatsApp y quiero automatizar respuestas." data-target="#soluciones">📲 No doy abasto con WhatsApp</button>
+            <button class="btn-secundaria pain-btn" data-msg="Hola, quiero sumar un agente de voz en mi web o teléfono." data-target="#demo-voz">🎙️ Quiero sumar voice AI</button>
             <button class="btn-secundaria pain-btn" data-msg="Hola, no estoy midiendo bien ventas y quiero ordenar indicadores." data-target="#antes-despues">📊 No mido ventas</button>
             <button class="btn-secundaria pain-btn" data-msg="Hola, pierdo tiempo en tareas manuales y quiero automatizar procesos." data-target="#soluciones">⚙️ Pierdo tiempo en tareas manuales</button>
             <button class="btn-secundaria pain-btn" data-msg="Hola, mi web no convierte y quiero mejorar captación de leads." data-target="#planes">🌐 Mi web no convierte</button>
@@ -2452,7 +2575,7 @@
               <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
                 <input required name="nombre" placeholder="Nombre" style="padding:10px;border:1px solid #d1d5db;border-radius:8px;">
                 <input name="rubro" placeholder="Rubro" style="padding:10px;border:1px solid #d1d5db;border-radius:8px;">
-                <input name="telefonoEmail" placeholder="Teléfono o Email" style="padding:10px;border:1px solid #d1d5db;border-radius:8px;">
+                <input required name="telefonoEmail" placeholder="WhatsApp o Email" style="padding:10px;border:1px solid #d1d5db;border-radius:8px;">
               </div>
               <textarea required name="problema" placeholder="¿Cuál es tu principal problema hoy?" style="margin-top:10px;width:100%;min-height:90px;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></textarea>
               <button class="btn-secundaria" type="submit" style="display:block;margin:10px auto 0;">Enviar diagnóstico rápido</button>
@@ -2532,7 +2655,17 @@
         document.addEventListener("DOMContentLoaded", () => {
           const form = document.getElementById("lead-form");
           const status = document.getElementById("lead-form-status");
+          let formStarted = false;
           if (!form) return;
+
+          form.addEventListener("focusin", () => {
+            if (formStarted) return;
+            formStarted = true;
+            window.umanoaiTracking?.pushDataLayerEvent('lead_form_start', {
+              form_id: 'lead-form',
+              lead_source: 'umanoai_web'
+            });
+          });
 
           form.addEventListener("submit", async (e) => {
             e.preventDefault();
@@ -2546,8 +2679,8 @@
               timestamp: new Date().toISOString()
             };
 
-            if (!payload.nombre || !payload.problema) {
-              if (status) status.textContent = "Completá nombre y problema para enviar.";
+            if (!payload.nombre || !payload.problema || !payload["Telefono/Email"]) {
+              if (status) status.textContent = "Completá nombre, contacto y problema para enviar.";
               return;
             }
 
@@ -2572,6 +2705,7 @@
               });
 
               form.reset();
+              formStarted = false;
             } catch (err) {
               console.error(err);
 
@@ -2587,6 +2721,8 @@
           });
         });
       </script>
+
+      <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
       <section id="resultados-reales" class="seccion microcasos-section">
         <h2>Resultados reales con UmanoAI</h2>
