@@ -1654,6 +1654,11 @@
       align-items:stretch;
     }
 
+    .services-grid.voice-grid{
+      grid-template-columns:repeat(3,minmax(220px,280px));
+      justify-content:center;
+    }
+
     .services-grid .card{
       background: rgba(255,255,255,0.88);
       border: 1px solid rgba(148,163,184,0.35);
@@ -1677,6 +1682,10 @@
     @media (max-width: 1100px){
       .services-grid{
         grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      }
+
+      .services-grid.voice-grid{
+        grid-template-columns:repeat(auto-fit,minmax(220px,280px));
       }
     }
 
@@ -1820,7 +1829,7 @@
             Implementamos agentes de voz para tu web o línea telefónica para responder consultas frecuentes,
             precalificar oportunidades y derivar a una persona cuando el caso lo requiere.
           </p>
-          <div class="services-grid">
+          <div class="services-grid voice-grid">
             <article class="card"><h3>📞 Atención telefónica inteligente</h3><p>Respuestas automáticas para consultas frecuentes con derivación a operador cuando hace falta.</p></article>
             <article class="card"><h3>🌐 Voicebot en tu sitio web</h3><p>Sumá un asistente por voz para captar y asistir visitas sin fricción.</p></article>
             <article class="card"><h3>🔗 Integraciones</h3><p>Conectamos el flujo con WhatsApp, CRM o planillas para que no se pierda información.</p></article>
