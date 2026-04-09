@@ -1700,13 +1700,31 @@
 
     .microcasos-section{margin:70px auto 120px;}
     .microcasos-subtitle{max-width:860px;margin:0 auto 20px;text-align:center;color:#334155;}
-    .microcasos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
-    .microcaso-card{background:#fff;border:1px solid #d7e0eb;border-radius:16px;padding:16px;box-shadow:0 12px 26px rgba(15,23,42,.1);}
-    .microcaso-card img{width:100%;height:140px;object-fit:contain;background:#f8fafc;border-radius:12px;margin-bottom:10px;padding:8px;}
+    /* Carrusel */
+    .microcasos-carousel-wrap{position:relative;overflow:hidden;}
+    .microcasos-track-outer{overflow:hidden;border-radius:16px;}
+    .microcasos-track{display:flex;transition:transform .4s cubic-bezier(.4,0,.2,1);will-change:transform;}
+    .microcaso-card{flex:0 0 calc(100% - 60px);max-width:calc(100% - 60px);margin:0 30px;background:#fff;border:1px solid #d7e0eb;border-radius:16px;padding:24px;box-shadow:0 12px 26px rgba(15,23,42,.1);}
+    @media(min-width:640px){
+      .microcaso-card{flex:0 0 calc(50% - 24px);max-width:calc(50% - 24px);margin:0 12px;}
+    }
+    @media(min-width:1024px){
+      .microcaso-card{flex:0 0 calc(33.333% - 24px);max-width:calc(33.333% - 24px);margin:0 12px;}
+    }
+    .microcaso-card img.card-logo{width:100%;height:120px;object-fit:contain;background:#f8fafc;border-radius:12px;margin-bottom:12px;padding:8px;}
+    .microcaso-card img.card-screenshot{width:100%;border-radius:8px;margin-top:10px;box-shadow:0 4px 14px rgba(2,6,23,.15);}
     .microcaso-card h3{margin:8px 0;color:#0f172a;font-size:1.05rem;}
     .microcaso-card p{color:#334155;font-size:.92rem;line-height:1.55;}
     .microcaso-card ul{margin:10px 0 0 18px;color:#1f2937;font-size:.9rem;line-height:1.5;}
-    .microcasos-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:20px;}
+    .mc-btn{position:absolute;top:50%;transform:translateY(-50%);background:#fff;border:1px solid #d7e0eb;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(15,23,42,.12);z-index:2;transition:background .2s;}
+    .mc-btn:hover{background:#f0f9ff;}
+    .mc-btn svg{width:18px;height:18px;stroke:#0f172a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+    .mc-prev{left:0;}
+    .mc-next{right:0;}
+    .mc-dots{display:flex;justify-content:center;gap:8px;margin-top:16px;}
+    .mc-dot{width:8px;height:8px;border-radius:50%;background:#cbd5e1;border:none;cursor:pointer;padding:0;transition:background .2s,transform .2s;}
+    .mc-dot.active{background:#0ea5e9;transform:scale(1.25);}
+    .microcasos-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:28px;}
     .microcasos-link{font-weight:700;color:#0ea5e9;text-decoration:none;}
     .microcasos-link:hover{text-decoration:underline;}
 
@@ -2749,51 +2767,64 @@
         <h2>Resultados reales con UmanoAI</h2>
         <p class="microcasos-subtitle">Algunos ejemplos concretos de cómo usamos bots, sitios web y automatización para resolver problemas reales.</p>
 
-        <div class="microcasos-grid">
-          <article class="microcaso-card">
-            <img src="Seguimiento de deuda por whatsapp.png" alt="Seguimiento de deuda por WhatsApp" loading="lazy">
-            <h3>Seguimiento de deuda por WhatsApp</h3>
-            <p>Diseñamos una solución para ordenar el seguimiento de deuda por WhatsApp, facilitando la gestión de contactos, mensajes y acciones comerciales sin perder trazabilidad.</p>
-            <ul>
-              <li>seguimiento más ordenado</li>
-              <li>acceso rápido al contacto por WhatsApp</li>
-              <li>menos fricción administrativa</li>
-            </ul>
-          </article>
+        <div class="microcasos-carousel-wrap">
+          <button class="mc-btn mc-prev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="microcasos-track-outer">
+            <div class="microcasos-track" id="microcasosTrack">
 
-          <article class="microcaso-card">
-            <img src="logo-patricia-sebelli.png" alt="Sitio web Dra. Patricia Sebelli" loading="lazy">
-            <h3>Sitio web para Dra. Patricia Sebelli</h3>
-            <p>Desarrollamos una web clara y profesional orientada a generar confianza y captar consultas. En una sola semana, recibió más de 7 nuevos pacientes.</p>
-            <ul>
-              <li>mejor presencia digital</li>
-              <li>consultas directas por WhatsApp</li>
-              <li>mayor captación desde la web</li>
-            </ul>
-          </article>
+              <article class="microcaso-card">
+                <img class="card-logo" src="Seguimiento de deuda por whatsapp.png" alt="Seguimiento de deuda por WhatsApp" loading="lazy">
+                <h3>Seguimiento de deuda por WhatsApp</h3>
+                <p>Diseñamos una solución para ordenar el seguimiento de deuda por WhatsApp, facilitando la gestión de contactos, mensajes y acciones comerciales sin perder trazabilidad.</p>
+                <ul>
+                  <li>seguimiento más ordenado</li>
+                  <li>acceso rápido al contacto por WhatsApp</li>
+                  <li>menos fricción administrativa</li>
+                </ul>
+              </article>
 
-          <article class="microcaso-card">
-            <img src="Agricheck color.png" alt="Bot de atención para Agricheck" loading="lazy">
-            <h3>Bot de atención para Agricheck</h3>
-            <p>Implementamos un bot que comenzó a responder al momento las consultas y a derivar en vivo a los vendedores, mejorando la velocidad de atención comercial.</p>
-            <ul>
-              <li>respuesta inmediata</li>
-              <li>derivación automática a vendedores</li>
-              <li>menos oportunidades perdidas</li>
-            </ul>
-          </article>
+              <article class="microcaso-card">
+                <img class="card-logo" src="logo-patricia-sebelli.png" alt="Sitio web Dra. Patricia Sebelli" loading="lazy">
+                <h3>Sitio web para Dra. Patricia Sebelli</h3>
+                <p>Desarrollamos una web clara y profesional orientada a generar confianza y captar consultas. En una sola semana, recibió más de 7 nuevos pacientes.</p>
+                <ul>
+                  <li>mejor presencia digital</li>
+                  <li>consultas directas por WhatsApp</li>
+                  <li>mayor captación desde la web</li>
+                </ul>
+              </article>
 
-          <article class="microcaso-card">
-            <img src="logo-cleanpaz.png" alt="CleanPaz — Facturación con UmanoSoft" loading="lazy">
-            <h3>Facturación AFIP para CleanPaz con UmanoSoft</h3>
-            <p>CleanPaz centralizó toda su facturación electrónica en UmanoSoft, eliminando la carga manual en AFIP y reduciendo errores en la emisión de comprobantes.</p>
-            <img src="Dasboard.png" alt="Panel de UmanoSoft utilizado por CleanPaz" loading="lazy" style="border-radius:8px;margin-top:10px;box-shadow:0 4px 14px rgba(2,6,23,.15);">
-            <ul>
-              <li>facturación electrónica sin fricción</li>
-              <li>menos tiempo de carga por comprobante</li>
-              <li>gestión centralizada en un solo lugar</li>
-            </ul>
-          </article>
+              <article class="microcaso-card">
+                <img class="card-logo" src="Agricheck color.png" alt="Bot de atención para Agricheck" loading="lazy">
+                <h3>Bot de atención para Agricheck</h3>
+                <p>Implementamos un bot que comenzó a responder al momento las consultas y a derivar en vivo a los vendedores, mejorando la velocidad de atención comercial.</p>
+                <ul>
+                  <li>respuesta inmediata</li>
+                  <li>derivación automática a vendedores</li>
+                  <li>menos oportunidades perdidas</li>
+                </ul>
+              </article>
+
+              <article class="microcaso-card">
+                <img class="card-logo" src="logo-cleanpaz.png" alt="CleanPaz — Facturación con UmanoSoft" loading="lazy">
+                <h3>Facturación AFIP para CleanPaz con UmanoSoft</h3>
+                <p>CleanPaz centralizó toda su facturación electrónica en UmanoSoft, eliminando la carga manual en AFIP y reduciendo errores en la emisión de comprobantes.</p>
+                <img class="card-screenshot" src="Dasboard.png" alt="Panel de UmanoSoft utilizado por CleanPaz" loading="lazy">
+                <ul>
+                  <li>facturación electrónica sin fricción</li>
+                  <li>menos tiempo de carga por comprobante</li>
+                  <li>gestión centralizada en un solo lugar</li>
+                </ul>
+              </article>
+
+            </div>
+          </div>
+          <button class="mc-btn mc-next" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="mc-dots" id="microcasosDots"></div>
         </div>
 
         <div class="microcasos-cta-wrap">
@@ -2957,6 +2988,60 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    (function(){
+      const track = document.getElementById('microcasosTrack');
+      const dotsWrap = document.getElementById('microcasosDots');
+      if(!track) return;
+
+      const cards = track.querySelectorAll('.microcaso-card');
+      const total = cards.length;
+      let current = 0;
+
+      function visibleCount(){
+        if(window.innerWidth >= 1024) return 3;
+        if(window.innerWidth >= 640) return 2;
+        return 1;
+      }
+
+      function maxIndex(){
+        return Math.max(0, total - visibleCount());
+      }
+
+      function cardWidth(){
+        return cards[0].getBoundingClientRect().width + parseInt(getComputedStyle(cards[0]).marginLeft) * 2;
+      }
+
+      function goTo(idx){
+        current = Math.min(Math.max(idx, 0), maxIndex());
+        track.style.transform = `translateX(-${current * cardWidth()}px)`;
+        dotsWrap.querySelectorAll('.mc-dot').forEach((d,i) => d.classList.toggle('active', i === current));
+      }
+
+      // Dots
+      for(let i=0;i<total;i++){
+        const d = document.createElement('button');
+        d.className = 'mc-dot' + (i===0?' active':'');
+        d.setAttribute('aria-label','Ir a caso '+(i+1));
+        d.addEventListener('click',()=>goTo(i));
+        dotsWrap.appendChild(d);
+      }
+
+      track.closest('.microcasos-carousel-wrap').querySelector('.mc-prev').addEventListener('click',()=>goTo(current-1));
+      track.closest('.microcasos-carousel-wrap').querySelector('.mc-next').addEventListener('click',()=>goTo(current+1));
+
+      // Swipe táctil
+      let startX=0;
+      track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;},{passive:true});
+      track.addEventListener('touchend',e=>{
+        const dx=e.changedTouches[0].clientX-startX;
+        if(Math.abs(dx)>50) goTo(current+(dx<0?1:-1));
+      },{passive:true});
+
+      window.addEventListener('resize',()=>goTo(current));
+    })();
   </script>
 
 </body>
