@@ -1867,6 +1867,75 @@
           <p style="text-align:center;margin-top:10px;">
             Ayudamos a tu pyme a facturar en AFIP, ordenar la gestión diaria y mejorar su presencia digital para crecer con procesos más inteligentes.
           </p>
+
+          <!-- ===== CALCULADORA ROI ===== -->
+          <div id="calc-roi" style="margin-top:28px;background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border-radius:12px;padding:24px 20px;border:1.5px solid #bae6fd;">
+            <h3 style="text-align:center;margin:0 0 6px;color:#0369a1;font-size:1.15rem;">⏱️ ¿Cuánto tiempo (y dinero) perdés facturando manualmente?</h3>
+            <p style="text-align:center;color:#0c4a6e;font-size:.9rem;margin:0 0 20px;">Calculá tu ahorro real con UmanoSoft</p>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:20px;">
+              <div>
+                <label for="calc-facturas" style="display:block;font-size:.85rem;font-weight:600;color:#075985;margin-bottom:6px;">Facturas que emitís por mes</label>
+                <input id="calc-facturas" type="number" min="1" max="9999" value="30"
+                  style="width:100%;padding:10px 14px;border:1.5px solid #7dd3fc;border-radius:8px;font-size:1rem;color:#0c4a6e;background:#fff;outline:none;"
+                  oninput="calcRoi()">
+              </div>
+              <div>
+                <label for="calc-costo" style="display:block;font-size:.85rem;font-weight:600;color:#075985;margin-bottom:6px;">Costo hora del empleado ($ ARS)</label>
+                <input id="calc-costo" type="number" min="0" max="999999" value="3000"
+                  style="width:100%;padding:10px 14px;border:1.5px solid #7dd3fc;border-radius:8px;font-size:1rem;color:#0c4a6e;background:#fff;outline:none;"
+                  oninput="calcRoi()">
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px;">
+              <div style="background:#fff;border-radius:10px;padding:14px;text-align:center;box-shadow:0 2px 8px rgba(3,105,161,.1);">
+                <div id="calc-horas" style="font-size:1.8rem;font-weight:700;color:#0284c7;">5.8 hs</div>
+                <div style="font-size:.78rem;color:#64748b;margin-top:2px;">horas ahorradas por mes</div>
+              </div>
+              <div style="background:#fff;border-radius:10px;padding:14px;text-align:center;box-shadow:0 2px 8px rgba(3,105,161,.1);">
+                <div id="calc-dinero" style="font-size:1.8rem;font-weight:700;color:#16a34a;">$17.250</div>
+                <div style="font-size:.78rem;color:#64748b;margin-top:2px;">ahorro mensual en salario</div>
+              </div>
+              <div style="background:#fff;border-radius:10px;padding:14px;text-align:center;box-shadow:0 2px 8px rgba(3,105,161,.1);">
+                <div id="calc-anual" style="font-size:1.8rem;font-weight:700;color:#7c3aed;">$207.000</div>
+                <div style="font-size:.78rem;color:#64748b;margin-top:2px;">ahorro estimado anual</div>
+              </div>
+            </div>
+
+            <p id="calc-msg" style="text-align:center;font-size:.9rem;color:#0c4a6e;margin:0 0 16px;font-weight:500;">
+              Con 30 facturas/mes pasás de <strong>6 horas</strong> de carga manual a menos de <strong>15 minutos</strong>.
+            </p>
+
+            <p style="text-align:center;margin:0;">
+              <a href="https://wa.me/5491125926977?text=Hola%2C%20quiero%20conocer%20UmanoSoft%20para%20facturar%20m%C3%A1s%20r%C3%A1pido"
+                class="btn-primaria" target="_blank" rel="noopener" style="display:inline-block;">
+                🚀 Quiero empezar a ahorrar tiempo
+              </a>
+            </p>
+          </div>
+          <script>
+            function calcRoi() {
+              var facturas = Math.max(1, parseInt(document.getElementById('calc-facturas').value) || 0);
+              var costoHora = Math.max(0, parseFloat(document.getElementById('calc-costo').value) || 0);
+              var MIN_MANUAL = 12;
+              var MIN_SOFT   = 0.5;
+              var minAhorrados = facturas * (MIN_MANUAL - MIN_SOFT);
+              var horasAhorradas = minAhorrados / 60;
+              var ahorro = horasAhorradas * costoHora;
+              var anual  = ahorro * 12;
+              document.getElementById('calc-horas').textContent  = horasAhorradas.toFixed(1) + ' hs';
+              document.getElementById('calc-dinero').textContent = '$' + Math.round(ahorro).toLocaleString('es-AR');
+              document.getElementById('calc-anual').textContent  = '$' + Math.round(anual).toLocaleString('es-AR');
+              var minSoft = Math.round(facturas * MIN_SOFT);
+              document.getElementById('calc-msg').innerHTML =
+                'Con <strong>' + facturas + '</strong> facturas/mes pasás de <strong>' +
+                Math.round(facturas * MIN_MANUAL / 60 * 10) / 10 + ' horas</strong> de carga manual a menos de <strong>' +
+                (minSoft < 60 ? minSoft + ' min' : (minSoft/60).toFixed(1) + ' hs') + '</strong> con UmanoSoft.';
+            }
+          </script>
+          <!-- ===== FIN CALCULADORA ROI ===== -->
+
         </div>
       </section>
 
