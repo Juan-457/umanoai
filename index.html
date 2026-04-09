@@ -758,10 +758,16 @@
       to{opacity:1; transform:translateY(0);}
     }
 
+    :root{
+      --float-stack-gap: 12px;
+      --elevenlabs-widget-height: 120px;
+      --whatsapp-float-size: 64px;
+    }
+
     .whatsapp-float{
       position:fixed;
       right:20px;
-      bottom:calc(100px + env(safe-area-inset-bottom, 0px));
+      bottom:calc(20px + var(--elevenlabs-widget-height) + var(--float-stack-gap) + env(safe-area-inset-bottom, 0px));
       z-index:1300;
       display:inline-flex;
       align-items:center;
@@ -777,8 +783,11 @@
     .whatsapp-float img{width:34px;height:34px}
     .whatsapp-float:hover{transform:scale(1.06)}
     @media (max-width: 700px){
+      :root{
+        --elevenlabs-widget-height: 112px;
+      }
       .whatsapp-float{
-        bottom:calc(92px + env(safe-area-inset-bottom, 0px));
+        right:18px;
       }
     }
 
@@ -855,7 +864,7 @@
     #umanoai-chat-root{
       position:fixed;
       right:20px;
-      bottom:calc(176px + env(safe-area-inset-bottom, 0px));
+      bottom:calc(20px + var(--elevenlabs-widget-height) + var(--whatsapp-float-size) + (var(--float-stack-gap) * 2) + env(safe-area-inset-bottom, 0px));
       z-index:1500;
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
     }
@@ -971,7 +980,7 @@
     @media (max-width:700px){
       #umanoai-chat-root{
         right:18px;
-        bottom:calc(164px + env(safe-area-inset-bottom, 0px));
+        bottom:calc(20px + var(--elevenlabs-widget-height) + var(--whatsapp-float-size) + (var(--float-stack-gap) * 2) + env(safe-area-inset-bottom, 0px));
       }
       #umanoai-chat-window{
         width:calc(100vw - 28px);
