@@ -3074,6 +3074,9 @@
       const cards = track.querySelectorAll('.microcaso-card');
       const total = cards.length;
       let current = 0;
+      let autoplayTimer = null;
+      const AUTOPLAY_MS = 3200;
+      const wrap = track.closest('.microcasos-carousel-wrap');
 
       function visibleCount(){
         if(window.innerWidth >= 1024) return 3;
@@ -3085,37 +3088,87 @@
         return Math.max(0, total - visibleCount());
       }
 
+      function totalPages(){
+        return maxIndex() + 1;
+      }
+
+      function normalizeIndex(idx){
+        const pages = totalPages();
+        if(pages <= 0) return 0;
+        return ((idx % pages) + pages) % pages;
+      }
+
       function cardWidth(){
         return cards[0].getBoundingClientRect().width + parseInt(getComputedStyle(cards[0]).marginLeft) * 2;
       }
 
+      function renderDots(){
+        dotsWrap.innerHTML = '';
+        for(let i=0;i<totalPages();i++){
+          const d = document.createElement('button');
+          d.className = 'mc-dot' + (i===current?' active':'');
+          d.setAttribute('aria-label','Ir a caso '+(i+1));
+          d.addEventListener('click',()=>{
+            goTo(i);
+            restartAutoplay();
+          });
+          dotsWrap.appendChild(d);
+        }
+      }
+
       function goTo(idx){
-        current = Math.min(Math.max(idx, 0), maxIndex());
+        current = normalizeIndex(idx);
         track.style.transform = `translateX(-${current * cardWidth()}px)`;
         dotsWrap.querySelectorAll('.mc-dot').forEach((d,i) => d.classList.toggle('active', i === current));
       }
 
-      // Dots
-      for(let i=0;i<total;i++){
-        const d = document.createElement('button');
-        d.className = 'mc-dot' + (i===0?' active':'');
-        d.setAttribute('aria-label','Ir a caso '+(i+1));
-        d.addEventListener('click',()=>goTo(i));
-        dotsWrap.appendChild(d);
+      function startAutoplay(){
+        if(totalPages() <= 1) return;
+        stopAutoplay();
+        autoplayTimer = setInterval(()=>goTo(current + 1), AUTOPLAY_MS);
       }
 
-      track.closest('.microcasos-carousel-wrap').querySelector('.mc-prev').addEventListener('click',()=>goTo(current-1));
-      track.closest('.microcasos-carousel-wrap').querySelector('.mc-next').addEventListener('click',()=>goTo(current+1));
+      function stopAutoplay(){
+        if(!autoplayTimer) return;
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+
+      function restartAutoplay(){
+        startAutoplay();
+      }
+
+      renderDots();
+      goTo(0);
+
+      wrap.querySelector('.mc-prev').addEventListener('click',()=>{
+        goTo(current - 1);
+        restartAutoplay();
+      });
+      wrap.querySelector('.mc-next').addEventListener('click',()=>{
+        goTo(current + 1);
+        restartAutoplay();
+      });
 
       // Swipe táctil
       let startX=0;
-      track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;},{passive:true});
+      track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;stopAutoplay();},{passive:true});
       track.addEventListener('touchend',e=>{
         const dx=e.changedTouches[0].clientX-startX;
         if(Math.abs(dx)>50) goTo(current+(dx<0?1:-1));
+        restartAutoplay();
       },{passive:true});
 
-      window.addEventListener('resize',()=>goTo(current));
+      wrap.addEventListener('mouseenter', stopAutoplay);
+      wrap.addEventListener('mouseleave', startAutoplay);
+
+      window.addEventListener('resize',()=>{
+        current = normalizeIndex(current);
+        renderDots();
+        goTo(current);
+      });
+
+      startAutoplay();
     })();
   </script>
 
