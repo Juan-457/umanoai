@@ -24,7 +24,7 @@
   <link rel="alternate" type="text/markdown" href="https://umanoai.com.ar/ai-index.md" title="AI Index">
   <!-- ✅ agregado: agentes de voz -->
   <meta name="ai-description"
-        content="UmanoAI desarrolla agentes de voz y bots conversacionales (WhatsApp/web/Instagram), automatización de procesos, sitios web y tableros de BI para negocios de servicios, comercios y pymes en Argentina. Si querés hablar con una persona, escribile a Malena (agente de voz) por WhatsApp.">
+        content="UmanoAI desarrolla agentes de voz y bots conversacionales (WhatsApp/web/Instagram), automatización de procesos, sitios web y tableros de BI para negocios de servicios, comercios y pymes en Argentina. Si querés hablar con una persona, escribile a Malena (IA — responde al instante) por WhatsApp.">
   <!-- spacer -->
 
   <!-- 🔹 Canonical para evitar contenido duplicado -->
@@ -37,7 +37,7 @@
   <!-- ========= OPEN GRAPH / REDES SOCIALES ========= -->
   <meta property="og:title" content="Bots conversacionales de WhatsApp para pymes, automatización de procesos y Power BI | UmanoAI">
   <meta property="og:description"
-        content="Bots conversacionales con IA, automatización de procesos, desarrollo web y Power BI para que tu pyme venda 24/7 y reduzca tareas manuales. Si querés hablar con una persona, pedí a Malena (agente de voz) por WhatsApp.">
+        content="Bots conversacionales con IA, automatización de procesos, desarrollo web y Power BI para que tu pyme venda 24/7 y reduzca tareas manuales. Si querés hablar con una persona, pedí a Malena (IA — responde al instante) por WhatsApp.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://umanoai.com.ar/">
   <meta property="og:image" content="https://umanoai.com.ar/og-umanoai.jpg">
@@ -391,6 +391,32 @@
       gap:10px;
       justify-content:center;
       margin:28px 0 24px;
+    }
+
+    /* Testimonio en el hero */
+    .hero-testimonial {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.88rem;
+      color: #e2e8f0;
+      max-width: 540px;
+      transition: opacity 0.5s ease;
+    }
+    .hero-testimonial.fade-out { opacity: 0; }
+    .hero-testimonial-stars { color: #f59e0b; letter-spacing: 1px; font-size: 0.9rem; flex-shrink: 0; }
+    .hero-testimonial-text { line-height: 1.4; }
+
+    /* Botón quiz activo */
+    .pain-btn-active {
+      background: var(--azul) !important;
+      color: #fff !important;
+      border-color: var(--azul) !important;
     }
 
     /* 🔵 Burbuja hero (título y subtítulo) */
@@ -1815,10 +1841,14 @@
 
         <div class="content">
           <div class="inner">
-            <h1>Agentes de voz y chatbots con IA para vender y atender mejor</h1>
-            <p>
-              UmanoAI desarrolla soluciones de automatización con inteligencia artificial para empresas y organismos públicos en Argentina. Implementamos <strong>agentes de voz para web y atención telefónica</strong>, chatbots, automatizaciones y analítica para mejorar la atención y ordenar la operación. <strong>Si la consulta requiere intervención humana, la conversación puede derivarse a un operador.</strong>
+            <h1 id="hero-h1">¿Tu WhatsApp es un caos y los leads se te escapan? Lo resolvemos en 5 días.</h1>
+            <p id="hero-subtitle">
+              Bots de WhatsApp, agentes de voz e inteligencia artificial para pymes argentinas que quieren vender más sin trabajar más. <strong>Implementación garantizada en 5 días o te devolvemos el setup.</strong>
             </p>
+            <div class="hero-testimonial" id="hero-testimonial">
+              <span class="hero-testimonial-stars">★★★★★</span>
+              <span class="hero-testimonial-text" id="hero-testimonial-text">"Servicio de excelencia. Dan la milla extra para que realmente tengas resultados." — <strong>Carolina</strong></span>
+            </div>
           </div>
         </div>
 
@@ -1837,14 +1867,11 @@
         </nav>
 
         <div class="hero-cta">
-          <a href="#voice" class="btn-secundaria">
-            🎧 Ver sección Voice
+          <a id="hero-cta-primary" href="https://wa.me/5491125926977?text=Hola%20quiero%20una%20demo%20para%20mi%20negocio" class="btn-primaria" target="_blank" rel="noopener">
+            🚀 Quiero ver mi negocio automatizado
           </a>
-          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20probar%20la%20demo%20de%20voz%20de%20UmanoAI" class="btn-primaria" target="_blank" rel="noopener">
-            🎙️ Probar demo por voz
-          </a>
-          <a href="https://wa.me/5491125926977?text=Hola%20quiero%20una%20demo%20de%20voz%20%2B%20automatizacion%20para%20mi%20negocio" class="btn-secundaria" target="_blank" rel="noopener">
-            🙋‍♀️ Hablar con Malena
+          <a href="#quiz-dolor" class="btn-secundaria">
+            ¿No sabés por dónde empezar? Elegí tu dolor →
           </a>
         </div>
       </header>
@@ -1972,11 +1999,11 @@
           <h2>🎯 ¿Qué querés resolver primero?</h2>
           <p style="text-align:center;color:#4b5563;max-width:860px;margin:0 auto 12px;">Elegí tu dolor principal y te llevamos a la solución más relevante.</p>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:12px;">
-            <button class="btn-secundaria pain-btn" data-msg="Hola, no doy abasto con WhatsApp y quiero automatizar respuestas." data-target="#soluciones">📲 No doy abasto con WhatsApp</button>
-            <button class="btn-secundaria pain-btn" data-msg="Hola, quiero sumar un agente de voz en mi web o teléfono." data-target="#voice">🎙️ Quiero sumar voice AI</button>
-            <button class="btn-secundaria pain-btn" data-msg="Hola, no estoy midiendo bien ventas y quiero ordenar indicadores." data-target="#antes-despues">📊 No mido ventas</button>
-            <button class="btn-secundaria pain-btn" data-msg="Hola, pierdo tiempo en tareas manuales y quiero automatizar procesos." data-target="#soluciones">⚙️ Pierdo tiempo en tareas manuales</button>
-            <button class="btn-secundaria pain-btn" data-msg="Hola, mi web no convierte y quiero mejorar captación de leads." data-target="#planes">🌐 Mi web no convierte</button>
+            <button class="btn-secundaria pain-btn" data-copy-key="whatsapp" data-msg="Hola, no doy abasto con WhatsApp y quiero automatizar respuestas." data-target="#soluciones">📲 No doy abasto con WhatsApp</button>
+            <button class="btn-secundaria pain-btn" data-copy-key="voice" data-msg="Hola, quiero sumar un agente de voz en mi web o teléfono." data-target="#voice">🎙️ Quiero sumar voice AI</button>
+            <button class="btn-secundaria pain-btn" data-copy-key="metricas" data-msg="Hola, no estoy midiendo bien ventas y quiero ordenar indicadores." data-target="#antes-despues">📊 No mido ventas</button>
+            <button class="btn-secundaria pain-btn" data-copy-key="tareas" data-msg="Hola, pierdo tiempo en tareas manuales y quiero automatizar procesos." data-target="#soluciones">⚙️ Pierdo tiempo en tareas manuales</button>
+            <button class="btn-secundaria pain-btn" data-copy-key="web" data-msg="Hola, mi web no convierte y quiero mejorar captación de leads." data-target="#planes">🌐 Mi web no convierte</button>
           </div>
           <p style="display:flex;justify-content:center;margin-top:14px;">
             <a id="cta-dinamico" href="https://wa.me/5491125926977?text=Hola%20quiero%20resolver%20mi%20principal%20dolor%20de%20negocio" class="btn-primaria" target="_blank" rel="noopener">🚀 Hablar con el equipo (IA + persona real)</a>
@@ -2034,7 +2061,7 @@
           </p>
 
           <ul>
-            <li>🤖 <strong>Bots conversacionales de WhatsApp y Web:</strong> responden consultas frecuentes, califican leads y derivan a tu equipo comercial. <strong>Si el cliente necesita humano, puede pedir por Malena (agente de voz) y seguimos por WhatsApp.</strong></li>
+            <li>🤖 <strong>Bots conversacionales de WhatsApp y Web:</strong> responden consultas frecuentes, califican leads y derivan a tu equipo comercial. <strong>Si el cliente necesita humano, puede pedir por Malena (IA — responde al instante) y seguimos por WhatsApp.</strong></li>
             <li>🌐 <strong>Desarrollo web:</strong> landing pages y sitios corporativos listos para captar contactos y medir resultados.</li>
             <li>⚙️ <strong>Automatización de procesos:</strong> formularios, aprobaciones, envíos de documentos y notificaciones sin trabajo manual.</li>
             <li>📊 <strong>Power BI para negocios:</strong> tableros simples con métricas de ventas, cobranza, operaciones y atención al cliente.</li>
@@ -2048,7 +2075,7 @@
 
           <p style="margin-top:10px; text-align:center;">
             <a href="https://wa.me/5491125926977?text=Hola%20quiero%20ver%20un%20demo%20de%20bots%20conversacionales%20y%20hablar%20sobre%20mi%20caso" class="btn-secundaria" target="_blank" rel="noopener">
-              🙋‍♀️ Pedir demo con Malena (agente de voz)
+              🙋‍♀️ Pedir demo con Malena (IA — responde al instante)
             </a>
           </p>
         </div>
@@ -2215,7 +2242,7 @@
 
           <p style="text-align:center;margin-top:10px;">
             <a href="https://wa.me/5491125926977?text=Hola%20quiero%20automatizar%20estos%20problemas%20y%20necesito%20asesoramiento" class="btn-primaria" target="_blank" rel="noopener">
-              🙋‍♀️ Hablar con Malena (agente de voz)
+              🙋‍♀️ Hablar con Malena (IA — responde al instante)
             </a>
           </p>
         </div>
@@ -2261,7 +2288,7 @@
 
           <p style="text-align:center;margin-top:12px;">
             <a href="https://wa.me/5491125926977?text=Hola%20quiero%20que%20me%20recomiendes%20un%20plan%20de%20bot%20conversacional" class="btn-primaria" target="_blank" rel="noopener">
-              🙋‍♀️ Que Malena (agente de voz) me recomiende un plan
+              🙋‍♀️ Que Malena (IA — responde al instante) me recomiende un plan
             </a>
           </p>
 
@@ -2371,7 +2398,7 @@
 
           <p style="text-align:center;margin-top:10px;">
             <a href="https://wa.me/5491125926977?text=Hola%20quiero%20mejorar%20mi%20SEO%20y%20activar%20un%20bot%20conversacional%20en%20mi%20web" class="btn-secundaria" target="_blank" rel="noopener">
-              🙋‍♀️ SEO + Bots con Malena (agente de voz)
+              🙋‍♀️ SEO + Bots con Malena (IA — responde al instante)
             </a>
           </p>
         </div>
@@ -2392,24 +2419,26 @@
                 <p class="review-text">
                   "Atención de 10! Superó todas mis expectativas! Me asesoró a crear mi espacio, con total sencillez, amabilidad y total eficacia. No me tuve que preocupar por ningún detalle. Lo recomiendo 100%."
                 </p>
-                <div class="review-author">Patricia</div>
+                <div class="review-author">Patricia — profesional independiente</div>
               </article>
 
               <article class="review-card">
                 <div class="review-stars">★★★★★</div>
                 <p class="review-text">
-                  "Excelente trabajo y atención!!"
+                  "La verdad que muy contento con el Bot, todo lo que le pedí y más."
+                </p>
+                <div class="review-author">Juan — cliente UmanoAI</div>
+              </article>
+
+              <article class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">
+                  "Excelente trabajo y atención!! Muy recomendable."
                 </p>
                 <div class="review-author">Agencia de automotores</div>
               </article>
 
-              <article class="review-card">
-                <div class="review-stars">★★★★★</div>
-                <p class="review-text">
-                  "La verdad que muy contento con el Bot, todo lo que le pedí y más"
-                </p>
-                <div class="review-author">Juan</div>
-              </article>
+
             </div>
 
             <p style="text-align:center; margin-top:16px;">
@@ -2646,12 +2675,61 @@
             pushDataLayerEvent
           };
 
+          const heroCopy = {
+            'whatsapp': {
+              h1: '¿Tu equipo no da abasto con WhatsApp? Automatizalo en 5 días.',
+              subtitle: 'Implementamos un bot que responde al instante, califica leads y deriva a tu vendedor solo cuando hace falta. <strong>Sin perder ninguna consulta.</strong>',
+              cta: '🤖 Quiero automatizar mi WhatsApp',
+              msg: 'Hola, no doy abasto con WhatsApp y quiero automatizar respuestas.'
+            },
+            'voice': {
+              h1: 'Atención telefónica con IA, 24/7, sin contratar más personal.',
+              subtitle: 'Un agente de voz que atiende llamados, responde preguntas frecuentes y deriva cuando hace falta. <strong>Listo en menos de una semana.</strong>',
+              cta: '🎙️ Quiero implementar Voice AI',
+              msg: 'Hola, quiero sumar un agente de voz en mi web o teléfono.'
+            },
+            'metricas': {
+              h1: '¿No sabés qué está pasando realmente en tu negocio? Te lo mostramos.',
+              subtitle: 'Dashboards y reportes automáticos para ver ventas, atención y rendimiento en tiempo real. <strong>Decisiones con datos, no con intuición.</strong>',
+              cta: '📊 Quiero medir mejor mis ventas',
+              msg: 'Hola, no estoy midiendo bien ventas y quiero ordenar indicadores.'
+            },
+            'tareas': {
+              h1: '¿Perdés horas en tareas manuales que podría hacer una IA?',
+              subtitle: 'Automatizamos formularios, aprobaciones, notificaciones y reportes para que tu equipo se enfoque en lo que importa. <strong>Implementación en 5 días.</strong>',
+              cta: '⚙️ Quiero automatizar mis procesos',
+              msg: 'Hola, pierdo tiempo en tareas manuales y quiero automatizar procesos.'
+            },
+            'web': {
+              h1: '¿Tu web tiene visitas pero no genera consultas?',
+              subtitle: 'Diseñamos landings y sitios pensados para convertir visitas en leads calificados, con bot incluido. <strong>Resultados desde la primera semana.</strong>',
+              cta: '🌐 Quiero una web que convierta',
+              msg: 'Hola, mi web no convierte y quiero mejorar captación de leads.'
+            }
+          };
+
           document.addEventListener("DOMContentLoaded", () => {
             const cta = document.getElementById("cta-dinamico");
+            const heroPrimary = document.getElementById("hero-cta-primary");
+            const heroH1 = document.getElementById("hero-h1");
+            const heroSubtitle = document.getElementById("hero-subtitle");
+
             document.querySelectorAll('.pain-btn').forEach(btn => {
               btn.addEventListener('click', () => {
+                const key = btn.getAttribute('data-copy-key');
+                const copy = heroCopy[key];
                 const msg = btn.getAttribute('data-msg') || 'Hola, quiero una demo.';
                 cta.href = 'https://wa.me/5491125926977?text=' + encodeURIComponent(msg);
+
+                if (copy) {
+                  heroH1.textContent = copy.h1;
+                  heroSubtitle.innerHTML = copy.subtitle;
+                  heroPrimary.textContent = copy.cta;
+                  heroPrimary.href = 'https://wa.me/5491125926977?text=' + encodeURIComponent(copy.msg);
+                  document.querySelectorAll('.pain-btn').forEach(b => b.classList.remove('pain-btn-active'));
+                  btn.classList.add('pain-btn-active');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
 
                 pushDataLayerEvent('pain_point_cta_click', {
                   cta_message: msg,
@@ -2661,7 +2739,7 @@
                 const target = btn.getAttribute('data-target');
                 if (target) {
                   const el = document.querySelector(target);
-                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 600);
                 }
               });
             });
@@ -2841,8 +2919,8 @@
 
         <div id="umanoai-chat-window">
           <div class="um-chat-header">
-            <strong>MALENA — Asistente Virtual</strong>
-            <span>Respondemos en segundos</span>
+            <strong>MALENA — Agente de IA 🤖</strong>
+            <span>Responde en segundos, 24/7</span>
           </div>
 
           <div id="um-chat-messages"></div>
@@ -3041,6 +3119,29 @@
       },{passive:true});
 
       window.addEventListener('resize',()=>goTo(current));
+    })();
+  </script>
+
+  <script>
+    (function(){
+      const reviews = [
+        { text: '"Servicio de excelencia. Dan la milla extra para que realmente tengas resultados."', author: 'Carolina' },
+        { text: '"Superó todas mis expectativas! No me tuve que preocupar por ningún detalle. Lo recomiendo 100%."', author: 'Patricia' },
+        { text: '"Eficiencia, velocidad y proactividad para lograr el sitio y la funcionalidad que necesitas."', author: 'Noelia' },
+        { text: '"Excelente todo! Creamos un bot para respuesta automática y todo funciona muy bien. 100% recomendable."', author: 'Alejandro' },
+      ];
+      let idx = 0;
+      const el = document.getElementById('hero-testimonial');
+      const textEl = document.getElementById('hero-testimonial-text');
+      if(!el || !textEl) return;
+      setInterval(function(){
+        el.classList.add('fade-out');
+        setTimeout(function(){
+          idx = (idx + 1) % reviews.length;
+          textEl.innerHTML = reviews[idx].text + ' — <strong>' + reviews[idx].author + '</strong>';
+          el.classList.remove('fade-out');
+        }, 500);
+      }, 5000);
     })();
   </script>
 
