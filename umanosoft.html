@@ -34,18 +34,22 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg: #020617;
-      --fg: #f1f5f9;
-      --accent: #38bdf8;
-      --accent2: #818cf8;
-      --card-bg: #0f172a;
-      --card-border: #1e293b;
-      --muted: #94a3b8;
+      --fg: #132135;
+      --accent: #008cff;
+      --card-bg: rgba(255,255,255,.96);
+      --card-border: #e5e7eb;
+      --muted: #64748b;
+      --radius: 14px;
+      --shadow: 0 4px 10px rgba(0,0,0,.12);
     }
     body {
       font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-      background: var(--bg);
+      background: #020617 url('fondo.png') center/cover fixed;
       color: var(--fg);
       line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      body { background-attachment: scroll; background-size: cover; }
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -56,8 +60,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 14px 24px;
-      border-bottom: 1px solid var(--card-border);
-      background: rgba(2,6,23,.95);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      background: rgba(2,6,23,.92);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -66,7 +70,7 @@
     .top-nav .brand {
       font-weight: 700;
       font-size: 1.05rem;
-      color: var(--fg);
+      color: #f1f5f9;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -74,9 +78,9 @@
     .top-nav .brand span { color: var(--accent); }
     .top-nav a.back-link {
       font-size: .9rem;
-      color: var(--muted);
+      color: #94a3b8;
     }
-    .top-nav a.back-link:hover { color: var(--fg); text-decoration: none; }
+    .top-nav a.back-link:hover { color: #f1f5f9; text-decoration: none; }
 
     /* HERO */
     .hero-soft {
@@ -87,9 +91,9 @@
     }
     .hero-soft .kicker {
       display: inline-block;
-      background: rgba(56,189,248,.12);
-      color: var(--accent);
-      border: 1px solid rgba(56,189,248,.3);
+      background: rgba(0,140,255,.15);
+      color: #60c8ff;
+      border: 1px solid rgba(0,140,255,.3);
       border-radius: 20px;
       padding: 4px 14px;
       font-size: .82rem;
@@ -109,7 +113,7 @@
       background-clip: text;
     }
     .hero-soft p {
-      color: var(--muted);
+      color: #cbd5e1;
       font-size: 1.1rem;
       max-width: 640px;
       margin: 0 auto 28px;
@@ -118,7 +122,7 @@
     /* BOTONES */
     .btn-primary {
       display: inline-block;
-      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      background: linear-gradient(135deg, #0ea5e9, #2563eb);
       color: #fff;
       font-weight: 700;
       padding: 13px 28px;
@@ -137,10 +141,10 @@
       padding: 12px 24px;
       border-radius: 10px;
       font-size: .95rem;
-      border: 1.5px solid rgba(56,189,248,.4);
+      border: 1.5px solid rgba(0,140,255,.4);
       transition: border-color .2s, background .2s;
     }
-    .btn-secondary:hover { border-color: var(--accent); background: rgba(56,189,248,.08); text-decoration: none; }
+    .btn-secondary:hover { border-color: var(--accent); background: rgba(0,140,255,.08); text-decoration: none; }
 
     /* FEATURES */
     .seccion {
@@ -148,13 +152,23 @@
       margin: 0 auto;
       padding: 48px 24px;
     }
-    .seccion h2 {
+    .seccion-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(20px, 3.6vw, 32px);
+      color: var(--fg);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .seccion h2, .seccion-card h2 {
       text-align: center;
       font-size: clamp(1.3rem, 3vw, 1.9rem);
       font-weight: 700;
       margin-bottom: 10px;
+      color: var(--fg);
     }
-    .seccion > p.subtitle {
+    .seccion > p.subtitle, .seccion-card > p.subtitle {
       text-align: center;
       color: var(--muted);
       max-width: 680px;
@@ -167,27 +181,28 @@
       gap: 16px;
     }
     .feature-card {
-      background: var(--card-bg);
+      background: #f8fafc;
       border: 1px solid var(--card-border);
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 22px;
-      transition: border-color .2s;
+      transition: border-color .2s, box-shadow .2s;
     }
-    .feature-card:hover { border-color: rgba(56,189,248,.4); }
+    .feature-card:hover { border-color: #93c5fd; box-shadow: 0 4px 16px rgba(0,140,255,.1); }
     .feature-card .icon { font-size: 1.6rem; margin-bottom: 10px; }
-    .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--fg); }
     .feature-card p { font-size: .9rem; color: var(--muted); }
 
     /* CALCULADORA */
     .calc-box {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      border: 1.5px solid rgba(56,189,248,.25);
-      border-radius: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       padding: 32px 24px;
       max-width: 860px;
       margin: 0 auto;
     }
-    .calc-box h2 { text-align: center; margin-bottom: 8px; }
+    .calc-box h2 { text-align: center; margin-bottom: 8px; color: var(--fg); }
     .calc-box .subtitle { text-align: center; color: var(--muted); margin-bottom: 24px; font-size: .95rem; }
     .calc-inputs {
       display: grid;
@@ -195,15 +210,15 @@
       gap: 16px;
       margin-bottom: 24px;
     }
-    .calc-inputs label { display: block; font-size: .85rem; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
+    .calc-inputs label { display: block; font-size: .85rem; font-weight: 600; color: #075985; margin-bottom: 6px; }
     .calc-inputs input {
       width: 100%;
       padding: 10px 14px;
-      border: 1.5px solid rgba(56,189,248,.3);
+      border: 1.5px solid #7dd3fc;
       border-radius: 8px;
       font-size: 1rem;
-      color: var(--fg);
-      background: rgba(255,255,255,.05);
+      color: #0c4a6e;
+      background: #fff;
       outline: none;
     }
     .calc-results {
@@ -213,30 +228,31 @@
       margin-bottom: 20px;
     }
     .calc-result-item {
-      background: rgba(255,255,255,.04);
+      background: #f0f9ff;
       border-radius: 10px;
       padding: 16px;
       text-align: center;
-      border: 1px solid var(--card-border);
+      border: 1px solid #bae6fd;
+      box-shadow: 0 2px 8px rgba(3,105,161,.08);
     }
     .calc-result-item .val { font-size: 1.8rem; font-weight: 700; }
     .calc-result-item .lbl { font-size: .78rem; color: var(--muted); margin-top: 4px; }
-    #us-calc-msg { text-align: center; font-size: .9rem; color: var(--accent); margin-bottom: 18px; }
+    #us-calc-msg { text-align: center; font-size: .9rem; color: #0369a1; margin-bottom: 18px; font-weight: 500; }
 
     /* CASOS */
     .caso-card {
-      background: var(--card-bg);
+      background: #f8fafc;
       border: 1px solid var(--card-border);
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 22px;
     }
     .caso-card .logo-wrap { margin-bottom: 12px; }
-    .caso-card .logo-wrap img { height: 36px; object-fit: contain; filter: brightness(.9); }
-    .caso-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .caso-card .logo-wrap img { height: 36px; object-fit: contain; }
+    .caso-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--fg); }
     .caso-card p { font-size: .9rem; color: var(--muted); margin-bottom: 10px; }
     .caso-card ul { list-style: none; padding: 0; }
-    .caso-card ul li { font-size: .88rem; color: #94a3b8; padding: 3px 0; }
-    .caso-card ul li::before { content: "✓ "; color: #38bdf8; }
+    .caso-card ul li { font-size: .88rem; color: #475569; padding: 3px 0; }
+    .caso-card ul li::before { content: "✓ "; color: #008cff; }
 
     /* PRECIOS */
     .pricing-grid {
@@ -252,22 +268,23 @@
       border-radius: 14px;
       padding: 24px;
       text-align: center;
+      box-shadow: var(--shadow);
     }
     .plan-card.destacado {
-      border-color: rgba(56,189,248,.5);
-      background: linear-gradient(135deg, #0f172a, #1a2744);
+      border-color: #93c5fd;
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
     }
     .plan-card .plan-name { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 8px; }
     .plan-card .plan-price { font-size: 2rem; font-weight: 800; color: var(--fg); margin-bottom: 4px; }
     .plan-card .plan-price span { font-size: 1rem; font-weight: 400; color: var(--muted); }
     .plan-card .plan-desc { font-size: .88rem; color: var(--muted); margin-bottom: 18px; }
     .plan-card ul { list-style: none; padding: 0; text-align: left; margin-bottom: 20px; }
-    .plan-card ul li { font-size: .88rem; color: #94a3b8; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,.04); }
-    .plan-card ul li::before { content: "✓ "; color: #38bdf8; }
+    .plan-card ul li { font-size: .88rem; color: #475569; padding: 4px 0; border-bottom: 1px solid #f1f5f9; }
+    .plan-card ul li::before { content: "✓ "; color: #008cff; }
 
     /* FAQ */
     .faq-item { border-bottom: 1px solid var(--card-border); padding: 16px 0; }
-    .faq-item summary { font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary { font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--fg); }
     .faq-item summary::after { content: "+"; font-size: 1.2rem; color: var(--accent); }
     details[open] .faq-item summary::after { content: "−"; }
     .faq-item p { margin-top: 10px; color: var(--muted); font-size: .95rem; }
@@ -276,21 +293,22 @@
     .cta-final {
       text-align: center;
       padding: 64px 24px;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      border-top: 1px solid var(--card-border);
+      background: rgba(2,6,23,.7);
+      border-top: 1px solid rgba(255,255,255,.08);
     }
-    .cta-final h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 14px; }
-    .cta-final p { color: var(--muted); margin-bottom: 24px; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .cta-final h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 14px; color: #f1f5f9; }
+    .cta-final p { color: #94a3b8; margin-bottom: 24px; max-width: 520px; margin-left: auto; margin-right: auto; }
 
     /* FOOTER */
     footer {
       text-align: center;
       padding: 24px;
-      color: var(--muted);
+      color: #94a3b8;
       font-size: .85rem;
-      border-top: 1px solid var(--card-border);
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(2,6,23,.5);
     }
-    footer a { color: var(--muted); }
+    footer a { color: #94a3b8; }
 
     @media (max-width: 600px) {
       .hero-soft { padding: 40px 16px 32px; }
@@ -326,8 +344,8 @@
 </section>
 
 <!-- FEATURES -->
-<section id="features">
-  <div class="seccion">
+<section id="features" style="padding:42px 16px;">
+  <div class="seccion-card">
     <h2>Todo lo que necesitás para operar tu pyme</h2>
     <p class="subtitle">Cinco módulos integrados que trabajan juntos para que pases menos tiempo en tareas administrativas y más tiempo en tu negocio.</p>
     <div class="features-grid">
@@ -408,8 +426,8 @@
 </section>
 
 <!-- CASO DE USO -->
-<section>
-  <div class="seccion">
+<section style="padding:42px 16px;">
+  <div class="seccion-card">
     <h2>Caso real: CleanPaz</h2>
     <p class="subtitle">Cómo UmanoSoft transformó la gestión de facturación de una empresa de limpieza.</p>
     <div class="features-grid" style="max-width:700px;margin:0 auto;">
@@ -429,8 +447,8 @@
 </section>
 
 <!-- PRECIOS -->
-<section id="precios">
-  <div class="seccion">
+<section id="precios" style="padding:42px 16px;">
+  <div class="seccion-card">
     <h2>Planes de UmanoSoft</h2>
     <p class="subtitle">Precios pensados para pymes argentinas. Sin contratos largos, sin sorpresas.</p>
     <div class="pricing-grid" style="max-width:1060px;">
@@ -479,8 +497,8 @@
 </section>
 
 <!-- FAQ -->
-<section>
-  <div class="seccion" style="max-width:780px;">
+<section style="padding:42px 16px;">
+  <div class="seccion-card" style="max-width:780px;">
     <h2>Preguntas frecuentes</h2>
     <p class="subtitle">Todo lo que necesitás saber antes de empezar.</p>
 
