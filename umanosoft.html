@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <title>UmanoSoft — Gestión integral para pymes argentinas | Facturación AFIP, CRM y más</title>
+  <meta name="description" content="UmanoSoft es la web app de UmanoAI para pymes argentinas: facturación AFIP, CRM de ventas, control de gastos, objetivos y cotizaciones desde un solo lugar. Sin complejidad.">
+
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#020617">
+  <meta name="robots" content="index,follow">
+
+  <link rel="canonical" href="https://umanoai.com.ar/umanosoft.html" />
+
+  <meta property="og:title" content="UmanoSoft — Gestión integral para pymes | UmanoAI">
+  <meta property="og:description" content="Facturación AFIP, CRM, control de gastos, objetivos y cotizaciones desde un solo lugar. Pensado para pymes argentinas.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umanoai.com.ar/umanosoft.html">
+  <meta property="og:image" content="https://umanoai.com.ar/og-umanoai.jpg">
+  <meta property="og:site_name" content="UmanoAI">
+
+  <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TRW2TPQR');</script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #020617;
+      --fg: #f1f5f9;
+      --accent: #38bdf8;
+      --accent2: #818cf8;
+      --card-bg: #0f172a;
+      --card-border: #1e293b;
+      --muted: #94a3b8;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(2,6,23,.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .top-nav .brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .top-nav .brand span { color: var(--accent); }
+    .top-nav a.back-link {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+    .top-nav a.back-link:hover { color: var(--fg); text-decoration: none; }
+
+    /* HERO */
+    .hero-soft {
+      text-align: center;
+      padding: 64px 24px 48px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-soft .kicker {
+      display: inline-block;
+      background: rgba(56,189,248,.12);
+      color: var(--accent);
+      border: 1px solid rgba(56,189,248,.3);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .hero-soft h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #f1f5f9 40%, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-soft p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 640px;
+      margin: 0 auto 28px;
+    }
+
+    /* BOTONES */
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      color: #fff;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: opacity .2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { opacity: .88; text-decoration: none; }
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--accent);
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: .95rem;
+      border: 1.5px solid rgba(56,189,248,.4);
+      transition: border-color .2s, background .2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); background: rgba(56,189,248,.08); text-decoration: none; }
+
+    /* FEATURES */
+    .seccion {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+    .seccion h2 {
+      text-align: center;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .seccion > p.subtitle {
+      text-align: center;
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 auto 32px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 22px;
+      transition: border-color .2s;
+    }
+    .feature-card:hover { border-color: rgba(56,189,248,.4); }
+    .feature-card .icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .feature-card p { font-size: .9rem; color: var(--muted); }
+
+    /* CALCULADORA */
+    .calc-box {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      border: 1.5px solid rgba(56,189,248,.25);
+      border-radius: 16px;
+      padding: 32px 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .calc-box h2 { text-align: center; margin-bottom: 8px; }
+    .calc-box .subtitle { text-align: center; color: var(--muted); margin-bottom: 24px; font-size: .95rem; }
+    .calc-inputs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .calc-inputs label { display: block; font-size: .85rem; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
+    .calc-inputs input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid rgba(56,189,248,.3);
+      border-radius: 8px;
+      font-size: 1rem;
+      color: var(--fg);
+      background: rgba(255,255,255,.05);
+      outline: none;
+    }
+    .calc-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .calc-result-item {
+      background: rgba(255,255,255,.04);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      border: 1px solid var(--card-border);
+    }
+    .calc-result-item .val { font-size: 1.8rem; font-weight: 700; }
+    .calc-result-item .lbl { font-size: .78rem; color: var(--muted); margin-top: 4px; }
+    #us-calc-msg { text-align: center; font-size: .9rem; color: var(--accent); margin-bottom: 18px; }
+
+    /* CASOS */
+    .caso-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 22px;
+    }
+    .caso-card .logo-wrap { margin-bottom: 12px; }
+    .caso-card .logo-wrap img { height: 36px; object-fit: contain; filter: brightness(.9); }
+    .caso-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .caso-card p { font-size: .9rem; color: var(--muted); margin-bottom: 10px; }
+    .caso-card ul { list-style: none; padding: 0; }
+    .caso-card ul li { font-size: .88rem; color: #94a3b8; padding: 3px 0; }
+    .caso-card ul li::before { content: "✓ "; color: #38bdf8; }
+
+    /* PRECIOS */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .plan-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+    }
+    .plan-card.destacado {
+      border-color: rgba(56,189,248,.5);
+      background: linear-gradient(135deg, #0f172a, #1a2744);
+    }
+    .plan-card .plan-name { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 8px; }
+    .plan-card .plan-price { font-size: 2rem; font-weight: 800; color: var(--fg); margin-bottom: 4px; }
+    .plan-card .plan-price span { font-size: 1rem; font-weight: 400; color: var(--muted); }
+    .plan-card .plan-desc { font-size: .88rem; color: var(--muted); margin-bottom: 18px; }
+    .plan-card ul { list-style: none; padding: 0; text-align: left; margin-bottom: 20px; }
+    .plan-card ul li { font-size: .88rem; color: #94a3b8; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .plan-card ul li::before { content: "✓ "; color: #38bdf8; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid var(--card-border); padding: 16px 0; }
+    .faq-item summary { font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::after { content: "+"; font-size: 1.2rem; color: var(--accent); }
+    details[open] .faq-item summary::after { content: "−"; }
+    .faq-item p { margin-top: 10px; color: var(--muted); font-size: .95rem; }
+
+    /* CTA FINAL */
+    .cta-final {
+      text-align: center;
+      padding: 64px 24px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      border-top: 1px solid var(--card-border);
+    }
+    .cta-final h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 14px; }
+    .cta-final p { color: var(--muted); margin-bottom: 24px; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: .85rem;
+      border-top: 1px solid var(--card-border);
+    }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 600px) {
+      .hero-soft { padding: 40px 16px 32px; }
+      .seccion { padding: 36px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRW2TPQR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <div class="brand">
+    <img src="umanoai.png" alt="UmanoAI" style="height:28px;">
+    Umano<span>Soft</span>
+  </div>
+  <a href="/" class="back-link">← Volver a UmanoAI</a>
+</nav>
+
+<!-- HERO -->
+<section>
+  <div class="hero-soft">
+    <div class="kicker">Producto de UmanoAI</div>
+    <h1>Ordená tu pyme desde un solo lugar</h1>
+    <p>Facturación AFIP, CRM de ventas, control de gastos, objetivos y cotizaciones profesionales. Sin complejidad, sin licencias caras.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+      <a href="https://wa.me/5491125926977?text=Hola%2C%20quiero%20conocer%20UmanoSoft" class="btn-primary" target="_blank" rel="noopener">🚀 Quiero conocer UmanoSoft</a>
+      <a href="#features" class="btn-secondary">Ver funcionalidades</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="seccion">
+    <h2>Todo lo que necesitás para operar tu pyme</h2>
+    <p class="subtitle">Cinco módulos integrados que trabajan juntos para que pases menos tiempo en tareas administrativas y más tiempo en tu negocio.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon">🧾</div>
+        <h3>Facturación AFIP</h3>
+        <p>Emití facturas A, B y C en segundos. Sin entrar a AFIP, sin errores, con historial completo de comprobantes.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🤝</div>
+        <h3>CRM de ventas</h3>
+        <p>Centralizá tus contactos, seguí cada oportunidad comercial y nunca más pierdas un lead por falta de seguimiento.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">💸</div>
+        <h3>Control de gastos</h3>
+        <p>Registrá egresos, categorizalos y analizá en qué se va el dinero para tomar decisiones con información real.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🎯</div>
+        <h3>Objetivos y tareas</h3>
+        <p>Definí metas para tu equipo, asigná responsables y hacé seguimiento desde un panel centralizado.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📑</div>
+        <h3>Cotizaciones profesionales</h3>
+        <p>Armá propuestas listas para enviar en minutos, con tu logo y marca. Del presupuesto a la factura en un clic.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🤖</div>
+        <h3>Integración con IA</h3>
+        <p>Conectado con los bots de WhatsApp y automatizaciones de UmanoAI para que todo tu negocio funcione en conjunto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULADORA ROI -->
+<section style="padding: 0 24px 48px;">
+  <div class="calc-box">
+    <h2>⏱️ ¿Cuánto tiempo perdés facturando manualmente?</h2>
+    <p class="subtitle">Calculá tu ahorro real con UmanoSoft</p>
+
+    <div class="calc-inputs">
+      <div>
+        <label for="calc-facturas">Facturas que emitís por mes</label>
+        <input id="calc-facturas" type="number" min="1" max="9999" value="30" oninput="calcRoi()">
+      </div>
+      <div>
+        <label for="calc-costo">Costo hora del empleado ($ ARS)</label>
+        <input id="calc-costo" type="number" min="0" max="999999" value="3000" oninput="calcRoi()">
+      </div>
+    </div>
+
+    <div class="calc-results">
+      <div class="calc-result-item">
+        <div class="val" id="calc-horas" style="color:#38bdf8;">5.8 hs</div>
+        <div class="lbl">horas ahorradas por mes</div>
+      </div>
+      <div class="calc-result-item">
+        <div class="val" id="calc-dinero" style="color:#4ade80;">$17.250</div>
+        <div class="lbl">ahorro mensual en salario</div>
+      </div>
+      <div class="calc-result-item">
+        <div class="val" id="calc-anual" style="color:#a78bfa;">$207.000</div>
+        <div class="lbl">ahorro estimado anual</div>
+      </div>
+    </div>
+
+    <p id="us-calc-msg">Con 30 facturas/mes pasás de <strong>6 horas</strong> de carga manual a menos de <strong>15 minutos</strong>.</p>
+
+    <p style="text-align:center;">
+      <a href="https://wa.me/5491125926977?text=Hola%2C%20quiero%20conocer%20UmanoSoft%20para%20facturar%20m%C3%A1s%20r%C3%A1pido" class="btn-primary" target="_blank" rel="noopener">
+        🚀 Quiero empezar a ahorrar tiempo
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- CASO DE USO -->
+<section>
+  <div class="seccion">
+    <h2>Caso real: CleanPaz</h2>
+    <p class="subtitle">Cómo UmanoSoft transformó la gestión de facturación de una empresa de limpieza.</p>
+    <div class="features-grid" style="max-width:700px;margin:0 auto;">
+      <div class="caso-card">
+        <div class="logo-wrap"><img src="logo-cleanpaz.png" alt="CleanPaz"></div>
+        <h3>Facturación AFIP centralizada con UmanoSoft</h3>
+        <p>CleanPaz emitía facturas manualmente en AFIP, perdiendo horas cada semana en carga y corrección de errores. Con UmanoSoft centralizaron todo en una sola plataforma.</p>
+        <ul>
+          <li>Facturación electrónica sin fricción</li>
+          <li>Menos tiempo de carga por comprobante</li>
+          <li>Gestión centralizada en un solo lugar</li>
+          <li>Eliminaron errores en emisión de comprobantes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios">
+  <div class="seccion">
+    <h2>Planes de UmanoSoft</h2>
+    <p class="subtitle">Precios pensados para pymes argentinas. Sin contratos largos, sin sorpresas.</p>
+    <div class="pricing-grid">
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">USD 49 <span>/mes</span></div>
+        <div class="plan-desc">Para pymes que quieren ordenar su facturación</div>
+        <ul>
+          <li>Facturación AFIP ilimitada</li>
+          <li>Hasta 3 usuarios</li>
+          <li>Historial de comprobantes</li>
+          <li>Soporte por WhatsApp</li>
+        </ul>
+        <a href="https://wa.me/5491125926977?text=Hola%2C%20quiero%20el%20plan%20Starter%20de%20UmanoSoft" class="btn-secondary" target="_blank" rel="noopener">Empezar</a>
+      </div>
+      <div class="plan-card destacado">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">USD 90 <span>/mes</span></div>
+        <div class="plan-desc">La solución completa para pymes en crecimiento</div>
+        <ul>
+          <li>Todo lo del plan Starter</li>
+          <li>CRM de ventas</li>
+          <li>Control de gastos</li>
+          <li>Cotizaciones profesionales</li>
+          <li>Objetivos y tareas</li>
+          <li>Usuarios ilimitados</li>
+        </ul>
+        <a href="https://wa.me/5491125926977?text=Hola%2C%20quiero%20el%20plan%20Pro%20de%20UmanoSoft" class="btn-primary" target="_blank" rel="noopener">Quiero el Pro</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:18px;color:#64748b;font-size:.9rem;">¿Necesitás algo a medida? <a href="https://wa.me/5491125926977?text=Hola%2C%20necesito%20UmanoSoft%20a%20medida" target="_blank" rel="noopener">Hablemos.</a></p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="seccion" style="max-width:780px;">
+    <h2>Preguntas frecuentes</h2>
+    <p class="subtitle">Todo lo que necesitás saber antes de empezar.</p>
+
+    <details style="margin-bottom:4px;">
+      <summary class="faq-item">¿Necesito saber de contabilidad para usar UmanoSoft?</summary>
+      <div class="faq-item"><p>No. UmanoSoft está diseñado para dueños de pymes, no para contadores. El proceso de facturación es simple: cargás los datos del cliente, elegís el tipo de comprobante y listo.</p></div>
+    </details>
+    <details style="margin-bottom:4px;">
+      <summary class="faq-item">¿Funciona con mi certificado AFIP actual?</summary>
+      <div class="faq-item"><p>Sí. Conectamos UmanoSoft con tu CUIT y certificado fiscal. El equipo de UmanoAI te acompaña en toda la configuración inicial.</p></div>
+    </details>
+    <details style="margin-bottom:4px;">
+      <summary class="faq-item">¿Cuánto tiempo tarda la implementación?</summary>
+      <div class="faq-item"><p>Entre 1 y 3 días hábiles desde que nos pasás tus datos. Nosotros hacemos la configuración y te entregamos todo funcionando.</p></div>
+    </details>
+    <details style="margin-bottom:4px;">
+      <summary class="faq-item">¿Se integra con los bots de WhatsApp de UmanoAI?</summary>
+      <div class="faq-item"><p>Sí. Si ya tenés o contratás un bot de UmanoAI, podemos conectar flujos automáticos: por ejemplo, cuando un cliente confirma una compra, se genera la factura automáticamente.</p></div>
+    </details>
+    <details>
+      <summary class="faq-item">¿Puedo cancelar cuando quiera?</summary>
+      <div class="faq-item"><p>Sí, no hay contratos de largo plazo. Podés cancelar en cualquier momento sin penalidades.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <h2>¿Listo para ordenar tu pyme?</h2>
+  <p>Hablá con el equipo de UmanoAI y empezá a usar UmanoSoft esta semana.</p>
+  <a href="https://wa.me/5491125926977?text=Hola%2C%20quiero%20empezar%20con%20UmanoSoft" class="btn-primary" target="_blank" rel="noopener">
+    💬 Hablar por WhatsApp
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <a href="/">UmanoAI</a> — Automatización e IA para pymes argentinas</p>
+  <p style="margin-top:6px;"><a href="/">← Volver al sitio principal</a></p>
+</footer>
+
+<script>
+  function calcRoi() {
+    var facturas = Math.max(1, parseInt(document.getElementById('calc-facturas').value) || 0);
+    var costoHora = Math.max(0, parseFloat(document.getElementById('calc-costo').value) || 0);
+    var minPorFactura = 11.5;
+    var minTotal = facturas * minPorFactura;
+    var minSoft = facturas * 0.5;
+    var horasAhorradas = (minTotal - minSoft) / 60;
+    var ahorro = horasAhorradas * costoHora;
+    var ahorroanual = ahorro * 12;
+    document.getElementById('calc-horas').textContent = horasAhorradas.toFixed(1) + ' hs';
+    document.getElementById('calc-dinero').textContent = '$' + Math.round(ahorro).toLocaleString('es-AR');
+    document.getElementById('calc-anual').textContent = '$' + Math.round(ahorroanual).toLocaleString('es-AR');
+    document.getElementById('us-calc-msg').innerHTML =
+      'Con ' + facturas + ' facturas/mes pasás de <strong>' +
+      (minTotal < 60 ? Math.round(minTotal) + ' min' : (minTotal/60).toFixed(1) + ' hs') +
+      '</strong> de carga manual a menos de <strong>' +
+      (minSoft < 60 ? minSoft + ' min' : (minSoft/60).toFixed(1) + ' hs') +
+      '</strong> con UmanoSoft.';
+  }
+</script>
+
+</body>
+</html>
