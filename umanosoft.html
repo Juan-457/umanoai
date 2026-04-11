@@ -83,17 +83,29 @@
     .top-nav a.back-link:hover { color: #f1f5f9; text-decoration: none; }
 
     /* HERO */
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(2,6,23,.68), rgba(2,6,23,.82));
+    }
     .hero-soft {
       text-align: center;
-      padding: 64px 24px 48px;
+      padding: 80px 24px 60px;
       max-width: 860px;
       margin: 0 auto;
     }
     .hero-soft .kicker {
       display: inline-block;
-      background: rgba(0,140,255,.15);
-      color: #60c8ff;
-      border: 1px solid rgba(0,140,255,.3);
+      background: rgba(0,140,255,.2);
+      color: #7dd3fc;
+      border: 1px solid rgba(0,140,255,.35);
       border-radius: 20px;
       padding: 4px 14px;
       font-size: .82rem;
@@ -107,16 +119,15 @@
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 18px;
-      background: linear-gradient(135deg, #f1f5f9 40%, #38bdf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: #e8f5ff;
+      text-shadow: 0 1px 12px rgba(0,0,0,.55);
     }
     .hero-soft p {
       color: #cbd5e1;
       font-size: 1.1rem;
       max-width: 640px;
       margin: 0 auto 28px;
+      text-shadow: 0 1px 6px rgba(0,0,0,.4);
     }
 
     /* BOTONES */
@@ -331,7 +342,7 @@
 </nav>
 
 <!-- HERO -->
-<section>
+<section class="hero-section">
   <div class="hero-soft">
     <div class="kicker">Producto de UmanoAI</div>
     <h1>Ordená tu pyme desde un solo lugar</h1>
