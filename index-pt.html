@@ -674,6 +674,23 @@
       border:0;
       display:block;
     }
+    .instagram-feed-loading,
+    .instagram-feed-fallback{
+      padding:18px;
+      text-align:center;
+      color:#cbd5e1;
+      font-size:.95rem;
+      line-height:1.5;
+    }
+    .instagram-feed-loading[hidden],
+    .instagram-feed-fallback[hidden]{
+      display:none;
+    }
+    .instagram-feed-fallback a{
+      color:#38bdf8;
+      font-weight:800;
+      text-decoration:none;
+    }
 
     .instagram-profile-cta{
       margin-top:14px;
@@ -2595,14 +2612,20 @@
           </p>
 
           <div class="instagram-feed-wrap">
+            <div class="instagram-feed-loading">Carregando feed do Instagram...</div>
             <iframe
               width="360"
               height="560"
               src="https://rss.app/embed/v1/carousel/wvTFxVxBusaNeaRT"
               loading="lazy"
               title="Feed de Instagram de UmanoAI"
-              referrerpolicy="no-referrer-when-downgrade">
+              referrerpolicy="no-referrer-when-downgrade"
+              data-instagram-carousel>
             </iframe>
+            <div class="instagram-feed-fallback" hidden>
+              Nao foi possivel carregar o feed agora.
+              <a href="https://www.instagram.com/umano_ai/" target="_blank" rel="noopener">Abrir Instagram</a>
+            </div>
           </div>
 
           <p class="instagram-profile-cta">
@@ -3145,6 +3168,51 @@
           el.classList.remove('fade-out');
         }, 500);
       }, 5000);
+    })();
+  </script>
+
+  <script>
+    (function(){
+      document.querySelectorAll('[data-instagram-carousel]').forEach(function(frame){
+        const wrap = frame.closest('.instagram-feed-wrap');
+        if(!wrap) return;
+        const loading = wrap.querySelector('.instagram-feed-loading');
+        const fallback = wrap.querySelector('.instagram-feed-fallback');
+        let loaded = false;
+        let timerStarted = false;
+
+        function startWatch(){
+          if(timerStarted) return;
+          timerStarted = true;
+          setTimeout(function(){
+            if(loaded) return;
+            if(loading) loading.hidden = true;
+            if(fallback) fallback.hidden = false;
+          }, 8000);
+        }
+
+        frame.addEventListener('load', function(){
+          loaded = true;
+          if(loading) loading.hidden = true;
+          if(fallback) fallback.hidden = true;
+        });
+
+        frame.addEventListener('error', function(){
+          if(loading) loading.hidden = true;
+          if(fallback) fallback.hidden = false;
+        });
+
+        if('IntersectionObserver' in window){
+          const io = new IntersectionObserver(function(entries){
+            if(!entries.some(function(entry){ return entry.isIntersecting; })) return;
+            startWatch();
+            io.disconnect();
+          }, { rootMargin: '300px 0px' });
+          io.observe(wrap);
+        } else {
+          startWatch();
+        }
+      });
     })();
   </script>
 
