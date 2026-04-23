@@ -12,6 +12,7 @@ const STATIC = [
   '/logo-patricia-sebelli.png',
   '/logo-digiagro.png',
   '/logo-cleanpaz.png',
+  '/logo-lodetita.png',
   '/logo-lectura-saludable.jpg',
   '/analytics.png',
 ]
