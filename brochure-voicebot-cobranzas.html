@@ -9,405 +9,875 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "wfvusvj70f");
     </script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UmanoAI — Voice Bot para Cobranzas</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f9; color: #1a1a2e; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UmanoAI | One Page para socios y partners</title>
+  <meta name="description" content="One page comercial de UmanoAI para compartir con potenciales socios: productos, clientes, casos y propuesta de valor.">
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg-2:#0d1b2f;
+      --panel:rgba(10,22,40,.76);
+      --panel-strong:rgba(8,17,32,.92);
+      --line:rgba(148,163,184,.16);
+      --text:#ecf5ff;
+      --muted:#9fb3ca;
+      --blue:#55b6ff;
+      --cyan:#79f0ff;
+      --mint:#6cffbf;
+      --shadow:0 24px 70px rgba(0,0,0,.32);
+      --radius:24px;
+      --max:1180px;
+    }
 
-  /* HEADER */
-  .header {
-    background: linear-gradient(135deg, #0d1b4b 0%, #1a3a8f 60%, #2563eb 100%);
-    color: white;
-    padding: 48px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .logo { font-size: 32px; font-weight: 800; letter-spacing: -1px; }
-  .logo span { color: #60a5fa; }
-  .tagline { font-size: 13px; opacity: 0.75; margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
-  .header-right { text-align: right; }
-  .badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 6px 18px;
-    border-radius: 20px;
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(85,182,255,.22), transparent 28%),
+        radial-gradient(circle at 85% 12%, rgba(121,240,255,.18), transparent 24%),
+        linear-gradient(180deg, #06101d 0%, #081321 45%, #091729 100%);
+    }
 
-  /* HERO */
-  .hero {
-    background: linear-gradient(135deg, #0d1b4b 0%, #1a3a8f 100%);
-    color: white;
-    padding: 60px 60px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    right: -60px;
-    top: -60px;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: rgba(96,165,250,0.08);
-  }
-  .hero h1 { font-size: 44px; font-weight: 800; line-height: 1.15; max-width: 640px; }
-  .hero h1 span { color: #60a5fa; }
-  .hero p { font-size: 18px; margin-top: 20px; opacity: 0.85; max-width: 560px; line-height: 1.7; }
-  .hero-stats {
-    display: flex;
-    gap: 40px;
-    margin-top: 48px;
-    flex-wrap: wrap;
-  }
-  .stat { text-align: center; }
-  .stat .number { font-size: 40px; font-weight: 800; color: #60a5fa; line-height: 1; }
-  .stat .label { font-size: 12px; opacity: 0.7; margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
 
-  /* CONTENT */
-  .content { max-width: 900px; margin: 0 auto; padding: 0 40px; }
+    .shell{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+    }
 
-  /* SECTION */
-  .section { padding: 60px 0; border-bottom: 1px solid #e5e7eb; }
-  .section-title {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #2563eb;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-  .section h2 { font-size: 30px; font-weight: 800; color: #0d1b4b; margin-bottom: 20px; }
-  .section p { font-size: 16px; color: #4b5563; line-height: 1.8; }
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:30;
+      backdrop-filter:blur(20px);
+      background:rgba(5,11,20,.62);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
 
-  /* HOW IT WORKS */
-  .steps { display: flex; gap: 24px; margin-top: 36px; flex-wrap: wrap; }
-  .step {
-    flex: 1;
-    min-width: 180px;
-    background: white;
-    border-radius: 16px;
-    padding: 28px 24px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    border-top: 4px solid #2563eb;
-    text-align: center;
-  }
-  .step-num {
-    width: 40px; height: 40px;
-    background: #eff6ff;
-    color: #2563eb;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: 18px;
-    margin: 0 auto 14px;
-  }
-  .step h3 { font-size: 15px; font-weight: 700; color: #0d1b4b; margin-bottom: 8px; }
-  .step p { font-size: 13px; color: #6b7280; line-height: 1.6; }
+    .topbar-inner{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
 
-  /* BENEFITS */
-  .benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 36px; }
-  .benefit {
-    background: white;
-    border-radius: 16px;
-    padding: 28px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-  }
-  .benefit-icon {
-    width: 48px; height: 48px;
-    background: #eff6ff;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px;
-    flex-shrink: 0;
-  }
-  .benefit h3 { font-size: 16px; font-weight: 700; color: #0d1b4b; margin-bottom: 6px; }
-  .benefit p { font-size: 13px; color: #6b7280; line-height: 1.6; }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
 
-  /* USE CASES */
-  .cases { display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; }
-  .case {
-    flex: 1;
-    min-width: 200px;
-    background: white;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    border-left: 4px solid #2563eb;
-  }
-  .case h3 { font-size: 15px; font-weight: 700; color: #0d1b4b; margin-bottom: 8px; }
-  .case p { font-size: 13px; color: #6b7280; line-height: 1.6; }
+    .brand img{
+      width:48px;
+      height:48px;
+      object-fit:contain;
+      filter:drop-shadow(0 10px 20px rgba(85,182,255,.25));
+    }
 
-  /* TECH */
-  .tech-grid { display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap; justify-content: center; }
-  .tech-item {
-    background: white;
-    border-radius: 12px;
-    padding: 16px 24px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    min-width: 130px;
-  }
-  .tech-item .tech-name { font-weight: 700; font-size: 14px; color: #0d1b4b; }
-  .tech-item .tech-role { font-size: 12px; color: #9ca3af; margin-top: 4px; }
+    .brand-copy strong{
+      display:block;
+      font-size:1rem;
+      letter-spacing:.02em;
+    }
 
-  /* CTA */
-  .cta {
-    background: linear-gradient(135deg, #0d1b4b 0%, #2563eb 100%);
-    color: white;
-    padding: 60px;
-    text-align: center;
-    margin-top: 60px;
-  }
-  .cta h2 { font-size: 30px; font-weight: 800; margin-bottom: 14px; }
-  .cta p { font-size: 16px; opacity: 0.85; margin-bottom: 32px; }
-  .cta-contacts { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
-  .contact-item { text-align: center; }
-  .contact-item .contact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; margin-bottom: 6px; }
-  .contact-item .contact-value { font-size: 16px; font-weight: 700; color: #60a5fa; }
+    .brand-copy span{
+      color:var(--muted);
+      font-size:.86rem;
+    }
 
-  /* FOOTER */
-  .footer {
-    background: #0d1b4b;
-    color: white;
-    padding: 24px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-    opacity: 0.8;
-  }
+    .nav{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+    }
 
-  /* Quote */
-  .quote-block {
-    background: #eff6ff;
-    border-left: 5px solid #2563eb;
-    border-radius: 0 12px 12px 0;
-    padding: 24px 28px;
-    margin-top: 28px;
-    font-size: 16px;
-    font-style: italic;
-    color: #1e40af;
-    line-height: 1.7;
-  }
-</style>
+    .nav a{
+      padding:10px 14px;
+      border:1px solid transparent;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .nav a:hover{color:var(--text);border-color:rgba(255,255,255,.08)}
+
+    .nav .cta{
+      color:#041320;
+      background:linear-gradient(135deg, var(--cyan), var(--blue));
+      font-weight:800;
+      box-shadow:0 14px 30px rgba(85,182,255,.2);
+    }
+
+    .hero{
+      padding:48px 0 26px;
+    }
+
+    .hero-card{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at top right, rgba(121,240,255,.16), transparent 28%),
+        linear-gradient(145deg, rgba(15,30,53,.94), rgba(7,18,34,.96));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+      padding:38px;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:auto auto -90px -90px;
+      width:280px;
+      height:280px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(108,255,191,.12), transparent 70%);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      color:#d8f2ff;
+      font-size:.82rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1.3fr .9fr;
+      gap:24px;
+      align-items:end;
+      margin-top:22px;
+    }
+
+    h1{
+      margin:0;
+      max-width:760px;
+      font-size:clamp(2.4rem, 5vw, 5.1rem);
+      line-height:.95;
+      letter-spacing:-.05em;
+    }
+
+    .hero p{
+      max-width:700px;
+      color:var(--muted);
+      font-size:1.08rem;
+      line-height:1.72;
+      margin:20px 0 0;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 18px;
+      border-radius:999px;
+      font-weight:800;
+      border:1px solid rgba(255,255,255,.1);
+    }
+
+    .btn-primary{
+      color:#041320;
+      background:linear-gradient(135deg, var(--mint), var(--cyan));
+      box-shadow:0 16px 30px rgba(108,255,191,.16);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+    }
+
+    .hero-note{
+      margin-top:14px;
+      color:#d7ebff;
+      font-size:.94rem;
+    }
+
+    .impact-panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      padding:22px;
+    }
+
+    .impact-panel h2{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:#dff3ff;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+    }
+
+    .impact-panel ul{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .metrics{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .metric{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:20px;
+      padding:18px;
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.9rem;
+      line-height:1;
+      color:#fff;
+    }
+
+    .metric span{
+      display:block;
+      margin-top:8px;
+      color:var(--muted);
+      font-size:.9rem;
+      line-height:1.5;
+    }
+
+    section{
+      padding:24px 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .section-head h2{
+      margin:0;
+      font-size:clamp(1.7rem,3vw,2.6rem);
+      letter-spacing:-.03em;
+    }
+
+    .section-head p{
+      max-width:640px;
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .grid{
+      display:grid;
+      gap:16px;
+    }
+
+    .products{
+      grid-template-columns:repeat(3, 1fr);
+    }
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:24px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
+    }
+
+    .product-badge{
+      display:inline-flex;
+      margin-bottom:14px;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(121,240,255,.08);
+      border:1px solid rgba(121,240,255,.18);
+      color:#c7f5ff;
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .card h3{
+      margin:0;
+      font-size:1.3rem;
+      letter-spacing:-.03em;
+    }
+
+    .card p{
+      color:var(--muted);
+      line-height:1.7;
+      margin:12px 0 0;
+    }
+
+    .card ul{
+      margin:16px 0 0;
+      padding-left:18px;
+      color:#dbe8f5;
+      line-height:1.75;
+    }
+
+    .logos{
+      grid-template-columns:repeat(5, 1fr);
+    }
+
+    .logo-card{
+      min-height:122px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:22px;
+    }
+
+    .logo-card img{
+      max-height:54px;
+      width:auto;
+      object-fit:contain;
+      filter:grayscale(1) brightness(1.12);
+      opacity:.95;
+    }
+
+    .cases{
+      grid-template-columns:repeat(5, 1fr);
+    }
+
+    .case{
+      background:var(--panel-strong);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .case img{
+      width:100%;
+      aspect-ratio:16/10;
+      object-fit:cover;
+      background:#fff;
+    }
+
+    .case-copy{
+      padding:22px;
+    }
+
+    .case-copy h3{
+      margin:0;
+      font-size:1.18rem;
+      letter-spacing:-.03em;
+    }
+
+    .case-copy p{
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:.95rem;
+    }
+
+    .case-copy ul{
+      margin:14px 0 0;
+      padding-left:18px;
+      color:#dce9f7;
+      line-height:1.65;
+      font-size:.92rem;
+    }
+
+    .partner{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:16px;
+    }
+
+    .partner .card{
+      height:100%;
+    }
+
+    .process{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .step{
+      padding:20px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+    }
+
+    .step strong{
+      display:inline-flex;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:12px;
+      background:linear-gradient(135deg, var(--blue), var(--cyan));
+      color:#06111b;
+    }
+
+    .step h3{
+      margin:0;
+      font-size:1rem;
+    }
+
+    .step p{
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:.92rem;
+    }
+
+    .cta-block{
+      padding:34px;
+      border-radius:30px;
+      background:
+        radial-gradient(circle at top right, rgba(108,255,191,.18), transparent 30%),
+        linear-gradient(135deg, #0f2037, #081526);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+
+    .cta-block h2{
+      margin:0;
+      font-size:clamp(1.9rem,3vw,3rem);
+      letter-spacing:-.04em;
+    }
+
+    .cta-block p{
+      max-width:760px;
+      margin:14px auto 0;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .cta-meta{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-top:26px;
+      color:#dbe9f7;
+      font-size:.96rem;
+    }
+
+    footer{
+      padding:22px 0 40px;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    @media (max-width:1080px){
+      .hero-grid,
+      .partner{grid-template-columns:1fr}
+      .products{grid-template-columns:repeat(2,1fr)}
+      .cases{grid-template-columns:repeat(2,1fr)}
+      .logos{grid-template-columns:repeat(4,1fr)}
+      .process{grid-template-columns:repeat(2,1fr)}
+      .metrics{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media (max-width:720px){
+      .topbar-inner{padding:10px 0;align-items:flex-start;flex-direction:column}
+      .nav{justify-content:flex-start}
+      .hero{padding-top:26px}
+      .hero-card{padding:24px}
+      .products,
+      .cases,
+      .logos,
+      .process,
+      .metrics{grid-template-columns:1fr}
+      .section-head{align-items:flex-start;flex-direction:column}
+      .logo-card{min-height:100px}
+      .cta-block{padding:24px}
+    }
+  </style>
 </head>
 <body>
-
-<!-- HEADER -->
-<div class="header">
-  <div>
-    <div class="logo">Umano<span>AI</span></div>
-    <div class="tagline">Inteligencia Artificial Conversacional</div>
-  </div>
-  <div class="header-right">
-    <span class="badge">Voice Bot — Cobranzas</span>
-  </div>
-</div>
-
-<!-- HERO -->
-<div class="hero">
-  <h1>Recuperá cartera con <span>IA que habla</span> por vos, 24/7</h1>
-  <p>Automatizá hasta el 80% de las gestiones de cobranzas con agentes de voz que negocian, acuerdan y registran — sin intervención humana.</p>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="number">80%</div>
-      <div class="label">Reducción de costo<br>operativo</div>
-    </div>
-    <div class="stat">
-      <div class="number">3×</div>
-      <div class="label">Más contactos<br>efectivos por día</div>
-    </div>
-    <div class="stat">
-      <div class="number">24/7</div>
-      <div class="label">Disponibilidad<br>sin feriados</div>
-    </div>
-    <div class="stat">
-      <div class="number">15 días</div>
-      <div class="label">Time to market<br>en producción</div>
-    </div>
-  </div>
-</div>
-
-<!-- MAIN CONTENT -->
-<div class="content">
-
-  <!-- ¿Qué es? -->
-  <div class="section">
-    <div class="section-title">El servicio</div>
-    <h2>Un agente de voz con IA que gestiona deudas como un operador experto</h2>
-    <p>Nuestro Voice Bot para cobranzas llama a clientes con deuda vencida, mantiene conversaciones naturales en español rioplatense, ofrece planes de pago, registra compromisos y escala a un humano solo cuando es necesario. Todo integrable a los sistemas de tu banco o financiera en tiempo récord.</p>
-    <div class="quote-block">
-      "No es un IVR con menús. Es una IA que escucha, entiende la situación del deudor y negocia — como lo haría tu mejor operador, pero a escala ilimitada."
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Ir a la home de UmanoAI">
+        <img src="umanoai.png" alt="UmanoAI">
+        <div class="brand-copy">
+          <strong>UmanoAI</strong>
+          <span>AI, automatización, software y crecimiento digital</span>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#productos">Productos</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#casos">Casos</a>
+        <a href="#partner">Partner fit</a>
+        <a class="cta" href="https://wa.me/5491125926977?text=Hola%20quiero%20conocer%20UmanoAI%20como%20potencial%20socio" target="_blank" rel="noopener">Hablar ahora</a>
+      </nav>
     </div>
   </div>
 
-  <!-- Cómo funciona -->
-  <div class="section">
-    <div class="section-title">Proceso</div>
-    <h2>¿Cómo funciona?</h2>
-    <p>Un flujo completamente automatizado desde la cartera hasta el registro del acuerdo:</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Carga de cartera</h3>
-        <p>Subís el listado de deudores vía API, CSV o conexión directa al CRM/core bancario.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Llamada IA</h3>
-        <p>El bot llama, se presenta con identidad de tu empresa y gestiona la conversación en forma natural.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Negociación</h3>
-        <p>Ofrece opciones predefinidas: refinanciación, cuotas, quita. Registra el acuerdo verbal.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <h3>Escalado</h3>
-        <p>Si el cliente lo requiere, transfiere en tiempo real a un operador humano con contexto completo.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">5</div>
-        <h3>Reporte</h3>
-        <p>Dashboard y API con resultados: contactados, acuerdos, rechazos, intentos, grabaciones.</p>
-      </div>
-    </div>
-  </div>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-card">
+        <span class="eyebrow">One page comercial para potencial socio</span>
+        <div class="hero-grid">
+          <div>
+            <h1>UmanoAI construye productos que venden, atienden y ordenan la operación.</h1>
+            <p>
+              Somos un estudio de implementación enfocado en resultados concretos: agentes de IA para WhatsApp, web y voz,
+              automatizaciones, CRM a medida, UmanoSoft, dashboards y sitios que convierten. La lógica es simple: captar mejor,
+              responder más rápido y sacar fricción operativa con herramientas conectadas entre sí.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#partner">Ver propuesta para socios</a>
+              <a class="btn btn-secondary" href="soluciones.html">Explorar mapa de soluciones</a>
+            </div>
+            <div class="hero-note">Ideal para compartir con un socio comercial, partner tecnológico o aliado de implementación.</div>
+          </div>
 
-  <!-- Beneficios -->
-  <div class="section">
-    <div class="section-title">Beneficios</div>
-    <h2>Por qué UmanoAI</h2>
-    <div class="benefits">
-      <div class="benefit">
-        <div class="benefit-icon">💰</div>
-        <div>
-          <h3>Reducción de costos drástica</h3>
-          <p>Eliminás el costo por llamada de operador. El bot maneja miles de gestiones simultáneas por una fracción del costo de un call center tradicional.</p>
+          <aside class="impact-panel">
+            <h2>Qué hacemos bien</h2>
+            <ul>
+              <li>Convertimos procesos desordenados en flujos operativos simples.</li>
+              <li>Lanzamos rápido sin depender de ciclos largos de producto.</li>
+              <li>Integramos IA con WhatsApp, formularios, CRM, BI y sistemas existentes.</li>
+              <li>Trabajamos sobre problemas reales de pymes, servicios y operación comercial.</li>
+            </ul>
+          </aside>
+        </div>
+
+        <div class="metrics">
+          <div class="metric">
+            <strong>6</strong>
+            <span>Líneas de producto activas entre IA, software, automatización, BI y web.</span>
+          </div>
+          <div class="metric">
+            <strong>24/7</strong>
+            <span>Atención automática con agentes conversacionales en canales críticos.</span>
+          </div>
+          <div class="metric">
+            <strong>1 stack</strong>
+            <span>Captación, atención y gestión conectadas en un mismo ecosistema.</span>
+          </div>
+          <div class="metric">
+            <strong>Casos reales</strong>
+            <span>Clientes y proyectos ya visibles en el propio repositorio y sitio de UmanoAI.</span>
+          </div>
         </div>
       </div>
-      <div class="benefit">
-        <div class="benefit-icon">🗣️</div>
+    </section>
+
+    <section id="productos">
+      <div class="section-head">
         <div>
-          <h3>Voz hiperrealista en español</h3>
-          <p>Tecnología de síntesis de voz de última generación. El cliente no percibe que habla con una IA — la tasa de corte de llamada es mínima.</p>
+          <h2>Productos y capacidades</h2>
+        </div>
+        <p>
+          UmanoAI no vende una sola cosa. Vende un sistema de crecimiento y operación digital que puede entrar por un bot,
+          una web, una necesidad de automatización o una gestión interna que hoy está dispersa entre Excel, WhatsApp y tareas manuales.
+        </p>
+      </div>
+
+      <div class="grid products">
+        <article class="card">
+          <span class="product-badge">IA conversacional</span>
+          <h3>Agentes de IA para WhatsApp, web y voz</h3>
+          <p>Responden consultas, califican leads, derivan a humanos y dejan trazabilidad del contacto.</p>
+          <ul>
+            <li>Bots de WhatsApp para ventas, soporte y atención.</li>
+            <li>Web chat con IA para captar y responder 24/7.</li>
+            <li>Voice AI para atención telefónica y flujos de cobranza.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="product-badge">Gestión propia</span>
+          <h3>UmanoSoft</h3>
+          <p>Plataforma interna para ordenar clientes, cotizaciones, tareas, remitos, reuniones y facturación.</p>
+          <ul>
+            <li>Centraliza operación comercial y administrativa.</li>
+            <li>Evita pérdida de contexto entre personas y canales.</li>
+            <li>Puede convivir con bots, formularios y facturación.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="product-badge">Automatización</span>
+          <h3>Integraciones y workflows</h3>
+          <p>Conectamos herramientas y datos para sacar tareas repetitivas del medio.</p>
+          <ul>
+            <li>n8n, Power Automate, APIs y webhooks.</li>
+            <li>Integración con planillas, CRM, ERPs y formularios.</li>
+            <li>Seguimientos, notificaciones, envíos y circuitos automáticos.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="product-badge">Growth</span>
+          <h3>Webs y landings que convierten</h3>
+          <p>Sitios rápidos y claros, diseñados para contacto, confianza y activación comercial.</p>
+          <ul>
+            <li>Landing pages con WhatsApp y formularios.</li>
+            <li>SEO base, medición y eventos.</li>
+            <li>Base lista para sumar IA y automatización.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="product-badge">Datos</span>
+          <h3>Power BI y analítica</h3>
+          <p>Tableros y reportes para decidir con información operativa real, no con intuición.</p>
+          <ul>
+            <li>Dashboards comerciales y operativos.</li>
+            <li>Seguimiento de desempeño y trazabilidad.</li>
+            <li>Conexión con CRM, operación y automatizaciones.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="product-badge">Custom build</span>
+          <h3>Apps a medida</h3>
+          <p>Portales, formularios y aplicaciones construidas según la lógica de cada negocio.</p>
+          <ul>
+            <li>Apps internas para equipos y operaciones.</li>
+            <li>Experiencias para clientes, proveedores o distribuidores.</li>
+            <li>Desarrollo pragmático, sin sobreingeniería.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="clientes">
+      <div class="section-head">
+        <div>
+          <h2>Clientes y marcas presentes en el ecosistema UmanoAI</h2>
+        </div>
+        <p>
+          Estos logos y proyectos ya aparecen en páginas activas del repo. La mezcla es deliberada: agro, salud, automotores,
+          educación, turismo, gastronomía y servicios. Eso muestra adaptabilidad y capacidad de implementación transversal.
+        </p>
+      </div>
+
+      <div class="grid logos">
+        <div class="logo-card"><img src="logo-cleanpaz.png" alt="CleanPaz"></div>
+        <div class="logo-card"><img src="Agricheck color.png" alt="Agricheck"></div>
+        <div class="logo-card"><img src="logo-digiagro.png" alt="DigiAgro"></div>
+        <div class="logo-card"><img src="logo-mauregui.png" alt="Mauregui Automotores"></div>
+        <div class="logo-card"><img src="logo-patricia-sebelli.png" alt="Dra. Patricia Sebelli"></div>
+        <div class="logo-card"><img src="logo-dsacine.jpg" alt="DSACINE"></div>
+        <div class="logo-card"><img src="logo-lectura-saludable.jpg" alt="Lectura Saludable"></div>
+        <div class="logo-card"><img src="logo-cabana-alpina.png" alt="Cabaña Alpina Don Elisario"></div>
+        <div class="logo-card"><img src="logo-la-angelica.png" alt="La Angélica"></div>
+        <div class="logo-card"><img src="logo-suarez-pastas.png" alt="Suarez Pastas"></div>
+      </div>
+    </section>
+
+    <section id="casos">
+      <div class="section-head">
+        <div>
+          <h2>Casos concretos</h2>
+        </div>
+        <p>
+          UmanoAI ya muestra evidencia de ejecución en el sitio actual. Acá están condensados algunos ejemplos con mejor narrativa
+          para una conversación de partnership.
+        </p>
+      </div>
+
+      <div class="grid cases">
+        <article class="case">
+          <img src="Agricheck color.png" alt="Agricheck">
+          <div class="case-copy">
+            <h3>Agricheck</h3>
+            <p>Bot de atención comercial que responde rápido y deriva en vivo a vendedores.</p>
+            <ul>
+              <li>Menos oportunidades perdidas.</li>
+              <li>Respuesta inmediata sobre consultas repetidas.</li>
+              <li>Flujo comercial más ordenado.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="case">
+          <img src="logo-cleanpaz.png" alt="CleanPaz">
+          <div class="case-copy">
+            <h3>CleanPaz + UmanoSoft</h3>
+            <p>Centralización de facturación electrónica y gestión operativa en una sola herramienta.</p>
+            <ul>
+              <li>Menos carga manual en AFIP.</li>
+              <li>Menos errores de emisión.</li>
+              <li>Gestión administrativa más limpia.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="case">
+          <img src="patricia-sebelli.png" alt="Dra. Patricia Sebelli">
+          <div class="case-copy">
+            <h3>Dra. Patricia Sebelli</h3>
+            <p>Sitio profesional enfocado en confianza, presencia digital y captación de pacientes.</p>
+            <ul>
+              <li>Web clara y directa.</li>
+              <li>Consultas por WhatsApp y formularios.</li>
+              <li>Más tracción digital en pocos días.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="case">
+          <img src="Seguimiento de deuda por whatsapp.png" alt="Seguimiento de deuda por WhatsApp">
+          <div class="case-copy">
+            <h3>Seguimiento de deuda por WhatsApp</h3>
+            <p>Solución de trazabilidad comercial para ordenar contacto, seguimiento y acciones sobre cartera.</p>
+            <ul>
+              <li>Menos fricción administrativa.</li>
+              <li>Acceso rápido al estado del contacto.</li>
+              <li>Base lista para automatizar cobranzas.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="case">
+          <img src="umanoai.png" alt="Bot de WhatsApp para aseguradoras">
+          <div class="case-copy">
+            <h3>Bot de WhatsApp para aseguradoras vinculadas a Federación Patronal</h3>
+            <p>Implementación para pequeñas compañías y productores que necesitan responder rápido por WhatsApp con datos reales de pólizas.</p>
+            <ul>
+              <li>Consulta de información de pólizas conectada por API.</li>
+              <li>Obtención de tarjetas de circulación desde el chat.</li>
+              <li>Menos carga operativa y mejor tiempo de respuesta al asegurado.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="partner">
+      <div class="section-head">
+        <div>
+          <h2>Por qué tiene sentido como partner</h2>
+        </div>
+        <p>
+          Si el objetivo es sumar a UmanoAI como socio, aliado comercial o partner de delivery, la ventaja está en la combinación:
+          IA aplicada, ejecución rápida y un portfolio que ya cruza captación, atención y operación interna.
+        </p>
+      </div>
+
+      <div class="partner">
+        <article class="card">
+          <span class="product-badge">Partner fit</span>
+          <h3>Cómo puede encajar UmanoAI</h3>
+          <ul>
+            <li>Como brazo de implementación para proyectos de IA y automatización.</li>
+            <li>Como partner comercial para vender soluciones paquetizadas con delivery real.</li>
+            <li>Como equipo técnico para acelerar pruebas, pilotos y verticales nuevos.</li>
+            <li>Como proveedor de soluciones white-label o híbridas según el caso.</li>
+          </ul>
+          <p>
+            La fortaleza no es solo técnica. También hay narrativa comercial, demos, activos visuales, landings y casos que ayudan a cerrar.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="product-badge">Ventaja operativa</span>
+          <h3>Qué reduce el riesgo</h3>
+          <ul>
+            <li>Portafolio visible y consistente dentro del mismo repositorio.</li>
+            <li>Productos modulares para entrar con tickets chicos y luego expandir.</li>
+            <li>Capacidad de integrar sin pedir a los clientes que cambien todo de golpe.</li>
+            <li>Enfoque orientado a pymes y negocios reales, no a presentaciones vacías.</li>
+          </ul>
+          <p>
+            Eso permite abrir conversaciones comerciales con una promesa concreta: menos caos operativo y más velocidad de respuesta.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <h2>Modelo de trabajo</h2>
+        </div>
+        <p>
+          La dinámica es simple: detectar fricción, diseñar una solución mínima con impacto visible y escalar sobre resultados.
+        </p>
+      </div>
+
+      <div class="process">
+        <article class="step">
+          <strong>1</strong>
+          <h3>Diagnóstico</h3>
+          <p>Se define el cuello de botella: captación, atención, seguimiento, cobranza o gestión interna.</p>
+        </article>
+        <article class="step">
+          <strong>2</strong>
+          <h3>Solución inicial</h3>
+          <p>Se implementa una pieza de alto impacto: bot, landing, automatización o módulo de gestión.</p>
+        </article>
+        <article class="step">
+          <strong>3</strong>
+          <h3>Integración</h3>
+          <p>Se conecta con WhatsApp, formularios, planillas, CRM, AFIP, BI o los sistemas que ya existan.</p>
+        </article>
+        <article class="step">
+          <strong>4</strong>
+          <h3>Escala</h3>
+          <p>Con el caso probado, se amplía a nuevos procesos, nuevas áreas o nuevos clientes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="cta-block">
+        <h2>Si querés explorar una alianza, ya hay con qué empezar.</h2>
+        <p>
+          UmanoAI ya tiene productos, clientes, casos y material comercial suficiente para abrir una conversación seria.
+          La oportunidad está en estructurar cómo se empaqueta y se escala junto a un partner correcto.
+        </p>
+        <div class="hero-actions" style="justify-content:center;">
+          <a class="btn btn-primary" href="https://wa.me/5491125926977?text=Hola%20quiero%20ver%20una%20alianza%20con%20UmanoAI" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+          <a class="btn btn-secondary" href="mailto:info@umanoai.com.ar">Escribir por email</a>
+        </div>
+        <div class="cta-meta">
+          <span>WhatsApp: +54 9 11 2592-6977</span>
+          <span>Email: info@umanoai.com.ar</span>
+          <span>Web: umanoai.com.ar</span>
         </div>
       </div>
-      <div class="benefit">
-        <div class="benefit-icon">🔒</div>
-        <div>
-          <h3>Cumplimiento y trazabilidad</h3>
-          <p>Todas las llamadas se graban, transcriben y almacenan. Trazabilidad completa para auditorías y cumplimiento regulatorio (BCRA, UIF).</p>
-        </div>
-      </div>
-      <div class="benefit">
-        <div class="benefit-icon">⚡</div>
-        <div>
-          <h3>Integración rápida</h3>
-          <p>API REST bien documentada. Compatible con los principales core bancarios y CRMs del mercado. En producción en 15 días hábiles.</p>
-        </div>
-      </div>
-<div class="benefit">
-        <div class="benefit-icon">🤝</div>
-        <div>
-          <h3>Personalización total</h3>
-          <p>El bot habla con la voz y el tono de tu marca. Scripts personalizados por segmento de mora, monto, historial del cliente.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <!-- Casos de uso -->
-  <div class="section">
-    <div class="section-title">Aplicaciones</div>
-    <h2>Casos de uso en entidades financieras</h2>
-    <div class="cases">
-      <div class="case">
-        <h3>Mora temprana (0–30 días)</h3>
-        <p>Recordatorios automáticos de vencimiento. Alta tasa de resolución sin fricción con el cliente.</p>
-      </div>
-      <div class="case">
-        <h3>Mora media (30–90 días)</h3>
-        <p>Negociación activa de planes de pago. Oferta de refinanciación según parámetros de riesgo.</p>
-      </div>
-      <div class="case">
-        <h3>Mora avanzada (+90 días)</h3>
-        <p>Gestión intensiva. Coordinación con el equipo de recupero legal. Registro de acuerdos prejudiciales.</p>
-      </div>
-      <div class="case">
-        <h3>Confirmación de pagos</h3>
-        <p>Llamadas de confirmación post-acuerdo. Recordatorios de débito. Reducción de incumplimientos.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Tecnología -->
-  <div class="section">
-    <div class="section-title">Tecnología</div>
-    <h2>Stack de clase mundial, 100% integrado</h2>
-    <p style="text-align:center">Construimos sobre las mejores plataformas de IA del mercado, integradas en una solución lista para producción:</p>
-    <div class="tech-grid">
-      <div class="tech-item">
-        <div class="tech-name">ElevenLabs</div>
-        <div class="tech-role">Síntesis de voz IA</div>
-      </div>
-      <div class="tech-item">
-        <div class="tech-name">OpenAI GPT-4</div>
-        <div class="tech-role">Motor conversacional</div>
-      </div>
-      <div class="tech-item">
-        <div class="tech-name">Twilio</div>
-        <div class="tech-role">Telefonía &amp; SIP</div>
-      </div>
-      <div class="tech-item">
-        <div class="tech-name">API REST</div>
-        <div class="tech-role">Integración sistemas</div>
-      </div>
-      <div class="tech-item">
-        <div class="tech-name">Dashboard</div>
-        <div class="tech-role">Reportes en tiempo real</div>
-      </div>
-    </div>
-  </div>
-
-</div><!-- /content -->
-
-<!-- CTA -->
-<div class="cta">
-  <h2>Hablemos de su proyecto</h2>
-  <p>Coordinamos una demo personalizada con casos reales del sector financiero argentino.<br>Sin compromiso — en menos de 30 minutos ven el bot en acción.</p>
-  <div class="cta-contacts">
-    <div class="contact-item">
-      <div class="contact-label">Web</div>
-      <div class="contact-value">umanoai.com.ar</div>
-    </div>
-    <div class="contact-item">
-      <div class="contact-label">Email</div>
-      <div class="contact-value">info@umanoai.com.ar</div>
-    </div>
-    <div class="contact-item">
-      <div class="contact-label">WhatsApp</div>
-      <div class="contact-value">+54 9 11 2592-6977</div>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-  <div>© 2026 UmanoAI — Todos los derechos reservados</div>
-  <div>info@umanoai.com.ar · umanoai.com.ar · Buenos Aires, Argentina</div>
-</div>
-
+  <footer class="shell">
+    UmanoAI · One page comercial armada sobre contenido, logos, casos y productos ya presentes en el repositorio.
+  </footer>
 </body>
 </html>
