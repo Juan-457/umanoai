@@ -6,7 +6,7 @@ Sitio web estatico de UmanoAI con landing principal, variantes por idioma, pagin
 
 - `index.html`, `index-en.html`, `index-pt.html`: landing principal en ES, EN y PT.
 - `analytics.html`, `desarrollo-web.html`, `soluciones.html`, `recursos.html`, `politica.html`: paginas de contenido y conversion.
-- `barberia.html`, `bots-whatsapp-empresas-argentina.html`, `voicebot-atencion-telefonica-ia.html`: landings verticales.
+- `bots-whatsapp-empresas-argentina.html`, `voicebot-atencion-telefonica-ia.html`: landings verticales.
 - `llms.txt`, `llms-full.txt`, `ai-index.md`: contexto orientado a LLMs y agentes.
 - `analytics.json`, `eventosclaves.json`, `historico_eventos.json`: salidas sincronizadas de analitica.
 - `scripts/update_analytics.py`: script para actualizar datos de GA4.
