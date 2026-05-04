@@ -15,17 +15,17 @@
   <meta name="description" content="Propuesta de UmanoAI para socios y partners: productos, clientes, casos y propuesta de valor.">
   <style>
     :root{
-      --bg:#07111f;
-      --bg-2:#0d1b2f;
-      --panel:rgba(10,22,40,.76);
-      --panel-strong:rgba(8,17,32,.92);
-      --line:rgba(148,163,184,.16);
-      --text:#ecf5ff;
-      --muted:#9fb3ca;
+      --bg:#edf7ff;
+      --bg-2:#f8fbff;
+      --panel:rgba(255,255,255,.84);
+      --panel-strong:rgba(255,255,255,.94);
+      --line:rgba(83,115,148,.18);
+      --text:#0b1727;
+      --muted:#4e6580;
       --blue:#55b6ff;
       --cyan:#79f0ff;
       --mint:#6cffbf;
-      --shadow:0 24px 70px rgba(0,0,0,.32);
+      --shadow:0 24px 70px rgba(32,74,118,.16);
       --radius:24px;
       --max:1180px;
     }
@@ -34,18 +34,37 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
+      min-height:100vh;
+      position:relative;
       font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(85,182,255,.22), transparent 28%),
-        radial-gradient(circle at 85% 12%, rgba(121,240,255,.18), transparent 24%),
-        linear-gradient(180deg, #06101d 0%, #081321 45%, #091729 100%);
+        linear-gradient(135deg, rgba(85,182,255,.18) 0%, transparent 34%),
+        linear-gradient(315deg, rgba(121,240,255,.2) 0%, transparent 30%),
+        linear-gradient(180deg, #f7fbff 0%, #e8f5ff 42%, #f8fbff 100%);
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(38,91,140,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(38,91,140,.08) 1px, transparent 1px),
+        linear-gradient(135deg, transparent 0 46%, rgba(85,182,255,.1) 46% 47%, transparent 47% 100%);
+      background-size:36px 36px, 36px 36px, 420px 420px;
+      -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,.78), rgba(0,0,0,.3) 65%, rgba(0,0,0,.12));
+      mask-image:linear-gradient(180deg, rgba(0,0,0,.78), rgba(0,0,0,.3) 65%, rgba(0,0,0,.12));
     }
 
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
 
     .shell{
+      position:relative;
+      z-index:1;
       width:min(var(--max), calc(100% - 32px));
       margin:0 auto;
     }
@@ -55,8 +74,9 @@
       top:0;
       z-index:30;
       backdrop-filter:blur(20px);
-      background:rgba(5,11,20,.62);
-      border-bottom:1px solid rgba(255,255,255,.06);
+      background:rgba(248,251,255,.82);
+      border-bottom:1px solid rgba(83,115,148,.16);
+      box-shadow:0 10px 30px rgba(32,74,118,.08);
     }
 
     .topbar-inner{
@@ -109,7 +129,7 @@
       font-size:.92rem;
     }
 
-    .nav a:hover{color:var(--text);border-color:rgba(255,255,255,.08)}
+    .nav a:hover{color:var(--text);border-color:rgba(83,115,148,.2);background:rgba(255,255,255,.54)}
 
     .nav .cta{
       color:#041320;
@@ -126,22 +146,24 @@
       position:relative;
       overflow:hidden;
       background:
-        radial-gradient(circle at top right, rgba(121,240,255,.16), transparent 28%),
+        linear-gradient(125deg, rgba(121,240,255,.18) 0%, transparent 36%),
         linear-gradient(145deg, rgba(15,30,53,.94), rgba(7,18,34,.96));
       border:1px solid rgba(255,255,255,.08);
       border-radius:32px;
       box-shadow:var(--shadow);
       padding:38px;
+      color:#ecf5ff;
     }
 
     .hero-card::before{
       content:"";
       position:absolute;
-      inset:auto auto -90px -90px;
-      width:280px;
-      height:280px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(108,255,191,.12), transparent 70%);
+      inset:0;
+      background:
+        linear-gradient(135deg, transparent 0 72%, rgba(108,255,191,.08) 72% 73%, transparent 73%),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:100% 100%, 44px 44px;
+      opacity:.7;
     }
 
     .eyebrow{
@@ -178,7 +200,7 @@
 
     .hero p{
       max-width:700px;
-      color:var(--muted);
+      color:#bfd1e4;
       font-size:1.08rem;
       line-height:1.72;
       margin:20px 0 0;
@@ -210,7 +232,7 @@
 
     .btn-secondary{
       background:rgba(255,255,255,.03);
-      color:var(--text);
+      color:#ecf5ff;
     }
 
     .hero-note{
@@ -237,7 +259,7 @@
     .impact-panel ul{
       margin:0;
       padding-left:18px;
-      color:var(--muted);
+      color:#bfd1e4;
       line-height:1.7;
     }
 
@@ -265,7 +287,7 @@
     .metric span{
       display:block;
       margin-top:8px;
-      color:var(--muted);
+      color:#bfd1e4;
       font-size:.9rem;
       line-height:1.5;
     }
@@ -318,9 +340,9 @@
       margin-bottom:14px;
       padding:7px 10px;
       border-radius:999px;
-      background:rgba(121,240,255,.08);
-      border:1px solid rgba(121,240,255,.18);
-      color:#c7f5ff;
+      background:rgba(85,182,255,.12);
+      border:1px solid rgba(85,182,255,.2);
+      color:#095d91;
       font-size:.76rem;
       text-transform:uppercase;
       letter-spacing:.08em;
@@ -341,7 +363,7 @@
     .card ul{
       margin:16px 0 0;
       padding-left:18px;
-      color:#dbe8f5;
+      color:#213851;
       line-height:1.75;
     }
 
@@ -355,7 +377,7 @@
       align-items:center;
       justify-content:center;
       padding:22px;
-      background:#f8fbff;
+      background:#fff;
       border:1px solid rgba(148,163,184,.28);
       border-radius:22px;
       box-shadow:0 18px 42px rgba(0,0,0,.16);
@@ -378,7 +400,7 @@
 
     .case{
       background:var(--panel-strong);
-      border:1px solid rgba(255,255,255,.08);
+      border:1px solid var(--line);
       border-radius:28px;
       overflow:hidden;
       box-shadow:var(--shadow);
@@ -416,7 +438,7 @@
     .case-copy ul{
       margin:14px 0 0;
       padding-left:18px;
-      color:#dce9f7;
+      color:#213851;
       line-height:1.65;
       font-size:.92rem;
     }
@@ -440,8 +462,9 @@
     .step{
       padding:20px;
       border-radius:22px;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.78);
+      box-shadow:0 18px 42px rgba(32,74,118,.1);
     }
 
     .step strong{
@@ -477,6 +500,7 @@
       border:1px solid rgba(255,255,255,.08);
       box-shadow:var(--shadow);
       text-align:center;
+      color:#ecf5ff;
     }
 
     .cta-block h2{
@@ -488,7 +512,7 @@
     .cta-block p{
       max-width:760px;
       margin:14px auto 0;
-      color:var(--muted);
+      color:#bfd1e4;
       line-height:1.75;
     }
 
