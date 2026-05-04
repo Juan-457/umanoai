@@ -372,6 +372,7 @@
     }
 
     .logo-card{
+      position:relative;
       min-height:122px;
       display:flex;
       align-items:center;
@@ -381,6 +382,54 @@
       border:1px solid rgba(148,163,184,.28);
       border-radius:22px;
       box-shadow:0 18px 42px rgba(0,0,0,.16);
+      cursor:default;
+      outline:none;
+    }
+
+    .logo-card::after{
+      content:attr(data-tooltip);
+      position:absolute;
+      left:50%;
+      bottom:calc(100% + 10px);
+      width:max-content;
+      max-width:min(280px, calc(100vw - 40px));
+      transform:translate(-50%, 8px);
+      padding:10px 12px;
+      border-radius:12px;
+      background:#0b1727;
+      color:#f8fbff;
+      font-size:.86rem;
+      font-weight:700;
+      line-height:1.35;
+      text-align:center;
+      box-shadow:0 16px 34px rgba(11,23,39,.22);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .18s ease, transform .18s ease;
+      z-index:5;
+    }
+
+    .logo-card::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      bottom:calc(100% + 4px);
+      width:12px;
+      height:12px;
+      background:#0b1727;
+      transform:translate(-50%, 8px) rotate(45deg);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .18s ease, transform .18s ease;
+      z-index:4;
+    }
+
+    .logo-card:hover::after,
+    .logo-card:focus-visible::after,
+    .logo-card:hover::before,
+    .logo-card:focus-visible::before{
+      opacity:1;
+      transform:translate(-50%, 0);
     }
 
     .logo-card img{
@@ -720,21 +769,21 @@
       </div>
 
       <div class="grid logos">
-        <div class="logo-card"><img src="logo-cleanpaz.png" alt="CleanPaz"></div>
-        <div class="logo-card"><img src="Agricheck color.png" alt="Agricheck"></div>
-        <div class="logo-card"><img src="logo-fragaria.png" alt="Fragaria"></div>
-        <div class="logo-card"><img src="logo-fauno.webp" alt="Fauno"></div>
-        <div class="logo-card"><img src="logo-digiagro.png" alt="DigiAgro"></div>
-        <div class="logo-card"><img src="logo-enece.jpg" alt="Enece"></div>
-        <div class="logo-card"><img src="logo-mauregui.png" alt="Mauregui Automotores"></div>
-        <div class="logo-card"><img src="logo-patricia-sebelli.png" alt="Dra. Patricia Sebelli"></div>
-        <div class="logo-card"><img src="logo-dsacine.jpg" alt="DSACINE"></div>
-        <div class="logo-card"><img src="logo-lectura-saludable.jpg" alt="Lectura Saludable"></div>
-        <div class="logo-card"><img src="logo-cabana-alpina.png" alt="Cabaña Alpina Don Elisario"></div>
-        <div class="logo-card"><img src="logo-la-angelica.png" alt="La Angélica"></div>
-        <div class="logo-card"><img src="logo-suarez-pastas.png" alt="Suarez Pastas"></div>
-        <div class="logo-card"><img src="logo-vazquez-e-hijos.webp" alt="Vázquez e Hijos"></div>
-        <div class="logo-card"><img src="logo-lodetita.png" alt="Lo de TITA"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="CleanPaz: Bot de WhatsApp, CRM, emails corporativos y diseño web"><img src="logo-cleanpaz.png" alt="CleanPaz"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="Agricheck: Diseño web"><img src="Agricheck color.png" alt="Agricheck"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="Fragaria: Diseño web"><img src="logo-fragaria.png" alt="Fragaria"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="Fauno: Google Ads"><img src="logo-fauno.webp" alt="Fauno"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="DigiAgro: Diseño web"><img src="logo-digiagro.png" alt="DigiAgro"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="Enece: Diseño web"><img src="logo-enece.jpg" alt="Enece"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="Mauregui: Diseño web"><img src="logo-mauregui.png" alt="Mauregui Automotores"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="Dra. Patricia Sebelli: Diseño web y Google Ads"><img src="logo-patricia-sebelli.png" alt="Dra. Patricia Sebelli"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="DSA Cine: Diseño web"><img src="logo-dsacine.jpg" alt="DSA Cine"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="Lectura Saludable: Diseño web"><img src="logo-lectura-saludable.jpg" alt="Lectura Saludable"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="Cabaña Alpina Don Elisario"><img src="logo-cabana-alpina.png" alt="Cabaña Alpina Don Elisario"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="La Angélica"><img src="logo-la-angelica.png" alt="La Angélica"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="Suarez Pastas"><img src="logo-suarez-pastas.png" alt="Suarez Pastas"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="Vázquez e Hijos: Bot de WhatsApp"><img src="logo-vazquez-e-hijos.webp" alt="Vázquez e Hijos"></div>
+        <div class="logo-card" tabindex="0" data-tooltip="Lo de TITA: Diseño web"><img src="logo-lodetita.png" alt="Lo de TITA"></div>
       </div>
     </section>
 
