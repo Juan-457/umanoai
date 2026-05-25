@@ -519,7 +519,7 @@
           .filter(filtro)
           .reduce((acc, e) => acc + (Number(e.cantidad) || 0), 0);
 
-      const totalClicks = sumBy(e => e.evento === "click_whatsapp");
+      const totalClicks = sumBy(e => (e.evento === "click_whatsapp" || e.evento === "whatsapp_click_contact"));
       const totalTito   = sumBy(e => e.evento === "tito_chat_message");
 
       const diasUnicos = [...new Set(eventos.map(e => e.fecha))].length;
@@ -529,7 +529,7 @@
 
       const parseDateNum = (f) => Number((f || "").replace(/-/g, ""));
       const clicksOrdenados = eventos
-        .filter(e => e.evento === "click_whatsapp")
+        .filter(e => (e.evento === "click_whatsapp" || e.evento === "whatsapp_click_contact"))
         .slice()
         .sort((a, b) => parseDateNum(a.fecha) - parseDateNum(b.fecha));
 
@@ -590,7 +590,7 @@
             .filter(filtro)
             .reduce((acc, e) => acc + (Number(e.cantidad) || 0), 0);
 
-        const totalClicks = sumBy(e => e.evento === "click_whatsapp");
+        const totalClicks = sumBy(e => (e.evento === "click_whatsapp" || e.evento === "whatsapp_click_contact"));
         const totalTito   = sumBy(e => e.evento === "tito_chat_message");
 
         const wEl = document.querySelector("#evt-whatsapp .ga-value");

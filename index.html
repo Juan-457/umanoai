@@ -291,7 +291,7 @@ let destination = '';
 try {
 destination = new URL(link.href, window.location.href).hostname;
 } catch {}
-pushDataLayerEvent('click_whatsapp', {
+pushDataLayerEvent('whatsapp_click_contact', {
 link_text: (link.textContent || '').trim().slice(0, 120),
 link_destination: destination,
 link_url: link.href,
