@@ -1,8 +1,8 @@
-const CACHE = 'umanoai-v1'
+const CACHE = 'umanoai-v2'
 const STATIC = [
   '/',
   '/umanoai.png',
-  '/fondo.png',
+  '/fondo.webp',
   '/favicon.ico',
   '/favicon.svg',
   '/apple-touch-icon.png',
