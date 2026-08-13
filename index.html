@@ -305,6 +305,12 @@ lead_source: 'umanoai_web'
 });
 form.addEventListener("submit", async (e) => {
 e.preventDefault();
+const MAX_SUBMITS_PER_SESSION = 4;
+const submitsUsed = Number(sessionStorage.getItem("umanoai_lead_submits") || "0");
+if (submitsUsed >= MAX_SUBMITS_PER_SESSION) {
+if (status) status.textContent = "Ya enviaste varios mensajes en esta sesión. Escribinos por WhatsApp si necesitás contactarnos de nuevo.";
+return;
+}
 const btn = form.querySelector('button[type="submit"]');
 const payload = {
 nombre: (form.nombre?.value || "").trim(),
@@ -318,6 +324,7 @@ if (!payload.nombre || !payload.problema || !payload["Telefono/Email"]) {
 if (status) status.textContent = "Completá nombre, contacto y problema para enviar.";
 return;
 }
+sessionStorage.setItem("umanoai_lead_submits", String(submitsUsed + 1));
 try {
 if (btn) { btn.disabled = true; btn.textContent = "Enviando..."; }
 if (status) status.textContent = "Enviando...";

@@ -2816,6 +2816,12 @@
 
           form.addEventListener("submit", async (e) => {
             e.preventDefault();
+            const MAX_SUBMITS_PER_SESSION = 4;
+            const submitsUsed = Number(sessionStorage.getItem("umanoai_lead_submits") || "0");
+            if (submitsUsed >= MAX_SUBMITS_PER_SESSION) {
+              if (status) status.textContent = "You've already sent several messages this session. Reach us on WhatsApp if you need to contact us again.";
+              return;
+            }
             const btn = form.querySelector('button[type="submit"]');
             const payload = {
               nombre: (form.nombre?.value || "").trim(),
@@ -2831,6 +2837,7 @@
               return;
             }
 
+            sessionStorage.setItem("umanoai_lead_submits", String(submitsUsed + 1));
             try {
               if (btn) { btn.disabled = true; btn.textContent = "Enviando..."; }
               if (status) status.textContent = "Enviando...";
