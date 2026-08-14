@@ -49,6 +49,8 @@ UmanoAI ayuda a negocios a automatizar comunicación, atención al cliente y ope
 - [Recursos](https://umanoai.com.ar/recursos.html)
 - [Cuánto cuesta un bot de WhatsApp para empresas en Argentina](https://umanoai.com.ar/cuanto-cuesta-bot-whatsapp-empresa-argentina.html)
 - [Bots de WhatsApp para empresas en Argentina](https://umanoai.com.ar/bots-whatsapp-empresas-argentina.html)
+- [Bot de WhatsApp con IA vs. otras alternativas en Argentina](https://umanoai.com.ar/bot-whatsapp-ia-vs-alternativas-argentina.html)
+- [Casos y resultados reales de bots de WhatsApp con IA](https://umanoai.com.ar/casos-resultados-bots-whatsapp-argentina.html)
 - [Diseño web para pymes en Argentina](https://umanoai.com.ar/diseno-web-para-pymes-argentina.html)
 - [Cuánto cuesta una página web para pyme en Argentina](https://umanoai.com.ar/cuanto-cuesta-pagina-web-pyme-argentina.html)
 
