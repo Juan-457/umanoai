@@ -218,8 +218,70 @@ if (typeof gtag === 'function') {
 gtag('event', eventName, Object.assign({ page_path: window.location.pathname }, extraData || {}));
 }
 }
+const ATTRIBUTION_KEYS = ['gclid', 'gbraid', 'wbraid', 'gad_source', 'gad_campaignid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+function cleanValue(value) {
+return String(value || '').trim().slice(0, 500);
+}
+function captureAttribution() {
+const params = new URLSearchParams(window.location.search);
+const stored = JSON.parse(sessionStorage.getItem('umanoai_attribution') || '{}');
+const attribution = Object.assign({}, stored);
+ATTRIBUTION_KEYS.forEach((key) => {
+const value = cleanValue(params.get(key));
+if (value) attribution[key] = value;
+});
+attribution.landing_page = attribution.landing_page || window.location.href;
+attribution.referrer = attribution.referrer || document.referrer || '';
+attribution.first_seen_at = attribution.first_seen_at || new Date().toISOString();
+sessionStorage.setItem('umanoai_attribution', JSON.stringify(attribution));
+return attribution;
+}
+function getAttribution() {
+try {
+return JSON.parse(sessionStorage.getItem('umanoai_attribution') || '{}');
+} catch {
+return {};
+}
+}
+function trackingLines() {
+const attribution = getAttribution();
+const lines = [];
+['gclid', 'gbraid', 'wbraid', 'gad_source', 'gad_campaignid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach((key) => {
+if (attribution[key]) lines.push(key + ': ' + attribution[key]);
+});
+if (attribution.landing_page) lines.push('landing: ' + attribution.landing_page);
+if (attribution.referrer) lines.push('referrer: ' + attribution.referrer);
+return lines;
+}
+function appendTrackingToMessage(message) {
+const lines = trackingLines();
+if (!lines.length) return message;
+const base = String(message || '').split('\n\nTracking UmanoAI:')[0].trim();
+return (base + '\n\nTracking UmanoAI:\n' + lines.join('\n')).slice(0, 1800);
+}
+function buildWhatsAppHref(href, messageOverride) {
+let url;
+try {
+url = new URL(href, window.location.href);
+} catch {
+return href;
+}
+const originalText = messageOverride || url.searchParams.get('text') || '';
+url.searchParams.set('text', appendTrackingToMessage(originalText));
+return url.toString();
+}
+function decorateWhatsAppLinks() {
+document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]').forEach((link) => {
+const baseHref = link.dataset.baseWaHref || link.href;
+link.dataset.baseWaHref = baseHref;
+link.href = buildWhatsAppHref(baseHref);
+});
+}
 window.umanoaiTracking = {
-pushDataLayerEvent
+pushDataLayerEvent,
+getAttribution,
+buildWhatsAppHref,
+decorateWhatsAppLinks
 };
 const heroCopy = {
 'web': {
@@ -242,6 +304,8 @@ msg: 'Hola, quiero ordenar clientes, cotizaciones, tareas y facturación con Uma
 }
 };
 document.addEventListener("DOMContentLoaded", () => {
+captureAttribution();
+decorateWhatsAppLinks();
 const cta = document.getElementById("cta-dinamico");
 const heroPrimary = document.getElementById("hero-cta-primary");
 const heroH1 = document.getElementById("hero-h1");
@@ -251,12 +315,12 @@ btn.addEventListener('click', () => {
 const key = btn.getAttribute('data-copy-key');
 const copy = heroCopy[key];
 const msg = btn.getAttribute('data-msg') || 'Hola, quiero una demo.';
-cta.href = 'https://wa.me/5491125926977?text=' + encodeURIComponent(msg);
+cta.href = buildWhatsAppHref('https://wa.me/5491125926977', msg);
 if (copy) {
 heroH1.textContent = copy.h1;
 heroSubtitle.innerHTML = copy.subtitle;
 heroPrimary.textContent = copy.cta;
-heroPrimary.href = 'https://wa.me/5491125926977?text=' + encodeURIComponent(copy.msg);
+heroPrimary.href = buildWhatsAppHref('https://wa.me/5491125926977', copy.msg);
 document.querySelectorAll('.pain-btn').forEach(b => b.classList.remove('pain-btn-active'));
 btn.classList.add('pain-btn-active');
 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -283,7 +347,9 @@ pushDataLayerEvent('whatsapp_click_contact', {
 link_text: (link.textContent || '').trim().slice(0, 120),
 link_destination: destination,
 link_url: link.href,
-open_in_new_tab: link.target === '_blank'
+open_in_new_tab: link.target === '_blank',
+has_gclid: Boolean(getAttribution().gclid),
+utm_source: getAttribution().utm_source || ''
 });
 });
 });
@@ -312,13 +378,27 @@ if (status) status.textContent = "Ya enviaste varios mensajes en esta sesión. E
 return;
 }
 const btn = form.querySelector('button[type="submit"]');
+const contact = (form.telefonoEmail?.value || "").trim();
+const attribution = window.umanoaiTracking?.getAttribution ? window.umanoaiTracking.getAttribution() : {};
 const payload = {
 nombre: (form.nombre?.value || "").trim(),
 rubro: (form.rubro?.value || "").trim(),
 problema: (form.problema?.value || "").trim(),
-"Telefono/Email": (form.telefonoEmail?.value || "").trim(),
+telefonoEmail: contact,
+"Telefono/Email": contact,
 source: "umanoai_web",
-timestamp: new Date().toISOString()
+timestamp: new Date().toISOString(),
+attribution: attribution,
+gclid: attribution.gclid || '',
+gbraid: attribution.gbraid || '',
+wbraid: attribution.wbraid || '',
+utm_source: attribution.utm_source || '',
+utm_medium: attribution.utm_medium || '',
+utm_campaign: attribution.utm_campaign || '',
+utm_content: attribution.utm_content || '',
+utm_term: attribution.utm_term || '',
+landing_page: attribution.landing_page || window.location.href,
+referrer: attribution.referrer || document.referrer || ''
 };
 if (!payload.nombre || !payload.problema || !payload["Telefono/Email"]) {
 if (status) status.textContent = "Completá nombre, contacto y problema para enviar.";
