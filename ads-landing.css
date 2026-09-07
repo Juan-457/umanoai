@@ -1,0 +1,57 @@
+/* Bound the carousel's flex track so it cannot widen the page. */
+#resultados-reales .microcasos-carousel-wrap {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+#planes {
+  scroll-margin-top: 60px;
+}
+
+/* Keep paid visitors' prices and contact controls within the mobile viewport. */
+@media (max-width: 640px) {
+  .um .seccion {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .um .pricing-table-container {
+    display: block;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .um .pricing-table {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+  }
+
+  .um .pricing-table th,
+  .um .pricing-table td {
+    padding: 10px 6px;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+  }
+
+  #planes .pricing-table th:first-child {
+    width: 26%;
+  }
+
+  #planes .pricing-table th:nth-child(2) {
+    width: 44%;
+  }
+
+  #planes .pricing-table th:last-child {
+    width: 30%;
+  }
+
+  #contacto .seccion > div,
+  #lead-form,
+  #lead-form input,
+  #lead-form select {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
