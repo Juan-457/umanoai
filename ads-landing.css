@@ -54,4 +54,13 @@
     min-width: 0;
     max-width: 100%;
   }
+
+  /* The hero testimonial sits at the same screen depth as the fixed WhatsApp/chat
+     buttons on first mobile view (before any scroll). Reserve space on the right
+     so the trust-badge text doesn't run under those buttons for paid visitors. */
+  .um header .hero-testimonial {
+    max-width: calc(100% - 84px);
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
