@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+<link rel="stylesheet" href="/ads-landing.css">
+<script src="/ads-landing.js" defer></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Bot de WhatsApp con IA para tu negocio | UmanoAI</title>
+<meta name="description" content="Bot de WhatsApp con inteligencia artificial que atiende consultas 24/7, califica leads y deriva a una persona cuando hace falta. Implementación en días sobre WhatsApp Business (Cloud API).">
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#020617">
+<meta name="robots" content="index,follow">
+<link rel="preload" as="image" href="/umanoai.png" fetchpriority="high">
+<link rel="canonical" href="https://umanoai.com.ar/bot-whatsapp.html" />
+<meta property="og:title" content="Bot de WhatsApp con IA para tu negocio | UmanoAI">
+<meta property="og:description" content="Un agente de IA atiende tu WhatsApp Business las 24 hs: responde consultas, califica leads y deriva a una persona real cuando hace falta.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://umanoai.com.ar/bot-whatsapp.html">
+<meta property="og:image" content="https://umanoai.com.ar/umanoai.png">
+<meta property="og:site_name" content="UmanoAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bot de WhatsApp con IA para tu negocio | UmanoAI">
+<meta name="twitter:description" content="Automatizá el WhatsApp de tu empresa con un agente de IA que atiende 24 hs y deriva a un humano si hace falta.">
+<meta name="twitter:image" content="https://umanoai.com.ar/umanoai.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Bot de WhatsApp con IA","serviceType":"WhatsApp chatbot development","provider":{"@type":"Organization","name":"UmanoAI","url":"https://umanoai.com.ar"},"areaServed":{"@type":"Country","name":"Argentina"},"description":"Agente de inteligencia artificial que atiende el WhatsApp Business de una empresa las 24 hs, califica leads y deriva a una persona cuando hace falta."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto cuesta un bot de WhatsApp con UmanoAI?","acceptedAnswer":{"@type":"Answer","text":"Tenemos planes desde USD 120 al mes hasta opciones Corporate, según el volumen de respuestas y el nivel de personalización. Los costos de envío de mensajes Utility o Marketing de WhatsApp corren por cuenta del usuario según la tarifa vigente de Meta."}},{"@type":"Question","name":"¿Necesito tener WhatsApp Business API antes de empezar?","acceptedAnswer":{"@type":"Answer","text":"Trabajamos exclusivamente con WhatsApp Cloud API (Meta), el canal oficial para empresas. Te ayudamos a configurar el número y dejar todo listo para que el bot opere de forma estable."}},{"@type":"Question","name":"¿En cuánto tiempo puede estar funcionando mi bot de WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"Para un bot estándar solemos estar en línea entre 1 y 3 semanas desde la aprobación del alcance. Proyectos con integraciones más complejas pueden requerir algo más de tiempo."}},{"@type":"Question","name":"¿Pueden integrar el bot con mi sistema, CRM o planillas?","acceptedAnswer":{"@type":"Answer","text":"Sí. Integramos con CRMs, ERPs, Power BI, Google Sheets y otros sistemas mediante APIs, n8n o Power Automate para que la información fluya en automático."}},{"@type":"Question","name":"Si necesito hablar con una persona, ¿puedo pasar del bot a un humano?","acceptedAnswer":{"@type":"Answer","text":"Sí. El bot deriva a una persona real cuando hace falta, sin perder el contexto de la conversación."}}]}</script>
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TRW2TPQR');
+</script>
+<style>
+:root{
+  --azul:#008cff;
+  --verde:#22c55e;
+  --verde-oscuro:#16a34a;
+  --acento:#00F6A4;
+  --bgCard:rgba(255,255,255,.96);
+  --shadow:0 4px 10px rgba(0,0,0,.12);
+  --radius:14px;
+  --safe:env(safe-area-inset-bottom);
+  --float-stack-gap:12px;
+  --elevenlabs-widget-height:120px;
+  --whatsapp-float-size:64px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{height:100%;}
+body{margin:0;min-height:100vh;flex-direction:column;background:#020617 url('fondo.webp') center/cover fixed;}
+@media (max-width:768px){body{background-attachment:scroll;background-size:cover;}}
+.page-main{min-height:auto;display:flex;flex-direction:column;}
+img{max-width:100%;height:auto;}
+
+.um{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45;background:transparent;padding-bottom:max(80px,var(--safe));flex:1;display:flex;flex-direction:column;min-height:0;}
+.um section{display:flex;justify-content:center;align-items:center;flex-direction:column;padding:42px 16px 50px;}
+.um section + section{padding-top:56px;}
+.um .seccion{width:min(920px,92%);background:var(--bgCard);border-radius:var(--radius);box-shadow:var(--shadow);padding:clamp(16px,3.6vw,24px);color:#132135;}
+.um .seccion h2{text-align:center;margin-top:0;}
+@media (max-width:768px){
+  .um section{padding:42px 0 50px;margin:0;}
+  .um section + section{padding-top:36px;}
+  .um .seccion{width:100%;border-radius:0;box-shadow:none;padding:20px 18px 26px;}
+}
+
+/* Hero */
+.um header{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;isolation:isolate;padding:0 16px;padding-top:calc(80px + env(safe-area-inset-top,0px));padding-bottom:calc(120px + env(safe-area-inset-bottom,0px));background:#020617;}
+.um header .hero-overlay{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(2,6,23,.55),rgba(2,6,23,.8));}
+.um header .logo{margin-bottom:18px;}
+.um header .logo img{width:min(140px,40vw);opacity:.95;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45));}
+.um header .content{width:min(980px,95%);}
+.um header h1{color:#fff;margin:0 0 4px;font-size:clamp(28px,5vw,46px);font-weight:800;text-shadow:0 2px 14px rgba(0,0,0,.5);}
+.um header .hero-subtitle{color:#f5f5f5;max-width:720px;margin:10px auto 0;font-size:clamp(15px,3.1vw,19px);font-weight:500;text-shadow:0 2px 10px rgba(0,0,0,.6);}
+.um header .hero-cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:28px 0 18px;}
+.hero-testimonial{display:flex;align-items:center;gap:8px;margin:14px auto 0;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:8px;padding:8px 14px;font-size:0.88rem;color:#e2e8f0;max-width:540px;}
+.hero-testimonial-stars{color:#f59e0b;letter-spacing:1px;font-size:0.9rem;flex-shrink:0;}
+.hero-testimonial-text{line-height:1.4;}
+.um header nav{position:relative;z-index:3;margin-top:22px;}
+.um header nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;}
+.um header nav a{display:inline-flex;align-items:center;justify-content:center;padding:.5rem .9rem;border-radius:999px;border:1px solid rgba(209,233,255,0.45);color:#edf4ff;text-decoration:none;transition:.2s ease;background:rgba(8,16,33,0.45);}
+.um header nav a:hover{background:rgba(90,176,255,.16);}
+@media (max-width:768px){
+  .um header{padding-top:calc(48px + env(safe-area-inset-top,0px));padding-bottom:calc(96px + env(safe-area-inset-bottom,0px));}
+  .um header .logo img{width:88px;}
+  .um header .hero-cta{width:100%;padding:0 6px;gap:12px;margin:16px 0 20px;}
+  .um header .hero-cta .btn-primaria{width:100%;}
+  /* En mobile el jump-menu del hero queda a la misma altura que el boton flotante
+     de WhatsApp; se saca para no competir con el CTA unico de la pantalla. */
+  .um header nav{display:none;}
+}
+@media (min-width:1024px){
+  .um{font-size:0.9rem;}
+  .um header h1{font-size:34px;}
+  .um header .hero-subtitle{font-size:15px;}
+  .um .btn-primaria{font-size:14px;padding:8px 18px;}
+  .um .seccion{padding:18px 18px;}
+}
+
+/* Buttons */
+.um .btn-primaria{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;border:2px solid transparent;transition:background .15s ease,color .15s ease,transform .1s ease,box-shadow .15s ease,border-color .15s ease;min-width:min(280px,100%);}
+.um .btn-primaria{background:linear-gradient(135deg,var(--verde),var(--verde-oscuro));color:#052e16;box-shadow:0 6px 18px rgba(34,197,94,0.35);}
+.um .btn-primaria:hover{transform:translateY(-1px);box-shadow:0 9px 24px rgba(34,197,94,0.42);}
+.um a[href*="wa.me"].btn-primaria{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#eff6ff;border-color:rgba(147,197,253,0.75);box-shadow:0 8px 22px rgba(37,99,235,0.36);}
+.um a[href*="wa.me"].btn-primaria:hover{background:linear-gradient(135deg,#3b82f6,#2563eb);box-shadow:0 10px 26px rgba(37,99,235,0.46);}
+
+/* Feature / use-case cards */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,280px));gap:12px;align-items:stretch;justify-content:center;margin-top:18px;}
+.services-grid .card{background:rgba(255,255,255,0.92);border:1px solid rgba(148,163,184,0.35);border-radius:14px;padding:16px;box-shadow:0 6px 18px rgba(15,23,42,0.08);text-align:left;}
+.services-grid .card .card-icon{font-size:1.4rem;margin-bottom:6px;display:block;}
+.services-grid .card h3{margin:0 0 8px;font-size:1.02rem;color:#0f172a;}
+.services-grid .card p{margin:0;color:#334155;line-height:1.5;font-size:.92rem;}
+
+/* Steps */
+.steps-list{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px;max-width:640px;margin-left:auto;margin-right:auto;}
+.steps-list li{background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:12px 16px;font-size:.95rem;color:#1f2937;text-align:left;}
+.steps-list li strong{color:#0369a1;}
+
+/* Trust / social proof (generic, sin nombres de clientes) */
+.trust-line{text-align:center;color:#334155;font-size:.95rem;margin-top:16px;padding-top:14px;border-top:1px solid #e5e7eb;}
+
+/* FAQ */
+.faq-section{display:flex;justify-content:center;align-items:center;flex-direction:column;padding:42px 16px 56px;}
+.faq-inner{width:min(920px,92%);background:var(--bgCard);border-radius:var(--radius);box-shadow:var(--shadow);padding:clamp(16px,3.6vw,24px);color:#132135;}
+.faq-inner h2{text-align:center;margin-top:0;margin-bottom:10px;}
+.faq-list{list-style:none;padding:0;margin:0;}
+.faq-item{border-bottom:1px solid #e5e7eb;padding:10px 0;}
+.faq-item:last-child{border-bottom:none;}
+.faq-item summary{cursor:pointer;font-weight:600;font-size:0.98rem;color:#111827;display:flex;align-items:center;justify-content:space-between;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item details[open] .faq-toggle-icon{transform:rotate(45deg);color:#111827;}
+.faq-toggle-icon{margin-left:12px;font-size:0.9rem;color:#6b7280;transition:transform .2s ease,color .2s ease;}
+.faq-item p{margin:8px 0 4px;font-size:0.95rem;color:#374151;line-height:1.6;}
+
+/* Contacto final */
+#contacto p{text-align:center;}
+#contacto .whatsapp-number{font-size:1.05rem;}
+
+/* Floating WhatsApp button + ElevenLabs anchor (mismo mecanismo que home) */
+.whatsapp-float{position:fixed;right:20px;bottom:calc(20px + var(--elevenlabs-widget-height) + var(--float-stack-gap) + env(safe-area-inset-bottom,0px));z-index:1300;display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;background:#25D366;border-radius:50%;box-shadow:0 6px 16px rgba(0,0,0,.25);text-decoration:none;transition:transform .15s ease;}
+.whatsapp-float img{width:34px;height:34px}
+.whatsapp-float:hover{transform:scale(1.06)}
+@media (max-width:700px){:root{--elevenlabs-widget-height:112px;}.whatsapp-float{right:18px;}}
+#elevenlabs-widget-anchor{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:1295;width:0;height:0;}
+@media (max-width:700px){#elevenlabs-widget-anchor{right:18px;bottom:calc(16px + env(safe-area-inset-bottom,0px));}}
+
+/* Footer */
+.site-footer{background:linear-gradient(180deg,rgba(248,250,252,.94),rgba(226,232,240,.94));backdrop-filter:blur(10px);border-top:1px solid rgba(15,23,42,.10);color:#0f172a;padding:30px 20px 18px;font-size:14px;}
+.footer-inner{width:min(1120px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(240px,1.1fr) minmax(260px,1fr) auto;gap:24px;align-items:start;}
+.footer-brand{display:flex;align-items:center;gap:12px;}
+.footer-logo{width:46px;height:46px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid rgba(14,165,233,.20);box-shadow:0 8px 20px rgba(15,23,42,.08);padding:4px;}
+.footer-brand strong{display:block;font-size:1.05rem;color:#020617;}
+.footer-brand span{display:block;color:#475569;font-size:.9rem;margin-top:2px;}
+.footer-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 16px;line-height:1.4;}
+.footer-nav a{color:#0369a1;text-decoration:none;font-weight:650;}
+.footer-nav a:hover{color:#0f172a;text-decoration:underline;text-underline-offset:3px;}
+.footer-socials{display:flex;justify-content:flex-end;gap:10px;}
+.footer-social{width:40px;height:40px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid rgba(15,23,42,.10);color:#0f172a;box-shadow:0 8px 18px rgba(15,23,42,.08);transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;}
+.footer-social:hover{transform:translateY(-2px);border-color:rgba(14,165,233,.45);box-shadow:0 12px 24px rgba(15,23,42,.12);}
+.footer-social svg{width:21px;height:21px;fill:currentColor;}
+.footer-social.instagram svg{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+.footer-social.linkedin{color:#0a66c2;}
+.footer-social.instagram{color:#e1306c;}
+.footer-social.whatsapp{color:#25d366;}
+.footer-bottom{width:min(1120px,100%);margin:22px auto 0;padding-top:14px;border-top:1px solid rgba(15,23,42,.08);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#475569;font-size:.9rem;}
+.footer-copy{font-weight:650;color:#334155;}
+@media (max-width:760px){
+  .footer-inner{grid-template-columns:1fr;text-align:center;}
+  .footer-brand{justify-content:center;}
+  .footer-nav{justify-content:center;}
+  .footer-socials{justify-content:center;}
+  .footer-bottom{justify-content:center;text-align:center;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRW2TPQR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<main class="page-main">
+<div class="um">
+
+<header>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="logo"><img src="umanoai.png" alt="UmanoAI" width="512" height="512"></div>
+  <div class="content">
+    <h1 id="hero-h1">Bot de WhatsApp con IA para tu negocio</h1>
+    <p class="hero-subtitle">Atiende consultas al instante, califica leads y deriva a una persona real cuando hace falta. <strong>Menos mensajes sin responder, más ventas cerradas.</strong></p>
+    <div class="hero-cta">
+      <a id="hero-cta-primary" href="https://wa.me/5491125926977?text=Hola%2C%20quiero%20un%20bot%20de%20WhatsApp%20con%20IA%20para%20mi%20negocio" class="btn-primaria" target="_blank" rel="noopener">Quiero mi bot de WhatsApp</a>
+    </div>
+    <div class="hero-testimonial" id="hero-testimonial"><span class="hero-testimonial-stars">★★★★★</span><span class="hero-testimonial-text">Empresas de servicios y agro ya lo usan.</span></div>
+  </div>
+  <nav><ul>
+    <li><a href="#que-hace">Qué hace</a></li>
+    <li><a href="#casos-de-uso">Casos de uso</a></li>
+    <li><a href="#como-funciona">Cómo funciona</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul></nav>
+</header>
+
+<section id="que-hace">
+  <div class="seccion">
+    <h2>Qué hace tu bot de WhatsApp con IA</h2>
+    <p style="text-align:center;max-width:760px;margin:0 auto 6px;color:#334155;">Un agente conversacional que atiende el WhatsApp Business de tu negocio, entiende lo que te escriben y actúa en consecuencia.</p>
+    <div class="services-grid">
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">🕐</span>
+        <h3>Atención 24/7</h3>
+        <p>Responde consultas fuera de horario, fines de semana y feriados, sin que tu cliente espere hasta el día siguiente.</p>
+      </article>
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">🎯</span>
+        <h3>Calificación de leads</h3>
+        <p>Identifica quién está listo para comprar y prioriza esos contactos para que tu equipo no pierda tiempo con curiosos.</p>
+      </article>
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">💬</span>
+        <h3>WhatsApp Business real</h3>
+        <p>Trabajamos con WhatsApp Cloud API (Meta), el canal oficial y estable para empresas. Nada de números clonados ni riesgo de baneo.</p>
+      </article>
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">🤝</span>
+        <h3>Deriva a una persona</h3>
+        <p>Cuando la conversación lo requiere, pasa a un humano sin perder el contexto de lo que ya se habló.</p>
+      </article>
+    </div>
+    <p style="margin-top:18px;text-align:center;"><a href="https://wa.me/5491125926977?text=Hola%2C%20quiero%20automatizar%20la%20atenci%C3%B3n%20de%20mi%20WhatsApp%20Business" class="btn-primaria" target="_blank" rel="noopener">Quiero automatizar mi WhatsApp</a></p>
+  </div>
+</section>
+
+<section id="casos-de-uso">
+  <div class="seccion">
+    <h2>Casos de uso reales</h2>
+    <div class="services-grid">
+      <article class="card">
+        <h3>Empresas de servicios</h3>
+        <p>Automatizan agenda, consultas frecuentes y seguimiento de clientes sin sumar más gente al equipo de atención.</p>
+      </article>
+      <article class="card">
+        <h3>Negocios agro</h3>
+        <p>Responden consultas técnicas y comerciales por WhatsApp sin perder oportunidades fuera de horario.</p>
+      </article>
+      <article class="card">
+        <h3>Comercios y pymes</h3>
+        <p>Bajan el tiempo de respuesta y ordenan pedidos, cotizaciones y seguimiento comercial en un solo canal.</p>
+      </article>
+    </div>
+    <p class="trust-line">★★★★★ Empresas de servicios y agro ya lo usan para no perder consultas por WhatsApp.</p>
+  </div>
+</section>
+
+<section id="como-funciona">
+  <div class="seccion">
+    <h2>Lo tenés funcionando en pocos días</h2>
+    <ul class="steps-list">
+      <li><strong>Día 1:</strong> Relevamos tu flujo de atención, mensajes frecuentes y objetivos.</li>
+      <li><strong>Día 2 a 4:</strong> Armamos el bot, las respuestas y las reglas de derivación.</li>
+      <li><strong>Día 5:</strong> Pruebas reales sobre tu WhatsApp Business y ajustes.</li>
+      <li><strong>Día 6 a 7:</strong> Publicación, métricas iniciales y seguimiento.</li>
+    </ul>
+    <p style="margin-top:18px;text-align:center;"><a href="https://wa.me/5491125926977?text=Hola%2C%20quiero%20activar%20un%20bot%20de%20WhatsApp%20esta%20semana" class="btn-primaria" target="_blank" rel="noopener">Quiero activarlo esta semana</a></p>
+  </div>
+</section>
+
+<section id="faq" class="faq-section">
+  <div class="faq-inner">
+    <h2>❓ Preguntas frecuentes</h2>
+    <ul class="faq-list">
+      <li class="faq-item"><details open><summary>¿Cuánto cuesta un bot de WhatsApp con UmanoAI?<span class="faq-toggle-icon">＋</span></summary>
+        <p>Tenemos planes desde USD 120 al mes hasta opciones Corporate, según el volumen de respuestas y el nivel de personalización. Los costos de envío de mensajes Utility o Marketing de WhatsApp corren por cuenta del usuario según la tarifa vigente de Meta.</p></details></li>
+      <li class="faq-item"><details><summary>¿Necesito tener WhatsApp Business API antes de empezar?<span class="faq-toggle-icon">＋</span></summary>
+        <p>Trabajamos exclusivamente con WhatsApp Cloud API (Meta), el canal oficial para empresas. Te ayudamos a configurar el número y dejar todo listo para que el bot opere de forma estable.</p></details></li>
+      <li class="faq-item"><details><summary>¿En cuánto tiempo puede estar funcionando mi bot?<span class="faq-toggle-icon">＋</span></summary>
+        <p>Para un bot estándar solemos estar en línea entre 1 y 3 semanas desde la aprobación del alcance. Proyectos con integraciones más complejas pueden requerir algo más de tiempo.</p></details></li>
+      <li class="faq-item"><details><summary>¿Pueden integrar el bot con mi sistema, CRM o planillas?<span class="faq-toggle-icon">＋</span></summary>
+        <p>Sí. Integramos con CRMs, ERPs, Power BI, Google Sheets y otros sistemas mediante APIs, n8n o Power Automate para que la información fluya en automático.</p></details></li>
+      <li class="faq-item"><details><summary>Si necesito hablar con una persona, ¿puedo pasar del bot a un humano?<span class="faq-toggle-icon">＋</span></summary>
+        <p>Sí. El bot deriva a una persona real cuando hace falta, sin perder el contexto de la conversación.</p></details></li>
+    </ul>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="seccion">
+    <h2>📞 Empezá hoy</h2>
+    <p>Contanos brevemente tu negocio y cómo atendés hoy tu WhatsApp. Te respondemos con ideas concretas y próximos pasos.</p>
+    <p class="whatsapp-number">WhatsApp directo: <strong>+54 9 11 2592-6977</strong></p>
+    <p style="margin-top:14px;"><a href="https://wa.me/5491125926977?text=Hola%2C%20quiero%20un%20bot%20de%20WhatsApp%20con%20IA%20para%20mi%20negocio" class="btn-primaria" target="_blank" rel="noopener">📲 Quiero mi bot de WhatsApp</a></p>
+  </div>
+</section>
+
+<a class="whatsapp-float"
+  href="https://wa.me/5491125926977?text=Hola%2C%20vengo%20desde%20la%20p%C3%A1gina%20de%20bot%20de%20WhatsApp%20de%20UmanoAI"
+  target="_blank"
+  rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" loading="lazy"></a>
+
+<div id="elevenlabs-widget-anchor"><elevenlabs-convai agent-id="agent_9101kdp0jw11fmzvd70wh1jz0dgm"></elevenlabs-convai></div>
+<script>
+/* ElevenLabs deferido a la primera interacción real; en visitas pagas de Google
+   (utm_source=google o gclid/gbraid/wbraid) no se fuerza la carga a los 5s para
+   que no compita con el CTA de WhatsApp del anuncio. Mismo criterio que index.html. */
+(function(){
+var d=false;
+function L(){
+  if(d)return;d=true;
+  var s=document.createElement('script');
+  s.src='https://unpkg.com/@elevenlabs/convai-widget-embed';
+  s.async=true;
+  document.body.appendChild(s);
+}
+['scroll','pointerdown','keydown'].forEach(function(e){addEventListener(e,L,{once:true,passive:true})});
+var qp=new URLSearchParams(location.search);
+var isPaidAdVisit=qp.get('utm_source')==='google'||['gclid','gbraid','wbraid'].some(function(k){return qp.has(k)});
+if(!isPaidAdVisit)setTimeout(L,5000);
+})();
+</script>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="umanoai.png" alt="UmanoAI" class="footer-logo">
+      <div><strong>UmanoAI</strong><span>Bots de WhatsApp con IA para pymes y empresas de servicios.</span></div>
+    </div>
+    <nav class="footer-nav" aria-label="Navegación del pie de página">
+      <a href="index.html">Inicio</a>
+      <a href="soluciones.html">Mapa de soluciones</a>
+      <a href="politica.html">Privacidad</a>
+      <a href="Eliminardatos.html">Eliminación de datos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="footer-socials" aria-label="Redes sociales">
+      <a class="footer-social linkedin" href="https://www.linkedin.com/company/umanoai/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de UmanoAI"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg></a>
+      <a class="footer-social instagram" href="https://www.instagram.com/umano_ai/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de UmanoAI"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"></circle></svg></a>
+      <a class="footer-social whatsapp" href="https://wa.me/5491125926977?text=Hola%20vengo%20desde%20la%20web%20de%20UmanoAI" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de UmanoAI"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .16 5.34.16 11.91c0 2.1.55 4.15 1.6 5.96L0 24l6.28-1.65a11.9 11.9 0 0 0 5.79 1.48h.01C18.65 23.83 24 18.49 24 11.91c0-3.18-1.24-6.18-3.48-8.43Zm-8.45 18.34h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.72.98.99-3.63-.24-.37a9.86 9.86 0 0 1-1.51-5.3c0-5.45 4.43-9.89 9.89-9.89a9.8 9.8 0 0 1 7 2.9 9.83 9.83 0 0 1 2.9 7c0 5.45-4.44 9.9-9.91 9.9Zm5.43-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47a8.93 8.93 0 0 1-1.65-2.05c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.47s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z"/></svg></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© UmanoAI — Argentina</span>
+    <span>Bot de WhatsApp con IA · Cloud API oficial de Meta</span>
+  </div>
+</footer>
+
+</div>
+</main>
+
+<script>
+(function () {
+  function pushDataLayerEvent(eventName, extraData) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({
+      event: eventName,
+      page_path: window.location.pathname,
+      page_title: document.title,
+      page_location: window.location.href
+    }, extraData || {}));
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, Object.assign({ page_path: window.location.pathname }, extraData || {}));
+    }
+  }
+  const ATTRIBUTION_KEYS = ['gclid', 'gbraid', 'wbraid', 'gad_source', 'gad_campaignid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+  function cleanValue(value) {
+    return String(value || '').trim().slice(0, 500);
+  }
+  function captureAttribution() {
+    const params = new URLSearchParams(window.location.search);
+    const stored = JSON.parse(sessionStorage.getItem('umanoai_attribution') || '{}');
+    const attribution = Object.assign({}, stored);
+    ATTRIBUTION_KEYS.forEach((key) => {
+      const value = cleanValue(params.get(key));
+      if (value) attribution[key] = value;
+    });
+    attribution.landing_page = attribution.landing_page || window.location.href;
+    attribution.referrer = attribution.referrer || document.referrer || '';
+    attribution.first_seen_at = attribution.first_seen_at || new Date().toISOString();
+    sessionStorage.setItem('umanoai_attribution', JSON.stringify(attribution));
+    return attribution;
+  }
+  function getAttribution() {
+    try {
+      return JSON.parse(sessionStorage.getItem('umanoai_attribution') || '{}');
+    } catch {
+      return {};
+    }
+  }
+  function trackingLines() {
+    const attribution = getAttribution();
+    const lines = [];
+    ['gclid', 'gbraid', 'wbraid', 'gad_source', 'gad_campaignid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach((key) => {
+      if (attribution[key]) lines.push(key + ': ' + attribution[key]);
+    });
+    if (attribution.landing_page) lines.push('landing: ' + attribution.landing_page);
+    if (attribution.referrer) lines.push('referrer: ' + attribution.referrer);
+    return lines;
+  }
+  function appendTrackingToMessage(message) {
+    const lines = trackingLines();
+    if (!lines.length) return message;
+    const base = String(message || '').split('\n\nTracking UmanoAI:')[0].trim();
+    return (base + '\n\nTracking UmanoAI:\n' + lines.join('\n')).slice(0, 1800);
+  }
+  function buildWhatsAppHref(href, messageOverride) {
+    let url;
+    try {
+      url = new URL(href, window.location.href);
+    } catch {
+      return href;
+    }
+    const originalText = messageOverride || url.searchParams.get('text') || '';
+    url.searchParams.set('text', appendTrackingToMessage(originalText));
+    return url.toString();
+  }
+  function decorateWhatsAppLinks() {
+    document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]').forEach((link) => {
+      const baseHref = link.dataset.baseWaHref || link.href;
+      link.dataset.baseWaHref = baseHref;
+      link.href = buildWhatsAppHref(baseHref);
+    });
+  }
+  window.umanoaiTracking = {
+    pushDataLayerEvent,
+    getAttribution,
+    buildWhatsAppHref,
+    decorateWhatsAppLinks
+  };
+  document.addEventListener("DOMContentLoaded", () => {
+    captureAttribution();
+    decorateWhatsAppLinks();
+    const whatsappLinks = document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+    whatsappLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        let destination = '';
+        try {
+          destination = new URL(link.href, window.location.href).hostname;
+        } catch {}
+        pushDataLayerEvent('whatsapp_click_contact', {
+          link_text: (link.textContent || '').trim().slice(0, 120),
+          link_destination: destination,
+          link_url: link.href,
+          open_in_new_tab: link.target === '_blank',
+          has_gclid: Boolean(getAttribution().gclid),
+          utm_source: getAttribution().utm_source || ''
+        });
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
