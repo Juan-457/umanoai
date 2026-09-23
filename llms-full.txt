@@ -1,71 +1,47 @@
-# UmanoAI – Conversational AI and Automation for Argentina
+# UmanoAI — AI, automation and software for SMEs in Argentina
 
-> UmanoAI is an automation and conversational AI company based in Argentina.
+> UmanoAI is an Argentine company that develops and implements artificial-intelligence agents, automation and software for small and medium-sized businesses.
 
-## Company overview
-UmanoAI builds practical digital solutions for businesses and public organizations that need to automate customer communication, internal workflows and reporting.
+UmanoAI works with SMEs, service businesses, retail companies and professionals in Argentina. Its work includes AI agents connected to WhatsApp Business, process automation, web development, integrations, voice agents, dashboards and UmanoSoft.
 
-## Main services
+## Canonical pages
 
-### WhatsApp bots
-Automated assistants for customer support, lead qualification, commercial follow-up and FAQ handling.
+- https://umanoai.com.ar/
+- https://umanoai.com.ar/agentes-ia-whatsapp-argentina/
+- https://umanoai.com.ar/automatizacion-pymes-argentina/
+- https://umanoai.com.ar/desarrollo-web-pymes-argentina/
+- https://umanoai.com.ar/umanosoft.html
+- https://umanoai.com.ar/soluciones.html
 
-### Voicebots
-AI voice agents for phone-based customer service, with optional human handoff.
+## Services
 
-### Business process automation
-Workflow automation connecting spreadsheets, CRMs, ERPs, forms and APIs.
+### AI agents for WhatsApp Business
 
-### Custom CRM
-CRM systems adapted to real operational workflows.
+UmanoAI implements agents that can answer initial questions, qualify leads, hand conversations to people and connect to systems according to each project’s scope. The WhatsApp implementation uses Meta’s WhatsApp Cloud API.
+
+### Process automation
+
+UmanoAI designs administrative and commercial workflows that can connect APIs, CRM systems, ERP systems, Google Sheets, forms and WhatsApp. n8n and Power Automate are used when appropriate to the existing stack.
 
 ### Web development
-Landing pages and business websites designed to generate leads and integrate with automation flows.
 
-### Power BI dashboards
-Analytics dashboards for sales, operations and business visibility.
+UmanoAI develops business websites and landing pages with contact forms, WhatsApp, analytics and integrations when required.
 
-### UmanoSoft (SME web app)
-Integrated solution for SMEs with AFIP invoicing, CRM, expense control, objective and task tracking, plus professional quote creation in minutes.
+### UmanoSoft
 
-## Typical use cases
-- customer service automation
-- lead qualification
-- WhatsApp sales flows
-- reporting automation
-- debt follow-up workflows
-- internal workflow digitization
-- CRM pipeline visibility
-- public service attention flows
+UmanoSoft is UmanoAI’s management software for SMEs. Its published capabilities include AFIP electronic invoicing, CRM, quotes, expense control, goals and tasks.
 
-## Industries and profiles served
-- SMEs
-- service businesses
-- retail
-- automotive
-- agriculture
-- healthcare
-- education
-- public sector organizations
+## Published cases
 
-## Website sections
-- https://umanoai.com.ar/
-- https://umanoai.com.ar/#umanosoft
-- https://umanoai.com.ar/#servicios
-- https://umanoai.com.ar/#soluciones
-- https://umanoai.com.ar/soluciones.html
-- https://umanoai.com.ar/#planes
-- https://umanoai.com.ar/#faq
-- https://umanoai.com.ar/#contacto
-- https://umanoai.com.ar/brief-inicial.html
-- https://umanoai.com.ar/recursos.html
-- https://umanoai.com.ar/cuanto-cuesta-bot-whatsapp-empresa-argentina.html
-- https://umanoai.com.ar/bots-whatsapp-empresas-argentina.html
-- https://umanoai.com.ar/diseno-web-para-pymes-argentina.html
-- https://umanoai.com.ar/cuanto-cuesta-pagina-web-pyme-argentina.html
+- Agricheck — AI agent for commercial WhatsApp support: https://umanoai.com.ar/casos/agricheck-agente-ia-whatsapp/
+- CleanPaz — centralised AFIP electronic invoicing with UmanoSoft: https://umanoai.com.ar/casos/cleanpaz-umanosoft/
+- Dra. Patricia Sebelli — website for a medical practice: https://umanoai.com.ar/casos/patricia-sebelli-desarrollo-web/
+- Case index: https://umanoai.com.ar/casos-resultados-bots-whatsapp-argentina.html
 
-## Country
-Argentina
+## Public contact
 
-## Brand
-UmanoAI
+- WhatsApp: +54 9 11 2592-6977
+- Email: info@umanoai.com.ar
+- Main LLM-oriented overview: https://umanoai.com.ar/llms.txt
+
+This document is a factual discovery aid. It does not guarantee indexing, citations or recommendations by AI systems.

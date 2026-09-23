@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://umanoai.com.ar/</loc>
-    <lastmod>2026-03-30</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -16,12 +16,6 @@
   <url>
     <loc>https://umanoai.com.ar/index-pt.html</loc>
     <lastmod>2026-03-05</lastmod>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://umanoai.com.ar/desarrollo-web.html</loc>
-    <lastmod>2026-08-14</lastmod>
     <priority>0.9</priority>
   </url>
 
@@ -64,6 +58,24 @@
   </url>
 
   <url>
+    <loc>https://umanoai.com.ar/agentes-ia-whatsapp-argentina/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/automatizacion-pymes-argentina/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/desarrollo-web-pymes-argentina/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://umanoai.com.ar/cuanto-cuesta-bot-whatsapp-empresa-argentina.html</loc>
     <lastmod>2026-03-09</lastmod>
     <priority>0.8</priority>
@@ -95,12 +107,6 @@
   <url>
     <loc>https://umanoai.com.ar/bot-whatsapp-ventas-argentina.html</loc>
     <lastmod>2026-04-26</lastmod>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://umanoai.com.ar/bot-whatsapp.html</loc>
-    <lastmod>2026-09-19</lastmod>
     <priority>0.9</priority>
   </url>
 
@@ -147,21 +153,21 @@
   </url>
 
   <url>
-    <loc>https://umanoai.com.ar/llms.txt</loc>
-    <lastmod>2026-03-30</lastmod>
-    <priority>0.5</priority>
+    <loc>https://umanoai.com.ar/casos/agricheck-agente-ia-whatsapp/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://umanoai.com.ar/llms-full.txt</loc>
-    <lastmod>2026-03-30</lastmod>
-    <priority>0.5</priority>
+    <loc>https://umanoai.com.ar/casos/cleanpaz-umanosoft/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://umanoai.com.ar/ai-index.md</loc>
-    <lastmod>2026-03-30</lastmod>
-    <priority>0.5</priority>
+    <loc>https://umanoai.com.ar/casos/patricia-sebelli-desarrollo-web/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
   </url>
 
 </urlset>

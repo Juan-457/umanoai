@@ -1,58 +1,43 @@
 # UmanoAI
 
-> UmanoAI desarrolla soluciones de automatización e inteligencia artificial conversacional para empresas y organismos públicos en Argentina.
+> UmanoAI es una empresa argentina que desarrolla e implementa agentes de inteligencia artificial, automatizaciones y software para PyMEs.
 
-UmanoAI ayuda a negocios a automatizar comunicación, atención al cliente y operación usando bots, agentes de voz, automatizaciones, sitios web y dashboards.
+UmanoAI trabaja con PyMEs, negocios de servicios, comercios y profesionales en Argentina. Sus soluciones incluyen agentes de IA conectados a WhatsApp Business, automatización de procesos, desarrollo web, integraciones, agentes de voz, dashboards y UmanoSoft.
 
-## Capacidades principales
-- Bots conversacionales de WhatsApp
-- Voicebots para atención telefónica
-- Automatización de procesos con n8n, Power Automate e integraciones por API
-- CRM a medida
-- Desarrollo web y landing pages
-- Dashboards y analítica en Power BI
+## Páginas canónicas principales
 
+- [Inicio: qué es UmanoAI](https://umanoai.com.ar/)
+- [Agentes de IA para WhatsApp en Argentina](https://umanoai.com.ar/agentes-ia-whatsapp-argentina/)
+- [Automatización de procesos para PyMEs en Argentina](https://umanoai.com.ar/automatizacion-pymes-argentina/)
+- [Desarrollo web para PyMEs en Argentina](https://umanoai.com.ar/desarrollo-web-pymes-argentina/)
+- [UmanoSoft](https://umanoai.com.ar/umanosoft.html)
+- [Mapa de soluciones](https://umanoai.com.ar/soluciones.html)
 
-## Solución destacada para pymes: UmanoSoft
-- Facturación electrónica AFIP
-- CRM comercial y seguimiento de oportunidades
-- Control de gastos y orden financiero
-- Seguimiento de objetivos y tareas del equipo
-- Cotizaciones profesionales en minutos
-- Soporte SEO y actualización de activos para LLMs
+## Servicios
 
-## Problemas que resolvemos
-- Exceso de mensajes de WhatsApp para responder manualmente
-- Falta de seguimiento de leads
-- Procesos internos demasiado manuales
-- Falta de métricas claras
-- Webs que no convierten
-- Demoras en atención al cliente
+- Agentes de inteligencia artificial para WhatsApp Business: atención de consultas, calificación de leads, derivación a personas e integraciones según el alcance.
+- Automatización de procesos: workflows administrativos y comerciales, datos, documentos e integraciones mediante APIs, n8n, Power Automate y Google Sheets cuando corresponde.
+- Desarrollo web: sitios institucionales, landing pages, formularios, analítica e integraciones.
+- UmanoSoft: software de gestión para PyMEs con facturación electrónica AFIP, CRM, cotizaciones, gastos, objetivos y tareas.
 
-## Clientes típicos
-- Pymes
-- Empresas de servicios
-- Comercios
-- Profesionales
-- Organizaciones del sector público
+## Casos publicados
 
-## Páginas principales
-- [Home](https://umanoai.com.ar/)
-- [UmanoSoft](https://umanoai.com.ar/#umanosoft)
-- [Servicios](https://umanoai.com.ar/#servicios)
-- [Soluciones](https://umanoai.com.ar/#soluciones)
-- [Mapa completo de soluciones](https://umanoai.com.ar/soluciones.html)
-- [Planes](https://umanoai.com.ar/#planes)
-- [FAQ](https://umanoai.com.ar/#faq)
-- [Contacto](https://umanoai.com.ar/#contacto)
-- [Brief inicial](https://umanoai.com.ar/brief-inicial.html)
+- [Agricheck: agente de IA para atención comercial por WhatsApp](https://umanoai.com.ar/casos/agricheck-agente-ia-whatsapp/)
+- [CleanPaz: facturación electrónica centralizada con UmanoSoft](https://umanoai.com.ar/casos/cleanpaz-umanosoft/)
+- [Dra. Patricia Sebelli: desarrollo web para consultorio médico](https://umanoai.com.ar/casos/patricia-sebelli-desarrollo-web/)
+- [Índice de casos y resultados](https://umanoai.com.ar/casos-resultados-bots-whatsapp-argentina.html)
+
+## Recursos útiles
+
 - [Recursos](https://umanoai.com.ar/recursos.html)
 - [Cuánto cuesta un bot de WhatsApp para empresas en Argentina](https://umanoai.com.ar/cuanto-cuesta-bot-whatsapp-empresa-argentina.html)
 - [Bots de WhatsApp para empresas en Argentina](https://umanoai.com.ar/bots-whatsapp-empresas-argentina.html)
-- [Bot de WhatsApp con IA vs. otras alternativas en Argentina](https://umanoai.com.ar/bot-whatsapp-ia-vs-alternativas-argentina.html)
-- [Casos y resultados reales de bots de WhatsApp con IA](https://umanoai.com.ar/casos-resultados-bots-whatsapp-argentina.html)
-- [Diseño web para pymes en Argentina](https://umanoai.com.ar/diseno-web-para-pymes-argentina.html)
-- [Cuánto cuesta una página web para pyme en Argentina](https://umanoai.com.ar/cuanto-cuesta-pagina-web-pyme-argentina.html)
+- [Bot de WhatsApp con IA vs. alternativas](https://umanoai.com.ar/bot-whatsapp-ia-vs-alternativas-argentina.html)
 
-## Notas
-UmanoAI combina automatización, bots, atención conversacional y analítica para ayudar a negocios a vender mejor, responder más rápido y ordenar su operación.
+## Contacto público
+
+- WhatsApp: +54 9 11 2592-6977
+- Email: info@umanoai.com.ar
+- Sitio: https://umanoai.com.ar/
+
+`llms.txt` es una guía de descubrimiento: no garantiza indexación, citas ni recomendaciones por sistemas de IA.
