@@ -510,8 +510,7 @@
 <!-- JS: CHAT WIDGET -->
 <script>
 (function () {
-  const FLOW_URL = "https://default5243832e5a814f3d9656d9f5b8364a.23.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/af5f113878c0480c9b5830dfe891e11f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iDXBUE-aby0fo2BPK_2WC8it6C8gMVgS5wWB0a_ldB8";
-  const TOKEN = "umanoai-secure";
+  const FLOW_URL = "https://form.umanoai.com.ar/demo-chat";
   const SESSION_KEY = "umanoai-chat-session-id";
   let sessionId = localStorage.getItem(SESSION_KEY);
   if (!sessionId) {
@@ -546,7 +545,7 @@
       const res = await fetch(FLOW_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: msg, sessionId, token: TOKEN })
+        body: JSON.stringify({ message: msg, sessionId })
       });
       const raw = await res.text();
       loadingMsg.remove();
