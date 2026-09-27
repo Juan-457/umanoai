@@ -329,7 +329,10 @@
       <li><a href="#prompt-4"><span class="n">4</span>Recuperar cliente</a></li>
       <li><a href="#prompt-5"><span class="n">5</span>Cartera</a></li>
       <li><a href="#prompt-6"><span class="n">6</span>Día comercial</a></li>
-      <li><a href="#prompt-7"><span class="n">7</span>Tablero de BI</a></li>
+      <li><a href="#prompt-7"><span class="n">7</span>Seguimiento</a></li>
+      <li><a href="#prompt-8"><span class="n">8</span>Cierre</a></li>
+      <li><a href="#prompt-9"><span class="n">9</span>Prospección</a></li>
+      <li><a href="#prompt-10"><span class="n">10</span>Tablero de BI</a></li>
     </ul>
   </div>
   <a class="hero__scroll" href="#prompt-1" aria-label="Bajar a los prompts">
@@ -444,10 +447,61 @@ Límites: No inventes prioridades basadas en información que no te proporcioné
     <button class="copy-btn" type="button">Copiar prompt</button>
   </div>
 
-  <div class="prompt-card prompt-card--bi" id="prompt-7">
+  <div class="prompt-card" id="prompt-7">
+    <h2><span class="num">7</span>Seguimiento de una cotización sin respuesta</h2>
+    <p class="desc">Para reactivar una conversación cuando mandaste precio y no te contestaron.</p>
+    <div class="prompt-box" data-prompt="Rol: Actuá como un asesor comercial de insumos agrícolas.
+Contexto: Le envié una cotización a un cliente hace unos días y todavía no me respondió.
+Objetivo: Ayudame a redactar un mensaje de seguimiento breve para reactivar la conversación.
+Formato: Dame el mensaje de WhatsApp (máximo 40 palabras) y una alternativa por si no responde en 3 días más.
+Límites: No presiones ni insinúes que la oferta vence. No inventes descuentos ni plazos.">
+<span class="field"><span class="k">Rol:</span> Actuá como un asesor comercial de insumos agrícolas.</span>
+<span class="field"><span class="k">Contexto:</span> Le envié una cotización a un cliente hace unos días y todavía no me respondió.</span>
+<span class="field"><span class="k">Objetivo:</span> Ayudame a redactar un mensaje de seguimiento breve para reactivar la conversación.</span>
+<span class="field"><span class="k">Formato:</span> Dame el mensaje de WhatsApp (máximo 40 palabras) y una alternativa por si no responde en 3 días más.</span>
+<span class="field"><span class="k">Límites:</span> No presiones ni insinúes que la oferta vence. No inventes descuentos ni plazos.</span>
+    </div>
+    <button class="copy-btn" type="button">Copiar prompt</button>
+  </div>
+
+  <div class="prompt-card" id="prompt-8">
+    <h2><span class="num">8</span>Manejar "está caro" y avanzar al cierre</h2>
+    <p class="desc">Para responder la objeción de precio más común sin ceder condiciones a ciegas.</p>
+    <div class="prompt-box" data-prompt="Rol: Actuá como un asesor comercial de insumos agrícolas.
+Contexto: Un cliente me dijo que mi precio está caro comparado con otro proveedor, pero sigue interesado.
+Objetivo: Ayudame a responder esa objeción y avanzar hacia el cierre sin bajar el precio a ciegas.
+Formato: Dame 3 formas de responder la objeción y una pregunta para intentar cerrar la venta.
+Límites: No inventes descuentos ni autorices condiciones que no confirmé. No asumas cuánto puedo bajar el precio.">
+<span class="field"><span class="k">Rol:</span> Actuá como un asesor comercial de insumos agrícolas.</span>
+<span class="field"><span class="k">Contexto:</span> Un cliente me dijo que mi precio está caro comparado con otro proveedor, pero sigue interesado.</span>
+<span class="field"><span class="k">Objetivo:</span> Ayudame a responder esa objeción y avanzar hacia el cierre sin bajar el precio a ciegas.</span>
+<span class="field"><span class="k">Formato:</span> Dame 3 formas de responder la objeción y una pregunta para intentar cerrar la venta.</span>
+<span class="field"><span class="k">Límites:</span> No inventes descuentos ni autorices condiciones que no confirmé. No asumas cuánto puedo bajar el precio.</span>
+    </div>
+    <button class="copy-btn" type="button">Copiar prompt</button>
+  </div>
+
+  <div class="prompt-card" id="prompt-9">
+    <h2><span class="num">9</span>Primer mensaje a un lead nuevo</h2>
+    <p class="desc">Para prospectar en frío a un contacto que todavía no te conoce.</p>
+    <div class="prompt-box" data-prompt="Rol: Actuá como un asesor comercial de insumos agrícolas.
+Contexto: Tengo un contacto nuevo (productor o distribuidor) que todavía no me conoce, conseguido en una expo o por recomendación.
+Objetivo: Ayudame a redactar un primer mensaje de WhatsApp para presentarme y generar una respuesta.
+Formato: Dame el mensaje (máximo 40 palabras) y 2 variantes de gancho inicial para probar cuál funciona mejor.
+Límites: No inventes datos del contacto ni prometas condiciones comerciales. Que no suene a mensaje masivo.">
+<span class="field"><span class="k">Rol:</span> Actuá como un asesor comercial de insumos agrícolas.</span>
+<span class="field"><span class="k">Contexto:</span> Tengo un contacto nuevo (productor o distribuidor) que todavía no me conoce, conseguido en una expo o por recomendación.</span>
+<span class="field"><span class="k">Objetivo:</span> Ayudame a redactar un primer mensaje de WhatsApp para presentarme y generar una respuesta.</span>
+<span class="field"><span class="k">Formato:</span> Dame el mensaje (máximo 40 palabras) y 2 variantes de gancho inicial para probar cuál funciona mejor.</span>
+<span class="field"><span class="k">Límites:</span> No inventes datos del contacto ni prometas condiciones comerciales. Que no suene a mensaje masivo.</span>
+    </div>
+    <button class="copy-btn" type="button">Copiar prompt</button>
+  </div>
+
+  <div class="prompt-card prompt-card--bi" id="prompt-10">
     <span class="badge">Extra · más largo</span>
-    <h2><span class="num">7</span>Armar un tablero de BI</h2>
-    <p class="desc">Para generar un dashboard interactivo a partir de un Excel real de ventas. Descargá el archivo, adjuntalo en tu IA junto con este prompt (funciona mejor en una herramienta que pueda leer el Excel y generar una página, como Claude o ChatGPT).</p>
+    <h2><span class="num">10</span>Armar un tablero de BI</h2>
+    <p class="desc">Para generar un dashboard interactivo a partir de un Excel real de ventas. Descargá el archivo y adjuntalo en tu IA junto con este prompt. <strong>Funciona distinto según la herramienta:</strong> ChatGPT (Análisis de datos) lee el Excel real y arma el HTML, pero no lo publica — te da el archivo para descargar. Claude sí puede publicarlo como página en vivo. Codex (CLI) también funciona, pero es para quien ya lo usa para programar.</p>
     <a class="dl-btn" href="/datos-tablero-comercial.xlsx" download>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
       Descargar datos-tablero-comercial.xlsx
