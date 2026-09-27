@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Prompts de la clase — Herramientas Digitales para la Gestión Comercial | UmanoAI</title>
+<meta name="description" content="Los 6 prompts de IA de la clase de Universidad Austral, listos para copiar y usar con tus propios clientes.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#2f3b1f">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  :root{
+    --tierra:#5c3d21;
+    --tierra-osc:#3a2612;
+    --verde:#3f6b2e;
+    --verde-osc:#2b4a1f;
+    --crema:#fbf6ec;
+    --crema-card:#ffffff;
+    --acento:#e8a13a;
+    --azul-marca:#0f6fe0;
+    --radius:18px;
+    --shadow:0 10px 30px rgba(45,30,10,.15);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--crema);
+    color:#2a2013;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+
+  header.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px 18px;
+    background:#fff;
+    border-bottom:1px solid #eee1c9;
+    position:sticky;
+    top:0;
+    z-index:20;
+  }
+  header.topbar img{height:34px;display:block}
+  header.topbar .tag{
+    font-size:.78rem;
+    color:#6b5a3e;
+    text-align:right;
+    line-height:1.25;
+  }
+
+  .hero{
+    position:relative;
+    min-height:56vw;
+    max-height:420px;
+    display:flex;
+    align-items:flex-end;
+    background:#2b4a1f;
+    overflow:hidden;
+  }
+  .hero img.bg{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    filter:saturate(1.05) brightness(.62);
+  }
+  .hero::after{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(20,30,10,.15) 0%, rgba(20,25,10,.75) 100%);
+  }
+  .hero-inner{
+    position:relative;z-index:2;
+    padding:28px 20px 26px;
+    color:#fff;
+    max-width:760px;
+  }
+  .hero-eyebrow{
+    display:inline-block;
+    font-size:.78rem;
+    letter-spacing:.04em;
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.35);
+    padding:5px 12px;
+    border-radius:999px;
+    margin-bottom:12px;
+  }
+  .hero h1{
+    margin:0 0 8px;
+    font-size:clamp(1.5rem,5vw,2.3rem);
+    line-height:1.15;
+    font-weight:800;
+  }
+  .hero p{
+    margin:0;
+    font-size:1rem;
+    color:#f1ead8;
+    max-width:56ch;
+  }
+
+  main{max-width:760px;margin:0 auto;padding:22px 16px 10px}
+
+  .intro-note{
+    background:#fff;
+    border:1px solid #eee1c9;
+    border-radius:var(--radius);
+    padding:16px 18px;
+    margin:-40px 0 22px;
+    position:relative;
+    z-index:3;
+    box-shadow:var(--shadow);
+    font-size:.94rem;
+    color:#4a3c24;
+  }
+  .intro-note strong{color:var(--verde-osc)}
+
+  .prompt-card{
+    background:var(--crema-card);
+    border:1px solid #eee1c9;
+    border-radius:var(--radius);
+    padding:18px 18px 16px;
+    margin-bottom:18px;
+    box-shadow:0 4px 14px rgba(60,40,15,.06);
+  }
+  .prompt-card h2{
+    margin:0 0 4px;
+    font-size:1.08rem;
+    color:var(--verde-osc);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .prompt-card .num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:26px;height:26px;
+    border-radius:50%;
+    background:var(--verde);
+    color:#fff;
+    font-size:.82rem;
+    font-weight:700;
+    flex:none;
+  }
+  .prompt-card .desc{
+    margin:0 0 12px;
+    font-size:.86rem;
+    color:#7a6a4a;
+  }
+  .prompt-box{
+    background:#f8f2e2;
+    border:1px dashed #d8c397;
+    border-radius:12px;
+    padding:12px 14px;
+    font-size:.88rem;
+    line-height:1.55;
+    white-space:pre-wrap;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    color:#3a2f1c;
+  }
+  .prompt-box b{color:var(--verde-osc)}
+
+  .copy-btn{
+    margin-top:12px;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:12px 16px;
+    border:none;
+    border-radius:12px;
+    background:var(--verde);
+    color:#fff;
+    font-size:.95rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:background .15s ease, transform .1s ease;
+  }
+  .copy-btn:active{transform:scale(.98)}
+  .copy-btn.copied{background:var(--acento);color:#3a2612}
+  .copy-btn svg{width:18px;height:18px;flex:none}
+
+  .cta{
+    margin:30px 0 40px;
+    background:linear-gradient(135deg,var(--verde-osc),var(--verde));
+    border-radius:var(--radius);
+    padding:24px 20px;
+    color:#fff;
+    text-align:center;
+  }
+  .cta img{height:30px;margin-bottom:10px;filter:brightness(0) invert(1)}
+  .cta h3{margin:0 0 8px;font-size:1.15rem}
+  .cta p{margin:0 0 16px;font-size:.92rem;color:#e7f0df;max-width:46ch;margin-left:auto;margin-right:auto}
+  .cta a.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#fff;
+    color:var(--verde-osc);
+    font-weight:700;
+    padding:12px 22px;
+    border-radius:999px;
+    text-decoration:none;
+    font-size:.95rem;
+  }
+
+  footer{
+    text-align:center;
+    padding:18px 16px 34px;
+    font-size:.78rem;
+    color:#9a8a68;
+  }
+  footer a{color:#6b5a3e;text-decoration:underline}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <img src="/umanoai.png" alt="UmanoAI" />
+  <div class="tag">Universidad Austral<br>Programa de Gestión de Ventas en Agroinsumos</div>
+</header>
+
+<div class="hero">
+  <img class="bg" src="/campo.webp" alt="Campo agrícola visto desde arriba" loading="eager">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Clase del 28 de septiembre de 2026</span>
+    <h1>Prompts para preparar tu próxima venta</h1>
+    <p>Los mismos prompts que usamos hoy en clase. Copiá el que necesites, pegalo en tu IA (ChatGPT, Claude, Copilot) y cambiá los datos por los de tu cliente real.</p>
+  </div>
+</div>
+
+<main>
+  <div class="intro-note">
+    Cada prompt tiene 5 partes: <strong>Rol</strong>, <strong>Contexto</strong>, <strong>Objetivo</strong>, <strong>Formato</strong> y <strong>Límites</strong>. Son de ejemplo — no cambies la estructura, pero reemplazá el cliente, el producto y los números por los de tu caso real antes de usarlo. Esta página va a estar disponible solo por unos días.
+  </div>
+
+  <div class="prompt-card">
+    <h2><span class="num">1</span>Preparar una visita</h2>
+    <p class="desc">Para llegar con las preguntas correctas antes de ver a un cliente.</p>
+    <div class="prompt-box" data-prompt="Rol: Actuá como un asesor comercial de insumos agrícolas.
+Contexto: Soy vendedor de insumos agrícolas. Mañana visito a un cliente interesado en 120 bolsas de Semilla Demo A.
+Objetivo: Ayudame a preparar la visita.
+Formato: Dame 5 preguntas y una agenda de 20 minutos.
+Límites: No inventes precios, stock ni fechas.">Rol: Actuá como un asesor comercial de insumos agrícolas.
+Contexto: Soy vendedor de insumos agrícolas. Mañana visito a un cliente interesado en 120 bolsas de Semilla Demo A.
+Objetivo: Ayudame a preparar la visita.
+Formato: Dame 5 preguntas y una agenda de 20 minutos.
+Límites: No inventes precios, stock ni fechas.</div>
+    <button class="copy-btn" type="button">Copiar prompt</button>
+  </div>
+
+  <div class="prompt-card">
+    <h2><span class="num">2</span>Preparar una negociación</h2>
+    <p class="desc">Para llegar preparado cuando el cliente está comparando con otros proveedores.</p>
+    <div class="prompt-box" data-prompt="Rol: Actuá como un asesor comercial de insumos agrícolas.
+Contexto: Tengo un cliente interesado en comprar 500 litros de un herbicida. Ya conoce el producto, pero me dijo que está comparando nuestra propuesta con la de otros proveedores.
+Objetivo: Ayudame a preparar la negociación antes de llamarlo.
+Formato: Dame 5 preguntas que debería hacerle y 3 aspectos que debería conocer antes de negociar.
+Límites: No inventes precios, descuentos ni condiciones comerciales.">Rol: Actuá como un asesor comercial de insumos agrícolas.
+Contexto: Tengo un cliente interesado en comprar 500 litros de un herbicida. Ya conoce el producto, pero me dijo que está comparando nuestra propuesta con la de otros proveedores.
+Objetivo: Ayudame a preparar la negociación antes de llamarlo.
+Formato: Dame 5 preguntas que debería hacerle y 3 aspectos que debería conocer antes de negociar.
+Límites: No inventes precios, descuentos ni condiciones comerciales.</div>
+    <button class="copy-btn" type="button">Copiar prompt</button>
+  </div>
+
+  <div class="prompt-card">
+    <h2><span class="num">3</span>Practicar objeciones del cliente</h2>
+    <p class="desc">Para ensayar respuestas antes de visitar a un cliente real.</p>
+    <div class="prompt-box" data-prompt="Rol: Actuá como un productor agropecuario exigente.
+Contexto: Soy vendedor de insumos agrícolas y quiero ofrecerte un nuevo fungicida para trigo.
+Objetivo: Quiero practicar cómo responder objeciones antes de visitar a un cliente real.
+Formato: Haceme una objeción por vez, esperá mi respuesta y después evaluá qué podría mejorar.
+Límites: No inventes características técnicas, precios ni resultados del producto.">Rol: Actuá como un productor agropecuario exigente.
+Contexto: Soy vendedor de insumos agrícolas y quiero ofrecerte un nuevo fungicida para trigo.
+Objetivo: Quiero practicar cómo responder objeciones antes de visitar a un cliente real.
+Formato: Haceme una objeción por vez, esperá mi respuesta y después evaluá qué podría mejorar.
+Límites: No inventes características técnicas, precios ni resultados del producto.</div>
+    <button class="copy-btn" type="button">Copiar prompt</button>
+  </div>
+
+  <div class="prompt-card">
+    <h2><span class="num">4</span>Recuperar un cliente que dejó de comprar</h2>
+    <p class="desc">Para preparar la llamada y separar hechos de hipótesis.</p>
+    <div class="prompt-box" data-prompt="Rol: Actuá como un asesor comercial de insumos agrícolas.
+Contexto: Un cliente que compraba regularmente con nosotros todavía no realizó compras esta campaña. Tengo su historial comercial para compartirte.
+Objetivo: Ayudame a preparar una llamada para entender qué ocurrió y detectar una oportunidad comercial.
+Formato: Dame 5 preguntas para la conversación y 3 posibles hipótesis que debería validar.
+Límites: No asumas que sabemos por qué dejó de comprar. Diferenciá claramente hechos de hipótesis.">Rol: Actuá como un asesor comercial de insumos agrícolas.
+Contexto: Un cliente que compraba regularmente con nosotros todavía no realizó compras esta campaña. Tengo su historial comercial para compartirte.
+Objetivo: Ayudame a preparar una llamada para entender qué ocurrió y detectar una oportunidad comercial.
+Formato: Dame 5 preguntas para la conversación y 3 posibles hipótesis que debería validar.
+Límites: No asumas que sabemos por qué dejó de comprar. Diferenciá claramente hechos de hipótesis.</div>
+    <button class="copy-btn" type="button">Copiar prompt</button>
+  </div>
+
+  <div class="prompt-card">
+    <h2><span class="num">5</span>Analizar una cartera de clientes</h2>
+    <p class="desc">Para detectar oportunidades comerciales en un Excel de ventas.</p>
+    <div class="prompt-box" data-prompt="Rol: Actuá como un gerente comercial de una empresa de insumos agrícolas.
+Contexto: Te voy a compartir un Excel con clientes, productos, cantidades y ventas de las últimas dos campañas.
+Objetivo: Quiero detectar oportunidades comerciales para esta campaña.
+Formato: Identificá 10 clientes que merezcan ser analizados y explicá qué dato concreto hace interesante cada caso.
+Límites: Utilizá únicamente información presente en el archivo. No inventes motivos de compra ni información sobre los clientes.">Rol: Actuá como un gerente comercial de una empresa de insumos agrícolas.
+Contexto: Te voy a compartir un Excel con clientes, productos, cantidades y ventas de las últimas dos campañas.
+Objetivo: Quiero detectar oportunidades comerciales para esta campaña.
+Formato: Identificá 10 clientes que merezcan ser analizados y explicá qué dato concreto hace interesante cada caso.
+Límites: Utilizá únicamente información presente en el archivo. No inventes motivos de compra ni información sobre los clientes.</div>
+    <button class="copy-btn" type="button">Copiar prompt</button>
+  </div>
+
+  <div class="prompt-card">
+    <h2><span class="num">6</span>Preparar el día comercial</h2>
+    <p class="desc">Para organizar los contactos del día con prioridad clara.</p>
+    <div class="prompt-box" data-prompt="Rol: Actuá como un asistente comercial de un vendedor de insumos agrícolas.
+Contexto: Hoy tengo que contactar a varios clientes y te voy a compartir mi lista de pendientes.
+Objetivo: Ayudame a organizar el día y definir qué debería resolver con cada cliente.
+Formato: Armá una tabla con Cliente / Motivo del contacto / Información que necesito / Próxima acción.
+Límites: No inventes prioridades basadas en información que no te proporcioné. Si necesitás un dato para priorizar, señalalo.">Rol: Actuá como un asistente comercial de un vendedor de insumos agrícolas.
+Contexto: Hoy tengo que contactar a varios clientes y te voy a compartir mi lista de pendientes.
+Objetivo: Ayudame a organizar el día y definir qué debería resolver con cada cliente.
+Formato: Armá una tabla con Cliente / Motivo del contacto / Información que necesito / Próxima acción.
+Límites: No inventes prioridades basadas en información que no te proporcioné. Si necesitás un dato para priorizar, señalalo.</div>
+    <button class="copy-btn" type="button">Copiar prompt</button>
+  </div>
+
+  <div class="cta">
+    <img src="/umanoai.png" alt="UmanoAI">
+    <h3>¿Y si esto lo hiciera un agente, todos los días, por vos?</h3>
+    <p>En UmanoAI armamos agentes de IA y automatizaciones a medida para equipos comerciales del agro: WhatsApp, BI y RPA conectados al proceso de venta.</p>
+    <a class="btn" href="https://wa.me/5491125926977?text=Hola%2C%20vengo%20de%20la%20clase%20de%20Austral%20y%20quiero%20saber%20m%C3%A1s" target="_blank" rel="noopener">Hablar por WhatsApp →</a>
+  </div>
+</main>
+
+<footer>
+  Juan José Galván · UmanoAI · <a href="https://umanoai.com.ar" target="_blank" rel="noopener">umanoai.com.ar</a>
+</footer>
+
+<script>
+document.querySelectorAll('.prompt-card').forEach(function(card){
+  var box = card.querySelector('.prompt-box');
+  var btn = card.querySelector('.copy-btn');
+  var text = box.getAttribute('data-prompt') || box.textContent;
+  var defaultLabel = 'Copiar prompt';
+  btn.textContent = defaultLabel;
+  btn.addEventListener('click', function(){
+    function done(){
+      btn.textContent = '✓ Copiado';
+      btn.classList.add('copied');
+      setTimeout(function(){
+        btn.textContent = defaultLabel;
+        btn.classList.remove('copied');
+      }, 1800);
+    }
+    var settled = false;
+    var safety = setTimeout(function(){
+      if (settled) return;
+      settled = true;
+      fallbackCopy(text, done);
+    }, 600);
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function(){
+        if (settled) return;
+        settled = true;
+        clearTimeout(safety);
+        done();
+      }).catch(function(){
+        if (settled) return;
+        settled = true;
+        clearTimeout(safety);
+        fallbackCopy(text, done);
+      });
+    } else {
+      clearTimeout(safety);
+      fallbackCopy(text, done);
+    }
+  });
+});
+
+function fallbackCopy(text, cb){
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+  cb();
+}
+</script>
+
+</body>
+</html>
