@@ -221,6 +221,33 @@
     font-weight:700;color:var(--verde-osc);
     font-family:'Inter',sans-serif;
   }
+  .prompt-box.long{
+    white-space:pre-wrap;
+    max-height:420px;
+    overflow-y:auto;
+    font-size:.83rem;
+    line-height:1.65;
+  }
+  .prompt-card--bi{border-left-color:var(--dorado)}
+  .prompt-card--bi .badge{
+    display:inline-block;
+    font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--verde-osc);background:#eef2df;border:1px solid var(--line);
+    border-radius:999px;padding:3px 10px;margin-bottom:8px;
+  }
+  .dl-btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;margin-bottom:12px;
+    padding:12px 16px;border-radius:12px;
+    background:#fff;border:1.5px solid var(--verde);color:var(--verde-osc);
+    font-weight:700;font-size:.92rem;text-decoration:none;
+    transition:background .15s ease;
+  }
+  .dl-btn:hover{background:#eef2df}
+  .dl-btn svg{width:17px;height:17px;flex:none}
+  .scroll-hint{
+    font-size:.76rem;color:var(--muted);text-align:center;margin-top:6px;
+  }
 
   .copy-btn{
     margin-top:14px;
@@ -302,6 +329,7 @@
       <li><a href="#prompt-4"><span class="n">4</span>Recuperar cliente</a></li>
       <li><a href="#prompt-5"><span class="n">5</span>Cartera</a></li>
       <li><a href="#prompt-6"><span class="n">6</span>Día comercial</a></li>
+      <li><a href="#prompt-7"><span class="n">7</span>Tablero de BI</a></li>
     </ul>
   </div>
   <a class="hero__scroll" href="#prompt-1" aria-label="Bajar a los prompts">
@@ -413,6 +441,141 @@ Límites: No inventes prioridades basadas en información que no te proporcioné
 <span class="field"><span class="k">Formato:</span> Armá una tabla con Cliente / Motivo del contacto / Información que necesito / Próxima acción.</span>
 <span class="field"><span class="k">Límites:</span> No inventes prioridades basadas en información que no te proporcioné. Si necesitás un dato para priorizar, señalalo.</span>
     </div>
+    <button class="copy-btn" type="button">Copiar prompt</button>
+  </div>
+
+  <div class="prompt-card prompt-card--bi" id="prompt-7">
+    <span class="badge">Extra · más largo</span>
+    <h2><span class="num">7</span>Armar un tablero de BI</h2>
+    <p class="desc">Para generar un dashboard interactivo a partir de un Excel real de ventas. Descargá el archivo, adjuntalo en tu IA junto con este prompt (funciona mejor en una herramienta que pueda leer el Excel y generar una página, como Claude o ChatGPT).</p>
+    <a class="dl-btn" href="/datos-tablero-comercial.xlsx" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+      Descargar datos-tablero-comercial.xlsx
+    </a>
+    <div class="prompt-box long" data-prompt="ROL
+Actuá como experto en Business Intelligence para el sector agro, con experiencia armando tableros para equipos comerciales de distribuidoras de fitosanitarios.
+
+CONTEXTO
+Adjunto un Excel con la facturación de un año (2024) de una distribuidora de fitosanitarios. Ya está anonimizado y tiene estas hojas: Ventas, Clientes, Productos, Zonas y Notas. Leé primero la hoja Notas.
+- Trabajá con la hoja Ventas: una fila por línea de comprobante, con estas columnas: Fecha, Mes, Tipo de comprobante, Comprobante (ID), Zona, Cliente, Localidad (ilustrativa), Latitud, Longitud, Producto, Presentación, Producto y presentación, Unidad, Cantidad, Precio neto (USD), Total (USD), Condición de venta, Plazo (días), Tramo de plazo y Cotización.
+- Tipo de comprobante puede ser Factura, Nota de débito o Nota de crédito. Las notas de crédito ya vienen con total y cantidad negativos.
+- Venta neta = suma de Total (USD). La cantidad está en litros o kilos según la columna Unidad.
+- Plazo (días) está vacío en canjes y plataformas.
+- El tablero se va a presentar en una clase a vendedores con experiencia.
+
+OBJETIVO
+Quiero un dashboard de ventas interactivo que genere un efecto &quot;wow&quot; en los vendedores: que cada uno encuentre respuestas a sus inquietudes comerciales reales y descubra información útil que no conocía. Organizalo como una secuencia de preguntas que se hace un vendedor:
+1. ¿Dónde está el negocio?
+   - Mapa de Argentina (con Islas Malvinas) con un punto por cliente: tamaño según venta, color por zona y animación de pulso en los 12 principales.
+   - Botones &quot;Zona productiva&quot; y &quot;Argentina completa&quot;.
+   - Al lado: indicadores clave (venta neta, clientes activos, ticket promedio por factura, plazo promedio ponderado, % de notas de crédito, volumen) y un ranking de zonas que se puede tocar.
+2. ¿Cuándo compra el campo?
+   - Venta mensual apilada por zona con línea de acumulado.
+   - Venta por día del mes, destacando los últimos 5 días (efecto cierre de mes).
+3. ¿Quién sostiene la facturación?
+   - Curva de Pareto de clientes marcando cuántos hacen el 80%.
+   - Tabla de clientes principales.
+4. ¿Qué vendemos y a qué precio?
+   - Treemap del mix de productos.
+   - Índice de precio en USD mes a mes: base 100 = precio promedio anual de cada presentación, ponderado por volumen.
+5. ¿Cada zona vende al mismo precio?
+   - Precio logrado por zona frente al promedio nacional, comparando mismo producto, misma presentación y mismo mes.
+   - Burbujas de plazo concedido contra precio logrado por zona.
+6. ¿Cómo financiamos la venta?
+   - Facturación por tramo de plazo.
+   - Notas de crédito como % de lo facturado por zona.
+7. ¿Qué más le puedo vender a mis clientes?
+   - Mapa de calor de penetración: % de clientes de cada zona que compra cada producto.
+   - Productos que se compran juntos, con confianza y lift.
+   - Cantidad de clientes que compran un solo producto.
+8. ¿A quién tengo que llamar el lunes?
+   - Clientes con 90 días o más sin comprar al cierre del período, ordenados por lo que facturaron y con prioridad.
+
+FORMATO
+- Una sola página HTML interactiva, publicada como página.
+- Cada sección con un título en forma de pregunta y una respuesta en una frase con el dato clave resaltado, que se recalcula sola al filtrar.
+- Barra fija con filtros por zona (selección múltiple) y rango de meses. Todo el tablero se recalcula con los filtros.
+- Al tocar un cliente en el mapa o en una tabla se abre una ficha lateral con:
+  - su venta, facturas, plazo, última compra y puesto en el ranking;
+  - compras por mes y productos que compra;
+  - oportunidades: productos que no compra pero que sí compra un porcentaje alto de los clientes de su zona.
+- Diseño:
+  - Estética propia del agro, nada genérica: paleta de verdes hoja, amarillo trigo y rojo tierra.
+  - Tipografía con carácter y números grandes.
+  - Legible en un proyector y adaptable a celular, con modo claro y oscuro.
+- Nota al pie con la fuente, aclarando que los datos están anonimizados y las localidades son ilustrativas.
+- Al final de tu respuesta, resumime los 5 hallazgos más fuertes del tablero.
+
+LÍMITES
+- No inventes datos: todo importe, cantidad, precio, fecha y plazo debe salir del archivo.
+- No reemplaces ni &quot;des-anonimices&quot; nombres: usá Cliente_001, Producto_01, etc. tal como vienen.
+- No asumas que la localidad es la ubicación real del cliente; usá la que trae el archivo solo para el mapa.
+- No incluyas canjes ni plataformas (plazo vacío) en el cálculo del plazo promedio.
+- No saques conclusiones que los datos no respalden. Por ejemplo, no hay datos de años anteriores, así que no hables de clientes &quot;nuevos&quot; ni de crecimiento interanual.
+- Si algo es ambiguo, preguntame antes de decidir. Antes de construir, explorá los datos y contame los hallazgos principales.
+- Revisá el tablero antes de entregarlo (errores, textos cortados, superposiciones).">ROL
+Actuá como experto en Business Intelligence para el sector agro, con experiencia armando tableros para equipos comerciales de distribuidoras de fitosanitarios.
+
+CONTEXTO
+Adjunto un Excel con la facturación de un año (2024) de una distribuidora de fitosanitarios. Ya está anonimizado y tiene estas hojas: Ventas, Clientes, Productos, Zonas y Notas. Leé primero la hoja Notas.
+- Trabajá con la hoja Ventas: una fila por línea de comprobante, con estas columnas: Fecha, Mes, Tipo de comprobante, Comprobante (ID), Zona, Cliente, Localidad (ilustrativa), Latitud, Longitud, Producto, Presentación, Producto y presentación, Unidad, Cantidad, Precio neto (USD), Total (USD), Condición de venta, Plazo (días), Tramo de plazo y Cotización.
+- Tipo de comprobante puede ser Factura, Nota de débito o Nota de crédito. Las notas de crédito ya vienen con total y cantidad negativos.
+- Venta neta = suma de Total (USD). La cantidad está en litros o kilos según la columna Unidad.
+- Plazo (días) está vacío en canjes y plataformas.
+- El tablero se va a presentar en una clase a vendedores con experiencia.
+
+OBJETIVO
+Quiero un dashboard de ventas interactivo que genere un efecto "wow" en los vendedores: que cada uno encuentre respuestas a sus inquietudes comerciales reales y descubra información útil que no conocía. Organizalo como una secuencia de preguntas que se hace un vendedor:
+1. ¿Dónde está el negocio?
+   - Mapa de Argentina (con Islas Malvinas) con un punto por cliente: tamaño según venta, color por zona y animación de pulso en los 12 principales.
+   - Botones "Zona productiva" y "Argentina completa".
+   - Al lado: indicadores clave (venta neta, clientes activos, ticket promedio por factura, plazo promedio ponderado, % de notas de crédito, volumen) y un ranking de zonas que se puede tocar.
+2. ¿Cuándo compra el campo?
+   - Venta mensual apilada por zona con línea de acumulado.
+   - Venta por día del mes, destacando los últimos 5 días (efecto cierre de mes).
+3. ¿Quién sostiene la facturación?
+   - Curva de Pareto de clientes marcando cuántos hacen el 80%.
+   - Tabla de clientes principales.
+4. ¿Qué vendemos y a qué precio?
+   - Treemap del mix de productos.
+   - Índice de precio en USD mes a mes: base 100 = precio promedio anual de cada presentación, ponderado por volumen.
+5. ¿Cada zona vende al mismo precio?
+   - Precio logrado por zona frente al promedio nacional, comparando mismo producto, misma presentación y mismo mes.
+   - Burbujas de plazo concedido contra precio logrado por zona.
+6. ¿Cómo financiamos la venta?
+   - Facturación por tramo de plazo.
+   - Notas de crédito como % de lo facturado por zona.
+7. ¿Qué más le puedo vender a mis clientes?
+   - Mapa de calor de penetración: % de clientes de cada zona que compra cada producto.
+   - Productos que se compran juntos, con confianza y lift.
+   - Cantidad de clientes que compran un solo producto.
+8. ¿A quién tengo que llamar el lunes?
+   - Clientes con 90 días o más sin comprar al cierre del período, ordenados por lo que facturaron y con prioridad.
+
+FORMATO
+- Una sola página HTML interactiva, publicada como página.
+- Cada sección con un título en forma de pregunta y una respuesta en una frase con el dato clave resaltado, que se recalcula sola al filtrar.
+- Barra fija con filtros por zona (selección múltiple) y rango de meses. Todo el tablero se recalcula con los filtros.
+- Al tocar un cliente en el mapa o en una tabla se abre una ficha lateral con:
+  - su venta, facturas, plazo, última compra y puesto en el ranking;
+  - compras por mes y productos que compra;
+  - oportunidades: productos que no compra pero que sí compra un porcentaje alto de los clientes de su zona.
+- Diseño:
+  - Estética propia del agro, nada genérica: paleta de verdes hoja, amarillo trigo y rojo tierra.
+  - Tipografía con carácter y números grandes.
+  - Legible en un proyector y adaptable a celular, con modo claro y oscuro.
+- Nota al pie con la fuente, aclarando que los datos están anonimizados y las localidades son ilustrativas.
+- Al final de tu respuesta, resumime los 5 hallazgos más fuertes del tablero.
+
+LÍMITES
+- No inventes datos: todo importe, cantidad, precio, fecha y plazo debe salir del archivo.
+- No reemplaces ni "des-anonimices" nombres: usá Cliente_001, Producto_01, etc. tal como vienen.
+- No asumas que la localidad es la ubicación real del cliente; usá la que trae el archivo solo para el mapa.
+- No incluyas canjes ni plataformas (plazo vacío) en el cálculo del plazo promedio.
+- No saques conclusiones que los datos no respalden. Por ejemplo, no hay datos de años anteriores, así que no hables de clientes "nuevos" ni de crecimiento interanual.
+- Si algo es ambiguo, preguntame antes de decidir. Antes de construir, explorá los datos y contame los hallazgos principales.
+- Revisá el tablero antes de entregarlo (errores, textos cortados, superposiciones).</div>
+    <div class="scroll-hint">↕ Podés scrollear el recuadro para leer el prompt completo</div>
     <button class="copy-btn" type="button">Copiar prompt</button>
   </div>
 
