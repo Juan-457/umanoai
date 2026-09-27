@@ -351,6 +351,22 @@
   .copy-btn:active{transform:scale(.98)}
   .copy-btn.copied{background:var(--dorado);color:#241d10}
   .copy-btn svg{width:18px;height:18px;flex:none}
+  .back-to-top{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    margin-top:10px;
+    padding:9px 14px;
+    border-radius:10px;
+    color:var(--verde-osc);
+    font-size:.84rem;
+    font-weight:700;
+    text-decoration:none;
+    transition:background .15s ease, color .15s ease;
+  }
+  .back-to-top:hover,
+  .back-to-top:focus-visible{background:#eef2df;color:var(--verde)}
 
   .contact-note{
     margin:32px 0 40px;
@@ -832,6 +848,11 @@ Object.keys(badPromptExamples).forEach(function(id){
 document.querySelectorAll('.prompt-card').forEach(function(card){
   var box = card.querySelector('.prompt-box');
   var btn = card.querySelector('.copy-btn');
+  var homeLink = document.createElement('a');
+  homeLink.className = 'back-to-top';
+  homeLink.href = '#top';
+  homeLink.textContent = '↑ Volver al inicio de los prompts';
+  card.appendChild(homeLink);
   var text = box.getAttribute('data-prompt') || box.textContent.trim();
   var defaultLabel = 'Copiar prompt';
   btn.textContent = defaultLabel;
