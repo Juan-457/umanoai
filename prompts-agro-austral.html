@@ -7,194 +7,254 @@
 <meta name="description" content="Los 6 prompts de IA de la clase de Universidad Austral, listos para copiar y usar con tus propios clientes.">
 <meta name="robots" content="noindex,nofollow">
 <meta name="color-scheme" content="light">
-<meta name="theme-color" content="#2f3b1f">
+<meta name="theme-color" content="#16240f">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="/campo.webp" fetchpriority="high">
 <style>
   :root{
-    --tierra:#5c3d21;
-    --tierra-osc:#3a2612;
-    --verde:#3f6b2e;
-    --verde-osc:#2b4a1f;
-    --crema:#fbf6ec;
-    --crema-card:#ffffff;
-    --acento:#e8a13a;
-    --azul-marca:#0f6fe0;
+    --verde-prof:#16240f;
+    --verde-osc:#233d16;
+    --verde:#4a7a34;
+    --verde-claro:#7fae55;
+    --dorado:#e0a83e;
+    --crema:#faf6ec;
+    --crema-card:#fffdf8;
+    --tinta:#241d10;
+    --muted:#6f6247;
+    --line:#ece1c8;
     --radius:18px;
-    --shadow:0 10px 30px rgba(45,30,10,.15);
+    --shadow:0 18px 44px -20px rgba(22,36,15,.35);
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
     margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     background:var(--crema);
-    color:#2a2013;
+    color:var(--tinta);
     -webkit-font-smoothing:antialiased;
+    line-height:1.6;
   }
   a{color:inherit}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.12}
 
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.55rem;
+    font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:600;
+  }
+  .eyebrow::before{content:"";width:24px;height:2px;background:var(--dorado);display:inline-block}
+
+  /* ---------- Header flotante sobre el hero, sólido al scrollear ---------- */
   header.topbar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
+    position:fixed;top:0;left:0;right:0;z-index:30;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
     padding:14px 18px;
-    background:#fff;
-    border-bottom:1px solid #eee1c9;
-    position:sticky;
-    top:0;
-    z-index:20;
+    background:transparent;
+    border-bottom:1px solid transparent;
+    transition:background .25s ease, border-color .25s ease, backdrop-filter .25s ease;
   }
-  header.topbar img{height:34px;display:block}
+  header.topbar.scrolled{
+    background:rgba(22,36,15,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  header.topbar .logo-chip{
+    display:inline-flex;align-items:center;
+    background:#fff;border-radius:10px;padding:5px 9px;
+    box-shadow:0 4px 14px rgba(0,0,0,.18);
+  }
+  header.topbar .logo-chip img{height:24px;display:block}
   header.topbar .tag{
-    font-size:.78rem;
-    color:#6b5a3e;
-    text-align:right;
-    line-height:1.25;
+    font-size:.74rem;color:#fff;text-align:right;line-height:1.25;
+    text-shadow:0 1px 8px rgba(0,0,0,.35);
   }
 
+  /* ---------- Hero ---------- */
   .hero{
-    position:relative;
-    min-height:56vw;
-    max-height:420px;
-    display:flex;
-    align-items:flex-end;
-    background:#2b4a1f;
-    overflow:hidden;
+    position:relative;color:#fff;overflow:hidden;
+    background-color:var(--verde-prof);
+    min-height:92svh;
+    display:flex;align-items:center;
   }
-  .hero img.bg{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    filter:saturate(1.05) brightness(.62);
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:url("/campo.webp") center 55% / cover no-repeat;
+    filter:saturate(1.05);
   }
   .hero::after{
-    content:"";
-    position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(20,30,10,.15) 0%, rgba(20,25,10,.75) 100%);
+    content:"";position:absolute;inset:0;z-index:1;
+    background:
+      linear-gradient(100deg, rgba(15,26,9,.92) 0%, rgba(20,34,12,.72) 40%, rgba(22,36,15,.4) 68%, rgba(22,36,15,.22) 100%),
+      linear-gradient(0deg, rgba(15,26,9,.75) 0%, rgba(15,26,9,.15) 42%, transparent 65%);
   }
   .hero-inner{
     position:relative;z-index:2;
-    padding:28px 20px 26px;
-    color:#fff;
-    max-width:760px;
+    max-width:760px;margin:0 auto;
+    padding:110px 20px 64px;
   }
-  .hero-eyebrow{
-    display:inline-block;
-    font-size:.78rem;
-    letter-spacing:.04em;
-    background:rgba(255,255,255,.16);
-    border:1px solid rgba(255,255,255,.35);
-    padding:5px 12px;
-    border-radius:999px;
-    margin-bottom:12px;
-  }
+  .hero .eyebrow{color:var(--verde-claro)}
   .hero h1{
-    margin:0 0 8px;
-    font-size:clamp(1.5rem,5vw,2.3rem);
-    line-height:1.15;
-    font-weight:800;
+    margin:14px 0 16px;
+    font-size:clamp(2rem,6.4vw,3.2rem);
+    letter-spacing:-.3px;
+    max-width:18ch;
+    font-weight:600;
   }
-  .hero p{
-    margin:0;
-    font-size:1rem;
-    color:#f1ead8;
-    max-width:56ch;
+  .hero h1 em{font-style:italic;color:var(--dorado)}
+  .hero p.lead{
+    margin:0 0 26px;
+    font-size:clamp(1rem,2vw,1.12rem);
+    color:rgba(255,255,255,.88);
+    max-width:50ch;
   }
 
-  main{max-width:760px;margin:0 auto;padding:22px 16px 10px}
+  .quicknav{
+    display:flex;flex-wrap:wrap;gap:9px;
+    margin-bottom:30px;
+    padding:0;list-style:none;
+  }
+  .quicknav a{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.3);
+    color:#fff;
+    font-size:.84rem;font-weight:600;
+    padding:8px 14px 8px 10px;
+    border-radius:999px;
+    text-decoration:none;
+    transition:background .2s ease, border-color .2s ease, transform .15s ease;
+  }
+  .quicknav a:hover{background:rgba(255,255,255,.2);border-color:#fff}
+  .quicknav a:active{transform:scale(.97)}
+  .quicknav .n{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:19px;height:19px;border-radius:50%;
+    background:var(--dorado);color:#241d10;
+    font-size:.72rem;font-weight:700;flex:none;
+  }
+
+  .hero__scroll{
+    position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:2;
+    display:grid;place-items:center;width:42px;height:42px;
+    border-radius:50%;border:1.5px solid rgba(255,255,255,.45);color:#fff;
+    animation:nudge 2.4s ease-in-out infinite;
+    text-decoration:none;
+  }
+  .hero__scroll:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+  @keyframes nudge{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+  main{max-width:760px;margin:0 auto;padding:0 16px 10px}
 
   .intro-note{
-    background:#fff;
-    border:1px solid #eee1c9;
+    background:var(--crema-card);
+    border:1px solid var(--line);
     border-radius:var(--radius);
     padding:16px 18px;
-    margin:-40px 0 22px;
-    position:relative;
-    z-index:3;
+    margin:-34px 0 26px;
+    position:relative;z-index:3;
     box-shadow:var(--shadow);
-    font-size:.94rem;
+    font-size:.93rem;
     color:#4a3c24;
   }
   .intro-note strong{color:var(--verde-osc)}
 
+  /* ---------- Cards ---------- */
   .prompt-card{
     background:var(--crema-card);
-    border:1px solid #eee1c9;
+    border:1px solid var(--line);
+    border-left:4px solid var(--verde);
     border-radius:var(--radius);
-    padding:18px 18px 16px;
-    margin-bottom:18px;
-    box-shadow:0 4px 14px rgba(60,40,15,.06);
+    padding:20px 20px 18px;
+    margin-bottom:20px;
+    box-shadow:0 6px 20px -8px rgba(60,40,15,.1);
+    scroll-margin-top:86px;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .prompt-card:target,
+  .prompt-card.flash{
+    border-left-color:var(--dorado);
+    box-shadow:0 10px 30px -10px rgba(224,168,62,.4);
   }
   .prompt-card h2{
-    margin:0 0 4px;
-    font-size:1.08rem;
+    margin:0 0 5px;
+    font-size:1.2rem;
+    font-weight:600;
     color:var(--verde-osc);
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:10px;
   }
   .prompt-card .num{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    width:26px;height:26px;
+    width:28px;height:28px;
     border-radius:50%;
     background:var(--verde);
     color:#fff;
+    font-family:'Inter',sans-serif;
     font-size:.82rem;
     font-weight:700;
     flex:none;
   }
   .prompt-card .desc{
-    margin:0 0 12px;
-    font-size:.86rem;
-    color:#7a6a4a;
+    margin:0 0 14px;
+    font-size:.88rem;
+    color:var(--muted);
   }
   .prompt-box{
-    background:#f8f2e2;
-    border:1px dashed #d8c397;
+    background:#f7f1de;
+    border:1px solid var(--line);
     border-radius:12px;
-    padding:12px 14px;
+    padding:14px 15px;
     font-size:.88rem;
-    line-height:1.55;
-    white-space:pre-wrap;
-    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-    color:#3a2f1c;
+    line-height:1.7;
   }
-  .prompt-box b{color:var(--verde-osc)}
+  .prompt-box .field{display:block}
+  .prompt-box .field + .field{margin-top:2px}
+  .prompt-box .k{
+    font-weight:700;color:var(--verde-osc);
+    font-family:'Inter',sans-serif;
+  }
 
   .copy-btn{
-    margin-top:12px;
+    margin-top:14px;
     width:100%;
     display:flex;
     align-items:center;
     justify-content:center;
     gap:8px;
-    padding:12px 16px;
+    padding:13px 16px;
     border:none;
     border-radius:12px;
-    background:var(--verde);
+    background:var(--verde-osc);
     color:#fff;
     font-size:.95rem;
     font-weight:700;
     cursor:pointer;
     transition:background .15s ease, transform .1s ease;
   }
+  .copy-btn:hover{background:var(--verde)}
   .copy-btn:active{transform:scale(.98)}
-  .copy-btn.copied{background:var(--acento);color:#3a2612}
+  .copy-btn.copied{background:var(--dorado);color:#241d10}
   .copy-btn svg{width:18px;height:18px;flex:none}
 
   .cta{
-    margin:30px 0 40px;
-    background:linear-gradient(135deg,var(--verde-osc),var(--verde));
+    margin:32px 0 40px;
+    background:linear-gradient(135deg,var(--verde-prof),var(--verde));
     border-radius:var(--radius);
-    padding:24px 20px;
+    padding:28px 22px;
     color:#fff;
     text-align:center;
   }
-  .cta img{height:30px;margin-bottom:10px;filter:brightness(0) invert(1)}
-  .cta h3{margin:0 0 8px;font-size:1.15rem}
-  .cta p{margin:0 0 16px;font-size:.92rem;color:#e7f0df;max-width:46ch;margin-left:auto;margin-right:auto}
+  .cta img{height:28px;margin-bottom:12px;filter:brightness(0) invert(1)}
+  .cta h3{margin:0 0 8px;font-size:1.25rem;font-weight:600}
+  .cta p{margin:0 0 18px;font-size:.92rem;color:#e7f0df;max-width:46ch;margin-left:auto;margin-right:auto;font-family:'Inter',sans-serif}
   .cta a.btn{
     display:inline-flex;
     align-items:center;
@@ -202,11 +262,13 @@
     background:#fff;
     color:var(--verde-osc);
     font-weight:700;
-    padding:12px 22px;
+    padding:13px 24px;
     border-radius:999px;
     text-decoration:none;
     font-size:.95rem;
+    transition:transform .15s ease;
   }
+  .cta a.btn:hover{transform:translateY(-2px)}
 
   footer{
     text-align:center;
@@ -215,116 +277,144 @@
     color:#9a8a68;
   }
   footer a{color:#6b5a3e;text-decoration:underline}
+
+  @media (max-width:600px){
+    .hero-inner{padding:98px 18px 56px}
+    .hero{min-height:100svh}
+  }
 </style>
 </head>
 <body>
 
-<header class="topbar">
-  <img src="/umanoai.png" alt="UmanoAI" />
+<header class="topbar" id="siteHeader">
+  <span class="logo-chip"><img src="/umanoai.png" alt="UmanoAI" /></span>
   <div class="tag">Universidad Austral<br>Programa de Gestión de Ventas en Agroinsumos</div>
 </header>
 
-<div class="hero">
-  <img class="bg" src="/campo.webp" alt="Campo agrícola visto desde arriba" loading="eager">
+<section class="hero" id="top">
   <div class="hero-inner">
-    <span class="hero-eyebrow">Clase del 28 de septiembre de 2026</span>
-    <h1>Prompts para preparar tu próxima venta</h1>
-    <p>Los mismos prompts que usamos hoy en clase. Copiá el que necesites, pegalo en tu IA (ChatGPT, Claude, Copilot) y cambiá los datos por los de tu cliente real.</p>
+    <span class="eyebrow">Clase del 28 de septiembre de 2026</span>
+    <h1>Prompts para preparar <em>tu próxima venta</em></h1>
+    <p class="lead">Los mismos prompts que usamos hoy en clase. Copiá el que necesites, pegalo en tu IA (ChatGPT, Claude, Copilot) y cambiá los datos por los de tu cliente real.</p>
+
+    <ul class="quicknav" aria-label="Ir directo a un prompt">
+      <li><a href="#prompt-1"><span class="n">1</span>Visita</a></li>
+      <li><a href="#prompt-2"><span class="n">2</span>Negociación</a></li>
+      <li><a href="#prompt-3"><span class="n">3</span>Objeciones</a></li>
+      <li><a href="#prompt-4"><span class="n">4</span>Recuperar cliente</a></li>
+      <li><a href="#prompt-5"><span class="n">5</span>Cartera</a></li>
+      <li><a href="#prompt-6"><span class="n">6</span>Día comercial</a></li>
+    </ul>
   </div>
-</div>
+  <a class="hero__scroll" href="#prompt-1" aria-label="Bajar a los prompts">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </a>
+</section>
 
 <main>
   <div class="intro-note">
     Cada prompt tiene 5 partes: <strong>Rol</strong>, <strong>Contexto</strong>, <strong>Objetivo</strong>, <strong>Formato</strong> y <strong>Límites</strong>. Son de ejemplo — no cambies la estructura, pero reemplazá el cliente, el producto y los números por los de tu caso real antes de usarlo. Esta página va a estar disponible solo por unos días.
   </div>
 
-  <div class="prompt-card">
+  <div class="prompt-card" id="prompt-1">
     <h2><span class="num">1</span>Preparar una visita</h2>
     <p class="desc">Para llegar con las preguntas correctas antes de ver a un cliente.</p>
     <div class="prompt-box" data-prompt="Rol: Actuá como un asesor comercial de insumos agrícolas.
 Contexto: Soy vendedor de insumos agrícolas. Mañana visito a un cliente interesado en 120 bolsas de Semilla Demo A.
 Objetivo: Ayudame a preparar la visita.
 Formato: Dame 5 preguntas y una agenda de 20 minutos.
-Límites: No inventes precios, stock ni fechas.">Rol: Actuá como un asesor comercial de insumos agrícolas.
-Contexto: Soy vendedor de insumos agrícolas. Mañana visito a un cliente interesado en 120 bolsas de Semilla Demo A.
-Objetivo: Ayudame a preparar la visita.
-Formato: Dame 5 preguntas y una agenda de 20 minutos.
-Límites: No inventes precios, stock ni fechas.</div>
+Límites: No inventes precios, stock ni fechas.">
+<span class="field"><span class="k">Rol:</span> Actuá como un asesor comercial de insumos agrícolas.</span>
+<span class="field"><span class="k">Contexto:</span> Soy vendedor de insumos agrícolas. Mañana visito a un cliente interesado en 120 bolsas de Semilla Demo A.</span>
+<span class="field"><span class="k">Objetivo:</span> Ayudame a preparar la visita.</span>
+<span class="field"><span class="k">Formato:</span> Dame 5 preguntas y una agenda de 20 minutos.</span>
+<span class="field"><span class="k">Límites:</span> No inventes precios, stock ni fechas.</span>
+    </div>
     <button class="copy-btn" type="button">Copiar prompt</button>
   </div>
 
-  <div class="prompt-card">
+  <div class="prompt-card" id="prompt-2">
     <h2><span class="num">2</span>Preparar una negociación</h2>
     <p class="desc">Para llegar preparado cuando el cliente está comparando con otros proveedores.</p>
     <div class="prompt-box" data-prompt="Rol: Actuá como un asesor comercial de insumos agrícolas.
 Contexto: Tengo un cliente interesado en comprar 500 litros de un herbicida. Ya conoce el producto, pero me dijo que está comparando nuestra propuesta con la de otros proveedores.
 Objetivo: Ayudame a preparar la negociación antes de llamarlo.
 Formato: Dame 5 preguntas que debería hacerle y 3 aspectos que debería conocer antes de negociar.
-Límites: No inventes precios, descuentos ni condiciones comerciales.">Rol: Actuá como un asesor comercial de insumos agrícolas.
-Contexto: Tengo un cliente interesado en comprar 500 litros de un herbicida. Ya conoce el producto, pero me dijo que está comparando nuestra propuesta con la de otros proveedores.
-Objetivo: Ayudame a preparar la negociación antes de llamarlo.
-Formato: Dame 5 preguntas que debería hacerle y 3 aspectos que debería conocer antes de negociar.
-Límites: No inventes precios, descuentos ni condiciones comerciales.</div>
+Límites: No inventes precios, descuentos ni condiciones comerciales.">
+<span class="field"><span class="k">Rol:</span> Actuá como un asesor comercial de insumos agrícolas.</span>
+<span class="field"><span class="k">Contexto:</span> Tengo un cliente interesado en comprar 500 litros de un herbicida. Ya conoce el producto, pero me dijo que está comparando nuestra propuesta con la de otros proveedores.</span>
+<span class="field"><span class="k">Objetivo:</span> Ayudame a preparar la negociación antes de llamarlo.</span>
+<span class="field"><span class="k">Formato:</span> Dame 5 preguntas que debería hacerle y 3 aspectos que debería conocer antes de negociar.</span>
+<span class="field"><span class="k">Límites:</span> No inventes precios, descuentos ni condiciones comerciales.</span>
+    </div>
     <button class="copy-btn" type="button">Copiar prompt</button>
   </div>
 
-  <div class="prompt-card">
+  <div class="prompt-card" id="prompt-3">
     <h2><span class="num">3</span>Practicar objeciones del cliente</h2>
     <p class="desc">Para ensayar respuestas antes de visitar a un cliente real.</p>
     <div class="prompt-box" data-prompt="Rol: Actuá como un productor agropecuario exigente.
 Contexto: Soy vendedor de insumos agrícolas y quiero ofrecerte un nuevo fungicida para trigo.
 Objetivo: Quiero practicar cómo responder objeciones antes de visitar a un cliente real.
 Formato: Haceme una objeción por vez, esperá mi respuesta y después evaluá qué podría mejorar.
-Límites: No inventes características técnicas, precios ni resultados del producto.">Rol: Actuá como un productor agropecuario exigente.
-Contexto: Soy vendedor de insumos agrícolas y quiero ofrecerte un nuevo fungicida para trigo.
-Objetivo: Quiero practicar cómo responder objeciones antes de visitar a un cliente real.
-Formato: Haceme una objeción por vez, esperá mi respuesta y después evaluá qué podría mejorar.
-Límites: No inventes características técnicas, precios ni resultados del producto.</div>
+Límites: No inventes características técnicas, precios ni resultados del producto.">
+<span class="field"><span class="k">Rol:</span> Actuá como un productor agropecuario exigente.</span>
+<span class="field"><span class="k">Contexto:</span> Soy vendedor de insumos agrícolas y quiero ofrecerte un nuevo fungicida para trigo.</span>
+<span class="field"><span class="k">Objetivo:</span> Quiero practicar cómo responder objeciones antes de visitar a un cliente real.</span>
+<span class="field"><span class="k">Formato:</span> Haceme una objeción por vez, esperá mi respuesta y después evaluá qué podría mejorar.</span>
+<span class="field"><span class="k">Límites:</span> No inventes características técnicas, precios ni resultados del producto.</span>
+    </div>
     <button class="copy-btn" type="button">Copiar prompt</button>
   </div>
 
-  <div class="prompt-card">
+  <div class="prompt-card" id="prompt-4">
     <h2><span class="num">4</span>Recuperar un cliente que dejó de comprar</h2>
     <p class="desc">Para preparar la llamada y separar hechos de hipótesis.</p>
     <div class="prompt-box" data-prompt="Rol: Actuá como un asesor comercial de insumos agrícolas.
 Contexto: Un cliente que compraba regularmente con nosotros todavía no realizó compras esta campaña. Tengo su historial comercial para compartirte.
 Objetivo: Ayudame a preparar una llamada para entender qué ocurrió y detectar una oportunidad comercial.
 Formato: Dame 5 preguntas para la conversación y 3 posibles hipótesis que debería validar.
-Límites: No asumas que sabemos por qué dejó de comprar. Diferenciá claramente hechos de hipótesis.">Rol: Actuá como un asesor comercial de insumos agrícolas.
-Contexto: Un cliente que compraba regularmente con nosotros todavía no realizó compras esta campaña. Tengo su historial comercial para compartirte.
-Objetivo: Ayudame a preparar una llamada para entender qué ocurrió y detectar una oportunidad comercial.
-Formato: Dame 5 preguntas para la conversación y 3 posibles hipótesis que debería validar.
-Límites: No asumas que sabemos por qué dejó de comprar. Diferenciá claramente hechos de hipótesis.</div>
+Límites: No asumas que sabemos por qué dejó de comprar. Diferenciá claramente hechos de hipótesis.">
+<span class="field"><span class="k">Rol:</span> Actuá como un asesor comercial de insumos agrícolas.</span>
+<span class="field"><span class="k">Contexto:</span> Un cliente que compraba regularmente con nosotros todavía no realizó compras esta campaña. Tengo su historial comercial para compartirte.</span>
+<span class="field"><span class="k">Objetivo:</span> Ayudame a preparar una llamada para entender qué ocurrió y detectar una oportunidad comercial.</span>
+<span class="field"><span class="k">Formato:</span> Dame 5 preguntas para la conversación y 3 posibles hipótesis que debería validar.</span>
+<span class="field"><span class="k">Límites:</span> No asumas que sabemos por qué dejó de comprar. Diferenciá claramente hechos de hipótesis.</span>
+    </div>
     <button class="copy-btn" type="button">Copiar prompt</button>
   </div>
 
-  <div class="prompt-card">
+  <div class="prompt-card" id="prompt-5">
     <h2><span class="num">5</span>Analizar una cartera de clientes</h2>
     <p class="desc">Para detectar oportunidades comerciales en un Excel de ventas.</p>
     <div class="prompt-box" data-prompt="Rol: Actuá como un gerente comercial de una empresa de insumos agrícolas.
 Contexto: Te voy a compartir un Excel con clientes, productos, cantidades y ventas de las últimas dos campañas.
 Objetivo: Quiero detectar oportunidades comerciales para esta campaña.
 Formato: Identificá 10 clientes que merezcan ser analizados y explicá qué dato concreto hace interesante cada caso.
-Límites: Utilizá únicamente información presente en el archivo. No inventes motivos de compra ni información sobre los clientes.">Rol: Actuá como un gerente comercial de una empresa de insumos agrícolas.
-Contexto: Te voy a compartir un Excel con clientes, productos, cantidades y ventas de las últimas dos campañas.
-Objetivo: Quiero detectar oportunidades comerciales para esta campaña.
-Formato: Identificá 10 clientes que merezcan ser analizados y explicá qué dato concreto hace interesante cada caso.
-Límites: Utilizá únicamente información presente en el archivo. No inventes motivos de compra ni información sobre los clientes.</div>
+Límites: Utilizá únicamente información presente en el archivo. No inventes motivos de compra ni información sobre los clientes.">
+<span class="field"><span class="k">Rol:</span> Actuá como un gerente comercial de una empresa de insumos agrícolas.</span>
+<span class="field"><span class="k">Contexto:</span> Te voy a compartir un Excel con clientes, productos, cantidades y ventas de las últimas dos campañas.</span>
+<span class="field"><span class="k">Objetivo:</span> Quiero detectar oportunidades comerciales para esta campaña.</span>
+<span class="field"><span class="k">Formato:</span> Identificá 10 clientes que merezcan ser analizados y explicá qué dato concreto hace interesante cada caso.</span>
+<span class="field"><span class="k">Límites:</span> Utilizá únicamente información presente en el archivo. No inventes motivos de compra ni información sobre los clientes.</span>
+    </div>
     <button class="copy-btn" type="button">Copiar prompt</button>
   </div>
 
-  <div class="prompt-card">
+  <div class="prompt-card" id="prompt-6">
     <h2><span class="num">6</span>Preparar el día comercial</h2>
     <p class="desc">Para organizar los contactos del día con prioridad clara.</p>
     <div class="prompt-box" data-prompt="Rol: Actuá como un asistente comercial de un vendedor de insumos agrícolas.
 Contexto: Hoy tengo que contactar a varios clientes y te voy a compartir mi lista de pendientes.
 Objetivo: Ayudame a organizar el día y definir qué debería resolver con cada cliente.
 Formato: Armá una tabla con Cliente / Motivo del contacto / Información que necesito / Próxima acción.
-Límites: No inventes prioridades basadas en información que no te proporcioné. Si necesitás un dato para priorizar, señalalo.">Rol: Actuá como un asistente comercial de un vendedor de insumos agrícolas.
-Contexto: Hoy tengo que contactar a varios clientes y te voy a compartir mi lista de pendientes.
-Objetivo: Ayudame a organizar el día y definir qué debería resolver con cada cliente.
-Formato: Armá una tabla con Cliente / Motivo del contacto / Información que necesito / Próxima acción.
-Límites: No inventes prioridades basadas en información que no te proporcioné. Si necesitás un dato para priorizar, señalalo.</div>
+Límites: No inventes prioridades basadas en información que no te proporcioné. Si necesitás un dato para priorizar, señalalo.">
+<span class="field"><span class="k">Rol:</span> Actuá como un asistente comercial de un vendedor de insumos agrícolas.</span>
+<span class="field"><span class="k">Contexto:</span> Hoy tengo que contactar a varios clientes y te voy a compartir mi lista de pendientes.</span>
+<span class="field"><span class="k">Objetivo:</span> Ayudame a organizar el día y definir qué debería resolver con cada cliente.</span>
+<span class="field"><span class="k">Formato:</span> Armá una tabla con Cliente / Motivo del contacto / Información que necesito / Próxima acción.</span>
+<span class="field"><span class="k">Límites:</span> No inventes prioridades basadas en información que no te proporcioné. Si necesitás un dato para priorizar, señalalo.</span>
+    </div>
     <button class="copy-btn" type="button">Copiar prompt</button>
   </div>
 
@@ -341,10 +431,18 @@ Límites: No inventes prioridades basadas en información que no te proporcioné
 </footer>
 
 <script>
+var header = document.getElementById('siteHeader');
+function onScroll(){
+  if (window.scrollY > 40) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
 document.querySelectorAll('.prompt-card').forEach(function(card){
   var box = card.querySelector('.prompt-box');
   var btn = card.querySelector('.copy-btn');
-  var text = box.getAttribute('data-prompt') || box.textContent;
+  var text = box.getAttribute('data-prompt') || box.textContent.trim();
   var defaultLabel = 'Copiar prompt';
   btn.textContent = defaultLabel;
   btn.addEventListener('click', function(){
@@ -393,6 +491,18 @@ function fallbackCopy(text, cb){
   document.body.removeChild(ta);
   cb();
 }
+
+// Resalta brevemente la card destino cuando se llega por un link del quicknav / hash directo
+function flashTarget(){
+  var id = location.hash.replace('#','');
+  if (!id) return;
+  var el = document.getElementById(id);
+  if (!el || !el.classList.contains('prompt-card')) return;
+  el.classList.add('flash');
+  setTimeout(function(){ el.classList.remove('flash'); }, 1600);
+}
+window.addEventListener('hashchange', flashTarget);
+if (location.hash) setTimeout(flashTarget, 400);
 </script>
 
 </body>
