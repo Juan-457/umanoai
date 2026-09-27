@@ -764,6 +764,71 @@ function onScroll(){
 window.addEventListener('scroll', onScroll, {passive:true});
 onScroll();
 
+// En los prompts cortos, contrasta primero una consulta vaga con el prompt completo.
+// El de BI queda fuera: es un caso largo y necesita su propia lectura.
+var badPromptExamples = {
+  'prompt-2': {
+    text: '“Tengo un cliente que compara precios. ¿Qué le digo?”',
+    missing: 'qué producto compara, con quién, qué querés lograr y qué condiciones no se pueden inventar.'
+  },
+  'prompt-3': {
+    text: '“Un cliente me dice que es caro. ¿Cómo respondo?”',
+    missing: 'el producto, el perfil del cliente, cómo querés practicar y los datos que la IA no puede inventar.'
+  },
+  'prompt-4': {
+    text: '“Un cliente dejó de comprar. ¿Qué hago?”',
+    missing: 'el historial disponible, el objetivo de la llamada, las preguntas que necesitás y la diferencia entre hechos e hipótesis.'
+  },
+  'prompt-5': {
+    text: '“Tengo un Excel de ventas. ¿Qué oportunidades hay?”',
+    missing: 'qué trae el archivo, qué querés detectar, el formato de la respuesta y el límite de usar solo datos reales.'
+  },
+  'prompt-6': {
+    text: '“Tengo muchos clientes para llamar. ¿Por dónde empiezo?”',
+    missing: 'la lista de pendientes, qué información necesitás por cliente y qué datos faltan para priorizar.'
+  },
+  'prompt-7': {
+    text: '“Mandé una cotización y no responde. ¿Qué le escribo?”',
+    missing: 'cuándo la enviaste, el canal, el tono, el largo del mensaje y los límites para no presionar ni inventar condiciones.'
+  },
+  'prompt-8': {
+    text: '“Me dijo que está caro. ¿Cómo cierro?”',
+    missing: 'qué está comparando, qué querés conseguir, alternativas de respuesta y el límite de no ceder condiciones a ciegas.'
+  },
+  'prompt-9': {
+    text: '“Quiero contactar un lead nuevo. ¿Qué mensaje le mando?”',
+    missing: 'de dónde surgió el contacto, el objetivo del mensaje, su extensión y los datos que no conocés todavía.'
+  }
+};
+
+function makeComparison(card, example){
+  var box = card.querySelector('.prompt-box');
+  if (!box) return;
+  var comparison = document.createElement('div');
+  comparison.className = 'prompt-comparison';
+  var badId = card.id + '-malo';
+  var goodId = card.id + '-bueno';
+  var bad = document.createElement('section');
+  bad.className = 'prompt-variant prompt-variant--bad';
+  bad.setAttribute('aria-labelledby', badId);
+  bad.innerHTML = '<span class="prompt-variant__label" id="' + badId + '">✕ Prompt malo</span><p class="prompt-quote"></p><p class="prompt-gap"><strong>Le falta:</strong> </p>';
+  bad.querySelector('.prompt-quote').textContent = example.text;
+  bad.querySelector('.prompt-gap').appendChild(document.createTextNode(example.missing));
+  var good = document.createElement('section');
+  good.className = 'prompt-variant prompt-variant--good';
+  good.setAttribute('aria-labelledby', goodId);
+  good.innerHTML = '<span class="prompt-variant__label" id="' + goodId + '">✓ Prompt bueno</span>';
+  comparison.appendChild(bad);
+  comparison.appendChild(good);
+  box.parentNode.insertBefore(comparison, box);
+  good.appendChild(box);
+}
+
+Object.keys(badPromptExamples).forEach(function(id){
+  var card = document.getElementById(id);
+  if (card) makeComparison(card, badPromptExamples[id]);
+});
+
 document.querySelectorAll('.prompt-card').forEach(function(card){
   var box = card.querySelector('.prompt-box');
   var btn = card.querySelector('.copy-btn');
