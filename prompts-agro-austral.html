@@ -249,6 +249,35 @@
     font-size:.76rem;color:var(--muted);text-align:center;margin-top:6px;
   }
 
+  .cheat{
+    margin-top:14px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+  }
+  .cheat summary{
+    cursor:pointer;
+    list-style:none;
+    padding:12px 14px;
+    background:#f2ecd9;
+    font-weight:700;
+    font-size:.88rem;
+    color:var(--verde-osc);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .cheat summary::-webkit-details-marker{display:none}
+  .cheat summary::before{content:"▸";transition:transform .15s ease}
+  .cheat[open] summary::before{transform:rotate(90deg)}
+  .cheat-item{padding:12px 14px;border-top:1px solid var(--line);font-size:.86rem}
+  .cheat-item:first-of-type{border-top:none}
+  .cheat-item .obj{font-weight:700;color:var(--tinta);margin-bottom:4px}
+  .cheat-item .obj::before{content:"“";}
+  .cheat-item .obj::after{content:"”";}
+  .cheat-item .resp{color:var(--muted);line-height:1.55}
+  .cheat-item .resp b{color:var(--verde-osc)}
+
   .copy-btn{
     margin-top:14px;
     width:100%;
@@ -394,6 +423,26 @@ Límites: No inventes características técnicas, precios ni resultados del prod
 <span class="field"><span class="k">Límites:</span> No inventes características técnicas, precios ni resultados del producto.</span>
     </div>
     <button class="copy-btn" type="button">Copiar prompt</button>
+
+    <details class="cheat">
+      <summary>💬 4 objeciones típicas, por si te quedás en blanco</summary>
+      <div class="cheat-item">
+        <div class="obj">Tu precio es más caro que el de otro proveedor.</div>
+        <div class="resp"><b>Reconocé</b> sin ponerte a la defensiva → <b>preguntá</b> qué está comparando exactamente (misma concentración, mismas condiciones de pago) → <b>diferenciá</b> por algo real (asistencia, entrega, historial) → cerrá con una pregunta. Ej: "¿Estás comparando las mismas condiciones de pago? ¿Qué es lo que más te pesa hoy: el precio de lista o el costo total de la aplicación?"</div>
+      </div>
+      <div class="cheat-item">
+        <div class="obj">Ya tengo un proveedor de confianza hace años.</div>
+        <div class="resp"><b>Validá</b> la relación (no ataques al otro proveedor) → <b>proponé</b> probar en una porción chica, sin pedirle que abandone nada. Ej: "Tiene sentido, esa confianza se construye con el tiempo. ¿Probamos este producto en un lote chico esta campaña, para que lo compares vos mismo?"</div>
+      </div>
+      <div class="cheat-item">
+        <div class="obj">No conozco el producto, no sé si funciona en mi campo.</div>
+        <div class="resp"><b>Ofrecé evidencia concreta</b> (resultados en zonas similares, respaldo técnico) sin inventar datos → <b>proponé acompañamiento</b>. Ej: "Es una duda válida, cada campo es distinto. Te muestro resultados en zonas parecidas y coordinamos una visita técnica antes de que decidas."</div>
+      </div>
+      <div class="cheat-item">
+        <div class="obj">Necesito pensarlo, no tengo apuro.</div>
+        <div class="resp"><b>Aceptá sin presionar</b> → <b>indagá</b> qué falta para decidir → <b>fijá un próximo paso concreto</b> (no un cierre agresivo). Ej: "Por supuesto. Para no perder el timing de la campaña, ¿qué te ayudaría a definir esta semana? Te llamo el jueves para ver en qué quedaste."</div>
+      </div>
+    </details>
   </div>
 
   <div class="prompt-card" id="prompt-4">
