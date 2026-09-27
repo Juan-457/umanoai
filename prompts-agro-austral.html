@@ -228,6 +228,58 @@
     font-size:.83rem;
     line-height:1.65;
   }
+  /* ---------- Comparación: prompt vago vs. prompt útil ---------- */
+  .prompt-comparison{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+  }
+  .prompt-variant{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:12px;
+  }
+  .prompt-variant__label{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:9px;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+  }
+  .prompt-variant--bad{
+    background:#fff7ed;
+    border-color:#f2c99a;
+  }
+  .prompt-variant--bad .prompt-variant__label{color:#9a4d11}
+  .prompt-variant--good{
+    background:#f4f8ed;
+    border-color:#b9ce9b;
+  }
+  .prompt-variant--good .prompt-variant__label{color:var(--verde-osc)}
+  .prompt-quote{
+    margin:0;
+    font-family:'Fraunces',Georgia,serif;
+    font-size:1.02rem;
+    line-height:1.42;
+    color:var(--tinta);
+  }
+  .prompt-gap{
+    margin:13px 0 0;
+    padding-top:11px;
+    border-top:1px solid rgba(154,77,17,.18);
+    font-size:.8rem;
+    line-height:1.5;
+    color:#79562e;
+  }
+  .prompt-variant--good .prompt-box{
+    background:rgba(255,253,248,.8);
+    padding:12px;
+    font-size:.82rem;
+    line-height:1.6;
+  }
   .prompt-card--bi{border-left-color:var(--dorado)}
   .prompt-card--bi .badge{
     display:inline-block;
@@ -335,6 +387,7 @@
   @media (max-width:600px){
     .hero-inner{padding:98px 18px 56px}
     .hero{min-height:100svh}
+    .prompt-comparison{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -376,8 +429,16 @@
 
   <div class="prompt-card" id="prompt-1">
     <h2><span class="num">1</span>Preparar una visita</h2>
-    <p class="desc">Para llegar con las preguntas correctas antes de ver a un cliente.</p>
-    <div class="prompt-box" data-prompt="Rol: Actuá como un asesor comercial de insumos agrícolas.
+    <p class="desc">El mismo caso, dos maneras de pedir ayuda. La diferencia es la información que recibe la IA.</p>
+    <div class="prompt-comparison">
+      <section class="prompt-variant prompt-variant--bad" aria-labelledby="prompt-malo-titulo">
+        <span class="prompt-variant__label" id="prompt-malo-titulo">✕ Prompt malo</span>
+        <p class="prompt-quote">“Mañana visito un cliente en Santa Fe. ¿Qué me puede preguntar?”</p>
+        <p class="prompt-gap"><strong>Le falta:</strong> quién es el cliente, qué producto le interesa, qué querés lograr, cómo necesitás la respuesta y qué la IA no debe inventar.</p>
+      </section>
+      <section class="prompt-variant prompt-variant--good" aria-labelledby="prompt-bueno-titulo">
+        <span class="prompt-variant__label" id="prompt-bueno-titulo">✓ Prompt bueno</span>
+        <div class="prompt-box" data-prompt="Rol: Actuá como un asesor comercial de insumos agrícolas.
 Contexto: Soy vendedor de insumos agrícolas. Mañana visito a un cliente interesado en 120 bolsas de Semilla Demo A.
 Objetivo: Ayudame a preparar la visita.
 Formato: Dame 5 preguntas y una agenda de 20 minutos.
@@ -387,6 +448,8 @@ Límites: No inventes precios, stock ni fechas.">
 <span class="field"><span class="k">Objetivo:</span> Ayudame a preparar la visita.</span>
 <span class="field"><span class="k">Formato:</span> Dame 5 preguntas y una agenda de 20 minutos.</span>
 <span class="field"><span class="k">Límites:</span> No inventes precios, stock ni fechas.</span>
+        </div>
+      </section>
     </div>
     <button class="copy-btn" type="button">Copiar prompt</button>
   </div>
