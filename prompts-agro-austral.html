@@ -244,31 +244,29 @@
   .copy-btn.copied{background:var(--dorado);color:#241d10}
   .copy-btn svg{width:18px;height:18px;flex:none}
 
-  .cta{
+  .contact-note{
     margin:32px 0 40px;
-    background:linear-gradient(135deg,var(--verde-prof),var(--verde));
-    border-radius:var(--radius);
-    padding:28px 22px;
-    color:#fff;
     text-align:center;
   }
-  .cta img{height:28px;margin-bottom:12px;filter:brightness(0) invert(1)}
-  .cta h3{margin:0 0 8px;font-size:1.25rem;font-weight:600}
-  .cta p{margin:0 0 18px;font-size:.92rem;color:#e7f0df;max-width:46ch;margin-left:auto;margin-right:auto;font-family:'Inter',sans-serif}
-  .cta a.btn{
+  .contact-note p{
+    margin:0 0 14px;
+    font-size:.94rem;
+    color:var(--muted);
+  }
+  .contact-note a.btn{
     display:inline-flex;
     align-items:center;
     gap:8px;
-    background:#fff;
-    color:var(--verde-osc);
+    background:var(--verde-osc);
+    color:#fff;
     font-weight:700;
     padding:13px 24px;
     border-radius:999px;
     text-decoration:none;
     font-size:.95rem;
-    transition:transform .15s ease;
+    transition:transform .15s ease, background .15s ease;
   }
-  .cta a.btn:hover{transform:translateY(-2px)}
+  .contact-note a.btn:hover{background:var(--verde);transform:translateY(-2px)}
 
   footer{
     text-align:center;
@@ -418,11 +416,9 @@ Límites: No inventes prioridades basadas en información que no te proporcioné
     <button class="copy-btn" type="button">Copiar prompt</button>
   </div>
 
-  <div class="cta">
-    <img src="/umanoai.png" alt="UmanoAI">
-    <h3>¿Y si esto lo hiciera un agente, todos los días, por vos?</h3>
-    <p>En UmanoAI armamos agentes de IA y automatizaciones a medida para equipos comerciales del agro: WhatsApp, BI y RPA conectados al proceso de venta.</p>
-    <a class="btn" href="https://wa.me/5491125926977?text=Hola%2C%20vengo%20de%20la%20clase%20de%20Austral%20y%20quiero%20saber%20m%C3%A1s" target="_blank" rel="noopener">Hablar por WhatsApp →</a>
+  <div class="contact-note">
+    <p>¿Preguntas sobre algún prompt o sobre la clase? Escribime directo.</p>
+    <a class="btn" href="https://wa.me/5491151188747?text=Hola%20Juan%2C%20vengo%20de%20la%20clase%20de%20Austral" target="_blank" rel="noopener">Hablar por WhatsApp →</a>
   </div>
 </main>
 
