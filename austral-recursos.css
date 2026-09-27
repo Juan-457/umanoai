@@ -1,0 +1,16 @@
+#recursos-ampliados {scroll-margin-top:90px}
+#recursos-ampliados a {color:#ffe2a1}
+#recursos-ampliados nav {display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
+#recursos-ampliados section {scroll-margin-top:90px;padding-top:20px;margin-top:24px;border-top:1px solid #63715c}
+#recursos-ampliados h3 {font-family:Inter,sans-serif;font-size:1.08rem;margin:24px 0 12px}
+#recursos-ampliados li {margin-bottom:10px}
+#recursos-ampliados details {background:#233d16;border:1px solid #63715c;border-radius:12px;padding:16px;margin:16px 0}
+#recursos-ampliados summary {cursor:pointer;font-weight:700}
+#recursos-ampliados label {display:block;margin:16px 0 6px}
+#recursos-ampliados textarea {display:block;width:100%;min-height:86px;font:inherit;padding:12px;border:1px solid #63715c;border-radius:8px;background:#fffdf8;color:#241d10}
+#recursos-ampliados .actions {display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+#recursos-ampliados button {font:inherit;cursor:pointer;border:1px solid #e0a83e;border-radius:8px;padding:10px 14px;background:#e0a83e;color:#241d10;font-weight:600}
+#recursos-ampliados :focus-visible {outline:3px solid #f5cd76;outline-offset:4px}
+#recursos-ampliados .muted {color:#d6dfd0;font-size:.9rem}
+#recursos-ampliados .answer {padding:12px;border-left:3px solid #e0a83e}
+@media print {body>*:not(main),main>*:not(#recursos-ampliados){display:none!important}#recursos-ampliados{color:#000;background:white;box-shadow:none}#recursos-ampliados section{break-inside:avoid}#recursos-ampliados button,#recursos-ampliados nav{display:none}#recursos-ampliados a,#recursos-ampliados .muted{color:#000}#recursos-ampliados textarea{height:150px}}
