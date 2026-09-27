@@ -368,6 +368,37 @@
   .back-to-top:hover,
   .back-to-top:focus-visible{background:#eef2df;color:var(--verde)}
 
+  .class-resources{
+    margin:34px 0 12px;
+    padding:28px 22px;
+    border-radius:var(--radius);
+    background:var(--verde-prof);
+    color:#fff;
+    box-shadow:var(--shadow);
+  }
+  .class-resources .eyebrow{color:var(--verde-claro)}
+  .class-resources h2{margin:10px 0 8px;font-size:1.7rem;font-weight:600}
+  .class-resources > p{margin:0 0 20px;color:rgba(255,255,255,.82);max-width:58ch}
+  .resource-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .resource-card{
+    padding:16px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:13px;
+    background:rgba(255,255,255,.08);
+  }
+  .resource-card h3{margin:0 0 6px;font-family:'Inter',sans-serif;font-size:.97rem;color:#fff}
+  .resource-card p{margin:0;color:rgba(255,255,255,.78);font-size:.86rem;line-height:1.55}
+  .resource-card strong{color:#f5cd76}
+  .resource-challenge{
+    margin:16px 0 0;
+    padding:15px 16px;
+    border-radius:13px;
+    background:var(--dorado);
+    color:#241d10;
+  }
+  .resource-challenge strong{display:block;margin-bottom:3px}
+  .resource-challenge p{margin:0;font-size:.9rem;line-height:1.55}
+
   .contact-note{
     margin:32px 0 40px;
     text-align:center;
@@ -404,6 +435,7 @@
     .hero-inner{padding:98px 18px 56px}
     .hero{min-height:100svh}
     .prompt-comparison{grid-template-columns:1fr}
+    .resource-grid{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -760,6 +792,34 @@ LÍMITES
     <div class="scroll-hint">↕ Podés scrollear el recuadro para leer el prompt completo</div>
     <button class="copy-btn" type="button">Copiar prompt</button>
   </div>
+
+  <section class="class-resources" aria-labelledby="recursos-clase">
+    <span class="eyebrow">Para llevarte de la clase</span>
+    <h2 id="recursos-clase">Más recursos para aplicar mañana</h2>
+    <p>Los prompts sirven para empezar. Estas cuatro guías te ayudan a elegir la herramienta correcta y diseñar una mejora comercial con criterio.</p>
+    <div class="resource-grid">
+      <article class="resource-card">
+        <h3>¿Qué herramienta uso?</h3>
+        <p><strong>Preparar o pensar:</strong> IA. <strong>Repetir reglas:</strong> automatización. <strong>Entender y derivar:</strong> agente. <strong>Decidir con datos:</strong> BI.</p>
+      </article>
+      <article class="resource-card">
+        <h3>Antes de automatizar</h3>
+        <p>Definí la acción, los datos de entrada, la regla, la excepción que debe resolver una persona y dónde queda registrado el resultado.</p>
+      </article>
+      <article class="resource-card">
+        <h3>Diseñá tu primer agente</h3>
+        <p>Escribí: objetivo, instrucciones, información disponible, herramientas permitidas y límites. El agente debe hacer avanzar una tarea, no solo conversar.</p>
+      </article>
+      <article class="resource-card">
+        <h3>Preguntas para tu tablero</h3>
+        <p>¿Dónde está el negocio? ¿Quién dejó de comprar? ¿Qué productos faltan? ¿A quién tengo que llamar el lunes? Usá el Excel de ejemplo del prompt 10.</p>
+      </article>
+    </div>
+    <div class="resource-challenge">
+      <strong>Mini desafío</strong>
+      <p>Elegí una tarea que repetís esta semana. Describila en cinco pasos, anotá qué dato falta, qué podrías automatizar y cuándo debe intervenir una persona.</p>
+    </div>
+  </section>
 
   <div class="contact-note">
     <p>¿Preguntas sobre algún prompt o sobre la clase? Escribime directo.</p>
