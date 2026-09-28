@@ -1,7 +1,10 @@
-#recursos-ampliados {scroll-margin-top:90px}
+#recursos-ampliados {scroll-margin-top:90px;background:transparent;padding:0;margin-top:48px;border-radius:0;box-shadow:none;color:var(--tinta)}
+#recursos-ampliados > p {color:var(--muted)}
+#recursos-ampliados > .eyebrow {color:var(--verde-osc)}
+#recursos-ampliados > nav a {color:var(--verde-osc)}
 #recursos-ampliados a {color:#ffe2a1}
 #recursos-ampliados nav {display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
-#recursos-ampliados section {scroll-margin-top:90px;padding:24px;margin-top:40px;border:1px solid #63715c;border-radius:16px;background:#1d3014}
+#recursos-ampliados section {scroll-margin-top:90px;padding:28px;margin-top:32px;border:1px solid #63715c;border-radius:18px;background:var(--verde-prof);color:#fff;box-shadow:var(--shadow)}
 #recursos-ampliados section > h2 {margin-top:0}
 #recursos-ampliados section + section {margin-top:48px}
 #recursos-ampliados #resource-quiz > div {padding:20px 0;border-bottom:1px solid #63715c}

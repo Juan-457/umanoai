@@ -113,6 +113,10 @@
     max-width:50ch;
   }
 
+  .hero-nav-group + .hero-nav-group{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.28)}
+  .hero-nav-label{margin:0 0 10px;font-family:'Inter',sans-serif;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+  .hero-nav-group .quicknav{margin:0}
+  .hero-inner{padding-bottom:100px}
   .quicknav{
     display:flex;flex-wrap:wrap;gap:9px;
     margin-bottom:30px;
@@ -432,7 +436,7 @@
   footer a{color:#6b5a3e;text-decoration:underline}
 
   @media (max-width:600px){
-    .hero-inner{padding:98px 18px 56px}
+    .hero-inner{padding:98px 18px 100px}
     .hero{min-height:100svh}
     .prompt-comparison{grid-template-columns:1fr}
     .resource-grid{grid-template-columns:1fr}
@@ -452,12 +456,29 @@
     <h1>De la clase a <em>tu próxima venta</em></h1>
     <p class="lead">Herramientas digitales para tu gestión comercial: 10 prompts listos para usar, guías de automatización, datos para practicar BI y un desafío para conectar todo en tu trabajo.</p>
 
-    <ul class="quicknav" aria-label="Explorar los recursos de la clase">
-      <li><a href="#prompt-1"><span class="n">1</span>Prompts</a></li>
-      <li><a href="#automatizacion"><span class="n">2</span>Automatización</a></li>
-      <li><a href="#bi"><span class="n">3</span>BI</a></li>
-      <li><a href="#integracion"><span class="n">4</span>Integración</a></li>
-    </ul>
+    <nav class="hero-nav-group" aria-labelledby="hero-prompts-label">
+      <h2 class="hero-nav-label" id="hero-prompts-label">Prompts</h2>
+      <ul class="quicknav">
+        <li><a href="#prompt-1"><span class="n">1</span>Visita</a></li>
+        <li><a href="#prompt-2"><span class="n">2</span>Negociación</a></li>
+        <li><a href="#prompt-3"><span class="n">3</span>Objeciones</a></li>
+        <li><a href="#prompt-4"><span class="n">4</span>Recuperar cliente</a></li>
+        <li><a href="#prompt-5"><span class="n">5</span>Cartera</a></li>
+        <li><a href="#prompt-6"><span class="n">6</span>Día comercial</a></li>
+        <li><a href="#prompt-7"><span class="n">7</span>Seguimiento</a></li>
+        <li><a href="#prompt-8"><span class="n">8</span>Cierre</a></li>
+        <li><a href="#prompt-9"><span class="n">9</span>Prospección</a></li>
+        <li><a href="#prompt-10"><span class="n">10</span>Tablero de BI</a></li>
+      </ul>
+    </nav>
+    <nav class="hero-nav-group" aria-labelledby="hero-recursos-label">
+      <h2 class="hero-nav-label" id="hero-recursos-label">Más recursos de la clase</h2>
+      <ul class="quicknav">
+        <li><a href="#automatizacion">Automatización</a></li>
+        <li><a href="#bi">BI</a></li>
+        <li><a href="#integracion">Integración</a></li>
+      </ul>
+    </nav>
   </div>
   <a class="hero__scroll" href="#prompt-1" aria-label="Bajar a los prompts">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
