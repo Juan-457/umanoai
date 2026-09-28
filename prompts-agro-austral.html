@@ -691,12 +691,11 @@ Límites: No inventes datos del contacto ni prometas condiciones comerciales. Qu
 Actuá como experto en Business Intelligence para el sector agro, con experiencia armando tableros para equipos comerciales de distribuidoras de fitosanitarios.
 
 CONTEXTO
-Adjunto un Excel con la facturación de un año (2024) de una distribuidora de fitosanitarios. Ya está anonimizado y tiene estas hojas: Ventas, Clientes, Productos, Zonas y Notas. Leé primero la hoja Notas.
-- Trabajá con la hoja Ventas: una fila por línea de comprobante, con estas columnas: Fecha, Mes, Tipo de comprobante, Comprobante (ID), Zona, Cliente, Localidad (ilustrativa), Latitud, Longitud, Producto, Presentación, Producto y presentación, Unidad, Cantidad, Precio neto (USD), Total (USD), Condición de venta, Plazo (días), Tramo de plazo y Cotización.
-- Tipo de comprobante puede ser Factura, Nota de débito o Nota de crédito. Las notas de crédito ya vienen con total y cantidad negativos.
-- Venta neta = suma de Total (USD). La cantidad está en litros o kilos según la columna Unidad.
-- Plazo (días) está vacío en canjes y plataformas.
-- El tablero se va a presentar en una clase a vendedores con experiencia.
+Adjunto el Excel que quiero analizar. Inspeccioná primero todas las hojas y leé las notas, definiciones o instrucciones que incluya el archivo. No supongas el año, rubro, nombres de hojas, estructura ni columnas: detectá todo eso en el material cargado y explicame brevemente qué encontraste antes de construir.
+- Usá las hojas, nombres de clientes, productos, zonas, localidades y valores exactamente como aparecen en el archivo. No los anonimices, sustituyas ni normalices; si el propio archivo ya trae etiquetas anonimizadas, respetalas.
+- Identificá la hoja y el nivel de detalle de las transacciones (por ejemplo, una fila por línea de comprobante) verificándolo en los datos. Reconocé ventas, devoluciones, notas de crédito/débito y signos solo cuando estén indicados por los datos o sus notas.
+- Calculá importes, cantidades, precios, fechas y plazos únicamente con campos disponibles. Conservá créditos/devoluciones negativos si así vienen; no mezcles unidades diferentes y señalá los datos faltantes.
+- El tablero se va a presentar a vendedores con experiencia.
 
 OBJETIVO
 Quiero un dashboard de ventas interactivo que genere un efecto &quot;wow&quot; en los vendedores: que cada uno encuentre respuestas a sus inquietudes comerciales reales y descubra información útil que no conocía. Organizalo como una secuencia de preguntas que se hace un vendedor:
@@ -738,26 +737,27 @@ RESPUESTA
   - Estética propia del agro, nada genérica: paleta de verdes hoja, amarillo trigo y rojo tierra.
   - Tipografía con carácter y números grandes.
   - Legible en un proyector y adaptable a celular, con modo claro y oscuro.
-- Nota al pie con la fuente, aclarando que los datos están anonimizados y las localidades son ilustrativas.
+- Nota al pie con el nombre del archivo y período detectado. Describí las ubicaciones según lo que indiquen las notas del archivo; no afirmes que sean reales ni ilustrativas si no está aclarado.
 - Al final de tu respuesta, resumime los 5 hallazgos más fuertes del tablero.
 
 LÍMITES
 - No inventes datos: todo importe, cantidad, precio, fecha y plazo debe salir del archivo.
-- No reemplaces ni &quot;des-anonimices&quot; nombres: usá Cliente_001, Producto_01, etc. tal como vienen.
-- No asumas que la localidad es la ubicación real del cliente; usá la que trae el archivo solo para el mapa.
-- No incluyas canjes ni plataformas (plazo vacío) en el cálculo del plazo promedio.
-- No saques conclusiones que los datos no respalden. Por ejemplo, no hay datos de años anteriores, así que no hables de clientes &quot;nuevos&quot; ni de crecimiento interanual.
+- No anonimices, reemplaces, traduzcas ni inventes nombres: reflejá en el tablero los nombres y valores tal como aparecen en el archivo cargado.
+- No asumas que una localidad o coordenada representa la ubicación real del cliente; seguí las aclaraciones del archivo y advertí cualquier limitación.
+- Calculá el plazo promedio solo con registros que tengan un plazo válido; excluí los vacíos e informá el criterio. No atribuyas motivos a los campos vacíos.
+- No saques conclusiones que el período y los datos no respalden; por ejemplo, no afirmes crecimiento interanual si no hay períodos comparables.
+- Si una métrica o visual no puede calcularse con los campos disponibles, explicá por qué y omitila en vez de inventar datos. Antes de decidir un criterio ambiguo, consultame.
+- Generá el HTML para uso local o dentro de un entorno privado autorizado. No publiques ni compartas en una página abierta el archivo o sus datos comerciales sin confirmar antes que existe autorización para hacerlo.
 - Si algo es ambiguo, preguntame antes de decidir. Antes de construir, explorá los datos y contame los hallazgos principales.
 - Revisá el tablero antes de entregarlo (errores, textos cortados, superposiciones).">ROL
 Actuá como experto en Business Intelligence para el sector agro, con experiencia armando tableros para equipos comerciales de distribuidoras de fitosanitarios.
 
 CONTEXTO
-Adjunto un Excel con la facturación de un año (2024) de una distribuidora de fitosanitarios. Ya está anonimizado y tiene estas hojas: Ventas, Clientes, Productos, Zonas y Notas. Leé primero la hoja Notas.
-- Trabajá con la hoja Ventas: una fila por línea de comprobante, con estas columnas: Fecha, Mes, Tipo de comprobante, Comprobante (ID), Zona, Cliente, Localidad (ilustrativa), Latitud, Longitud, Producto, Presentación, Producto y presentación, Unidad, Cantidad, Precio neto (USD), Total (USD), Condición de venta, Plazo (días), Tramo de plazo y Cotización.
-- Tipo de comprobante puede ser Factura, Nota de débito o Nota de crédito. Las notas de crédito ya vienen con total y cantidad negativos.
-- Venta neta = suma de Total (USD). La cantidad está en litros o kilos según la columna Unidad.
-- Plazo (días) está vacío en canjes y plataformas.
-- El tablero se va a presentar en una clase a vendedores con experiencia.
+Adjunto el Excel que quiero analizar. Inspeccioná primero todas las hojas y leé las notas, definiciones o instrucciones que incluya el archivo. No supongas el año, rubro, nombres de hojas, estructura ni columnas: detectá todo eso en el material cargado y explicame brevemente qué encontraste antes de construir.
+- Usá las hojas, nombres de clientes, productos, zonas, localidades y valores exactamente como aparecen en el archivo. No los anonimices, sustituyas ni normalices; si el propio archivo ya trae etiquetas anonimizadas, respetalas.
+- Identificá la hoja y el nivel de detalle de las transacciones (por ejemplo, una fila por línea de comprobante) verificándolo en los datos. Reconocé ventas, devoluciones, notas de crédito/débito y signos solo cuando estén indicados por los datos o sus notas.
+- Calculá importes, cantidades, precios, fechas y plazos únicamente con campos disponibles. Conservá créditos/devoluciones negativos si así vienen; no mezcles unidades diferentes y señalá los datos faltantes.
+- El tablero se va a presentar a vendedores con experiencia.
 
 OBJETIVO
 Quiero un dashboard de ventas interactivo que genere un efecto "wow" en los vendedores: que cada uno encuentre respuestas a sus inquietudes comerciales reales y descubra información útil que no conocía. Organizalo como una secuencia de preguntas que se hace un vendedor:
@@ -799,15 +799,17 @@ RESPUESTA
   - Estética propia del agro, nada genérica: paleta de verdes hoja, amarillo trigo y rojo tierra.
   - Tipografía con carácter y números grandes.
   - Legible en un proyector y adaptable a celular, con modo claro y oscuro.
-- Nota al pie con la fuente, aclarando que los datos están anonimizados y las localidades son ilustrativas.
+- Nota al pie con el nombre del archivo y período detectado. Describí las ubicaciones según lo que indiquen las notas del archivo; no afirmes que sean reales ni ilustrativas si no está aclarado.
 - Al final de tu respuesta, resumime los 5 hallazgos más fuertes del tablero.
 
 LÍMITES
 - No inventes datos: todo importe, cantidad, precio, fecha y plazo debe salir del archivo.
-- No reemplaces ni "des-anonimices" nombres: usá Cliente_001, Producto_01, etc. tal como vienen.
-- No asumas que la localidad es la ubicación real del cliente; usá la que trae el archivo solo para el mapa.
-- No incluyas canjes ni plataformas (plazo vacío) en el cálculo del plazo promedio.
-- No saques conclusiones que los datos no respalden. Por ejemplo, no hay datos de años anteriores, así que no hables de clientes "nuevos" ni de crecimiento interanual.
+- No anonimices, reemplaces, traduzcas ni inventes nombres: reflejá en el tablero los nombres y valores tal como aparecen en el archivo cargado.
+- No asumas que una localidad o coordenada representa la ubicación real del cliente; seguí las aclaraciones del archivo y advertí cualquier limitación.
+- Calculá el plazo promedio solo con registros que tengan un plazo válido; excluí los vacíos e informá el criterio. No atribuyas motivos a los campos vacíos.
+- No saques conclusiones que el período y los datos no respalden; por ejemplo, no afirmes crecimiento interanual si no hay períodos comparables.
+- Si una métrica o visual no puede calcularse con los campos disponibles, explicá por qué y omitila en vez de inventar datos. Antes de decidir un criterio ambiguo, consultame.
+- Generá el HTML para uso local o dentro de un entorno privado autorizado. No publiques ni compartas en una página abierta el archivo o sus datos comerciales sin confirmar antes que existe autorización para hacerlo.
 - Si algo es ambiguo, preguntame antes de decidir. Antes de construir, explorá los datos y contame los hallazgos principales.
 - Revisá el tablero antes de entregarlo (errores, textos cortados, superposiciones).</div>
     <div class="scroll-hint">↕ Podés scrollear el recuadro para leer el prompt completo</div>
