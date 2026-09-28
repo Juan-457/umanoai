@@ -8,7 +8,7 @@
     <nav aria-label="Bloques de recursos"><a href="#automatizacion">Automatización</a><a href="#bi">BI</a><a href="#integracion">Integración</a></nav>
     <section id="automatizacion"><h2>Automatización</h2>
       <p>Evento → acción → registro → aviso. Empezá por una tarea repetitiva, con reglas claras, suficiente volumen y un proceso estable.</p>
-      <details open><summary>Checklist: antes de automatizar</summary><ul>
+      <details><summary>Checklist: antes de automatizar</summary><ul>
         <li>¿Qué acción inicia el proceso y qué resultado esperamos?</li><li>¿Qué datos entran, de dónde salen y cuáles son obligatorios?</li><li>¿Qué regla decide el siguiente paso?</li><li>¿Qué excepción debe resolver una persona y quién es responsable?</li><li>¿Dónde se registra el resultado y cómo evitamos duplicados?</li>
       </ul><p>Primero observá cinco casos reales. Si cada uno requiere una decisión distinta, aclarar el proceso es el siguiente paso.</p><button type="button" data-download="checklist">Descargar checklist</button></details>
       <h3>¿RPA, automatización cloud o agente?</h3><ul>
@@ -36,6 +36,49 @@
       <h3>Tu primera semana</h3><ol><li><strong>Día 1:</strong> elegí una tarea y un responsable.</li><li><strong>Día 2:</strong> observá cinco casos y medí tiempo y errores actuales.</li><li><strong>Día 3:</strong> definí datos, reglas, herramienta y excepciones.</li><li><strong>Día 4:</strong> probá con cinco casos revisados por una persona.</li><li><strong>Día 5:</strong> compará resultados y decidí si ajustar, ampliar o detener la prueba.</li></ol>
       <p><strong>Para compartir:</strong> nuestro problema es… Usaríamos… porque… Una persona interviene cuando… Mediríamos…</p>
     </section>`;
+  // Keep long material closed until the reader chooses a topic.
+  document.querySelectorAll('.prompt-card').forEach(card => {
+    const heading = card.querySelector(':scope > h2');
+    if (!heading) return;
+    const disclosure = document.createElement('details');
+    disclosure.className = 'prompt-disclosure';
+    const summary = document.createElement('summary');
+    summary.innerHTML = heading.innerHTML;
+    const badge = card.querySelector(':scope > .badge');
+    const body = document.createElement('div');
+    body.className = 'prompt-disclosure-body';
+    Array.from(card.children).forEach(child => {
+      if (child !== heading && child !== badge) body.append(child);
+    });
+    if (badge) body.prepend(badge);
+    disclosure.append(summary, body);
+    heading.replaceWith(disclosure);
+  });
+  root.querySelectorAll(':scope > section[id]').forEach(panel => {
+    const heading = panel.querySelector(':scope > h2');
+    if (!heading) return;
+    const disclosure = document.createElement('details');
+    disclosure.className = 'resource-panel';
+    disclosure.id = panel.id;
+    const summary = document.createElement('summary');
+    summary.textContent = heading.textContent;
+    const body = document.createElement('div');
+    body.className = 'resource-panel-body';
+    Array.from(panel.children).forEach(child => { if (child !== heading) body.append(child); });
+    disclosure.append(summary, body);
+    panel.replaceWith(disclosure);
+  });
+  // Direct links from the hero should reveal the requested material.
+  function openHashTarget() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    const disclosure = target.matches('details') ? target : target.closest('details');
+    if (disclosure) disclosure.open = true;
+  }
+  window.addEventListener('hashchange', openHashTarget);
+  openHashTarget();
   const fields = ['¿Qué problema queremos resolver?', '¿Qué información tenemos y qué falta?', '¿Qué herramienta elegiríamos y por qué?', '¿Cómo funcionaría? Escribí cinco pasos.', '¿Cuándo interviene una persona y quién?', '¿Cómo mediremos la mejora?', '¿Cuál es la primera prueba y cuándo la haríamos?'];
   const form = document.getElementById('desafio-austral');
   fields.forEach((label, i) => {const l = document.createElement('label'); l.htmlFor = 'desafio-'+i; l.textContent = label; const t = document.createElement('textarea'); t.id = l.htmlFor; t.maxLength = 4000; form.append(l,t);});
@@ -51,8 +94,8 @@
   const sheets = {
     checklist: 'ANTES DE AUTOMATIZAR\n1. Evento y resultado esperado:\n2. Datos y fuente:\n3. Regla:\n4. Excepción y responsable humano:\n5. Registro y prevención de duplicados:\nPrueba: cinco casos. Medida inicial y posterior:',
     agente: 'MI PRIMER AGENTE\nObjetivo:\nInstrucciones:\nInformación autorizada:\nHerramientas permitidas:\nLímites y derivación humana:\nEjemplo: recopilar zona, cantidad y fecha; registrar y avisar al vendedor sin inventar condiciones.',
-    resumen: 'CLASE AUSTRAL · FICHA PRÁCTICA\nIA: pensar y preparar.\nPrompt: rol + contexto + objetivo + respuesta + límites.\nAutomatización: evento → acción → registro → aviso.\nRPA: pasos en pantalla; cloud: conectar sistemas.\nAgente: objetivo + instrucciones + información + herramientas + límites.\nBI: pregunta → dato → decisión → acción.\nIntegración: consulta → contexto → venta → registro → aprendizaje.\nAntes de automatizar: acción, datos, regla, excepción humana y registro.\nPrimera semana: elegir, medir, diseñar, probar cinco casos, comparar.\nRecursos: https://umanoai.com.ar/prompts-agro-austral.html'
+    resumen: 'FICHA PRÁCTICA · HERRAMIENTAS PARA LA GESTIÓN COMERCIAL\nIA: pensar y preparar.\nPrompt: rol + contexto + objetivo + respuesta + límites.\nAutomatización: evento → acción → registro → aviso.\nRPA: pasos en pantalla; cloud: conectar sistemas.\nAgente: objetivo + instrucciones + información + herramientas + límites.\nBI: pregunta → dato → decisión → acción.\nIntegración: consulta → contexto → venta → registro → aprendizaje.\nAntes de automatizar: acción, datos, regla, excepción humana y registro.\nPrimera semana: elegir, medir, diseñar, probar cinco casos, comparar.'
   };
-  root.querySelectorAll('[data-download]').forEach(button => button.addEventListener('click', () => {const kind=button.dataset.download; const content=kind==='desafio' ? 'MI MEJORA COMERCIAL\n\n'+fields.map((f,i)=>f+'\n'+document.getElementById('desafio-'+i).value).join('\n\n') : sheets[kind];const url=URL.createObjectURL(new Blob(['\ufeff'+content],{type:'text/plain;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='austral-'+kind+'.txt';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('download-status').textContent='Ficha preparada para descargar.';}));
+  root.querySelectorAll('[data-download]').forEach(button => button.addEventListener('click', () => {const kind=button.dataset.download; const content=kind==='desafio' ? 'MI MEJORA COMERCIAL\n\n'+fields.map((f,i)=>f+'\n'+document.getElementById('desafio-'+i).value).join('\n\n') : sheets[kind];const url=URL.createObjectURL(new Blob(['\ufeff'+content],{type:'text/plain;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='gestion-comercial-'+kind+'.txt';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('download-status').textContent='Ficha preparada para descargar.';}));
   document.getElementById('print-resources').addEventListener('click',()=>window.print());
 })();
