@@ -6,10 +6,10 @@
 #recursos-ampliados nav {display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
 #recursos-ampliados section {scroll-margin-top:90px;padding:28px;margin-top:32px;border:1px solid #63715c;border-radius:18px;background:var(--verde-prof);color:#fff;box-shadow:var(--shadow)}
 #recursos-ampliados section > h2 {margin-top:0}
-#recursos-ampliados section + section {margin-top:48px}
+#recursos-ampliados section + section {margin-top:64px}
 #recursos-ampliados #resource-quiz > div {padding:20px 0;border-bottom:1px solid #63715c}
 #recursos-ampliados #resource-quiz + h3 {margin-top:40px}
-@media(max-width:600px){#recursos-ampliados section{padding:18px 14px;margin-top:28px}#recursos-ampliados section + section{margin-top:32px}}
+@media(max-width:600px){#recursos-ampliados section{padding:18px 14px;margin-top:28px}#recursos-ampliados section + section{margin-top:44px}}
 #recursos-ampliados h3 {font-family:Inter,sans-serif;font-size:1.08rem;margin:24px 0 12px}
 #recursos-ampliados li {margin-bottom:10px}
 #recursos-ampliados details {background:#233d16;border:1px solid #63715c;border-radius:12px;padding:16px;margin:16px 0}
