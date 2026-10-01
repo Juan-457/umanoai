@@ -3,19 +3,55 @@
 
   <url>
     <loc>https://umanoai.com.ar/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>1.0</priority>
   </url>
 
   <url>
+    <loc>https://umanoai.com.ar/acerca-de-umanoai.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/about-umanoai.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/sobre-umanoai.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/politica-aportes-comunidad.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/community-contributions-policy.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://umanoai.com.ar/politica-aportes-comunidade.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://umanoai.com.ar/index-en.html</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://umanoai.com.ar/index-pt.html</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.9</priority>
   </url>
 

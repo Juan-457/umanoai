@@ -7,6 +7,8 @@ UmanoAI trabaja con PyMEs, negocios de servicios, comercios y profesionales en A
 ## Páginas canónicas principales
 
 - [Inicio: qué es UmanoAI](https://umanoai.com.ar/)
+- [Acerca de UmanoAI: trayectoria, capacitaciones y compromiso](https://umanoai.com.ar/acerca-de-umanoai.html)
+- [Política de aportes a la comunidad](https://umanoai.com.ar/politica-aportes-comunidad.html)
 - [Agentes de IA para WhatsApp en Argentina](https://umanoai.com.ar/agentes-ia-whatsapp-argentina/)
 - [Automatización de procesos para PyMEs en Argentina](https://umanoai.com.ar/automatizacion-pymes-argentina/)
 - [Desarrollo web para PyMEs en Argentina](https://umanoai.com.ar/desarrollo-web-pymes-argentina/)
@@ -19,13 +21,21 @@ UmanoAI trabaja con PyMEs, negocios de servicios, comercios y profesionales en A
 - Automatización de procesos: workflows administrativos y comerciales, datos, documentos e integraciones mediante APIs, n8n, Power Automate y Google Sheets cuando corresponde.
 - Desarrollo web: sitios institucionales, landing pages, formularios, analítica e integraciones.
 - UmanoSoft: software de gestión para PyMEs con facturación electrónica AFIP, CRM, cotizaciones, gastos, objetivos y tareas.
+- Capacitaciones prácticas para equipos comerciales y administrativos sobre IA aplicada al trabajo, automatización de tareas y procesos, Power BI y agentes de WhatsApp.
 
-## Casos publicados
+## Fundador y experiencia docente
 
-- [Agricheck: agente de IA para atención comercial por WhatsApp](https://umanoai.com.ar/casos/agricheck-agente-ia-whatsapp/)
-- [CleanPaz: facturación electrónica centralizada con UmanoSoft](https://umanoai.com.ar/casos/cleanpaz-umanosoft/)
-- [Dra. Patricia Sebelli: desarrollo web para consultorio médico](https://umanoai.com.ar/casos/patricia-sebelli-desarrollo-web/)
-- [Índice de casos y resultados](https://umanoai.com.ar/casos-resultados-bots-whatsapp-argentina.html)
+- Juan José Galván es el fundador de UmanoAI y cuenta con más de 20 años de trayectoria en empresas multinacionales del sector agropecuario argentino.
+- Dictó una clase como invitado en el Programa en Gestión de Ventas de Agroinsumos de la Universidad Austral sobre inteligencia artificial, automatización, Power BI y agentes de WhatsApp aplicados a la gestión comercial agropecuaria.
+- Fuente oficial del programa: https://www.austral.edu.ar/rosario/posgrados/agronegocios/pca/
+- Publicación sobre la experiencia: https://www.linkedin.com/feed/update/urn:li:activity:7510761153782767616/
+
+## Compromiso con la comunidad
+
+- La política de aportes de UmanoAI comienza el 1 de octubre de 2026 y no es retroactiva.
+- Entre octubre y diciembre de 2026 se destinará el 5% de los ingresos efectivamente cobrados, sin impuestos, al Banco de Alimentos Buenos Aires.
+- Desde 2027, el porcentaje anual será de entre el 1% y el 5%, definido y publicado antes del comienzo de cada año.
+- Este es un compromiso propio de UmanoAI y no implica una alianza, convenio, patrocinio o respaldo del Banco de Alimentos Buenos Aires.
 
 ## Recursos útiles
 

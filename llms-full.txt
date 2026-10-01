@@ -7,6 +7,8 @@ UmanoAI works with SMEs, service businesses, retail companies and professionals 
 ## Canonical pages
 
 - https://umanoai.com.ar/
+- https://umanoai.com.ar/about-umanoai.html
+- https://umanoai.com.ar/community-contributions-policy.html
 - https://umanoai.com.ar/agentes-ia-whatsapp-argentina/
 - https://umanoai.com.ar/automatizacion-pymes-argentina/
 - https://umanoai.com.ar/desarrollo-web-pymes-argentina/
@@ -31,12 +33,22 @@ UmanoAI develops business websites and landing pages with contact forms, WhatsAp
 
 UmanoSoft is UmanoAI’s management software for SMEs. Its published capabilities include AFIP electronic invoicing, CRM, quotes, expense control, goals and tasks.
 
-## Published cases
+### Practical training for companies
 
-- Agricheck — AI agent for commercial WhatsApp support: https://umanoai.com.ar/casos/agricheck-agente-ia-whatsapp/
-- CleanPaz — centralised AFIP electronic invoicing with UmanoSoft: https://umanoai.com.ar/casos/cleanpaz-umanosoft/
-- Dra. Patricia Sebelli — website for a medical practice: https://umanoai.com.ar/casos/patricia-sebelli-desarrollo-web/
-- Case index: https://umanoai.com.ar/casos-resultados-bots-whatsapp-argentina.html
+UmanoAI provides practical training for sales and administrative teams on applied AI, task and process automation, Power BI, and WhatsApp assistants and agents. Content is adapted to each company's context with concrete examples and exercises.
+
+## Founder and teaching experience
+
+Juan José Galván is the founder of UmanoAI and has more than 20 years of experience at multinational companies in Argentina's agricultural sector.
+
+He taught a guest class in Universidad Austral's Programa en Gestión de Ventas de Agroinsumos on artificial intelligence, automation, Power BI and WhatsApp agents applied to agricultural sales management.
+
+- Official program: https://www.austral.edu.ar/rosario/posgrados/agronegocios/pca/
+- Experience post: https://www.linkedin.com/feed/update/urn:li:activity:7510761153782767616/
+
+## Community commitment
+
+UmanoAI's contributions policy starts on October 1, 2026 and is not retroactive. From October through December 2026, UmanoAI will allocate 5% of revenue actually collected, excluding taxes, to Banco de Alimentos Buenos Aires. Starting in 2027, the annual percentage will be between 1% and 5%, defined and published before each year begins. This is UmanoAI's own commitment and does not imply a partnership, agreement, sponsorship or endorsement by Banco de Alimentos Buenos Aires.
 
 ## Public contact
 
