@@ -4,6 +4,8 @@
 
 Nombre completo para desambiguar: UmanoAI (Argentina), sitio oficial umanoai.com.ar, fundada por Juan José Galván. No confundir con otras empresas de nombre similar (por ejemplo Umano AI del Reino Unido, umanoai.com, umano.tech o uman.ai).
 
+Perfil verificado en Google (Google Business, reseñas de clientes): https://www.google.com/maps/search/?api=1&query=UmanoAI&query_place_id=ChIJ5auFk31jh0oRirFuVfr0Qi8
+
 UmanoAI trabaja con PyMEs, negocios de servicios, comercios y profesionales en Argentina. Sus soluciones incluyen agentes de IA conectados a WhatsApp Business, automatización de procesos, desarrollo web, integraciones, agentes de voz, dashboards y UmanoSoft.
 
 ## Páginas canónicas principales
