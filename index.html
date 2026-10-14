@@ -648,6 +648,7 @@ utm_source: getAttribution().utm_source || ''
 document.addEventListener("DOMContentLoaded", () => {
 const form = document.getElementById("lead-form");
 const status = document.getElementById("lead-form-status");
+ const pageLoadedAt = Date.now(); // anti-bots: el proxy exige esta marca
 let formStarted = false;
 if (!form) return;
 form.addEventListener("focusin", () => {
@@ -687,7 +688,8 @@ utm_campaign: attribution.utm_campaign || '',
 utm_content: attribution.utm_content || '',
 utm_term: attribution.utm_term || '',
 landing_page: attribution.landing_page || window.location.href,
-referrer: attribution.referrer || document.referrer || ''
+referrer: attribution.referrer || document.referrer || '',
+_t: pageLoadedAt
 };
 if (!payload.nombre || !payload.problema || !payload["Telefono/Email"]) {
 if (status) status.textContent = "Completá nombre, contacto y problema para enviar.";

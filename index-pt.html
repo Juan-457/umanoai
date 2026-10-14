@@ -2839,6 +2839,7 @@
         document.addEventListener("DOMContentLoaded", () => {
           const form = document.getElementById("lead-form");
           const status = document.getElementById("lead-form-status");
+          const pageLoadedAt = Date.now(); // anti-bots: el proxy exige esta marca
           let formStarted = false;
           if (!form) return;
 
@@ -2866,7 +2867,8 @@
               problema: (form.problema?.value || "").trim(),
               "Telefono/Email": (form.telefonoEmail?.value || "").trim(),
               source: "umanoai_web",
-              timestamp: new Date().toISOString()
+              timestamp: new Date().toISOString(),
+              _t: pageLoadedAt
             };
 
             if (!payload.nombre || !payload.problema || !payload["Telefono/Email"]) {
